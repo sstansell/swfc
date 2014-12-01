@@ -1,10 +1,10 @@
 <h1>Card Totals ({{{total}}})</h1>
 <div id="cards">
-<div class="controls">
+<!--<div class="controls">
 <form method="get" action="">
 From: <input type="text" value="10/1/2014" id="fromDate" name="fromDate" class="date"> To: <input type="text" id="toDate" name="toDate" class="date" value="1/1/2015"> <input type="submit" value="Go">
 </form>
-</div>
+</div>-->
 	<table>
 		<thead>
 			<tr>
@@ -19,7 +19,7 @@ From: <input type="text" value="10/1/2014" id="fromDate" name="fromDate" class="
 		  {{#each cards}}
 		    <tr id="{{cardId}}">
 		    	<!--<td class="thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/{{thumb}}_s.png"></td> -->
-		    	<td class="name">{{name}}</td>
+		    	<td class="name"><a href="/history/card/{{cardId}}">{{name}}</a></td>
 		    	<td class="count">{{{count}}}</td>
 		    	<!--<td class="links"><a href="/history/card/{{{card_id}}}">History</a> | <a href="/packs/card/{{card_id}}">Packs</a></td>-->
 		    	<td class="rarity rarity{{{rarity}}}"">&nbsp;</td>

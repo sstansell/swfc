@@ -5,6 +5,7 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 var mongo = require('mongodb');
 var monk = require('monk');
+var moment = require('moment');
 
 var dbServer = '10.0.0.15:27017';
 var connectionString = 'mongodb://' + dbServer + '/SWFC';
@@ -20,6 +21,9 @@ var pathPostFix = "&opensocial_viewer_id=588957978&sub_ln=en_US&a=home%2Fhome&t=
 		    'Accept-Language': 'en-US',
 		    'X-Requested-With': 'jp.konami.swfc'
 	    }
+
+var config = {}
+config.startDate = new Date(2014,10,20);
 
 /*-----------------
 TODO:
@@ -143,7 +147,8 @@ router.get('/total/cards', function(req, res) {
 				map,
 				reduce,
 				{
-					query: {insertTime:{$gte: new Date(2014,10,20)}},
+					query: {insertTime:{$gte: config.startDate}},
+					//query: {},
 					out: {inline:1}
 				},
 				function(err,results){
@@ -196,7 +201,8 @@ router.get('/total/packs', function(req, res) {
 			map,
 			reduce,
 			{
-				query: {insertTime:{$gte: new Date(2014,10,20)}},
+				//query: {insertTime:{$gte: new Date(2014,10,20)}},
+				query: {insertTime:{$gte: config.startDate}},
 				out: {inline:1}
 			},
 			function(err,results){
@@ -234,7 +240,7 @@ router.get('/total/hours', function(req, res) {
 			map,
 			reduce,
 			{
-				query: {},
+				query: {insertTime:{$gte: config.startDate}},
 				out: {inline:1}
 			},
 			function(err,results){
@@ -248,33 +254,73 @@ router.get('/total/hours', function(req, res) {
 });
 
 /* GET card history page. */
-router.get('/history/card', function(req, res) {
+router.get('/history/card/:cardId', function(req, res) {
 	var db = mongo.connect(connectionString, function(err,db){
-		var cardPulls = db.collection("CardPulls");
-		var cardId = req.query.cardId;
+		var data = {};
+		data.card = {};
+		data.days = [];
 
-		var map = function(){
-			emit(card_id, 1);
+		var cardPulls = db.collection("CardPulls");
+		//var cardId = req.query.cardId;
+		var cardId = req.params.cardId;
+
+		map = function() {
+		  id = this._id;
+		  ts = id.getTimestamp();  
+		    
+		  day = Date.UTC(ts.getFullYear(), ts.getMonth(), ts.getDate());
+
+		  emit({day: day, card_id: this.card_id}, {count: 1});
 		}
-		var reduce = function(name, count){
-			return Array.sum(count);
+		reduce = function(key, values) {
+		  var count = 0;
+
+		  values.forEach(function(v) {
+		    count += v['count'];
+		  });
+
+		  return {count: count};
 		}
 
 		cardPulls.mapReduce(
 			map,
 			reduce,
 			{
-				query: {},
+				query: {card_id:cardId, insertTime:{$gte: config.startDate}},
 				out: {inline:1}
 			},
 			function(err,results){
 				db.close();
 				//add info to the results
-				//results.forEach(){}
-				results.sort(sort_by('_id', false, parseInt));
-				var total = getTotal(results);
+				//var total = getTotal(results);
+				data.card.id = cardId;
+				var cardInfo = getCardInfo(cardId, function(card,err){
+					if(err.length ==0){ 
+					
+						data.card.name = card.name;
+						data.card.thumb = card.thumb;
+					}
 
-				res.render('hours', {"title":"Hourly Totals", "results":results, "error":err, "total": total})
+
+					var total = 0;
+					results.forEach(function(element,index,array){
+						if(element._id['card_id']==data.card.id){
+							total = total + element.value['count'];
+							var prettyDate = moment(element._id['day']);
+							data.days.push({
+												date: prettyDate.format("MM/DD/YYYY"),
+												rawDate: element._id['day'],
+												count: element.value['count']
+											}
+							);						
+						}
+					data.total = total;		
+
+					});
+
+					res.render('cardHistory', {"title":"Card History", "data":data, "error":err})					
+				})
+
 			}
 		);
 	});
@@ -333,30 +379,30 @@ function getGzipped(options, callback) {
 
 
 
-/*function getCardInfo(cardId,callback){
+function getCardInfo(cardId,callback){
 	var db = monk(dbServer + '/SWFC');
 
     // Set our collection
-    var collection = db.get(collectionName);
+    var collection = db.get("CardPulls");
    	collection.findOne(
     			{card_id:cardId},
     			function(err,doc){
+    				console.log("error: " + err);
+    				console.log("doc:" + doc.name);
     				db.close();
     				if(doc!==null&&doc!==undefined){
-			    		if(docs.length>0){
-			    			callback(doc);
-			    			
-			    		}else{
-			    			console.log("Could Not Find Card With ID " + cardId);
-			    			callback();
-						    });		    			
-			    		}
+			    			callback(doc,"");
+		    		}else{
+		    			console.log("Could Not Find Card With ID " + cardId);
+		    			callback({},"Could Not Find Card");
+					    		    			
+		    		}
 			    		
-    				}
+
 
     			})
 
-}*/
+}
 
 function getWordsBetweenCurlies(str) {
   var results = [], re = /{([^}]+)}/g, text;
