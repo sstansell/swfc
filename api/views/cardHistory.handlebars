@@ -1,8 +1,31 @@
-<h1>History for {{{name}}}</h1>
-
-
-
+<h1>History for {{{data.card.name}}}</h1>
+<img src="http://amw.konaminet.jp/amw/naboo/img/{{data.card.thumb}}_m.png">
 <table>
+<caption>All dates determined by UTC</caption>
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Count</th>
+			<th>% of Total Pulls</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each data.days}}
+		<tr>
+			<td>{{date}}</td>
+			<td>{{count}}</td>
+			<td></td>
+		</tr>
+		{{/each}}
+		<tr>
+			<td>Total</td>
+			<td>{{data.total}}</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<!--<table>
 	<thead>
 		<tr>
 			<th>Max in 1 hour</th>
@@ -17,4 +40,4 @@
 			<th>4.4</th>
 		</tr>
 	</tbody>
-</table>
+</table>-->
