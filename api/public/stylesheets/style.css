@@ -21,7 +21,7 @@ a {
 }
 td {
   padding:7px; 
-  border:solid 1px #eee;
+  border-bottom:solid 1px #eee;
   font-size: 14px;
 }
 
