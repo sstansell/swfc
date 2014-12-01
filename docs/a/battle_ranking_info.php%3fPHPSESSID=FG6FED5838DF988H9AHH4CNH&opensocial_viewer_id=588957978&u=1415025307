@@ -1,0 +1,26 @@
+    <div id="battle_ranking_area" class="lightside-leader clearfix">
+        <h2 class="font-sw01 fontSS battle_ranking_title colorLight shadowLight"><span>LIGHTSIDE Leaderboard</span></h2>
+        <a href="javascript:void(0)" onclick="jump_renew_cache('http://amw.konaminet.jp/amw/naboo/battle_ranking/entrance/entrance?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309')" class="se_sys_menu_entr">
+            <div class="battle_ranking_content">
+                <span class="activeLink"></span>
+                                    <div class="ranking-list">
+                        <span class="rank_title fontSS">Daily Rank</span>
+                                                    <span class="rank ">
+                                                                                    Rank: 22736
+                                                    </span>
+                    </div>
+                    <div class="ranking-list">
+                        <span class="rank_title fontSS">Weekly Rank</span>
+                                                    <span class="rank ">
+                                                                                    Rank: 22684
+                                                    </span>
+                    </div>
+                            </div>
+        </a>
+    </div>
+            <script type="text/javascript">
+                            $("#banner_ranking_daily").html("22736");
+                        
+                            $("#banner_ranking_weekly").html("22684");
+                    </script>
+    

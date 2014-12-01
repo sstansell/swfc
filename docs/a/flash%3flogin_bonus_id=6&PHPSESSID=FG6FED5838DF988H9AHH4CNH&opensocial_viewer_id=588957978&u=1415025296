@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+					<script>
+				var dpi = Math.min(400, Math.max(70, Math.ceil(160*(320/(screen.width/window.devicePixelRatio)))));
+				document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, target-densitydpi=' + dpi + '" />');
+			</script>
+			<!--
+			        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+			-->
+		        <meta name="format-detection" content="telephone=no, address=no" />
+        <script language="JavaScript">
+            var is_content_viewer = true;
+            var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+            var IS_BROWSER        = 0;
+            var APP_SCHEME        = "dciapp";
+            var ERROR_URL         = "";
+            var CARRIER           = "android";
+			var TB                = null;
+			
+							var COMMON_FOOTER_HEIGHT = (60 + 20);	
+				var COMMOM_SIDEBAR_WIDTH = 0;			
+										
+									var VIEWPORT_SCALE	= 1.0;
+				
+				
+				var availWidth = screen.width - COMMOM_SIDEBAR_WIDTH;
+				var availHeight = screen.height;
+
+									var SCREEN_WIDTH			= 320;
+				
+				var SCREEN_HEIGHT			= ~~((availHeight - COMMON_FOOTER_HEIGHT) * (SCREEN_WIDTH / availWidth));
+				var SCREEN_HEIGHT_NONAVI	= ~~(availHeight * (SCREEN_WIDTH / availWidth));
+
+						function getWVHeight(){
+									
+					return (window.innerHeight -3);
+							}
+        </script>
+        <script language="JavaScript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.2.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.url.parser.js?2014103001"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load_nocv.min.js?2014103001"></script>
+		        <script>
+			var WINDOW_WIDTH		= $(window).width();
+						
+			var BASE_URL = 'http://amw.konaminet.jp/amw/naboo';
+			var CONTAINER_PATH = '/content_viewer/content_viewer.php';
+            
+			function greeThumbnail(ids, huge) {
+                if (!!ids == false || ids.length <= 0) return;
+
+				$(".gree-thumb").each(function(i) {
+					$(this).attr('src', "/test/avatar.png");
+				});
+
+            }
+			function version_compare (v1, v2, operator) {compare = 0;vm = {'dev': -6,'alpha': -5,'a': -5,'beta': -4,'b': -4,'RC': -3,'rc': -3,'#': -2,'p': -1,'pl': -1},prepVersion = function (v) {v = ('' + v).replace(/[_\-+]/g, '.');v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.');return (!v.length ? [-8] : v.split('.'));};numVersion = function (v) {return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10));};v1 = prepVersion(v1);v2 = prepVersion(v2);x = Math.max(v1.length, v2.length);for (i = 0; i < x; i++) {if (v1[i] == v2[i]) {continue;}v1[i] = numVersion(v1[i]);v2[i] = numVersion(v2[i]);if (v1[i] < v2[i]) {compare = -1;break;} else if (v1[i] > v2[i]) {compare = 1;break;}}if (!operator) {return compare;}switch (operator) {case '>':case 'gt':return (compare > 0);case '>=':case 'ge':return (compare >= 0);case '<=':case 'le':return (compare <= 0);case '==':case '=':case 'eq':return (compare === 0);case '<>':case '!=':case 'ne':return (compare !== 0);case '':case '<':case 'lt':return (compare < 0);default:alert(operator);return null;}}
+			
+			
+			function jumpAnchor(anchor) {
+				var p = $(anchor).offset().top;
+									sendMessageToApp("scroll.pos", {"py":p, "scale":VIEWPORT_SCALE, "animate":1});
+							}			
+        </script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.overlay.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.transition_animate.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_link.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.implant_dialog.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.swipe_gallary.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.scroll_event.min.js?2014103001"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/global_footer_menu.js?2014103001"></script>
+		        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_ctrl.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_refresh.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/se.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_hover.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_manager.js?2014103001"></script>
+		<link href="http://amw.konaminet.jp/amw/naboo/csstpl/global?2014103001&ln=en" rel="stylesheet" type="text/css" />
+        <title>SWFC</title>
+            </head>
+    <body>
+
+    <div id="wrapper">
+
+		<div id="sw-wrapper" class="">
+		<div id="sw-container">
+		<script type="text/javascript">
+			
+			function user_grade_update() {
+									GREE.ui(
+						{
+							'method':'upgrade',
+							'grade':3,
+							'callback_url':'http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025296'
+						},
+						function(response){
+							if(response.data.upgraded) {
+			
+								top.location.href = "http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025296";
+							}
+						}
+					);
+							}
+	
+										sendMessageToApp('session.start', {id:'FG6FED5838DF988H9AHH4CNH', 'ua':navigator.userAgent});
+									sendMessageToApp('menu.setdata', {'value':'http://amw.konaminet.jp/amw/naboo/', 'name':'BASE_URL'});
+						$(window).resize(function(){
+				var WINDOW_HEIGHT	= $("#sw-content").height();
+				$("#sw-content").css({"height": getWVHeight() +"px"});
+			});
+			$(document).ready(function(){
+				
+					var WINDOW_HEIGHT	= $("#sw-content").height();
+					if( SCREEN_HEIGHT >= WINDOW_HEIGHT){
+													
+							$("#sw-content").css({"height": getWVHeight() +"px"});
+											}
+				
+				$(".btnN.blink, .btnS.blink, .btnSS.blink").append("<div class='whiteBlink'></div>");
+				
+				
+								
+				                sendMessageToApp('page.scroll');
+			});	
+			function scroll_lock(e){
+				e.preventDefault();
+			}
+
+			function reload_page(){return false;}
+			function jump_next_page(){return false;}
+			function jump_renew_cache(url,dac){
+				unixTIme = parseInt((new Date)/1000);
+				to=url.replace(/u=[0-9]+/,'u='+unixTIme);
+				if(dac==undefined) {
+					sendMessageToApp('music.status',{volume:'default'});
+				}
+				location.href=to;
+			}
+			function show_settingmenu()
+			{
+				sendMessageToApp('game.setting');
+				globalFooterMenuClose();
+			}
+			function show_gree_dashboard()
+			{
+				GREE.ui({'method':'open', 'view':'dashboard'});
+				globalFooterMenuClose();
+			}
+			
+			
+			var push_back="";
+			var onclick_back="";
+			function setPushBack(back){
+				push_back = back;
+				console.log(push_back);
+			}
+			function pushBack(){
+							var url = location.href;
+				if(is_redirect){
+					
+					document.location = redirect_url;
+				}else if(url.indexOf("card/deck/list") >= 0){
+					document.location= "http://amw.konaminet.jp/amw/naboo/card/deck/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025296";
+				}else if(is_page_reload){
+					
+					document.location.reload();
+				}else if(is_dialog_open){
+					
+					if(dialog_target.length >= 2){
+						document.location.reload();
+					}else{
+						$(dialog_target[dialog_target.length-1]).close_implant_dialog();
+					}
+				}else{
+					
+					if(url.indexOf("home/home") == -1){
+						if(url.indexOf("help/user_policy") >= 0){
+							
+							   sendMessageToApp('page.title');
+						}else{
+							if(push_back != ""){
+								
+								document.location = push_back;
+							}else if(onclick_back != ""){
+								
+								onclick_back();
+							}else{
+															document.location= "http://amw.konaminet.jp/amw/naboo/home/home?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025296";
+														}
+						}
+					}else{
+						sendMessageToApp('app.quitDialog');
+					}
+				}
+						}
+		</script>
+		<div id="page_content">
+
+<script type="text/javascript">
+    try {
+        document.execCommand('BackgroundImageCache', false, true);
+
+		
+    } catch(e) {}
+    var is_content_viewer;
+    if(is_content_viewer == undefined) {
+        var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+        var IS_BROWSER        = 0;
+        var APP_SCHEME        = "dciapp";
+        require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.1.min.js?2014103001",
+            function(){
+                require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load.min.js?2014103001",
+                    function(){
+                        $(document).ready(function(){
+                            sendMessageToApp('loading.finish',{url:""});
+                        });
+                    }
+                )  
+            }
+        );   
+    }else{
+		        $(document).ready(function(){
+									sendMessageToApp('loading.finish',{url:""});
+			        });
+    }
+    
+    function fix_select_box(){
+        var target = $("form select");
+        if(target){
+            target.before("<div class='select-txt'></div>");
+            target.change(function(){
+                $(this).prev().text($("option:selected",this).text());
+            }).trigger("change");   
+        }
+    }
+    
+    function require_js( src, callback )
+    {
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.onload = function(){
+            callback();
+        };
+        script.src = src;
+        document.body.appendChild( script );
+    }
+</script>
+<style>
+
+	#sw-wrapper{
+			}
+
+	.activeLink.blink{
+		-webkit-animation-name: activeBlink;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-fill-mode: both;
+		-webkit-perspective: 300;
+		-webkit-transform : translate3d(0, 0, 0);
+		-webkit-transform-style: preserve-3d;
+	}
+	@-webkit-keyframes activeBlink{
+		0% {
+			opacity:0;
+		}
+		50% {
+			opacity:0.7;
+		}
+		100% {
+			opacity:0;
+		}
+	}
+</style>
+
+
+<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/enc_json.js?2014103001"></script>
+
+<script>
+config={variable:{
+maxFrameSkip:3,
+"item_card1":"1",
+"item_num0":"30000",
+"item_card2":"1",
+"item_num1":"2000",
+"item_card3":"2",
+"item_num2":"",
+"item_num20":"",
+"item_card4":"1",
+"item_num3":"30000",
+"item_card5":"1",
+"item_num4":"2000",
+"item_card6":"2",
+"item_num5":"",
+"item_card7":"2",
+"item_num6":"",
+"item_card8":"1",
+"item_num7":"x 3",
+"item_card9":"1",
+"item_num8":"",
+"item_card10":"1",
+"item_num9":"30000",
+"item_card11":"1",
+"item_num10":"2000",
+"item_card12":"2",
+"item_num11":"",
+"item_card13":"1",
+"item_num12":"30000",
+"item_card14":"1",
+"item_num13":"2000",
+"item_card15":"2",
+"item_num14":"",
+"item_card16":"2",
+"item_num15":"",
+"item_card17":"1",
+"item_num16":"x 3",
+"item_card18":"1",
+"item_num17":"",
+"card_intro_num":"0",
+"next_day_item":"4",
+"next_day_p":"1",
+"item_num19":"",
+"callback":"http://amw.konaminet.jp/amw/naboo/home/home?PHPSESSID=FG6FED5838DF988H9AHH4CNH\u0026opensocial_viewer_id=588957978\u0026u=1415025296",
+"callback_present":"http://amw.konaminet.jp/amw/naboo/gift/get/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH\u0026opensocial_viewer_id=588957978\u0026u=1415025296",
+"txt_next":"NEXT",
+"txt_home":"HOME",
+"txt_inbox":"INBOX",
+"today_num":"3",
+"today_item_name":"Y-wing Piece 3\nIX4 Laser Cannon",
+"next_item_name":"Y-wing Piece 4\n30000 Credits",
+"text_1":"Congratulations! You received",
+"text_2":"You also received 3 Free Trade Tickets!",
+"text_3":"Log in again for",
+"text_4":"the next reward!",
+"text_00":"AP Card Pack exclusive 5-Star Leia and Jabba Cards are here! Draw from the AP Card Packs now for a chance to receive them!",
+"event_days":"",
+"every_item_plus":"1",
+"every_item_text":"Free Trade Tickets are not delivered to your Inbox, but can be viewed when Trading.",
+"item_num18":"",
+},image:{
+"16":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_credit01_01_s.png",
+"24":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_allypoint01_01_s.png",
+"29":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320150010/3201500100_ms.png",
+"167":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320150010/3201500100_ms.png",
+"34":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_credit01_01_s.png",
+"39":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_allypoint01_01_s.png",
+"44":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320330020/3203300200_ms.png",
+"49":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320180010/3201800100_ms.png",
+"54":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_trainingremote01_s.png",
+"59":"http://amw.konaminet.jp/amw/naboo/img/item/cm/ticket_rarity_03r_s.png",
+"183":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_credit01_01_s.png",
+"188":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_allypoint01_01_s.png",
+"193":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320150010/3201500100_ms.png",
+"198":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_credit01_01_s.png",
+"203":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_allypoint01_01_s.png",
+"208":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320330020/3203300200_ms.png",
+"213":"http://amw.konaminet.jp/amw/naboo/img/card/parts/320180010/3201800100_ms.png",
+"218":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_trainingremote01_s.png",
+"223":"http://amw.konaminet.jp/amw/naboo/img/item/cm/ticket_rarity_03r_s.png",
+"168":"http://amw.konaminet.jp/amw/naboo/img/treasure/490980010/4909800100_p3_m.png",
+"84":"http://amw.konaminet.jp/amw/naboo/img/item/cm/item_trade01_s.png",
+"93":"http://amw.konaminet.jp/amw/naboo/img/swf/login_bonus/001/title.png",
+},
+rootPath:"http://amw.konaminet.jp/amw/naboo/swf/insertion/en/login_bonus2/",
+width:320,
+fullScreen:false,
+autoTouch:false
+};
+sendMessageToApp('menu.hide');
+global_menu_lock({'hide_flag':true});
+sendMessageToApp('tweenc.open', {'url':'http://amw.konaminet.jp/amw/naboo/swf/insertion/en/login_bonus2/tween.json?v=d739cd477656620336911cf78cb44414','params':encJson(config)});
+</script>
+<script type="text/javascript">var app_version="0.0.0";sendMessageToApp('back.disable');function jump_prev_page() {return false;}</script>
+						</div>
+						<div id="debug_view"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
+

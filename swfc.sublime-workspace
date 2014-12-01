@@ -1,0 +1,904 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"writ",
+				"writeCardToDB"
+			],
+			[
+				"ur",
+				"urlPostFix"
+			],
+			[
+				"stoc",
+				"stockTypes"
+			],
+			[
+				"st",
+				"stockType"
+			],
+			[
+				"dds",
+				"ddsGlobal"
+			],
+			[
+				"num",
+				"numOfSites"
+			],
+			[
+				"click",
+				"clickSound"
+			],
+			[
+				"desk",
+				"desktopAlert"
+			],
+			[
+				"Si",
+				"SitesToRefresh"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"s",
+				"sans-serif	(ss)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "api/app.js",
+			"settings":
+			{
+				"buffer_size": 2759,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/routes/index.js",
+			"settings":
+			{
+				"buffer_size": 12342,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/views/cardTotals.handlebars",
+			"settings":
+			{
+				"buffer_size": 836,
+				"line_ending": "Unix",
+				"name": "<p>Card Title</p>"
+			}
+		},
+		{
+			"file": "api/views/hours.handlebars",
+			"settings":
+			{
+				"buffer_size": 480,
+				"line_ending": "Unix",
+				"name": "<h1>Card Totals</h1>"
+			}
+		},
+		{
+			"file": "api/views/summary.handlebars",
+			"settings":
+			{
+				"buffer_size": 807,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/views/packTotals.handlebars",
+			"settings":
+			{
+				"buffer_size": 463,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/public/stylesheets/style.css",
+			"settings":
+			{
+				"buffer_size": 674,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/views/layouts/main.handlebars",
+			"settings":
+			{
+				"buffer_size": 364,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{\"card_id\":\"1010910450\",\"name\":\"Anakin Skywalker [Padawan]\",\"thumb\":\"card/chara/101091045/1010910450\",\"comment\":\"Anakin is a gifted Padawan learner. Due to his young age, he often feels shackled by old Jedi traditions, and frequently disobeys his Jedi teacher, Obi-Wan Kenobi.\",\"rarity\":\"4\",\"sub_rarity\":\"0\",\"attribute\":\"1\",\"type\":\"1\",\"specialized_type\":\"0\",\"race\":\"589857\",\"max_level\":\"60\",\"cost\":\"17\",\"attack\":\"6680\",\"defence\":\"4290\",\"skill_id\":\"0\",\"price\":\"5700\",\"sub_type\":\"0\",\"lvup_attack_pat\":\"1\",\"lvup_attack\":\"10290\",\"lvup_defence_pat\":\"2\",\"lvup_defence\":\"6610\",\"series_id\":\"1010910450\",\"evol_level\":\"0\",\"evol_max_level\":\"3\",\"evol_card_id\":\"1010910451\",\"evol_hp\":\"0\",\"awake_power\":1,\"permission\":\"0\",\"character_id\":\"109\",\"slot_x\":\"1\",\"slot_y\":\"1\",\"stackable_cnt\":\"1\",\"max_usable_cnt\":\"1\",\"delete_on_battle\":\"0\",\"stackable_cnt_on_slot\":\"1\",\"stackable_cnt_on_slot_atk\":\"1\",\"stackable_cnt_on_slot_def\":\"1\",\"stackable_cnt_on_deck\":\"18\",\"weapon_type\":\"1\",\"weapon_motion_type\":\"0\",\"attack_dist_min\":\"1\",\"attack_dist_max\":\"1\",\"attack_area\":\"1\",\"attack_area_type\":\"0\",\"attack_time\":\"1\",\"accuracy\":\"170\",\"avoid\":\"80\",\"favorite_map_id\":\"1\",\"max_hp\":\"1000\",\"assist_entry_pattern\":\"0\",\"best_lvup_attack\":\"10290\",\"best_lvup_defence\":\"6610\",\"prob_gacha1\":\"15\",\"prob_gacha2\":\"8824\",\"prob_gacha3\":\"2941\",\"prob_gacha4\":\"14063\",\"prob_gacha5\":\"312500\",\"prob_gacha6\":\"31\",\"prob_gacha7\":\"2500\",\"prob_gacha8\":\"3281\",\"prob_gacha9\":\"9375\",\"prob_gacha10\":\"9375\",\"prob_gacha11\":\"62\",\"prob_gacha12\":\"3086\",\"prob_gacha13\":\"13043\",\"prob_gacha14\":\"0\",\"prob_gacha15\":\"17857\",\"prob_gacha16\":\"0\",\"prob_gacha17\":\"1689\",\"prob_gacha18\":\"5068\",\"prob_gacha19\":\"17\",\"prob_gacha20\":\"574\",\"appear_date\":\"2013-10-07 06:15:00\",\"last_update\":\"2014-11-06 06:26:54\",\"is_healer\":0,\"is_repairer\":0,\"is_stun\":0,\"is_stun_vehicle\":0,\"per_num\":1,\"per_text\":\"1 per Turn\",\"event_power_txt\":\"\",\"rarity_full\":\"<img class=\\\"rarity_l_05\\\" src=\\\"http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png\\\" />\",\"range\":\"Short\",\"user\":\"JED1 4 H1RE\",\"pack\":\"Gold Card Pack Ticket\"}",
+			"file": "api/data/1010910450_1415288199884.json",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 2045,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/db.js",
+			"settings":
+			{
+				"buffer_size": 2066,
+				"line_ending": "Unix",
+				"name": "var mongoose = require( 'mongoose' );"
+			}
+		},
+		{
+			"file": "node_modules/express/lib/req.js",
+			"settings":
+			{
+				"buffer_size": 527,
+				"line_ending": "Unix",
+				"name": "var request = require('request');"
+			}
+		}
+	],
+	"build_system": "Packages/User/sass.sublime-build",
+	"command_palette":
+	{
+		"height": 347.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Disable Package"
+			],
+			[
+				"pack	",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"g",
+				"Git: Commit"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/seanstansell/Dropbox/Projects/swfc",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/public",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/public/stylesheets",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/routes",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/views",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/views/layouts",
+		"/Users/seanstansell/Dropbox/Projects/swfc/node_modules/express/lib",
+		"/Users/seanstansell/Dropbox/Projects/swfc/node_modules/express/lib/router"
+	],
+	"file_history":
+	[
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/views/layouts/main.handlebars",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/views/home.handlebars",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/views/error.handlebars",
+		"/Users/seanstansell/Dropbox/Projects/swfc/node_modules/express/package.json",
+		"/Users/seanstansell/Dropbox/Projects/swfc/package.json",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/data/1062820750_1415285229866.json",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/data/1057320350_1415285111181.json",
+		"/Users/seanstansell/Dropbox/Projects/swfc/api/npm-debug.log",
+		"/Users/seanstansell/Dropbox/Projects/swfc/node_modules/express/index.js",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle_ranking_info.php%3fPHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307",
+		"/Users/seanstansell/Desktop/untitled folder/a/list%3fPHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&sub_ln=en_US&a=home%2Fhome&t=2323",
+		"/Users/seanstansell/Desktop/untitled folder/a/deck_info.php%3fPHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307",
+		"/Users/seanstansell/Desktop/untitled folder/a/check%3fv=2.2.5&ln=en_US&d=android&m=2&uid=588957978",
+		"/Users/seanstansell/Desktop/untitled folder/a/CardScreen.html",
+		"/Users/seanstansell/Desktop/untitled folder/a/battledata.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle2.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/PhotoURLScheme.txt",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle19.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle18.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle17.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle16.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle15.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle14.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle13.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle12.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle11.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle10.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle09.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle3.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle4.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle5.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle6.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle20.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/obiJM.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/exportCommands.txt",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle07.json",
+		"/Users/seanstansell/Desktop/untitled folder/a/battle08.json",
+		"/Users/seanstansell/Desktop/req.txt",
+		"/Users/seanstansell/Desktop/request.pcapng",
+		"/Users/seanstansell/Downloads/CFSPrime.html",
+		"/Users/seanstansell/Downloads/primeItem.css",
+		"/Users/seanstansell/Dropbox/Public/rkhome.html",
+		"/Users/seanstansell/Desktop/rkhome.html",
+		"/Users/seanstansell/Desktop/jquery-ui-1.8.21.custom.css",
+		"/Users/seanstansell/Library/Application Support/Sublime Text 3/Packages/JSLint/JSLint.sublime-settings",
+		"/Users/seanstansell/Library/Application Support/Sublime Text 3/Packages/User/JSLint.sublime-settings",
+		"/Users/seanstansell/Downloads/ToyotaSquema prod.txt",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/honda.html",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/globalCanvas_startHead.html",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/ddsOmniture.js",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/globalCanvas_endBody.html",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/log/classes/uaparser.php",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/log/index.php",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/log/classes/uaparser-cli.php",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/log/classes/lib/sypc.php",
+		"/Applications/MAMP/conf/apache/httpd.conf",
+		"/Applications/MAMP/conf/apache/original/extra/httpd-vhosts.conf",
+		"/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf",
+		"/Applications/MAMP/conf/apache/original/httpd.conf",
+		"/Users/seanstansell/Dropbox/Public/WhiskeyJournalSass/api/api/v1/index.php",
+		"/Users/seanstansell/Dropbox/Public/WhiskeyJournalSass/api/index.php",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/ua-parser.js",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/log/includes/config.php",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/globalCanvas_endHead.html",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/ddsOmniture.min.js",
+		"/Users/seanstansell/Dropbox/Public/ddsGlobalCanvases/ddsGlobal.min.js",
+		"/Users/seanstansell/Dropbox/Public/CacheRefresher/$( \"tr:contains('Expired')\" ).each(.js",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/index.html",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/scss/_settings.scss",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/config.rb",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/scss/app.scss",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/scss/fonts.scss",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/bower_components/foundation/scss/foundation/components/_type.scss",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/data/dataListing.js",
+		"/Users/seanstansell/Dropbox/Public/InventorySandbox/detail.html",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/data/data.js",
+		"/Users/seanstansell/Dropbox/Public/InventorySandbox/javascripts/app.js",
+		"/Users/seanstansell/Dropbox/Public/InventoryDisplay/bower_components/foundation/scss/foundation/components/_global.scss",
+		"/Users/seanstansell/Dropbox/Public/vdp/VDP/omni.js",
+		"/Users/seanstansell/Dropbox/Public/WhiskeyJournal/css/foundation.css",
+		"/Users/seanstansell/Dropbox/Public/WhiskeyJournal/index.html",
+		"/Users/seanstansell/Dropbox/Public/vdp/VDP/index.html",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/ArtsFestival.sublime-project",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/childrens-corner.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/entertainment.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/index.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/food.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/crafter-info.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/Gemfile",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/committee.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/trivia.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/history.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/libraries/codecanyon-3290154-responsive-tile-gallery/Responsive_Tile_Gallery-1.3/rtg-demo/index.html",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/includes/scripts.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/includes/header.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/crafter-list.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/craftterList.txt",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/stylesheets/print.css",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/includes/head.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/program-book.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/maps.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/photos.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/config.rb",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/sass/app.scss",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/sass/custom.scss",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/car-show.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/volunteers.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/shirts.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/ads.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/includes/globals.php",
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/contact-us.php",
+		"/C/Users/Sean/Dropbox/BBT Sale.txt",
+		"/C/Users/Sean/Desktop/ToyotaOmniture.html",
+		"/C/Users/Sean/Dropbox/Public/InventoryCards/app/data/data.js",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/shirts.php",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/sass/custom.scss",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/javascripts/foundation/foundation.min.js",
+		"/C/Users/Sean/Desktop/s_code.txt",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/photos.php",
+		"/C/Users/Sean/Desktop/OmnitureCodeForPageBody.txt",
+		"/C/Users/Sean/Desktop/s_code.js",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/.gitignore",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/Photos/.gitignore",
+		"/C/Users/Sean/Dropbox/Work/ToyotaOmniture.html",
+		"/C/Users/Sean/Desktop/maxab.2.2.2/maxab/maxab.php",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/javascripts/foundation/jquery.js",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/includes/scripts.php",
+		"/C/Users/Sean/Dropbox/Public/ArbutusArtsFestival/index.php"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			" ",
+			"/Users/seanstansell/Dropbox/Public/InventoryDisplay/bower_components/foundation/scss",
+			"C:\\Users\\Sean\\Dropbox\\Public\\ArbutusArtsFestival"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"getWordsBetweenCurlies",
+			"writeCardToDB",
+			"10.0",
+			"jango",
+			"};",
+			"1017220550",
+			"proc_rat",
+			"sub_rarity",
+			"https://s3.amazonaws.com/dom-cms/",
+			"adaptive",
+			"!",
+			"ddsglobal",
+			"http",
+			"uaParse",
+			"(),\n",
+			"vhost",
+			"header",
+			"spyc",
+			"}      ",
+			"agent",
+			"useragent",
+			"showDesktopAlert",
+			"	    ",
+			"});\n",
+			"type",
+			"header",
+			"$include-open-sans",
+			"open+sans",
+			"\">",
+			"up",
+			"form",
+			"\n ",
+			"columns",
+			"ul{",
+			"jen",
+			"<tr></td>",
+			"\n",
+			"/r/n",
+			"</td><td></td><td>",
+			".................",
+			"...................",
+			"......................",
+			" ................................",
+			"..... ",
+			".................................",
+			"................................................",
+			"..................................................",
+			"scott",
+			"pn",
+			".lb-image",
+			"patty",
+			"dynamicDataHasValue",
+			"jobie",
+			"megan",
+			"kim",
+			"tina",
+			"jean",
+			"\">\n",
+			"images",
+			"/li>",
+			"</li",
+			"volunte",
+			"annual",
+			"\" type=\"double\" indexed=\"true\" stored=\"true\" multiValued=\"false\"/>",
+			"\" type=\"tdate\" indexed=\"true\" stored=\"true\" multiValued=\"false\" required=\"true\"/>",
+			"\" type=\"c_text\" indexed=\"true\" stored=\"true\" multiValued=\"false\"/>",
+			"\" type=\"string\" indexed=\"true\" stored=\"true\" multiValued=\"false\"/>",
+			"\" type=\"int\" indexed=\"true\" stored=\"true\" multiValued=\"false\"/>",
+			"\" type=\"tdate\" indexed=\"true\" stored=\"true\" multiValued=\"false\"/>",
+			"\" type=\"int\" indexed=\"true\" stored=\"true\" multiValued=\"false\" required=\"true\"/>",
+			"\" type=\"c_text\" indexed=\"true\" stored=\"true\" multiValued=\"false\" required=\"true\"/>",
+			"<field name=\"",
+			"?></",
+			"Optional Caption",
+			"Lists",
+			"list",
+			"  <script type=\"text/javascript\">\n    $(window).load(function() {\n      $('#featured').orbit({ fluid: true, timer: true, advanceSpeed:3000});\n    });\n  </script>",
+			"toggle-topbar",
+			"panel",
+			"round",
+			"radius",
+			"font",
+			"li.name",
+			"#660300",
+			"660200",
+			"templates.js",
+			"qr",
+			"beth",
+			"price"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"https://d3trsfd0vf06dz.cloudfront.net/",
+			"responsive",
+			" ",
+			"<tr><td>",
+			"</td></tr>\n<tr><td>",
+			"</td></tr>\n<tr></td>",
+			"</td><td>",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "api/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2759,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								746,
+								746
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "api/routes/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3381,
+								3408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3004.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "api/views/cardTotals.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 836,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35,
+								35
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<p>Card Title</p>",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "api/views/hours.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 480,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<h1>Card Totals</h1>",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "api/views/summary.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								421,
+								421
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "api/views/packTotals.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4,
+								4
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "api/public/stylesheets/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								137,
+								137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "api/views/layouts/main.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "api/data/1010910450_1415288199884.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2045,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								2045
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 4985.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "api/db.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1955,
+								1955
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var mongoose = require( 'mongoose' );",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1398.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "node_modules/express/lib/req.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								527,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var request = require('request');",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 148.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 142.0
+	},
+	"project": "swfc.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 272.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

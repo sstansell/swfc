@@ -1,0 +1,11 @@
+Photo URL Scheme
+http://amw.konaminet.jp/amw/naboo/img/card/chara/104602014/1046020141_l.png
+
+http://amw.konaminet.jp/ - Base Domain
+amw - ???
+naboo - server?  tried "mustafar" and got "This service is currently busy. Please try again later."
+img - images
+card - cards
+chara - character?  
+104602014 - card ID
+1046020141_l.png - 3 parts here - card id, then [0-4] for evo, then [s,ms,m,l]

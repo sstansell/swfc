@@ -1,0 +1,20 @@
+questions:
+
+1.  Subrarity?  only seen 0 and 100 (on special luke) - only on co-pilots?
+2.  Predict card_id to see future cards?
+3.  Rental?
+4.  Proc rates? - test more
+
+
+
+Skills info:
+skill type: 0 for pre-battle, 1 for self, 2 for "3-unit", 3?, 4? 5 for Yoda GM, 6 for Sid Dic, 7 for Jango ToW
+skill is deck: ?? Maybe if can be affected by JJBGS/SCP?
+skill priority: 0 for SML, 1 for MED
+skill target - 1 affects your form, 2 affects opponent, 0 affects self
+skill attribute - force alignment (0 - any, 1-light, 2-dark)
+skill kind - card affiliation (4 - droid, 1 - male, etc)
+skill extract - ?
+skill effect type - ??
+skill prob - probability that the skill will apply
+skill affect - how much the skill will affect targeted cards

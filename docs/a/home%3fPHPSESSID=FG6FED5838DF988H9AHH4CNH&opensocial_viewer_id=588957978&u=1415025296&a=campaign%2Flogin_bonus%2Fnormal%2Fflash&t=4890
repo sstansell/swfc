@@ -1,0 +1,3541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+						<meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=143" />
+		        <meta name="format-detection" content="telephone=no, address=no" />
+        <script language="JavaScript">
+            var is_content_viewer = true;
+            var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+            var IS_BROWSER        = 0;
+            var APP_SCHEME        = "dciapp";
+            var ERROR_URL         = "http://amw.konaminet.jp/amw/naboo/error/error.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307";
+            var CARRIER           = "android";
+			var TB                = null;
+			
+							var COMMON_FOOTER_HEIGHT = (60 + 20);	
+				var COMMOM_SIDEBAR_WIDTH = 0;			
+										
+									var VIEWPORT_SCALE	= 1.0;
+				
+				
+				var availWidth = screen.width - COMMOM_SIDEBAR_WIDTH;
+				var availHeight = screen.height;
+
+									var SCREEN_WIDTH			= 320;
+				
+				var SCREEN_HEIGHT			= ~~((availHeight - COMMON_FOOTER_HEIGHT) * (SCREEN_WIDTH / availWidth));
+				var SCREEN_HEIGHT_NONAVI	= ~~(availHeight * (SCREEN_WIDTH / availWidth));
+
+						function getWVHeight(){
+									
+					return (window.innerHeight -3);
+							}
+        </script>
+        <script language="JavaScript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.2.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.url.parser.js?2014103001"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load_nocv.min.js?2014103001"></script>
+		        <script>
+			var WINDOW_WIDTH		= $(window).width();
+						
+			var BASE_URL = 'http://amw.konaminet.jp/amw/naboo';
+			var CONTAINER_PATH = '/content_viewer/content_viewer.php';
+            
+			function greeThumbnail(ids, huge) {
+                if (!!ids == false || ids.length <= 0) return;
+
+				$(".gree-thumb").each(function(i) {
+					$(this).attr('src', "http://amw.konaminet.jp/amw/naboo/img/test/avatar.png");
+				});
+
+            }
+			function version_compare (v1, v2, operator) {compare = 0;vm = {'dev': -6,'alpha': -5,'a': -5,'beta': -4,'b': -4,'RC': -3,'rc': -3,'#': -2,'p': -1,'pl': -1},prepVersion = function (v) {v = ('' + v).replace(/[_\-+]/g, '.');v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.');return (!v.length ? [-8] : v.split('.'));};numVersion = function (v) {return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10));};v1 = prepVersion(v1);v2 = prepVersion(v2);x = Math.max(v1.length, v2.length);for (i = 0; i < x; i++) {if (v1[i] == v2[i]) {continue;}v1[i] = numVersion(v1[i]);v2[i] = numVersion(v2[i]);if (v1[i] < v2[i]) {compare = -1;break;} else if (v1[i] > v2[i]) {compare = 1;break;}}if (!operator) {return compare;}switch (operator) {case '>':case 'gt':return (compare > 0);case '>=':case 'ge':return (compare >= 0);case '<=':case 'le':return (compare <= 0);case '==':case '=':case 'eq':return (compare === 0);case '<>':case '!=':case 'ne':return (compare !== 0);case '':case '<':case 'lt':return (compare < 0);default:alert(operator);return null;}}
+			
+			
+			function jumpAnchor(anchor) {
+				var p = $(anchor).offset().top;
+									sendMessageToApp("scroll.pos", {"py":p, "scale":VIEWPORT_SCALE, "animate":1});
+							}			
+        </script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.overlay.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.transition_animate.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_link.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.implant_dialog.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.swipe_gallary.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.scroll_event.min.js?2014103001"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/global_footer_menu.js?2014103001"></script>
+		        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_ctrl.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_refresh.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/se.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_hover.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_manager.js?2014103001"></script>
+		<link href="http://amw.konaminet.jp/amw/naboo/csstpl/global?2014103001&ln=en" rel="stylesheet" type="text/css" />
+        <title>SWFC</title>
+            </head>
+    <body>
+
+    <div id="wrapper">
+
+		<div id="sw-wrapper" class="lightside">
+		<div id="sw-container">
+		<script type="text/javascript">
+			
+			function user_grade_update() {
+									GREE.ui(
+						{
+							'method':'upgrade',
+							'grade':3,
+							'callback_url':'http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307'
+						},
+						function(response){
+							if(response.data.upgraded) {
+			
+								top.location.href = "http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307";
+							}
+						}
+					);
+							}
+	
+										sendMessageToApp('session.start', {id:'FG6FED5838DF988H9AHH4CNH', 'ua':navigator.userAgent});
+									sendMessageToApp('menu.setdata', {'value':'http://amw.konaminet.jp/amw/naboo/', 'name':'BASE_URL'});
+						$(window).resize(function(){
+				var WINDOW_HEIGHT	= $("#sw-content").height();
+				$("#sw-content").css({"height": getWVHeight() +"px"});
+			});
+			$(document).ready(function(){
+				
+					var WINDOW_HEIGHT	= $("#sw-content").height();
+					if( SCREEN_HEIGHT >= WINDOW_HEIGHT){
+													
+							$("#sw-content").css({"height": getWVHeight() +"px"});
+											}
+				
+				$(".btnN.blink, .btnS.blink, .btnSS.blink").append("<div class='whiteBlink'></div>");
+				
+				
+								
+									/*sendMessageToApp('menu.show');*/
+                                            sendMessageToApp('menu.show', {'battle_lock':0});
+                    				                sendMessageToApp('page.scroll');
+			});	
+			function scroll_lock(e){
+				e.preventDefault();
+			}
+
+			function reload_page(){return false;}
+			function jump_next_page(){return false;}
+			function jump_renew_cache(url,dac){
+				unixTIme = parseInt((new Date)/1000);
+				to=url.replace(/u=[0-9]+/,'u='+unixTIme);
+				if(dac==undefined) {
+					sendMessageToApp('music.status',{volume:'default'});
+				}
+				location.href=to;
+			}
+			function show_settingmenu()
+			{
+				sendMessageToApp('game.setting');
+				globalFooterMenuClose();
+			}
+			function show_gree_dashboard()
+			{
+				GREE.ui({'method':'open', 'view':'dashboard'});
+				globalFooterMenuClose();
+			}
+			
+			
+			var push_back="";
+			var onclick_back="";
+			function setPushBack(back){
+				push_back = back;
+				console.log(push_back);
+			}
+			function pushBack(){
+							var url = location.href;
+				if(is_redirect){
+					
+					document.location = redirect_url;
+				}else if(url.indexOf("card/deck/list") >= 0){
+					document.location= "http://amw.konaminet.jp/amw/naboo/card/deck/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307";
+				}else if(is_page_reload){
+					
+					document.location.reload();
+				}else if(is_dialog_open){
+					
+					if(dialog_target.length >= 2){
+						document.location.reload();
+					}else{
+						$(dialog_target[dialog_target.length-1]).close_implant_dialog();
+					}
+				}else{
+					
+					if(url.indexOf("home/home") == -1){
+						if(url.indexOf("help/user_policy") >= 0){
+							
+							   sendMessageToApp('page.title');
+						}else{
+							if(push_back != ""){
+								
+								document.location = push_back;
+							}else if(onclick_back != ""){
+								
+								onclick_back();
+							}else{
+															document.location= "http://amw.konaminet.jp/amw/naboo/home/home?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307";
+														}
+						}
+					}else{
+						sendMessageToApp('app.quitDialog');
+					}
+				}
+						}
+		</script>
+		<div id="page_content">
+
+<script type="text/javascript">
+    try {
+        document.execCommand('BackgroundImageCache', false, true);
+
+		sendMessageToApp('music.play', {file:"bg_battle_of_hoth"});
+    } catch(e) {}
+    var is_content_viewer;
+    if(is_content_viewer == undefined) {
+        var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+        var IS_BROWSER        = 0;
+        var APP_SCHEME        = "dciapp";
+        require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.1.min.js?2014103001",
+            function(){
+                require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load.min.js?2014103001",
+                    function(){
+                        $(document).ready(function(){
+                            sendMessageToApp('loading.finish',{url:""});
+                        });
+                    }
+                )  
+            }
+        );   
+    }else{
+		        $(document).ready(function(){
+									sendMessageToApp('loading.finish',{url:""});
+			        });
+    }
+    
+    function fix_select_box(){
+        var target = $("form select");
+        if(target){
+            target.before("<div class='select-txt'></div>");
+            target.change(function(){
+                $(this).prev().text($("option:selected",this).text());
+            }).trigger("change");   
+        }
+    }
+    
+    function require_js( src, callback )
+    {
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.onload = function(){
+            callback();
+        };
+        script.src = src;
+        document.body.appendChild( script );
+    }
+</script>
+<style>
+
+	#sw-wrapper{
+			}
+
+	.activeLink.blink{
+		-webkit-animation-name: activeBlink;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-fill-mode: both;
+		-webkit-perspective: 300;
+		-webkit-transform : translate3d(0, 0, 0);
+		-webkit-transform-style: preserve-3d;
+	}
+	@-webkit-keyframes activeBlink{
+		0% {
+			opacity:0;
+		}
+		50% {
+			opacity:0.7;
+		}
+		100% {
+			opacity:0;
+		}
+	}
+</style>
+
+<style>
+	/*------------------------------------------------------- */
+/* 日本語表示のみの設定 */
+html:lang(ja) nav#navi-wrapper{
+	line-height:1em;
+}
+/*------------------------------------------------------- */
+/* EP,BPが少ないときの赤いゲージ */
+#gaugeTbl.gaugeWarning tr {
+	background: -webkit-gradient(linear, left top, right top,
+				color-stop(60%,rgba(220, 0, 0, 1)),
+				color-stop(100%,rgba(255, 0, 0, 1))) !important;
+}
+#gaugeTbl.gaugeWarning .innerlight {
+	background: -webkit-gradient(linear, left top, left bottom,
+				color-stop(30%,rgba(255, 63, 63, 0.2)),
+				color-stop(100%,rgba(255, 63, 63, 1))) !important;
+}
+
+/*------------------------------------------------------- */
+/* バッジここから */
+/*------------------------------------------------------- */
+.badgeArea {
+	position: relative;
+	display: table;
+	min-width: 24px;
+	height: 27px;
+	top: -5px;
+	right: 2px;
+	text-align: right;
+	float: right;
+	z-index: 200;
+}
+
+/* 件数バッジ */
+.badgeArea .badge {
+	display: block;
+	height: 20px;
+	min-width: 20px;
+	color: #fff;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	text-align: center;
+	border: #fff 2px solid;
+	box-shadow: 2px 2px 2px #000;
+	-webkit-box-shadow: 2px 2px 2px #000;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9999),
+				color-stop(13%,#ff9999), color-stop(36%,#e20001), color-stop(74%,#e20001),
+				color-stop(100%,#c60102));
+	background: -webkit-linear-gradient(top, #ff9999 0%,#ff9999 13%,#e20001 36%,#e20001 74%,#c60102 100%);
+	background: linear-gradient(to bottom, #ff9999 0%,#ff9999 13%,#e20001 36%,#e20001 74%,#c60102 100%);
+	text-shadow: none;
+	
+}
+
+/* CAUTIONバッジ */
+.badgeArea .caution {
+	position: relative;
+	display: table-cell;
+	width: 28px;
+	height: 27px;
+	margin-right: -1px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/alert/caution_icon.png) no-repeat center center;
+	background-size: cover;
+}
+
+/* OFF */
+.badgeArea .off {
+	background: none;
+}
+/*------------------------------------------------------- */
+/* ホームTOPでのバッジ調整 */
+/*------------------------------------------------------- */
+.home .badgeArea,
+.menu-btn-area div.menu-btn .badgeArea  {
+	position: absolute;
+	min-width: 20px;
+	height: 23px;
+	right: 0;
+	top: -1px;
+}
+	.home .badgeArea .badge {
+		height: 15px;
+		min-width: 15px;
+		line-height: 15px;
+	}
+
+/*------------------------------------------------------- */
+/* ホームTOPでのゲージ調整 */
+/*------------------------------------------------------- */
+.home #gaugeTbl {
+	position: relative;
+	display: inline-block;
+	width: 88px;
+	height: 7px;
+	margin: 4px 0 0;
+	border: none;
+}
+
+/* EXPゲージの位置調整 */
+.home .player-status-wrapper #gaugeTbl {
+	margin: 0;
+}
+
+.ipad .home #gaugeTbl {
+	margin-top: 0;
+}
+	/* 経験値 */
+	.home #gaugeTbl.exp {
+		width: 165px;
+		height: 7px;
+	}
+		.home #gaugeTbl.exp .innershadow {
+			height: 7px;
+		}
+		.home #gaugeTbl.exp .light,
+		.home #gaugeTbl.exp .innerlight {
+			width: 153px;
+			left: 5px;
+		}
+		
+	.home nav #gaugeTbl {
+		margin-left: 7px;
+	}
+		.home #gaugeTbl .innershadow {
+			height: 7px;
+			top: -2px;
+			left: -2px;
+		}
+		
+		.home #gaugeTbl .light {
+			width: 80px;
+			left: 4px;
+		}
+		
+		.home #gaugeTbl .innerlight {
+			width: 80px;
+			left: 4px;
+		}
+		
+			.home #gaugeTbl .gaugeArea {
+				width: 88px;
+				left: 1px;
+			}			
+			.home #gaugeTbl .gaugeArea .gaugeGrid {
+					margin-right: 0;
+			}
+
+																							/* BP MAX 9 - 10 */
+																				
+
+/* -------------------------------------------------------------------------------- */
+/* 共通で使う */
+/* -------------------------------------------------------------------------------- */
+.gray {
+	color: #ccc !important;
+}
+
+#sw-content.home {
+	position: relative;
+	padding: 0 !important;
+	background-size: 100% 568px;
+	background-position: center center;
+	background-repeat:no-repeat;
+}
+	/* LIGHTSIDE */
+	.lightside #sw-content.home {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/background/home_top_bg_blue02.jpg);
+	}
+	/* DARKSIDE */
+	.darkside #sw-content.home {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/background/home_top_bg_red02.jpg);
+	}
+	/* GOLD */
+	.lightside.gold #sw-content.home,
+	.darkside.gold #sw-content.home {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/background/home_top_bg_gold02.jpg);
+	}
+
+/* HOMEのアバター */
+.home .card-list-avatar {
+	padding: 5px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat 98% center;
+	background-size: 12px 12px;
+} 
+
+/* -------------------------------------------------------------------------------- */
+/* HOMEここから*/
+/* -------------------------------------------------------------------------------- */
+.home-main{
+	display: table;
+	height: 100%;
+}
+#main-content-area {
+	width: 320px;
+	display: table-cell;
+	margin: auto;
+	padding: 0 0 90px;
+	vertical-align: middle;
+	overflow: hidden;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	
+}
+
+.gold #main-content-area {
+	background-repeat: no-repeat;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/gold/bg_nameplate_ef02.png);
+	background-size: 320px 180px;
+	background-position: center -30px;
+}
+
+#ug-dialog{
+	display:none;
+}
+
+#home-upper-area {
+	position: relative;
+	width: 320px;
+	padding-top: 0;
+}
+
+#home-top-area{
+	position: relative;
+	width: 100%;
+}
+
+#headline{
+	width: 100%;
+	margin-top: 3px;
+	padding: 3px 0 6px;
+	overflow-x:-webkit-marquee;
+	-webkit-marquee-direction: backwards;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: 20;
+	-webkit-marquee-increment: small;
+	-webkit-marquee-repetition: infinite;
+	/* For activating iOS6 Hardware Acceleration */
+	-webkit-transform: translateZ(0);
+	-webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
+	box-shadow:0 0 6px rgba(255,255,255,0.5);
+	background:rgba(0,0,0,0.6);
+	-webkit-transform-style: preserve-3d;
+	font-size: 12px;
+	color: #CCC;
+	line-height: 8px;
+	white-space: nowrap;
+}	
+	
+#headline-inner{
+	dispaly:block;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+/* HOME UPPER AREA */
+/* -------------------------------------------------------------------------------- */
+/*------------------------------------------------------- */
+/* メニューボタン ここから */
+/*------------------------------------------------------- */
+.menu-btn-area {
+	position: relative;
+	display: table;
+	width: 100%;
+	height:27px;
+	margin-top: 5px;
+	padding: 0 21px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.menu-btn-area div.menu-btn {
+	position: relative;
+	display: table-cell;
+	width: 93px;
+	height:20px;
+	text-align: center;
+	margin: 0px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: 1px center;
+	overflow: hidden;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+	.menu-btn-area div.menu-btn a {
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.lightside .menu-btn-area div.menu-btn {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_blue.png);
+	}
+		/* GOLD LIGHTSIDE */
+		.lightside.gold .menu-btn-area div.menu-btn {
+			background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_blue_gold.png);
+		}
+	
+	.darkside .menu-btn-area div.menu-btn {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_red.png);
+	}
+		/* GOLD DARKSIDE */
+		.darkside.gold .menu-btn-area div.menu-btn {
+			background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_red_gold.png);
+		}
+	
+	.menu-btn-area div.menu-btn.goals {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_menu.png);
+	}
+		/* GOLD MENU */
+		.lightside.gold .menu-btn-area div.menu-btn.menu,
+		.darkside.gold .menu-btn-area div.menu-btn.menu {
+			background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_menu_gold.png);
+		}
+
+		.menu-btn-area div.menu-btn span.txt {
+			display: inline-block;
+			width: 100%;
+			height: 25px;
+			margin-top: -7px;
+			padding-top: 0;
+			font-size: 11px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+			.menu-btn-area div.menu-btn span.txt:before {
+				display: inline-block;
+				content: '';
+				margin-left: -10px;
+				background-repeat: no-repeat;
+				background-position: left 11px;
+			}
+				/* GOLD */
+				.lightside.gold .menu-btn-area div.menu-btn span.txt,
+				.darkside.gold .menu-btn-area div.menu-btn span.txt {
+					text-shadow: 1px 1px 2px rgba(255,174,0,1), -1px -1px 2px rgba(255,174,0,1);
+				}
+				
+				/* ニュース */
+				.menu-btn-area div.menu-btn span.txt.news:before {
+					width: 17px;
+					height: 22px;
+					background-position: center 10px;
+					background-size: 17px 17px;
+				}
+					.lightside .menu-btn-area div.menu-btn span.txt.news:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_news_blue.png);
+					}
+					.darkside .menu-btn-area div.menu-btn span.txt.news:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_news_red.png);
+					}
+					/* GOLD */
+					.lightside.gold .menu-btn-area div.menu-btn span.txt.news:before,
+					.darkside.gold .menu-btn-area div.menu-btn span.txt.news:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_news_gold.png);
+					}
+				
+				/* プレゼント */
+				.menu-btn-area div.menu-btn span.txt.present:before {
+					width: 17px;
+					height: 22px;
+					margin-left: -4px;
+					background-size: 17px 17px;
+					background-position: left 9px;
+				}
+					.lightside .menu-btn-area div.menu-btn span.txt.present:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_present_blue.png);
+					}
+					.darkside .menu-btn-area div.menu-btn span.txt.present:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_present_red.png);
+					}
+					/* GOLD */
+					.lightside.gold .menu-btn-area div.menu-btn span.txt.present:before,
+					.darkside.gold .menu-btn-area div.menu-btn span.txt.present:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_present_gold.png);
+					}
+
+				/* GOALS */
+				.menu-btn-area div.menu-btn span.txt.goals:before {
+					width: 17px;
+					height: 24px;
+					background-size: 17px 17px;
+				}
+					.lightside .menu-btn-area div.menu-btn span.txt.goals:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_goals_blue.png);
+					}
+					.darkside .menu-btn-area div.menu-btn span.txt.goals:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_goals_red.png);
+					}
+					/* GOLD */
+					.lightside.gold .menu-btn-area div.menu-btn span.txt.goals:before,
+					.darkside.gold .menu-btn-area div.menu-btn span.txt.goals:before {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/icon_upper_goals_gold.png);
+					}
+
+		.menu-btn-area div.menu-btn .activeLink {
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			background-position: center center;
+			z-index: 50;
+			opacity: 0;
+		}
+			.lightside .menu-btn-area div.menu-btn .activeLink {
+				background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_blue_active.png);
+			}
+			.darkside .menu-btn-area div.menu-btn .activeLink {
+				background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_red_active.png);
+			}
+			/* GOLD */
+			.lightside.gold .menu-btn-area div.menu-btn .activeLink,
+			.darkside.gold .menu-btn-area div.menu-btn .activeLink {
+				background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_upper_gold_active.png);
+			}
+
+
+/*------------------------------------------------------- */
+/* BATTLE RANKING ここから */
+/*------------------------------------------------------- */
+#battle_ranking_area {
+	position: relative;
+	display: block;
+	width: 315px;
+	height: 56px;
+	margin: 1px auto 0;
+	padding-top: 14px;
+	background-repeat: no-repeat;
+	background-size: 315px 56px;
+	background-position: center center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	z-index: 10;
+}
+/* LIGHTSIDE */
+#battle_ranking_area.lightside-leader {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_base_blue.png);
+}
+/* DARKSIDE */
+#battle_ranking_area.darkside-leader {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_base_red.png);
+}
+
+#battle_ranking_area .battle_ranking_mask{
+	display:block;
+	width:282px;
+	height:30px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-top:-15px;
+	margin-left:-141px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/reader_boad_btn_mask.png) no-repeat center;
+	background-size:282px 30px;
+	line-height: 35px;
+	text-align: center;
+}
+
+/* GOLD */
+.gold #battle_ranking_area.lightside-leader,
+.gold #battle_ranking_area.darkside-leader {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_base_gold.png);
+}
+
+#battle_ranking_area .battle_ranking_title {
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 7px;
+	left: 0;
+	text-align: center;
+	letter-spacing: 1px;
+}
+/* タイトル横の矢印 */
+#battle_ranking_area .battle_ranking_title span {
+	position: relative;
+	display: inline-block;
+	margin: auto;
+}
+#battle_ranking_area .battle_ranking_title span:after {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	top: -1px;
+	right: -12px;
+	background-repeat: no-repeat;
+	background-size: 12px 12px;
+	background-position: center center;
+}
+	/* LIGHTSIDE */
+	#battle_ranking_area.lightside-leader .battle_ranking_title span:after {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/leader_boar_arrow_blue.png);
+	}
+	/* DARKSIDE */
+	#battle_ranking_area.darkside-leader .battle_ranking_title span:after {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/leader_boar_arrow_red.png);
+	}
+	
+#battle_ranking_area .battle_ranking_content {
+	display: table;
+	width: 282px;
+	height: 30px;
+	margin-left: 15px;
+	background-repeat: no-repeat;
+	background-size: 282px 30px;
+	background-position: center center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+	/* LIGHTSIDE */
+	#battle_ranking_area.lightside-leader .battle_ranking_content {
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_blue.png);
+	}
+	/* DARKSIDE */
+	#battle_ranking_area.darkside-leader .battle_ranking_content {
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_red.png);
+	}
+	
+/* HOVER */
+#battle_ranking_area .battle_ranking_content .activeLink {
+	position: absolute;
+	display: inline-block;
+	width: 282px;
+	height: 30px;
+	top: 14px;
+	left: 15px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center center;
+	z-index: 100;
+	opacity: 0;
+}
+	/* LIGHTSIDE */
+	#battle_ranking_area.lightside-leader .battle_ranking_content .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_blue_active.png);
+	}
+	/* DARKSIDE */
+	#battle_ranking_area.darkside-leader .battle_ranking_content .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_red_active.png);
+	}
+	/* GOLD */
+	.gold #battle_ranking_area.lightside-leader .battle_ranking_content .activeLink,
+	.gold #battle_ranking_area.darkside-leader .battle_ranking_content .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_gold_active.png);
+	}
+
+#battle_ranking_area .battle_ranking_content .ranking-list {
+	position: relative;
+	display: table-cell;
+	width: 50%;
+	height: 100%;
+	padding-top: 4px;
+}
+	#battle_ranking_area .battle_ranking_content .ranking-list:nth-child(odd) {
+		padding-left: 20px;
+		padding-right: 10px;
+	}
+	#battle_ranking_area .battle_ranking_content .ranking-list:nth-child(even) {
+		padding-right: 20px;
+		padding-left: 10px;
+	}
+
+/* バトルランキングに参加していない場合 */
+#battle_ranking_area .battle_ranking_content .no-entry {
+	display: table-cell;
+	width: 100%;
+	padding-top: 3px;
+	vertical-align: middle;
+}
+
+#battle_ranking_area .rank_title {
+	display: block;
+	width: 100%;
+	padding-left: 20px;
+}
+#battle_ranking_area .rank {
+	position: relative;
+	display: inline-block;
+	margin-top: -4px;
+	text-align: right;
+	float: right;
+}
+/* メダル・トロフィーの表示 */
+#battle_ranking_area .rank:before {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	width: 17px;
+	height: 17px;
+	top: -1px;
+	left: -18px;
+	margin-right: 3px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+/* 2-10位 LIGHTSIDE */
+#battle_ranking_area.lightside-leader .rank.medal:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_reader_boad_medal_blue.png);
+	background-size: 17px 17px;
+}
+/* 2-10位 DARKSIDE */
+#battle_ranking_area.darkside-leader .rank.medal:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_reader_boad_medal_red.png);
+	background-size: 17px 17px;
+}
+/* 1位 GOLD */
+#battle_ranking_area .rank.trophy:before {
+	width: 20px;
+	height: 24px;
+	top: -6px;
+	left: -19px;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_reader_boad_trophy.png);
+	background-size: 20px 24px;
+}
+
+
+.ipad #battle_ranking_area {
+	width: 710px;
+	height: 126px;
+	margin-top: 9px;
+	padding-top: 32px;
+	background-size: 710px 126px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/* LIGHTSIDE */
+.ipad #battle_ranking_area.lightside-leader {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_base_blue_ipad.png);
+}
+/* DARKSIDE */
+.ipad #battle_ranking_area.darkside-leader {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_base_red_ipad.png);
+}
+/* GOLD */
+.ipad.gold #battle_ranking_area.lightside-leader,
+.ipad.gold #battle_ranking_area.darkside-leader {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_base_gold_ipad.png);
+}
+
+.ipad #battle_ranking_area .battle_ranking_title {
+	top: 21px;
+}
+
+.ipad #battle_ranking_area .battle_ranking_title span:after {
+	width: 21px;
+	height: 21px;
+	top: -2px;
+	right: -24px;
+	background-size: 21px 21px;
+}
+	/* LIGHTSIDE */
+	.ipad #battle_ranking_area.lightside-leader .battle_ranking_title span:after {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/leader_boar_arrow_blue.png);
+	}
+	/* DARKSIDE */
+	.ipad #battle_ranking_area.darkside-leader .battle_ranking_title span:after {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/leader_boar_arrow_red.png);
+	}
+
+.ipad #battle_ranking_area .battle_ranking_content {
+	width: 634px;
+	height: 65px;
+	margin-left: 35px;
+	background-size: 634px 65px;
+}
+	/* LIGHTSIDE */
+	.ipad #battle_ranking_area.lightside-leader .battle_ranking_content {
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_blue_ipad.png);
+	}
+	/* DARKSIDE */
+	.ipad #battle_ranking_area.darkside-leader .battle_ranking_content {
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_red_ipad.png);
+	}
+
+/* HOVER */
+.ipad #battle_ranking_area .battle_ranking_content .activeLink {
+	width: 634px;
+	height: 65px;
+	top: 32px;
+	left: 37px;
+}
+	/* LIGHTSIDE */
+	.ipad #battle_ranking_area.lightside-leader .battle_ranking_content .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_blue_active_ipad.png);
+	}
+	/* DARKSIDE */
+	.ipad #battle_ranking_area.darkside-leader .battle_ranking_content .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_red_active_ipad.png);
+	}
+	/* GOLD */
+	.ipad.gold #battle_ranking_area.lightside-leader .battle_ranking_content .activeLink,
+	.ipad.gold #battle_ranking_area.darkside-leader .battle_ranking_content .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/panel/reader_boad_btn_gold_active_ipad.png);
+	}
+	
+.ipad #battle_ranking_area .battle_ranking_content .ranking-list {
+	padding-top: 15px;
+}
+	.ipad #battle_ranking_area .battle_ranking_content .ranking-list:nth-child(odd) {
+		padding-left: 20px;
+		padding-right: 50px;
+	}
+	.ipad #battle_ranking_area .battle_ranking_content .ranking-list:nth-child(even) {
+		padding-right: 20px;
+		padding-left: 50px;
+	}
+
+/* バトルランキングに参加していない場合 */
+.ipad #battle_ranking_area .battle_ranking_content .no-entry {
+	padding-top: 8px;
+	font-size: 24px;
+	vertical-align: middle;
+}
+
+.ipad #battle_ranking_area .rank_title {
+	padding-left: 40px;
+}
+
+.ipad #battle_ranking_area .rank {
+	margin-top: 10px;
+	font-size: 30px;
+}
+/* メダル・トロフィーの表示 */
+.ipad #battle_ranking_area .rank:before {
+	width: 39px;
+	height: 39px;
+	top: -12px;
+	left: -45px;
+}
+/* 2-10位 LIGHTSIDE */
+.ipad #battle_ranking_area.lightside-leader .rank.medal:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_reader_boad_medal_blue_ipad.png);
+	background-size: 39px 39px;
+}
+/* 2-10位 DARKSIDE */
+.ipad #battle_ranking_area.darkside-leader .rank.medal:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_reader_boad_medal_red_ipad.png);
+	background-size: 39px 39px;
+}
+/* 1位 GOLD */
+.ipad #battle_ranking_area .rank.trophy:before {
+	width: 45px;
+	height: 54px;
+	top: -20px;
+	left: -47px;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_reader_boad_trophy_ipad.png);
+	background-size: 45px 54px;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+/* HOME MIDDLE AREA */
+/* -------------------------------------------------------------------------------- */
+section#home-main-area {
+	position: relative;
+	display: table;
+	width: 320px;
+	height: 218px;
+	//padding: 0 8px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+/*------------------------------------------------------- */
+/* プレイヤーのステータス ここから */
+/*------------------------------------------------------- */
+.player-status-wrapper {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/* GOLD */
+
+	/* EFFECT */
+	#home-upper-area .gold-effect-02 {
+		position: absolute;
+		bottom: -73px;
+		left: 0;
+		z-index: 0;
+	}
+
+
+.player-status-wrapper.medal {
+	padding: 0 20px 0 75px;
+}
+	.player-status-wrapper.medal .medal-icon {
+		position: absolute;
+		display: inline-block;
+		width: 45px;
+		height: 40px;
+		left: 30px;
+		bottom: 2px;
+		background-repeat: no-repeat;
+		background-size: 45px 40px;
+		background-position: center center;
+	}
+		.medal-icon.lightside {
+			background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_medal_blue.png);
+		}
+		.medal-icon.darkside {
+			background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_medal_red.png);
+		}
+
+
+.player-status-wrapper .degree {
+	margin: 0 auto;
+	text-align: center;
+	font-weight: bold;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center center;
+	line-height: 13px;
+	font-size: 12px;
+}	
+	.lightside .player-status-wrapper .degree {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/lightside/bg_degree.png);
+	}
+	.darkside .player-status-wrapper .degree {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/darkside/bg_degree.png);
+	}
+
+
+.player-status-wrapper .name {
+	display: block;
+	width: 100%;
+	padding: 1px 0;
+	font-weight: bold;
+	text-align: center;
+	font-size: 12px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+		/* GOLD */
+		.lightside.gold .player-status-wrapper .name,
+		.darkside.gold .player-status-wrapper .name {
+			color: #fff;
+			text-shadow: 1px 1px 4px rgba(0,0,0,0.5), -1px -1px 4px rgba(0,0,0,0.5);
+		}
+						
+.player-status-wrapper ul {
+	margin: 0 auto;
+	/* Btk3180対応 */
+	/* overflow: hidden; */
+	display:inline-block;
+	width:auto;
+}
+	.player-status-wrapper ul li {
+		position: relative;
+		float: left;
+		font-size: 12px;
+	}
+	.player-status-wrapper ul li.levelTxt {
+		min-width: 30px;
+		padding: 0 10px 0 0;
+		text-align: right;
+		text-shadow: 2px 1px 3px black, -1px -1px 3px black;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+	.player-status-wrapper ul li.levelGauge {
+		width: 165px;
+		padding-top: 0;
+		box-sizing: border-box;
+	}
+		.player-status-wrapper ul li.levelGauge .gauge-status {
+			position: absolute;
+			font-size: 10px;
+			
+			
+			width: 100%;
+			top: -2px;
+			text-shadow: 2px 1px 3px black, -1px -1px 3px black;
+			text-align: center;
+			line-height: 21px;
+			z-index: 50;
+		}
+
+section#home-main-area .player-status-area {
+	display: table;
+	width: 100%;
+}
+	/* カードの画像ここから */
+	div#card-wrapper {
+		position: relative;
+		display: table-cell;
+		width: 120px;
+		height: 178px;
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/leader_card_shadow.png);
+		background-repeat: no-repeat;
+		background-size: 120px 10px;
+		background-position: center bottom;
+		text-align: center;
+		vertical-align: middle;
+	}
+			
+	div#card-wrapper a {
+		position: relative;
+		display: block;
+		width: 119px;
+		height: 170px;
+		margin: auto;
+	}
+	
+		div#card-wrapper .title {
+			position: absolute;
+			display: inline-block;
+			width: 100%;
+			height: 32px;
+			top: -9px;
+			left: 0;
+			text-align: center;
+			letter-spacing: 3px;
+			white-space: nowrap;
+			text-indent: 5px;
+			line-height: 31px;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			background-position: center center;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+		
+		html:lang(ja) div#card-wrapper .title {
+			letter-spacing: 0;
+		}
+			/* LIGHTSIDE */
+			.lightside div#card-wrapper .title {
+				background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/lightside/leader_card_title.png);
+			}
+			/* DARKSIDE */
+			.darkside div#card-wrapper .title {
+				background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/darkside/leader_card_title.png);
+			}
+			/* GOLD */
+			.lightside.gold div#card-wrapper .title,
+			.darkside.gold div#card-wrapper .title {
+				background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/gold/leader_card_title.png);
+				color: #ebda9a;
+				text-shadow: 1px 1px 5px rgba(208,137,0,1),
+							-1px -1px 5px rgba(208,137,0,1);
+			}
+
+	div#card-wrapper img {
+		margin-top: 11px;
+	}
+	
+/* 属性を隠すマスク */
+nav#navi-wrapper ul li.force-area .linkLock {
+	position: absolute;
+	display: inline-block;
+	background: rgba(0,0,0,0.6);
+	z-index: 50;
+	width: 166px;
+	height: 13px;
+	top: 0;
+	left: 0;
+	background-repeat: no-repeat;
+	background-size: 12px 15px;
+	background-position: center -2px;
+	text-align: center;
+	font-weight: normal;
+	line-height: 13px;
+	letter-spacing: 3px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+	.lightside #navi-wrapper .linkLock {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/lock_key_l.png) !important;
+	}
+	.darkside #navi-wrapper .linkLock {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/lock_key_d.png) !important;
+	}
+
+
+/*------------------------------------------------------- */
+/* ステータス */
+/*------------------------------------------------------- */
+nav#navi-wrapper {
+	position: relative;
+	display:table-cell;
+	width: 184px;
+	vertical-align: middle;
+}
+	nav#navi-wrapper ul {
+		position: relative;
+		display: block;
+				width: 184px;
+				padding: 5px;
+		height: auto;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-position: center center;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+		/* LIGHTSIDE */
+		.lightside nav#navi-wrapper ul {
+			border:1px solid #2da7b1;
+			box-shadow:inset 0 0 15px #2da7b1, 0 0 10px #2da7b1;
+			background:rgba(0,0,0,0.4);
+		}
+			/* GOLD LIGHTSIDE */
+			.lightside.gold nav#navi-wrapper ul {
+				border:1px solid #af7f2a;
+				box-shadow:inset 0 0 15px #af7f2a, 0 0 10px #af7f2a;
+				background:rgba(0,0,0,0.4);
+			}
+			
+		/* DARKSIDE */
+		.darkside nav#navi-wrapper ul {
+			border:1px solid #d5051b;
+			box-shadow:inset 0 0 15px #d5051b, 0 0 10px #d5051b;
+			background:rgba(0,0,0,0.4);
+		}
+			/* GOLD DARKSIDE */
+			.darkside.gold nav#navi-wrapper ul {
+				border:1px solid #af7f2a;
+				box-shadow:inset 0 0 15px #af7f2a, 0 0 10px #af7f2a;
+				background:rgba(0,0,0,0.4);
+			}
+
+		nav#navi-wrapper ul li {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+							font-size: 12px;
+				margin-bottom: -1px;
+					}
+
+			nav#navi-wrapper ul li:last-child {
+				margin-bottom: 0;
+			}
+			
+			
+			.param_crystal{
+				display:block;
+				position:relative;
+								width: 184px;
+								box-sizing:border-box;
+				-webkit-box-sizing:border-box;
+			}
+				
+				.lightside .param_crystal{
+					border:1px solid #2da7b1;
+					box-shadow:inset 0 0 15px #2da7b1, 0 0 10px #2da7b1;
+					background:rgba(0,0,0,0.4);
+				}
+				
+				
+				.darkside .param_crystal{
+					border:1px solid #d5051b;
+					box-shadow:inset 0 0 15px #d5051b, 0 0 10px #d5051b;
+					background:rgba(0,0,0,0.4);
+				}
+				
+				
+				.gold.lightside .param_crystal{
+					border:1px solid #af7f2a;
+					box-shadow:inset 0 0 15px #af7f2a, 0 0 10px #af7f2a;
+					background:rgba(0,0,0,0.4);
+				}
+				.gold.darkside .param_crystal{
+					border:1px solid #af7f2a;
+					box-shadow:inset 0 0 15px #af7f2a, 0 0 10px #af7f2a;
+					background:rgba(0,0,0,0.4);
+				}
+				
+			.param_crystal .param_wrapper{ 
+				display:table;
+				width:100%;
+			}
+			.param_crystal .status-title{
+				display:table-cell;
+				vertical-align:top;
+				padding:5px;
+				box-sizing:border-box;
+				-webkit-box-sizing:border-box;
+				white-space: nowrap;
+			}
+			
+			.param_crystal .status-info{
+				display:table-cell;
+				vertical-align:middle;
+				text-align:right;
+				padding:5px 20px 5px 5px;
+				background: url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_crystal01.png) right center no-repeat;
+				-webkit-background-size: 20px 20px;
+				background-size: 20px 20px;
+			}
+			
+			.param_crystal .status-btn{
+				display:table-cell;
+				width:16px;
+				height:16px;
+				vertical-align:middle;
+				text-align:center;
+				padding: 0 5px 0 0;
+			}
+			
+				.param_crystal .btnPlus{
+					width:16px;
+					height:16px;
+					-webkit-background-size: 16px 16px;
+					background-size: 16px 16px;
+				}
+		
+			/* フォースバランス */
+			nav#navi-wrapper ul li.force-area {
+				height: 15px;
+				position:relative;
+				padding-bottom: 10px;
+				padding-right:0;
+			}
+				nav#navi-wrapper ul li .now {
+					font-size: 13px;
+				}
+					
+				
+				nav#navi-wrapper ul li .recover {
+					position: relative;
+					float: right;
+					display: block;
+					width: 56px;
+					height: 18px;
+					margin: 1px -3px 0 0;
+					line-height: 16px;
+					text-align: center;
+					font-size: 8px;
+					text-shadow: 1px 1px 1px black, -1px -1px 1px black;
+				}
+					
+					/* EP */
+					nav#navi-wrapper ul li.ep-area{
+						padding-right:0;
+					}
+					nav#navi-wrapper ul li .recover.ep {
+						background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_ep.png) 0 top no-repeat;
+						background-size: 58px 18px;
+					}
+						/* EP GOLD */
+						.gold nav#navi-wrapper ul li .recover.ep {
+							background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_ep_gold.png) 0 top no-repeat;
+							background-size: 58px 18px;
+						}
+					
+					/* BP */
+					nav#navi-wrapper ul li.bp-area{
+						padding-right:0;
+					}
+					nav#navi-wrapper ul li .recover.bp {
+						background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_bp.png) 0 top no-repeat;
+						background-size: 58px 18px;
+					}	
+						/* BP GOLD */
+						.gold nav#navi-wrapper ul li .recover.bp {
+							background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_bp_gold.png) 0 top no-repeat;
+							background-size: 58px 18px;
+						}
+						
+					/* OFF */
+					nav#navi-wrapper ul li .recover.off {
+						background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_recover_off.png) 0 top no-repeat;
+						background-size: 58px 18px;
+						color: #999;
+					}
+				
+				nav#navi-wrapper ul li .recover.ep .hoverMask,
+				nav#navi-wrapper ul li .recover.bp .hoverMask{
+					background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_add_mask.png);
+				}
+				
+				
+				nav#navi-wrapper ul li .recover .activeLink {
+					position: absolute;
+					display: inline-block;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					background-repeat: no-repeat;
+					background-position: center bottom;
+					background-size: 100% 100%; 
+					z-index: 10;
+					opacity: 0;
+				}
+					nav#navi-wrapper ul li .recover.ep .activeLink {
+						background-image:  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_active.png);
+					}
+					nav#navi-wrapper ul li .recover.bp .activeLink {
+						background-image:  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_active.png);
+					}
+				
+				nav#navi-wrapper ul li .recover .activeLink.blink{
+					-webkit-animation-name: btnAnim;
+					-webkit-animation-duration: 1s;
+					-webkit-animation-iteration-count: infinite;
+					-webkit-transform-style: preserve-3d;
+					opacity:1;
+				}
+				
+				@-webkit-keyframes btnAnim {
+					0% {
+						opacity: 1;
+					}
+					50% {
+						opacity: 0.5;
+					}
+					100% {
+						opacity: 1;
+					}
+				}
+				
+		nav#navi-wrapper ul li .status_wrapper {
+			display: table;
+			width: 100%;
+			padding-bottom: 1px;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+		}
+		
+			/* ステータスのタイトル */
+			nav#navi-wrapper ul li .status-title {
+				display: table-cell;
+				float: left;
+				width: 50%;
+				white-space: nowrap;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+			}
+			
+			/* ステータス */
+			nav#navi-wrapper ul li .status-info {
+				display: table-cell;
+				float: right;
+				width: 50%;
+				text-align: right;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+			}
+
+/* -------------------------------------------------------------------------------- */
+/* HOME LOWER AREA */
+/* -------------------------------------------------------------------------------- */
+/*------------------------------------------------------- */
+/* カルーセルバナー */
+/*------------------------------------------------------- */
+#home-lower-area {
+	position: absolute;
+	overflow:hidden;
+	width: 320px;
+	margin: 0;
+	bottom: 0;
+	left: 0;
+	height: 90px;
+	padding: 0;
+	text-align: center;
+	z-index:70;
+}
+
+/* 新しいイベントのバナー */
+.newest-banner {
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+/* カルーセルバナー */
+.banner-content-area {
+	width: 100%;
+	height: 90px;
+	padding: 12px 0 0;
+	background-repeat: no-repeat, no-repeat;
+	background-position: center top, center center;
+	background-size: 100% 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/bg_banner.png);
+}
+
+
+#comlink-wrapper {
+	position: relative;
+	display: table;
+	width: auto;
+	max-height: 70px;
+	margin: -7px auto 0;
+	padding: 7px 0;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/bg_comlink_ipad.png);
+	background-size: 100% 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#comlink-wrapper .comlink-icon {
+	position: relative;
+	display: block;
+	float: left;
+	padding-top: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#comlink-wrapper .comlink-icon p {
+	display: inline-block;
+	margin-right:5px;
+	margin-top:3px;
+}
+
+/* COMLINKのアイコン */
+#comlink-wrapper .comlink-icon .comlink_btn {
+	position: relative;
+	display: table;
+	width: 70px;
+	height: 35px;
+	background-size: 100% 100%;
+	background-position: center center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+	/* LIGHTSIDE */
+	.lightside #comlink-wrapper .comlink-icon .comlink_btn {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_blue_ipad.png);
+	}
+	/* LIGHTSIDE GOLD */
+	.lightside.gold #comlink-wrapper .comlink-icon .comlink_btn {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_blue_gold_ipad.png);
+	}
+	/* DARKSIDE */
+	.darkside #comlink-wrapper .comlink-icon .comlink_btn {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_red_ipad.png);
+	}
+	/* DARKSIDE GOLD */
+	.darkside.gold #comlink-wrapper .comlink-icon .comlink_btn {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_red_gold_ipad.png);
+	}
+
+/* COMLINKボタンのホバー */
+#comlink-wrapper .comlink-icon .comlink_btn .activeLink {
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center center;
+	opacity: 0;
+	z-index: 10;
+}
+	/* LIGHTSIDE */
+	.lightside #comlink-wrapper .comlink-icon .comlink_btn .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_blue_active_ipad.png);
+	}
+	/* DARKSIDE */
+	.darkside #comlink-wrapper .comlink-icon .comlink_btn .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_red_active_ipad.png);
+	}
+	/* GOLD */
+	.gold.lightside #comlink-wrapper .comlink-icon .comlink_btn .activeLink,
+	.gold.darkside #comlink-wrapper .comlink-icon .comlink_btn .activeLink {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/btn/btn_comlink_gold_active_ipad.png);
+	}
+
+/* COMLINKボタンのテキスト */
+#comlink-wrapper .comlink-icon .comlink_btn .link_txt {
+	line-height:35px;
+	padding: 0;
+	vertical-align: middle;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding-left:24px;
+}
+
+#comlink-wrapper .comlink-outer {
+	display: block;
+	float: left;
+	width: 220px;
+	height: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#comlink-wrapper div.card-list-outer {
+	background: none;
+}
+
+.comlink_wrapper{
+	display:table;
+}
+
+.comlink_card{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.comlink_info{
+	display:table-cell;
+	vertical-align:middle;
+	padding:0 5px;
+	font-size:10px;
+}
+
+.comlink_info .name .side-icon{
+	display:inline-block;
+	width:10px;
+	height:10px;
+	padding: 2px;
+	margin-right:5px;
+	text-align:center;
+	font-size:10px;
+	line-height:10px;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+}
+
+	.comlink_info .name .side-icon.lightside{
+		box-shadow:0 0 6px #83c0c5, inset 0 0 2px #83c0c5;
+		-webkit-box-shadow:0 0 6px #83c0c5, inset 0 0 2px #83c0c5;
+		content:'L';
+	}
+	.comlink_info .name .side-icon.lightside{
+		box-shadow:0 0 6px #ff0000, inset 0 0 2px #ff0000;
+		-webkit-box-shadow:0 0 6px #ff0000, inset 0 0 2px #ff0000;
+		content:'D';
+	}
+
+/* GOLD */
+.gold div.card-list-outer.avator div.card-list {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png);
+}
+
+/* カードとアバターを入れる */
+div.card-list-outer.avator div.card-list .card-img {
+	width: 100px;
+}
+
+div.card-list-outer.avator div.card-list .card-img span {
+	float: left;
+}
+
+div.card-list-outer.avator div.card-list .card-img .cardImg {
+	display: inline-block;
+	float: right;
+}
+
+/* ガッツがない場合 */
+.no-comlink {
+	display: table;
+	width: 100%;
+	height:35px;
+	padding-right: 15px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.no-comlink .message-area {
+	display: table-cell;
+	width: auto;
+	vertical-align: middle;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	font-size:10px;
+}
+.no-comlink .btn-area {
+	display: table-cell;
+	width: 198px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/*--------------------------------------------------------*/
+/* iPad(Noscale) カルーセルバナー */
+/*--------------------------------------------------------*/
+#banner-main-wrapper {
+	position: absolute;
+	display: table;
+	width: 100%;
+	height: 170px;
+	margin: 0 auto;
+	padding: 15px 0 0;
+	left: 0;
+	bottom: 0;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+	.lightside #banner-main-wrapper {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/lightside/bg_banner_ipad.png);
+	}
+	.darkside #banner-main-wrapper {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/darkside/bg_banner_ipad.png);
+	}
+	
+	.gold .lightside #banner-main-wrapper,
+	.gold .darkside #banner-main-wrapper {
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/gold/bg_banner_ipad.png);
+	}
+
+</style>
+<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/countDown.js?2014103001"></script>
+<script type="text/javascript">
+
+				
+	$(document).ready(function(){
+		
+		$('#dialog_news_action_result').implant_dialog({closer:'.modal_close'});
+			}); 
+    function homeAjax(){
+        this.queue_count = 0;
+        this.queue       = {};
+        this.queue_index = 0;
+    };
+    homeAjax.prototype={
+        addQueue:function(url, id, type, callback){
+            this.queue[this.queue_index] = {
+                'url':url,
+                'id':id,
+                'type':type,
+                'callback':callback
+            };
+            this.queue_index++;
+        },
+        homeAjaxLoad:function(){
+            var that = this;
+            if(that.queue_count == that.queue_index){
+                return;
+            }
+            url      = that.queue[that.queue_count]['url'];
+            id       = that.queue[that.queue_count]['id'];
+            type     = that.queue[that.queue_count]['type'];
+            callback = that.queue[that.queue_count]['callback'];
+            
+            $.ajax({
+                type:'POST',
+                url:url,
+                dataType:type,
+                data:{},
+                timeout:300000,
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                }
+            }).then(function(data){
+                if(callback == undefined){
+                    $("#"+id).empty();
+                    $("#"+id).html(data);
+                }else{
+                    callback(data);
+                }
+                that.queue_count++;
+                that.homeAjaxLoad();
+            });
+        }
+    }
+</script>
+
+<script type="text/javascript">
+			
+		sendMessageToApp('layout.update', {
+			'layout':'basescreen',
+
+							
+				
+				
+				'request_badge.text'		 :'',		
+				
+				
+				
+				
+				
+				'message_badge.text'		 :'',		
+				
+				
+				
+			
+			
+			
+			'quest_main.enable'      :'1', 						
+			'quest_badge.text'       :'',
+			
+			'planet.enable'          :'1',		
+																							
+			'map.enable'      :'1', 					
+			'map_badge.enable'  : '0',
+			'map_badge.text':'',
+
+			
+			
+			
+			'battle_badge.text'          :'',						
+			
+			'arrange.enable'         :'1',						
+			
+			
+			'history.enable'         :'1',						
+			
+			
+			'ranking.enable'          :'1',						
+			
+			
+			'blueprint.enable'        :'1',								
+			
+			'league.enable'        :'1',							
+
+			
+			
+			
+			'enhance.enable'         :'1',	
+			
+			'evolve.enable'          :'1',		
+			
+			'master.enable'          :'1',	
+			
+			'build.enable'           :'1',		
+
+			
+							
+				
+				'draw_badge.text'				 :'9+',	
+
+				
+				
+
+				
+				
+
+				
+				
+				
+				'sell_caution.visible'	 :'0',		
+
+				
+				
+
+				
+				'build_badge.text'			 :'',			
+
+				
+				
+				
+
+				
+				
+				
+					});
+
+	
+	
+	sendMessageToApp('menu.show',
+		{'battle_lock': 0 ,
+		 'battle_badge':  '' , 		   'card_badge':         '9+'       , 		   'ally_badge':    '' ,         'quest_badge':'',
+        
+        
+				'page':'home'});
+</script>
+
+
+<script type="text/javascript">
+			$(document).ready(function(){
+			sendMessageToApp('page.noscroll');
+			sendMessageToApp('menu.unlock');
+			sendMessageToApp('bounces.off');
+			sendMessageToApp('gmenu.update');
+			
+			sendMessageToApp('button.seturl', {'button':'battle', 'url':'home/menu_battle?goal_id=1001'});
+			sendMessageToApp('button.seturl', {'button':'quest', 'url':'home/menu_quest?goal_id=1001'});
+			sendMessageToApp('button.seturl', {'button':'card', 'url':'home/menu_card?goal_id=1001'});
+			sendMessageToApp('button.seturl', {'button':'ally', 'url':'home/menu_ally?goal_id=1001'});
+		});
+	
+	sendMessageToApp('asset.check', {'assetver':93187});
+
+	
+	sendMessageToApp('pushsetting.show');
+	
+	sendMessageToApp('localpush.remove_all');
+			sendMessageToApp('localpush.regist_all', {'array':'[]'});
+	    function to_quest(){
+	sendMessageToApp('se.play', {file:'se_sys_ok'});
+        ajax_load("http://amw.konaminet.jp/amw/naboo/quest/main.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307", null, function(){});
+    }
+    function to_battle(){
+	sendMessageToApp('se.play', {file:'se_sys_ok'});
+        ajax_load("http://amw.konaminet.jp/amw/naboo/battle/entrance.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307", null, function(){});
+    }
+    
+	function toggle_global_menu()
+	{
+					sendMessageToApp('gmenu.toggle');
+			}
+	
+	
+		
+	$(document).ready(function(){
+		var exp_gauge = 409*100/697;
+		$('#gaugeTbl.exp table tr').css({"width":exp_gauge + "%"});
+
+		
+		sendMessageToApp('gamecenter.sendData', {'wons':'389'});
+		
+		
+		$( 'div.flash' ).append('<span class="flashAnime"></span>');
+		
+		
+		
+		
+		$(function($){
+			$( '.activeLink' )
+				.bind( 'touchstart mousedown', function(){
+				$( this ).css( 'opacity','1' );
+			  }).bind( 'touchend mouseup', function(){
+				$( this ).css( 'opacity','0' );
+			});
+		});
+		
+		
+		$('a.recover').prepend('<span class="activeLink"></span>');
+
+		
+		
+		
+        $("#dialog-card-menu").implant_dialog({"closer":"#card_menu_close"});
+        $("#leader-monster").bind('click',function(){
+            $("#dialog-card-menu").call_implant_dialog();
+        });
+        $("#dialog_login_bonus").implant_dialog({"closer":"#login_campaign_closer"});
+
+        		
+		
+		//$("header a, .home a").click(function(){
+			//sendMessageToApp('se.play',{file:'se_sys_menu_entr'});
+		//});
+
+		
+		$('#baloon_close').click(function(){
+			$( '#notification_balloon_area' ).css( 'display','none' );
+			g_swipeGallary.reset();
+		});
+
+		
+		$('#card-zoom').implant_dialog({closer:'.cancel'});
+		$('#setting_button').click(function() {
+
+			var imgHtml = $('<img/>').attr('src', "http://amw.konaminet.jp/amw/naboo/img/" + "card/chara/102361024/1023610243" + "_ll.png").attr('id', 'zoom_thumb')
+									 .attr('height', "290");
+			$('#zoom_thumb_wrapper').html(imgHtml);
+			$('#card-zoom').call_implant_dialog();
+			$('#card_attack').html("9671");
+			$('#card_defence').html("9062");
+
+			if( 0 ){
+				$('#caps_card_attack').html("HEA: ");
+			} else if ( 0 ){
+				$('#caps_card_attack').html("REP: ");
+			} else {
+				$('#caps_card_attack').html("ATK: ");
+			}
+		});
+		function newsTicker(targetArea){
+			var i = 0;
+			var children = $(targetArea).children();
+			var iTotal = children.length;
+			var containerWidth	= $(targetArea).width();
+			var contentWidth	= $(children[i]).width();
+			var totalDist	= containerWidth + contentWidth;
+			var totalSpeed	= totalDist / 10;
+			pos = 0;
+			$(children[i]).css({"display":"inline-block"});
+			setInterval(
+				function newsTick(){
+					if(pos >= (totalDist + 20)){
+						if(iTotal == (i + 1)){
+							i = 0;
+						}else{
+							i ++;
+						}
+						$(children).css({"display":"none"});
+						$(children[i]).css({"display":"inline-block"});
+						contentWidth	= $(children[i]).width();
+						totalDist	= containerWidth + contentWidth;
+						$(children[i]).css({"-webkit-transform":"translate(" + totalDist + "px,0)"});
+						pos = 0;
+					}else{
+						pos += 1;
+						$(children[i]).css({"-webkit-transform":"translate(-" + pos + "px,0)"});
+					}
+				}
+			,totalSpeed);
+		}
+		new newsTicker("#marquee_area");
+		$("#news_dialog").implant_dialog({closer:".close"});
+		$("#sw-content").fadeIn();
+    });
+	function openBannerDialog(){
+		$("#banner_list_dialog").call_implant_dialog();
+	}
+	function openNewsDialog(){
+		$("#news_dialog").call_implant_dialog();
+	}
+</script>
+<style>
+	#sw-content.mypage{
+		background-size: 100%;
+		background-repeat: no-repeat;
+		background-position: 0px 65%, 0px 20%;
+		padding: 73px 0 170px;
+	}
+	#home_header{
+		display: block;
+		width:100%;
+		height: 73px;
+		background-size: 320px 73px;
+		background-repeat: no-repeat;
+		background-position: center top;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+		#sw-content.lightside #home_header{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/header_light.png);}
+		#sw-content.darkside #home_header{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/header_dark.png);}
+	#gauge_force_wrapper{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+	#gauge_force{
+		position:relative;
+		width:240px;
+		margin:0 auto;
+		height:10px;
+	}
+	
+	.lightside #gauge_force .chart{
+		position: relative;
+		float:right;
+		width:120px;
+		height:10px;
+	}
+	
+	.darkside #gauge_force .chart{
+		position: relative;
+		float:left;
+		width:120px;
+		height:10px;
+	}
+	
+	#gauge_force .flash{
+		position:absolute;
+		width:50px;
+		height:50px;
+		background: url(http://amw.konaminet.jp/amw/naboo/img/player/flash.png) no-repeat center center;
+		background-size: 50px 50px;
+		top:50%;
+		margin-top: -30px;
+		z-index: 90;
+	}
+		.darkside #gauge_force .flash{
+			margin-right:-25px;
+			bottom:0;
+			right:0;
+		}
+		.lightside #gauge_force .flash{
+			margin-left:-25px;
+			bottom:0;
+			left:0;
+		}
+	
+	#gauge_force span{
+		display: block;
+		position: absolute;
+		font-size:12px;
+		top: 50%;
+		margin-top:-7px;
+	}
+	#player_status{
+		text-align: center;
+		position: relative;
+		z-index: 100;
+	}
+		#player_status .degree{font-size: 10px;margin-bottom: 1px;margin-top: 2px;}
+		#player_status .degree.shadowLight{text-shadow: 1px 1px 2px #00a2ff, -1px -1px 2px #00a2ff;}
+		#player_status .degree.shadowDark{text-shadow: 1px 1px 2px #ff0000, -1px -1px 2px #ff0000;}
+	#legion_info{
+		height: 3px;
+	}
+	#gauge_exp_wrapper{
+		display: block;
+		width:200px;
+		padding-left: 53px;
+		padding-top: 2px;
+		box-sizing:border-box;-webkit-box-sizing:border-box;
+		position: relative;
+	}
+		#txt_exp{
+			position: absolute;
+			top: -2px;
+			left: 4px;
+			z-index: 50;
+			padding-left: 15px;
+			margin-left: 10px;
+		}
+			#txt_exp span.title{
+				font-size: 11px;
+				margin-right: 3px;
+				position: absolute;
+				left: 0;
+				bottom: -4px;
+			}
+			#txt_exp span.num{
+				font-size: 16px;
+				min-width: 45px;
+				display: block;
+				text-align: left;
+				margin-left: 3px;
+			}
+		#gauge_exp{position: relative;}
+		#gauge_exp_txt{
+			position: absolute;
+			bottom: 0;
+			right: 10px;
+			z-index: 50;
+			font-size: 10px;
+			line-height: 9px;
+			text-shadow: 1px 1px 3px #000, -1px -1px 3px #000;
+		}
+		#gauge_exp #gaugeTbl{
+			height: 5px;
+			width: 130px;
+			margin-left: 6px;
+		}
+		#gauge_exp #gaugeTbl .innershadow{
+			height:5px;
+			-webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.5), inset 0px 0px 2px rgba(0,0,0,1);
+		}
+	#ep{padding: 1px 0 0; position: relative;}
+	#bp{padding: 0 0 1px; position: relative;}
+	.status_wrapper{
+		font-size: 10px;
+		line-height: 10px;
+		margin-bottom: -1px;
+		padding: 0 3px;
+		text-shadow: -1px -1px 2px #000, 1px 1px 2px #000;
+		position: relative;
+		z-index: 50;
+	}
+		.status_wrapper .status-info{
+			float: right;
+		}
+	#gauge_epbp{
+		width: 87px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin-bottom: 7px;
+		z-index: 100;
+	}
+		#gauge_epbp #gaugeTbl{
+			width: 80px;
+			height:5px;
+			margin: 0 auto;
+		}
+			#gauge_epbp #gaugeTbl .innershadow{
+				height: 5px;
+				-webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.5), inset 0px 0px 2px rgba(0,0,0,1);
+			}
+			#gauge_epbp #gaugeTbl .light{
+				width: 72px;
+			}
+	#epbp_recover_dialog #gaugeTbl{width: auto;}
+	#epbp_recover_dialog .status-info{font-size: 18px;}
+	#recover_ep_wrap, #recover_bp_wrap{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 50;
+		padding: 2px 5px;
+		box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+	}
+	#recover_ep_wrap a, #recover_bp_wrap a{
+		opacity:0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: rgba(255,0,0,0.5);
+		border-radius: 5px;
+	}
+	#marquee_area{
+		position: absolute;
+		bottom: 7px;
+		left: 3px;
+		width: 217px;
+		overflow: hidden;
+		height: 15px;
+	}
+		#marquee_area p{
+			white-space: nowrap;
+			position: absolute;
+			left: 220px;
+			display: none;
+		}
+		.lightside #marquee_area p{
+			color: #aeebff;
+			text-shadow: 1px 1px 6px #00a2ff, -1px -1px 6px #00a2ff;
+		}
+		.darkside #marquee_area p{
+			color: #ffbbbb;
+			text-shadow: 1px 1px 6px #ff0000, -1px -1px 6px #ff0000;
+		}
+	#home_content{
+		display: table;
+		height: 100%;
+		position: relative;
+		z-index: 70;
+	}
+	#home_content_inner{
+		width: 320px;
+		display: table-cell;
+		margin: auto;
+		padding: 0 0 0;
+		vertical-align: middle;
+		overflow: hidden;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	#btn_main{
+		display: block;
+		width: 55px;
+		position: absolute;
+		top: 5px;
+		right: 9px;
+	}
+		#btn_main .main_btn{
+			display: block;
+			width: 55px;
+			height: 40px;
+			margin-bottom: 12px;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			position: relative;
+		}
+		.lightside #btn_inbox{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_inbox_light.jpg);}
+		.darkside #btn_inbox{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_inbox_dark.jpg);}
+		.lightside #btn_goals{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_goals_light.jpg);}
+		.darkside #btn_goals{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_goals_dark.jpg);}
+		.lightside #btn_legion{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_legion_light.jpg);}
+		.darkside #btn_legion{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_legion_dark.jpg);}
+			#btn_main .main_btn span{
+				position: absolute;
+				display: block;
+				width: 100%;
+				bottom: 0;
+				text-align: center;
+				text-shadow:0 0 3px #000;
+				font-size: 12px;
+			}
+	#featured_banner{
+		position: absolute;
+		display: block;
+		width: 90px;
+		height: 70px;
+		top: 8px;
+		left: 5px;
+	}
+	#home_footer{
+		display: block;
+		width:100%;
+		height: 175px;
+		background-size: 320px 175px;
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		position: absolute;
+		margin: 0;
+		bottom: 0;
+		left: 0;
+		padding: 28px 0 0;
+		text-align: center;
+		z-index: 70;
+		box-sizing:border-box;-webkit-box-sizing:border-box;
+	}
+		#sw-content.lightside #home_footer{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/footer_light.png);}
+		#sw-content.darkside #home_footer{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/footer_dark.png);}
+	#strength{
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 100px;
+		height: 40px;
+		margin-left: -50px;
+		padding-top: 10px;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+		#deck_score{
+			font-size: 18px;
+			text-shadow:-1px -1px 3px #000, 1px 1px 3px #000;
+		}
+		#strength .title{
+			font-size: 9px;
+			line-height: 9px;
+			text-shadow:0 0 3px #000;
+		}
+	#news_wrapper{
+		height: 70px;
+		overflow: hidden;
+	}
+	#news_title{
+		height: 15px;
+		text-align: left;
+		padding: 0 10px;
+	}
+		#news_title .title{font-size: 12px;position:relative;padding-right: 15px;}
+		#news_title .more{
+			float: right;
+			display: inline-block;
+			padding-right: 11px;
+			padding-left: 15px;
+			background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center right;
+			background-size: 7px;
+			text-align: center;
+			font-size: 12px;
+			line-height: 11px;
+			position: relative;
+		}
+			#news_title .title #news_num{
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				line-height: 12px;
+				font-size: 10px;
+				text-align: center;
+				position: absolute;
+				right: 0;
+				top: 0;
+				background: #ff0000;
+				border-radius: 3px;
+			}
+	#news_wrapper ul{
+		font-size: 12px;
+		text-align: left;
+		padding: 1px 14px;
+	}
+		#news_wrapper ul li{
+			background: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat center bottom;
+			background-size: 100% 1px;
+			padding: 2px 0;
+		}
+			#news_wrapper ul li p{
+				background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center left;
+				background-size: 3px;
+				padding-left: 5px;
+			}
+	#leader_card{
+		margin:0 auto;
+		width: 120px;
+		text-align: center;
+		background: url(http://amw.konaminet.jp/amw/naboo/img/home/home/card_shadow.png) no-repeat center bottom;
+		background-size: 100%;
+		padding-bottom: 15px;
+		margin-top:3px;
+	}
+		#leader_card .title{line-height: 10px;}
+	#base_params{
+		width: 100px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	#base_params li{
+		display: block;
+		padding: 2px 0 2px 25px;
+		height: 15px;
+		margin:2px 0 2px 3px;
+		line-height: 17px;
+		position: relative;
+	}
+	#base_params #ap{
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_ap01.png) no-repeat center left;
+		background-size: 18px;
+	}
+		.lightside #base_params #ap:after, .lightside #base_params #credit:after{background:url(http://amw.konaminet.jp/amw/naboo/img/home/home/line01_blue.png) no-repeat center left;}
+		.darkside #base_params #ap:after, .darkside #base_params #credit:after{background:url(http://amw.konaminet.jp/amw/naboo/img/home/home/line01_red.png) no-repeat center left;}
+		#base_params #ap:after, #base_params #credit:after{
+			display: block;
+			content: '';
+			width: 100%;
+			height: 4px;
+			background-size: 100% 100%;
+			position: absolute;
+			bottom: -3px;
+			left: -3px;
+		}
+	#base_params #credit{
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_credit01.png) no-repeat center left;
+		background-size: 18px;
+	}
+	#base_params #crystal{
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_crystal01.png) no-repeat center left;
+		background-size: 18px;
+		padding-right: 23px;
+		position: relative;
+	}
+		#base_params #crystal .btnPlus{
+			position: absolute;
+			right: 0;
+			top: 2px;
+		}
+	.banner-content-area{background:none;}
+		#information .sg_main{margin: 8px 2px 0 !important;}
+		#sg_pointer, #sg_pointer li, #sg_pointer ul{margin-top: 0 !important;}
+		#information #sg_pointer{width:270px !important;}
+	#btn_banner{
+		display: block;
+		width: 40px;
+		height: 62px;
+		background: url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn_banner.png) no-repeat center;
+		background-size: 100%;
+		position: absolute;
+		bottom: 7px;
+		right: 0;
+		z-index: 100;
+	}
+	#window-bonus{position:relative;}
+	#btn_news_admin{
+		display: block;
+		width: 30px;
+		height:18px;
+		position: absolute;
+		bottom: 5px;
+		left: 2px;
+		background-repeat:no-repeat;
+		background-size: 100%;
+		background-position: center;
+		font-size: 9px;
+		text-align: center;
+		line-height: 18px;
+		text-shadow:0 0 3px #000;
+	}
+		.mds_list_num{
+			position: absolute;
+			display: inline-block;
+			top: 50%;
+			right: -16px;
+			min-width: 13px;
+			height: 13px;
+			background: rgba(255,0,0,1);
+			border-radius: 3px;
+			line-height: 13px;
+			margin-top: -7px;
+		}
+		.lightside #btn_news_admin{background-image:url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_news_admin_light.png);}
+		.darkside #btn_news_admin{background-image:url(http://amw.konaminet.jp/amw/naboo/img/home/home/btn/btn_news_admin_dark.png);}
+	#banner_list_dialog ul li{
+		padding-bottom: 10px;
+		text-align: center;
+	}
+	.close_extension{
+		right:0 !important;
+	}
+</style>
+<div id="sw-content" class="mypage lightside"  style="opacity:0;"><section id="home_header"><div id="gauge_force_wrapper"><div id="gauge_force"><div class="chart"><div class="flash" style="right:%; left:54.925%;"></div></div></div></div><div id="player_status" onclick="location.href='http://amw.konaminet.jp/amw/naboo/player/info?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307'" class="se_sys_menu_entr"><div class="degree txtAC shadowLight">Jedi Knight</div><div class="name txtAC shadowLight colorLight">Ragamuffin</div><div id="legion_info"></div><ul id="gauge_exp_wrapper" class="clearfix"><li id="txt_exp"><span class="gray title">Lvl </span><span class="num font-sw01">41</span></li><li id="gauge_exp"><p id="gauge_exp_txt"><span class="gray">EXP: </span>409<span class="gray">/697</span></p><div id="gaugeTbl" class="exp"><span class="innershadow"></span><table><tbody><tr style="width:0;"><td><span class="light"></span><span class="innerlight"></span></td></tr></tbody></table></div></li></ul></div><div id="marquee_area"><p  style="padding: 0px;" > Complete Daily Goals and Earn Crystals!</p></div><a href="http://amw.konaminet.jp/amw/naboo/home/menu_news?tab=developer&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" id="btn_news_admin" class="se_sys_menu_entr">INFO</a><ul id="gauge_epbp" ><li id="ep" class="clearfix"><p class="status_wrapper"><span class="status-title colorEp fontBold">EP: </span><span class="status-info colorEp"><span class="fontBold ">124</span>/124</span></p><div id="gaugeTbl" class="ep"><span class="innershadow"></span><table><tbody><tr style="width: 100%;"><td><span class="light"></span><span class="innerlight"></span></td></tr></tbody></table></div></li><li id="bp"><p class="status_wrapper"><span class="status-title colorBp fontBold">BP: </span><span class="status-info colorBp clearfix"><span class="fontBold ">10</span>/10</span></p><div id="gaugeTbl" class="bp"><span class="innershadow"></span><div class="gaugeArea"><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span><span class="gaugeGrid" style=" width: 8.4px;"></span></div><table><tbody><tr style="width: 100%;"><td><span class="light"></span><span class="innerlight"></span></td></tr></tbody></table></div></li></ul></section><section id="home_content"><div id="home_content_inner"><div id="leader_card"><p id="setting_button" class="se_sys_window_opn"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/102361024/1023610243_l.png" alt="leader card icon" width="105" /></p></div><style>
+	
+	
+	
+			#sw-content.mypage.lightside{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_grid_light.png), url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_default_light.jpg);}
+		#sw-content.mypage.darkside{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_grid_dark.png), url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_default_dark.jpg);}
+	</style>
+	
+	
+			<div id="featured_banner">
+			<script type="text/javascript">
+$(document).ready(function() {
+	$('#remain_days').each(function() {
+		var targetNum = $(this);
+		var remainTimer = new CountdownTimer(targetNum, function(){
+			$('#remain_days').parent().css('display', 'none');
+		});
+		remainTimer.countDown();
+	});
+});
+</script>
+<style>
+	.banner_txt{
+		position:absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		text-align:center;
+		height:16px;
+		text-shadow:0 0 3px #000;
+		font-size:8px !important;
+	}
+	.banner_txt02{
+		position:absolute;
+		bottom:5px;
+		left:108px;
+		width:190px;
+		text-align:left;
+		text-shadow:-1px -1px 2px #000, 1px 1px 2px #000;
+	}
+	.banner_txt.iPad{
+		font-size:20px !important;
+	}
+	.banner_date{
+		text-shadow:0 0 3px #000;
+		line-height:12px;
+		display:inline-block;
+	}
+</style>
+	<div class="txtAC" style="position:relative;">
+				
+						
+				<a href="http://amw.konaminet.jp/amw/naboo/wars/entrance/detail?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr" id="banner_event_home">
+								
+					<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/event/017_battlegrounds/preview_sq.png" width="90" height="70" />
+					<span class="banner_txt font-sw01" style="font-size:12px;">Coming Soon!</span>
+								</a>
+						</div>
+
+	
+
+		</div>
+	<div id="btn_main"><a href="http://amw.konaminet.jp/amw/naboo/gift/get/list.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" id="btn_inbox" class="main_btn se_sys_menu_entr"><span class="font-sw01">INBOX</span><div class="badge01" style="top:-5px; right:-5px;">87</div></a><a href="http://amw.konaminet.jp/amw/naboo/mission/list?tab=0&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" id="btn_goals" class="main_btn se_sys_menu_entr"><span class="font-sw01">GOALS</span></a><a href="http://amw.konaminet.jp/amw/naboo/guild/top?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" id="btn_legion" class="main_btn se_sys_menu_entr"><span class="font-sw01">LEGION</span></a></div><ul id="base_params"><li id="ap"><p class="status-info fontS">29951</p></li><li id="credit"><p class="status-info fontS">430173</p></li><li id="crystal"><p id="crystal_total_num" class="status-info fontS"><span class="colorGray fontS">now loading...</span></p><a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="btnPlus se_sys_menu_entr"></a></li></ul></div></section><section id="home_footer"><div id="strength" ><p id="deck_score" class="status-info font-sw01"><span class="colorGray fontS">now loading...</span></p><span class="title">Battle Strength</span></div><section id="news_wrapper" onclick="openNewsDialog()" class="se_sys_menu_entr"><div id="news_title"><span class="title font-sw01">NEWS<span id="news_num" class="news_badge_num">4</span></span><span class="more font-sw01">MORE</span></div>	<ul>
+					
+				
+		<li class="news_each_gacha">
+										<p style="vertical-align: middle;">
+									1 Free Card Pack(s) available!
+								</p>
+								</li>
+						
+				
+		<li class="news_each_league_battle_new_section">
+										<p style="vertical-align: middle;">
+									The previous Proving Grounds has ended. A new phase of Battles has begun!
+								</p>
+								</li>
+						
+				
+		<li class="news_each_claim_ap">
+										<p style="vertical-align: middle;">
+				                    					    You have 972 Ally Pt to claim!
+                    								</p>
+								</li>
+						
+				
+		<li class="news_each_guild_chat">
+										<p style="vertical-align: middle;">
+									There's a new message in the chat room!
+								</p>
+								</li>
+			
+
+
+		</ul>
+</section><a href="javascript:void(0)" id="btn_banner" onclick="openBannerDialog()" class="se_sys_menu_entr"></a><style>
+	
+	
+	
+			#sw-content.mypage.lightside{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_grid_light.png), url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_default_light.jpg);}
+		#sw-content.mypage.darkside{background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_grid_dark.png), url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_default_dark.jpg);}
+	</style>
+	<style>
+		#information {
+			position: relative;
+			width: 310px;
+			margin: 0 auto;
+			padding: 0;
+		}
+		/*#information:before, #information:after {
+			position:absolute;
+			content:"";
+			right:50%;
+			width:300px;
+			height:15px;
+			margin:0 -150px 0 0;
+			background-size:300px 15px;
+			-webkit-background-size:300px 15px;
+		}
+		#information:before {
+			top:-7px;
+		}
+		#information:after {
+			bottom:-8px;
+			transform: scaleY(-1);
+			-webkit-transform: scaleY(-1);
+		}*/
+		#information ul.area li {
+			display:block !important;
+			overflow:auto !important;
+			padding: 0 15px;
+			text-align: center;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+		#information .sg_main{
+			margin:0 auto;
+		}
+		#sg_pointer  {
+			position: relative;
+		}
+		
+		#sg_pointer, #sg_pointer li, #sg_pointer ul {
+			display: table;
+			width: 100% !important;
+			height: 3px !important;
+			margin-top: 2px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+		#sg_pointer li{
+			display:inline-block !important;
+			float:none !important;
+			width: 7px !important;
+			height: 3px !important;
+			margin:0 3px !important;
+			overflow:hidden!important;
+			border-radius: 0!important;
+			opacity: 1 !important;
+		}
+		#sg_pointer li.active{
+			background: #FFF !important;
+		}
+			.lightside #sg_pointer li.active{
+				box-shadow:
+					0px 0px 4px rgba(0,222,255,1),
+					inset 0px 0px 1px rgba(0,222,255,1);
+				-webkit-box-shadow:
+					0px 0px 4px rgba(0,222,255,1),
+					inset 0px 0px 1px rgba(0,222,255,1);
+			}
+			.darkside #sg_pointer li.active{
+				box-shadow:
+					0px 0px 4px rgba(255,0,0,1),
+					inset 0px 0px 1px rgba(255,0,0,1);
+				-webkit-box-shadow:
+					0px 0px 4px rgba(255,0,0,1),
+					inset 0px 0px 1px rgba(255,0,0,1);
+			}
+			/* GOLD */
+			.lightside.gold #sg_pointer li.active,
+			.darkside.gold #sg_pointer li.active {
+				box-shadow:
+					0px 0px 4px rgba(250,195,28,1),
+					inset 0px 0px 1px rgba(250,195,28,1);
+				-webkit-box-shadow:
+					0px 0px 4px rgba(250,195,28,1),
+					inset 0px 0px 1px rgba(250,195,28,1);
+			}
+		#sg_pointer li.false{ 
+			background: #000;
+			box-shadow: 0px 0px 1px #aaa,0px 0px 1px #aaa;
+		}
+		#information .area li p {
+			display: block;
+			height: 12px;
+			margin: 0;
+			line-height: 12px;
+		}
+	</style>
+	<section id="home-lower-area">
+		<div class="banner-content-area">
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#information").swipe_gallary({
+						'scrollSpeed':0.4,
+						'wrapWidth':270,
+						'wrapHeight':65,
+						'width':300,
+						'height':65,
+						'loop':true,
+						'autoMoveInterval':5000,
+						'autoMoveFirstInterval':5000
+					});
+				});
+			</script>
+				
+			<section id="information">
+				<div id="sg_main" class="sg_main">
+					<ul class="area fontSS">
+
+						
+												<li>
+							 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<a href="http://amw.konaminet.jp/amw/naboo/mission/list_daily?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr">
+									<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/campaign/goals001/goals001.png" width="100%" />
+				                <p>10/30 04:00 - 11/06 00:59 (ET)</p>
+			</a>
+		
+
+
+
+
+						</li>
+						
+						
+												<li>
+							<script type="text/javascript">
+$(document).ready(function() {
+	$('#remain_days').each(function() {
+		var targetNum = $(this);
+		var remainTimer = new CountdownTimer(targetNum, function(){
+			$('#remain_days').parent().css('display', 'none');
+		});
+		remainTimer.countDown();
+	});
+});
+</script>
+<style>
+	.banner_txt{
+		position:absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		text-align:center;
+		height:16px;
+		text-shadow:0 0 3px #000;
+		font-size:8px !important;
+	}
+	.banner_txt02{
+		position:absolute;
+		bottom:5px;
+		left:108px;
+		width:190px;
+		text-align:left;
+		text-shadow:-1px -1px 2px #000, 1px 1px 2px #000;
+	}
+	.banner_txt.iPad{
+		font-size:20px !important;
+	}
+	.banner_date{
+		text-shadow:0 0 3px #000;
+		line-height:12px;
+		display:inline-block;
+	}
+</style>
+	<div class="txtAC" style="position:relative;">
+				
+						
+				<a href="http://amw.konaminet.jp/amw/naboo/wars/entrance/detail?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr" id="banner_event_home">
+								
+					<img src='http://amw.konaminet.jp/amw/naboo/img/banner/en/event/017_battlegrounds/main.png' width="100%" />
+					<span style="font-size:12px;">Coming Soon!</span>
+								</a>
+						</div>
+
+	
+
+						</li>
+						
+					
+						
+						
+					
+						
+						
+						
+												
+												
+						
+					
+						
+						
+						
+					
+						
+						
+					
+						
+												
+						
+						
+						
+						
+					
+						
+												
+						
+						
+					
+						
+						
+												<li>
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="http://amw.konaminet.jp/amw/naboo/gacha/gacha/list.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr">
+			
+		<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/pack/redraw/redraw003.png" width="270" />
+			</a>
+	<span class="colorWarning">An option to keep one card and redraw five!</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+						</li>
+						
+						
+						
+												
+						<li>
+							 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+	                        				<a href="http://amw.konaminet.jp/amw/naboo/campaign/login_bonus/normal/info.php?login_bonus_id=6&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307"  class="se_sys_menu_entr">
+			<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/campaign/login008/login008.png" width="100%" />
+			<p class="colorWarning">End Date: 11/13 01:00 (ET)</p>
+		</a>
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						</li>
+												
+												<li>
+							 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="http://amw.konaminet.jp/amw/naboo/quest/map/entrance/info?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr">
+		<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/common/mapquest001.png" width="100%" />
+		<p>Complete maps on different planets for rewards!</p>
+	</a>
+
+
+
+						</li>
+						
+						
+												<li>
+							<script type="text/javascript">
+$(document).ready(function() {
+	$('#remain_days').each(function() {
+		var targetNum = $(this);
+		var remainTimer = new CountdownTimer(targetNum, function(){
+			$('#remain_days').parent().css('display', 'none');
+		});
+		remainTimer.countDown();
+	});
+});
+</script>
+<style>
+	.banner_txt{
+		position:absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		text-align:center;
+		height:16px;
+		text-shadow:0 0 3px #000;
+		font-size:8px !important;
+	}
+	.banner_txt02{
+		position:absolute;
+		bottom:5px;
+		left:108px;
+		width:190px;
+		text-align:left;
+		text-shadow:-1px -1px 2px #000, 1px 1px 2px #000;
+	}
+	.banner_txt.iPad{
+		font-size:20px !important;
+	}
+	.banner_date{
+		text-shadow:0 0 3px #000;
+		line-height:12px;
+		display:inline-block;
+	}
+</style>
+	<div class="txtAC" style="position:relative;">
+			
+					<a href="http://amw.konaminet.jp/amw/naboo/league_battle/main?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr">
+				<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/common/league001_result.png" width="100%" />
+				<span class="banner_date" style="font-size:11px;">Shoot for the highest Class!</span>
+			</a>
+			
+		</div>
+
+						</li>
+						
+					
+
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+												<li>
+							<script type="text/javascript">
+$(document).ready(function() {
+	$('#remain_days').each(function() {
+		var targetNum = $(this);
+		var remainTimer = new CountdownTimer(targetNum, function(){
+			$('#remain_days').parent().css('display', 'none');
+		});
+		remainTimer.countDown();
+	});
+});
+</script>
+<style>
+	.banner_txt{
+		position:absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		text-align:center;
+		height:16px;
+		text-shadow:0 0 3px #000;
+		font-size:8px !important;
+	}
+	.banner_txt02{
+		position:absolute;
+		bottom:5px;
+		left:108px;
+		width:190px;
+		text-align:left;
+		text-shadow:-1px -1px 2px #000, 1px 1px 2px #000;
+	}
+	.banner_txt.iPad{
+		font-size:20px !important;
+	}
+	.banner_date{
+		text-shadow:0 0 3px #000;
+		line-height:12px;
+		display:inline-block;
+	}
+</style>
+					<div class="txtAC" style="position:relative;">
+		
+						
+				<a href="http://amw.konaminet.jp/amw/naboo/guild/event/warship_combat/ranking?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr">
+					<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/event/010_legions/main.png" width="270" />
+					<span style="font-size:11px;">This event has ended. Stay tuned for our next event!</span>
+				</a>
+					</div>
+			
+						</li>
+						
+						
+						
+						
+						
+						
+												
+						
+						
+						
+					</ul>
+				</div>
+				<div id="sg_pointer" class="sg_pointer">
+					<ul></ul>
+				</div>
+			</section>
+		</div>
+	</section>
+</section>		<style>
+			#notification_balloon_area {
+				position: absolute;
+				display: block;
+				width: 320px;
+				height: 80px;
+				left: 0;
+				bottom: 0;
+				padding: 0;
+				z-index: 1000;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+			}
+			
+			#notification_balloon_content {
+				position: relative;
+				display: table;
+				width: 320px;
+				height: 80px;
+				margin: auto;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				z-index: 999;
+				background-repeat: no-repeat;
+				background-size: 320px 80px;
+				background-position: center center;
+			}
+					#notification_balloon_content.ft00 {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_bottom_00.png);
+					}
+					#notification_balloon_content.ft01 {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_bottom_01.png);
+					}
+					#notification_balloon_content.ft02 {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_bottom_02.png);
+					}
+					#notification_balloon_content.ft03 {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_bottom_03.png);
+					}
+					#notification_balloon_content.ft04 {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_bottom_04.png);
+					}
+					
+				/* Crystal付き用 */
+					#notification_balloon_content.ft00_orange {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_orange_bottom_00.png);
+					}
+					#notification_balloon_content.ft01_orange {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_orange_bottom_01.png);
+					}
+					#notification_balloon_content.ft02_orange {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_orange_bottom_02.png);
+					}
+					#notification_balloon_content.ft03_orange {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_orange_bottom_03.png);
+					}
+					#notification_balloon_content.ft04_orange {
+						background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/notification/notification_orange_bottom_04.png);
+					}
+					.shadowOrange{
+						text-shadow:1px 1px 6px #FF3300, -1px -1px 6px #FF3300;
+						-webkit-text-shadow:1px 1px 6px #FF3300, -1px -1px 6px #FF3300;
+					}
+				/* リンクの範囲を広げる(マスク) */
+				.close_extension {
+					position: absolute;
+					display: inline-block;
+					width: 24px;
+					height: 24px;
+					right: -6px;
+					top: -3px;
+					padding: 10px;
+					z-index: 25;
+				}
+				/* GOALS 内容 */
+				.notification_balloon_inner {
+					display: table;
+					margin: 15px auto auto 11px;
+				}
+				/* タイトル */
+				.notification_balloon_inner .title_goals {
+					display: inline-block;
+					width: 40px;
+					height: 40px;
+					
+					
+						padding-top: 14px;
+					
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+				}
+				.notification_balloon_inner ul{
+					display: table-cell;
+					width: 240px;
+					height: 40px;
+					vertical-align: middle;
+					padding: 0;
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+				}
+				.notification_balloon_inner ul li {
+					display: block;
+					width: 100%;
+					line-height: 12px;
+				}
+		</style>
+		
+		
+
+        
+					<div id="notification_balloon_area">
+				<section id="notification_balloon_content" class="ft00">
+					<span id="baloon_close" class="close_extension se_sys_window_cls"></span>
+					<p class="close" style="top: 7px; right: 4px;"><span></span></p>
+					<a href="http://amw.konaminet.jp/amw/naboo/mission/list?tab=0&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307">
+						<div class="notification_balloon_inner">
+							<span class="title_goals font-sw01 shadowLight fontSS txtAC">GOALS</span>
+							
+							<ul class="padR padL fontS">
+																	<li>
+										Achieve All the Goals (Not Including Daily Goals)
+									</li>
+									<li class="reward">
+										Reward: Gold Card Pack Ticket
+									</li>
+																
+							</ul>
+						</div>
+					</a>
+				</section>
+			</div>
+        
+
+		</div><div id="card-zoom" style="display:none;"><div class="panel-dialog"><div class="panel-dialog-inner txtAC"><span id="setting_closer" class="dialogClose detail se_sys_window_cls cancel"></span><div class="leader_card_wrapper padT"><span id="zoom_thumb_wrapper" class="cancel"></span><ul class="padT fontM clearfix"><li class="param" style="display:inline-block;"><span id="caps_card_attack" class="colorParamTitle">ATK: </span><span id="card_attack"></span></li><li class="param" style="display:inline-block;"><span class="colorParamTitle">&nbsp;&nbsp;DEF: </span><span id="card_defence"></span></li></ul></div><a href="javascript:void(0)" onclick="jump_renew_cache('http://amw.konaminet.jp/amw/naboo/card/card/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307')" class="btnN se_sys_menu_entr">CHANGE LEADER CARD</a></div></div></div>
+
+
+
+
+	<style>
+		#info_dialog_date{
+			width: 100%;
+			text-align: center;
+			padding:3px 0;
+			text-shadow:1px 1px 2px #000, -1px -1px 2px #000;
+		}
+		#info_dialog_content{
+			height:320px;
+			background:url(http://amw.konaminet.jp/amw/naboo/img/guild/event/preview/preview_normal.jpg) no-repeat center;
+			background-size:100%;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			padding:0 0 0;
+		}
+		#info_dialog_content_inner{
+			background:rgba(0,0,0,0.7);
+			width:180px;
+			min-height:190px;
+			padding-bottom:40px;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			position:relative;
+			margin:0 auto;
+		}
+		#info_dialog_btn{
+			position:absolute;
+			width:100%;
+			bottom:0;
+			left:0;
+		}
+	</style>
+	<div class="panel-dialog legion_warship" id="info_dialog">
+		<div class="panel-dialog-inner">
+			<p class="dialogClose se_sys_window_cls"></p>
+			<section id="info_dialog_content">
+				<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/event/010_legions/logo.png" width="100%"/>
+				
+				<div id="info_dialog_date">
+									End Date: 11/02 21:00 (EDT) | 11/02 20:00 (EST)
+								</div>
+				
+
+				<div id="info_dialog_content_inner">
+											<p class="fontS pad10">The "Legions at War" event has ended.<br><br>Stay tuned for our next event!</p>
+										<div id="info_dialog_btn" class="txtAC">
+						<a href="http://amw.konaminet.jp/amw/naboo/guild/event/warship_combat/event_detail?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="btnS se_sys_menu_entr">Event Details</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$("#info_dialog.legion_warship").implant_dialog({"closer":".dialogClose"});
+			$("#info_dialog.legion_warship").call_implant_dialog();
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel-dialog" id="banner_list_dialog"><div class="panel-dialog-inner" style="min-height:250px;"><p class="dialogClose se_sys_window_cls"></p><h2 class="title_panel01">INFORMATION</h2><ul class="pad10"><li> 
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+  	<a href="http://amw.konaminet.jp/amw/naboo/player_code/campaign?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307" class="se_sys_menu_entr">
+					<img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/common/cam_playercode001.png" width="100%" />
+			</a>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+</li></ul></div></div><script type="text/javascript">$("#banner_list_dialog").implant_dialog({"closer":".dialogClose"});</script><script type="text/javascript">$(document).ready(function(e) {function bubbleMessage(tarWindow){var boxHeight = $(tarWindow).innerHeight();$(tarWindow).css({"-webkit-transform":"translate(0,-" + boxHeight + "px)"});setTimeout(function (){$(tarWindow).transition_animate({"-webkit-transform":"translate(0,0)"},0.5,'ease-out',function(){setTimeout(function (){$(tarWindow).transition_animate({"-webkit-transform":"translate(0,-" + boxHeight + "px)"},1,'ease-in');},2300);});},300);}new bubbleMessage("#message_session");});</script><style>#message_session{display:block;width:100%;padding:0 0 5px;position:absolute;top:0;left:0;text-align:center;z-index:9999;}#message_session_inner{display:block;width:100%;margin:0 auto;border-radius:3px;background:url(http://amw.konaminet.jp/amw/naboo/img/home/session_error_base.png) no-repeat center;background-size:100%;padding:10px;box-sizing:border-box;-webkit-box-sizing:border-box;}#message_session_inner_after{display:block;width:100%;height:10px;content:'';background:url(http://amw.konaminet.jp/amw/naboo/img/home/session_error_bottom.png) no-repeat center;background-size:100% 100%;margin-top:-2px;}</style><div id="message_session"><div id="message_session_inner"><p class="txtAC colorCaution">WELCOME BACK</p><p class="txtAL fontS">It seems you've been away for a while... Continue exploring the galaxy!</p></div><div id="message_session_inner_after"></div></div><div id="news_dialog" class="panel-dialog"><div class="panel-dialog-inner"><h2 class="title_panel01">NEWS</h2><span class="dialogClose close"></span><section><p class="boxArea01 txtAC"><span>You have <span class='news_badge_num colorEmphasis'>4</span> player updates!</span></p>	<ul class="btnList">
+					
+									
+		<li class="news_each_gacha">
+							<a href="http://amw.konaminet.jp/amw/naboo/gacha/gacha/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307"  class="list-effect clearfix txtAL" >
+							<p style="vertical-align: middle;">
+									1 Free Card Pack(s) available!
+								</p>
+							</a>
+					</li>
+						
+									
+		<li class="news_each_league_battle_new_section">
+							<a href="http://amw.konaminet.jp/amw/naboo/league_battle/main.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307"  class="list-effect clearfix txtAL" >
+							<p style="vertical-align: middle;">
+									The previous Proving Grounds has ended. A new phase of Battles has begun!
+								</p>
+							</a>
+					</li>
+						
+									
+		<li class="news_each_claim_ap">
+							<a href="http://amw.konaminet.jp/amw/naboo/ally/ally/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307"  class="list-effect clearfix txtAL" >
+							<p style="vertical-align: middle;">
+				                    					    You have 972 Ally Pt to claim!
+                    								</p>
+							</a>
+					</li>
+						
+									
+		<li class="news_each_guild_chat">
+							<a href="http://amw.konaminet.jp/amw/naboo/guild/chat/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307"  class="list-effect clearfix txtAL" >
+							<p style="vertical-align: middle;">
+									There's a new message in the chat room!
+								</p>
+							</a>
+					</li>
+			
+
+
+		</ul>
+<script type="text/javascript">
+    var ajaxLock = 0;
+    function get_ajax_data(url, target){
+        if(ajaxLock) return;
+        
+        ajaxLock = 1;
+        var that = this;
+        $.ajax({
+            type:'POST',
+            url:url,
+            dataType:'json',
+            data:{},
+            timeout:300000,
+            error:function(XMLHttpRequest,textStatus,errorThrown){
+				$('.dialog_news_action_message').html("ERROR");
+				$('#dialog_news_action_result').call_implant_dialog();
+				ajaxLock = 0;
+            }
+        }).then(function(data){
+            if(data.code == 200){
+                console.log("OK");
+                var current_news_num = $('.news_badge_num').html();
+                var result_news_num = current_news_num - 1;
+                if(result_news_num > 0){
+                	$('.news_badge_num').html(result_news_num);
+                	$('.news_each_'+ target).css({"display":"none"});
+                }else{
+                	$('.news_badge_num').css({"display":"none"});
+                	$('.news_each_'+ target).html("<div class='pad15 txtAC no-news'>No new information available</div>");
+                	$('#news_wrapper').attr("onclick","location.href='http://amw.konaminet.jp/amw/naboo/home/menu_news?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307'");
+                }
+                console.log(current_news_num);
+                console.log(result_news_num);
+                					$('#news_dialog').close_implant_dialog();
+                                $('.dialog_news_action_message').html(data.message);
+                $('#dialog_news_action_result').call_implant_dialog();
+            } else {
+                $('.dialog_news_action_message').html(data.message);
+                $('#dialog_news_action_result').call_implant_dialog();
+            }
+            ajaxLock = 0;
+        });
+    }
+</script>
+<hr /><a href="javascript:void(0)" class="btnN" onclick="location.href='http://amw.konaminet.jp/amw/naboo/home/menu_news?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307'">NEWS</a></section></div></div><div class="panel-dialog" id="dialog_news_action_result"><div class="panel-dialog-inner"><h2 class="title_panel01">CONFIRM</h2><div class="colorEmphasis txtAC padB pad15 dialog_news_action_message"></div><div class="txtAC"><a href="javascript:void(0)" class="btnS modal_close se_sys_menu_entr">OK</a></div></div></div><div id="ev_recover_wrap"></div><script type="text/javascript">loader = new homeAjax;loader.addQueue("http://amw.konaminet.jp/amw/naboo/home/ajax/crystal_info.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307", "ev_recover_wrap", "html");loader.addQueue("http://amw.konaminet.jp/amw/naboo/home/ajax/deck_info.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307", "", "json", function(data){$("#deck_score").html(data['score']);});if($("#battle_ranking_wrap")){loader.addQueue("http://amw.konaminet.jp/amw/naboo/home/ajax/battle_ranking_info.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025307", "battle_ranking_wrap", "html");}loader.homeAjaxLoad();window.onload = function() {$("#sw-content").css({"opacity":"1"});console.log("loaded");}</script>
+<script type="text/javascript">var app_version="0.0.0";sendMessageToApp('back.disable');function jump_prev_page() {return false;}</script>
+						</div>
+						<div id="debug_view"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
+

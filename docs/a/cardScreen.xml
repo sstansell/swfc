@@ -1,0 +1,3002 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+						<meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=143" />
+		        <meta name="format-detection" content="telephone=no, address=no" />
+        <script language="JavaScript">
+            var is_content_viewer = true;
+            var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+            var IS_BROWSER        = 0;
+            var APP_SCHEME        = "dciapp";
+            var ERROR_URL         = "http://amw.konaminet.jp/amw/naboo/error/error.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334";
+            var CARRIER           = "android";
+			var TB                = null;
+			
+							var COMMON_FOOTER_HEIGHT = (60 + 20);	
+				var COMMOM_SIDEBAR_WIDTH = 0;			
+										
+									var VIEWPORT_SCALE	= 1.0;
+				
+				
+				var availWidth = screen.width - COMMOM_SIDEBAR_WIDTH;
+				var availHeight = screen.height;
+
+									var SCREEN_WIDTH			= 320;
+				
+				var SCREEN_HEIGHT			= ~~((availHeight - COMMON_FOOTER_HEIGHT) * (SCREEN_WIDTH / availWidth));
+				var SCREEN_HEIGHT_NONAVI	= ~~(availHeight * (SCREEN_WIDTH / availWidth));
+
+						function getWVHeight(){
+									
+					return (window.innerHeight -3);
+							}
+        </script>
+        <script language="JavaScript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.2.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.url.parser.js?2014103001"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load_nocv.min.js?2014103001"></script>
+		        <script>
+			var WINDOW_WIDTH		= $(window).width();
+						
+			var BASE_URL = 'http://amw.konaminet.jp/amw/naboo';
+			var CONTAINER_PATH = '/content_viewer/content_viewer.php';
+            
+			function greeThumbnail(ids, huge) {
+                if (!!ids == false || ids.length <= 0) return;
+
+				$(".gree-thumb").each(function(i) {
+					$(this).attr('src', "http://amw.konaminet.jp/amw/naboo/img/test/avatar.png");
+				});
+
+            }
+			function version_compare (v1, v2, operator) {compare = 0;vm = {'dev': -6,'alpha': -5,'a': -5,'beta': -4,'b': -4,'RC': -3,'rc': -3,'#': -2,'p': -1,'pl': -1},prepVersion = function (v) {v = ('' + v).replace(/[_\-+]/g, '.');v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.');return (!v.length ? [-8] : v.split('.'));};numVersion = function (v) {return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10));};v1 = prepVersion(v1);v2 = prepVersion(v2);x = Math.max(v1.length, v2.length);for (i = 0; i < x; i++) {if (v1[i] == v2[i]) {continue;}v1[i] = numVersion(v1[i]);v2[i] = numVersion(v2[i]);if (v1[i] < v2[i]) {compare = -1;break;} else if (v1[i] > v2[i]) {compare = 1;break;}}if (!operator) {return compare;}switch (operator) {case '>':case 'gt':return (compare > 0);case '>=':case 'ge':return (compare >= 0);case '<=':case 'le':return (compare <= 0);case '==':case '=':case 'eq':return (compare === 0);case '<>':case '!=':case 'ne':return (compare !== 0);case '':case '<':case 'lt':return (compare < 0);default:alert(operator);return null;}}
+			
+			
+			function jumpAnchor(anchor) {
+				var p = $(anchor).offset().top;
+									sendMessageToApp("scroll.pos", {"py":p, "scale":VIEWPORT_SCALE, "animate":1});
+							}			
+        </script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.overlay.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.transition_animate.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_link.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.implant_dialog.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.swipe_gallary.min.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.scroll_event.min.js?2014103001"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/global_footer_menu.js?2014103001"></script>
+		        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_ctrl.js?2014103001"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_refresh.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/se.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_hover.js?2014103001"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_manager.js?2014103001"></script>
+		<link href="http://amw.konaminet.jp/amw/naboo/csstpl/global?2014103001&ln=en" rel="stylesheet" type="text/css" />
+        <title>SWFC</title>
+            </head>
+    <body>
+
+    <div id="wrapper">
+
+		<div id="sw-wrapper" class="lightside">
+		<div id="sw-container">
+		<script type="text/javascript">
+			
+			function user_grade_update() {
+									GREE.ui(
+						{
+							'method':'upgrade',
+							'grade':3,
+							'callback_url':'http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334'
+						},
+						function(response){
+							if(response.data.upgraded) {
+			
+								top.location.href = "http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334";
+							}
+						}
+					);
+							}
+	
+										sendMessageToApp('session.start', {id:'FG6FED5838DF988H9AHH4CNH', 'ua':navigator.userAgent});
+									sendMessageToApp('menu.setdata', {'value':'http://amw.konaminet.jp/amw/naboo/', 'name':'BASE_URL'});
+						$(window).resize(function(){
+				var WINDOW_HEIGHT	= $("#sw-content").height();
+				$("#sw-content").css({"height": getWVHeight() +"px"});
+			});
+			$(document).ready(function(){
+				
+					var WINDOW_HEIGHT	= $("#sw-content").height();
+					if( SCREEN_HEIGHT >= WINDOW_HEIGHT){
+													
+							$("#sw-content").css({"height": getWVHeight() +"px"});
+											}
+				
+				$(".btnN.blink, .btnS.blink, .btnSS.blink").append("<div class='whiteBlink'></div>");
+				
+				
+								
+									/*sendMessageToApp('menu.show');*/
+                                            sendMessageToApp('menu.show', {'battle_lock':0});
+                    				                sendMessageToApp('page.scroll');
+			});	
+			function scroll_lock(e){
+				e.preventDefault();
+			}
+
+			function reload_page(){return false;}
+			function jump_next_page(){return false;}
+			function jump_renew_cache(url,dac){
+				unixTIme = parseInt((new Date)/1000);
+				to=url.replace(/u=[0-9]+/,'u='+unixTIme);
+				if(dac==undefined) {
+					sendMessageToApp('music.status',{volume:'default'});
+				}
+				location.href=to;
+			}
+			function show_settingmenu()
+			{
+				sendMessageToApp('game.setting');
+				globalFooterMenuClose();
+			}
+			function show_gree_dashboard()
+			{
+				GREE.ui({'method':'open', 'view':'dashboard'});
+				globalFooterMenuClose();
+			}
+			
+			
+			var push_back="";
+			var onclick_back="";
+			function setPushBack(back){
+				push_back = back;
+				console.log(push_back);
+			}
+			function pushBack(){
+							var url = location.href;
+				if(is_redirect){
+					
+					document.location = redirect_url;
+				}else if(url.indexOf("card/deck/list") >= 0){
+					document.location= "http://amw.konaminet.jp/amw/naboo/card/deck/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334";
+				}else if(is_page_reload){
+					
+					document.location.reload();
+				}else if(is_dialog_open){
+					
+					if(dialog_target.length >= 2){
+						document.location.reload();
+					}else{
+						$(dialog_target[dialog_target.length-1]).close_implant_dialog();
+					}
+				}else{
+					
+					if(url.indexOf("home/home") == -1){
+						if(url.indexOf("help/user_policy") >= 0){
+							
+							   sendMessageToApp('page.title');
+						}else{
+							if(push_back != ""){
+								
+								document.location = push_back;
+							}else if(onclick_back != ""){
+								
+								onclick_back();
+							}else{
+															document.location= "http://amw.konaminet.jp/amw/naboo/home/home?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334";
+														}
+						}
+					}else{
+						sendMessageToApp('app.quitDialog');
+					}
+				}
+						}
+		</script>
+		<div id="page_content">
+
+<script type="text/javascript">
+    try {
+        document.execCommand('BackgroundImageCache', false, true);
+
+		sendMessageToApp('music.play', {file:"bg_cantina_band"});
+    } catch(e) {}
+    var is_content_viewer;
+    if(is_content_viewer == undefined) {
+        var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+        var IS_BROWSER        = 0;
+        var APP_SCHEME        = "dciapp";
+        require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.1.min.js?2014103001",
+            function(){
+                require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load.min.js?2014103001",
+                    function(){
+                        $(document).ready(function(){
+                            sendMessageToApp('loading.finish',{url:""});
+                        });
+                    }
+                )  
+            }
+        );   
+    }else{
+		        $(document).ready(function(){
+									sendMessageToApp('loading.finish',{url:""});
+			        });
+    }
+    
+    function fix_select_box(){
+        var target = $("form select");
+        if(target){
+            target.before("<div class='select-txt'></div>");
+            target.change(function(){
+                $(this).prev().text($("option:selected",this).text());
+            }).trigger("change");   
+        }
+    }
+    
+    function require_js( src, callback )
+    {
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.onload = function(){
+            callback();
+        };
+        script.src = src;
+        document.body.appendChild( script );
+    }
+</script>
+<style>
+
+	#sw-wrapper{
+			}
+
+	.activeLink.blink{
+		-webkit-animation-name: activeBlink;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-fill-mode: both;
+		-webkit-perspective: 300;
+		-webkit-transform : translate3d(0, 0, 0);
+		-webkit-transform-style: preserve-3d;
+	}
+	@-webkit-keyframes activeBlink{
+		0% {
+			opacity:0;
+		}
+		50% {
+			opacity:0.7;
+		}
+		100% {
+			opacity:0;
+		}
+	}
+</style>
+
+<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/gacha.js?2014103001"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    
+    	    
+    	
+    	    		sendMessageToApp("menu.show", {'gacha_free':1, 'page':'pack'});
+    	    
+    	
+    		$("select.ticket-select").change(function() {
+    			var num = document.navi.tickets.selectedIndex;
+    			$(".gacha-ticket-each").addClass('hide');
+    			$(".gacha-ticket-each").eq(num).removeClass('hide');
+    		}).trigger("change");
+    		
+    		$( '.recover.ally_pt' )
+    			.bind( 'touchstart mousedown', function(){
+    			$( this ).css({"background-position":"top"});
+    		}).bind( 'touchend mouseup', function(){
+    			$( this ).css({"background-position":"bottom"});
+    		});
+    
+    	
+    		greeThumbnail(["109499938","382159514","487756245","544678202","507866334"]);
+    
+    	    $("p.star_list").html('<span class="rarity4"><img class="rarity_l_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png" />&nbsp;&nbsp;(<img class="rarity_s_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_short.png" />)&nbsp;&nbsp;</span><br /><span class="rarity3"><img class="rarity_l_04" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s4_long.png" />&nbsp;&nbsp;(<img class="rarity_s_04" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s4_short.png" />)&nbsp;&nbsp;</span><br /><span class="rarity2"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" />&nbsp;&nbsp;(<img class="rarity_s_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_short.png" />)&nbsp;&nbsp;</span><br /><span class="rarity1"><img class="rarity_l_02" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s2_long.png" />&nbsp;&nbsp;(<img class="rarity_s_02" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s2_short.png" />)&nbsp;&nbsp;</span><br /><span class="rarity0"><img class="rarity_l_01" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s1_long.png" />&nbsp;&nbsp;(<img class="rarity_s_01" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s1_short.png" />)&nbsp;&nbsp;</span>');
+    	    $("p.star_list").css("text-align", "center");
+    	        	        	    $("p.star_list span.rarity4").append('5-Star');
+    	        	        	    $("p.star_list span.rarity3").append('4-Star');
+    	        	        	    $("p.star_list span.rarity2").append('3-Star');
+    	        	        	    $("p.star_list span.rarity1").append('2-Star');
+    	        	        	    $("p.star_list span.rarity0").append('1-Star');
+    	    
+    	
+    	$("#error-dialog").implant_dialog();
+    	$("#error-dialog2").implant_dialog();
+		$("#cereb_dialog").implant_dialog({closer:'.dialogClose'});
+    	
+    	
+
+    	
+    	$("#card_detail").implant_dialog({closer:'#detail_closer', scroll:true});
+    	$("#dialog_rarity").implant_dialog({closer:".dialogClose, .btn_rarity_close"});
+    	$("#btn_about_rarity").click(function() {
+    		$("#dialog_rarity").call_implant_dialog();
+    	});
+
+    	
+		    });
+
+    function blessingAjax(){
+        this.is_loading = 0;
+        this.dom = null;
+        this.url = null;
+        this.confirm = 0;
+    };
+    blessingAjax.prototype={
+        blessing:function(url, dom, need_confirm){
+
+            var that = this;
+            if(that.is_loading) return;
+            
+            that.dom = dom;
+            that.url = url;
+            
+            if(need_confirm){
+                that.confirm = 1;
+                $("#cereb_dialog_title").html('Sent Congratulations');
+                                    $("#cereb_dialog_txt").html('Be aware that you will not receive additional AP when you reach 30000 AP.');
+                                $("#cereb_dialog").call_implant_dialog();
+                return;
+            }
+            
+            that.is_loading = 1;
+            
+            $.ajax({
+                type:'POST',
+                url:url,
+                dataType:'json',
+                data:{},
+                timeout:3000,
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    that.is_loading = 0;
+                }
+            }).then(function(data){
+                that.is_loading = 0;
+                if(data.result){
+                    that.dom.addClass('disable');
+                    that.dom.removeAttr('onclick');
+                    $("#cereb_dialog_title").html('Sent Congratulations');
+                    $("#cereb_dialog_txt").html(data.text);
+                    $("#cereb_dialog").call_implant_dialog();
+                }else{
+                    $("#cereb_dialog_title").html('ERROR');
+                    $("#cereb_dialog_txt").html('Could not send Congratulations. Please try again.');
+                    $("#cereb_dialog").call_implant_dialog();
+                }
+                
+                if(data.is_limit){
+                    $(".blessing_btn").addClass('disable');
+                    $(".blessing_btn").removeAttr('onclick');
+                }
+            });
+        },
+        dialogEvent:function(){
+            $("#cereb_dialog").close_implant_dialog();
+            
+            var that = this;
+            if(that.is_loading || !that.confirm) return;
+            
+            that.is_loading = 1;
+            $.ajax({
+                type:'POST',
+                url:that.url,
+                dataType:'json',
+                data:{},
+                timeout:3000,
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    that.is_loading = 0;
+                    that.confirm = 0;
+                }
+            }).then(function(data){
+                that.is_loading = 0;
+                that.confirm = 0;
+                if(data.result){
+                    that.dom.addClass('disable');
+                    that.dom.removeAttr('onclick');
+                    $("#cereb_dialog_title").html('Sent Congratulations');
+                    $("#cereb_dialog_txt").html(data.text);
+                    $("#cereb_dialog").call_implant_dialog();
+                }else{
+                    $("#cereb_dialog_title").html('ERROR');
+                    $("#cereb_dialog_txt").html('Could not send Congratulations. Please try again.');
+                    $("#cereb_dialog").call_implant_dialog();
+                }
+                if(data.is_limit){
+                    $(".blessing_btn").addClass('disable');
+                    $(".blessing_btn").removeAttr('onclick');
+                }
+            });
+        }
+    }
+    blessingManager = new blessingAjax();
+    function blessingDialogButton(){
+        blessingManager.dialogEvent();
+    }
+    
+	function display_card_detail(json, rarity, target){
+		//$('#detail_thumb').css('background-image', 'url('+ thumb +')');
+		$('#detail_thumb').attr('src', "http://amw.konaminet.jp/amw/naboo/img/" + [json['thumb']]+"_l.png");
+		$("#card_detail").attr('class', 'detail dialogAnim attr' + json['attribute']);
+		$("#detail_name").html(json['name']);
+		$("#detail_level").html(1 + " ( MAX"+json['max_level']+" )");
+		$("#detail_hp").html(json['max_hp']);
+		$("#detail_rarity").html(json['rarity_full']);
+		$("#detail_cost").html(json['cost']);
+		$("#detail_attack").html(json['attack']);
+		$("#detail_attack_dist_max").html(json['range']);
+		$("#detail_defence").html(json['defence']);
+		$("#detail_durability").html(json['durability']);
+		$("#detail_slot_x").html(json['slot_x']);
+		$("#detail_slot_y").html(json['slot_y']);
+		$("#detail_stack_cnt").html(json['stack_cnt']);
+		$("#detail_selling_price").html(json['price']);
+		if ( json['skill_name'] != undefined){
+			$("#skill-info").css("display", "block");
+			$("#detail_skillname").html(json['skill_name']);
+			$("#detail_skillinfo").html(json['skill_comment']);
+			$("#detail_skilllvl").html(json['skill_level']);
+			$("#detail_skillmax").html(json['skill_max_level']);
+		}else{
+			$("#skill-info").css("display", "none");
+		}
+		if(json['race'] > 0 ){
+			$("#detail_type").html($(target).find(".raceIcon").html());
+			$("#detail_type").parent(".param").show();
+		}else{
+			$("#detail_type").parent(".param").hide();
+		}
+		$("#detail_comment").html(json['comment']);
+		if(json['awake_power']>1){
+			$(".card-detail-img").prepend("<span class='iconPower'></span>");
+		}else{
+			$(".card-detail-img .iconPower").remove();
+		}
+
+		$("#card_detail").call_implant_dialog();
+	}
+
+</script>
+
+
+<style>
+	body {
+	background: #06143b;
+}
+
+.hide{
+	display:none !important;
+}
+
+.show{
+	display:block;	
+}
+
+form{
+	display:inline-block;
+	width:auto;
+}
+
+#information{
+	width:270px;
+	margin:0 auto;
+}
+
+/*--  --*/
+span.side-icon{
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	width:13px;
+	height:13px;
+	margin-right:5px;
+	text-align:center;
+	font-size:10px;
+	line-height:13px;
+	display:inline-block;
+}
+
+span.side-icon.light{
+	box-shadow:0 0 6px #009fd7, inset 0 0 2px #009fd7;
+	-webkit-box-shadow:0 0 6px #009fd7, inset 0 0 2px #009fd7;
+}
+span.side-icon.dark{
+	box-shadow:0 0 6px #ff0000, inset 0 0 2px #ff0000;
+	-webkit-box-shadow:0 0 6px #ff0000, inset 0 0 2px #ff0000;
+}
+
+span.side-icon.neutral{
+	box-shadow:0 0 6px #ffffff, inset 0 0 2px #ffffff;
+	-webkit-box-shadow:0 0 6px #ffffff, inset 0 0 2px #ffffff;
+}
+
+/*  */
+
+.btn-only{
+	display:block;
+	vertical-align:middle;
+	text-align:center;
+	width:100%;
+}
+
+.btn-only .btn1{
+	margin:0 10px;
+}
+
+.gacha-cost{
+	clear:both;
+	display:block;
+	text-align:left;
+	margin:7px 0;
+}
+
+/*  */
+.btn-friendgacha-wrapper .btn-sw{
+	margin-bottom:40px;
+}
+
+.gacha-each .gacha-info{
+	clear:both;
+	display:block;
+	margin-bottom:5px;
+}
+
+.gacha-btn-each{
+	display:inline-block;
+	width:49%;
+	text-align:center;
+}
+
+.gacha-btn-each a{
+	display:inline-block;
+}
+
+.gacha-btn-each .gacha-price,
+.gacha-btn-each .btn-info{
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/headding/title_blur.png);
+	background-size: 160px 15px;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-shadow: 1px 1px 1px black;
+	height: 15px;
+	text-align: center;
+}
+
+.notice-max-card{
+	text-align:left;
+	line-height:1.2em;
+}
+
+.notice-not-enough-ally-pt{
+	text-align:center;
+	line-height:1.2em;
+}
+
+.btn-get-ap span{
+	line-height:13px;
+	display: block;
+	padding-top: 7px;
+}
+
+div.card-list .card-img .new-img{
+	width:60px;
+}
+
+/*ROOKIES*/
+.box-area-rookies{
+	/* background-color:rgba(90, 10, 0, 0.9); */
+	background: -webkit-gradient(linear, left top, left bottom, 
+	color-stop(0%,rgba(52,52,52,1)), 
+	color-stop(30%,rgba(14,14,14,1)), 
+	color-stop(70%,rgba(14,14,14,1)), 
+	color-stop(100%,rgba(52,52,52,1))) !important;
+	margin: -7px auto;
+	position: relative;
+	padding: 8px;
+	border:#B8B28E 1px solid;
+	border-radius: 3px;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.8) inset;
+}
+
+.box-area-rookies .card-pack-banner{
+	width:270px;
+	margin-bottom:10px;
+}
+
+.box-area-rookies .gacha-message{
+	position: relative;
+	padding: 0 5px 8px;
+}
+
+.box-area-rookies .gacha-message2{
+	/*color:#ddd87b;*//* colorCaution */
+	text-align:center;
+	text-shadow:1px 1px 1px black;
+	margin-bottom:5px;
+}
+
+.box-area-rookies .gacha-message3{
+/*	color:#ddd87b;*//* colorCaution */
+	text-align:left;
+	text-shadow:1px 1px 1px black;
+	margin-bottom:5px;
+}
+
+.box-area-rookies .gacha-message-sale{
+	color:#ff0000;
+	font-weight:bold;
+	text-align:center;
+	text-shadow:1px 1px 1px black;
+	margin-bottom:5px;
+}
+
+.box-area-rookies .gacha-payment-each{
+	width: 264px;
+	height: 76px;
+	margin: -15px auto 5px;
+	padding-bottom: 5px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat center;
+	background-size: 260px 1px;
+	background-position: center bottom;
+}
+
+.box-area-rookies .gacha-content{
+	display:table;
+	padding:0 10px;
+	height:100px;
+	margin:0 auto 10px;	
+}
+
+.box-area-rookies .gacha-price{
+	width:200px;
+	margin:0 auto;
+	background:#150e00;
+	border:#fff 1px solid;
+	text-align:center;
+	padding:5px 0;
+}
+
+
+/*  */
+.frame{
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/campaign/login_bonus/item_frame_bg_left.png), url(http://amw.konaminet.jp/amw/naboo/img/campaign/login_bonus/item_frame_bg_right.png), url(http://amw.konaminet.jp/amw/naboo/img/campaign/login_bonus/item_frame_bg.png);
+	background-repeat:no-repeat, no-repeat, repeat-x;
+	background-size:15px 61px, 15px 61px, 100% 61px;
+	background-position:left top, right top, center top;
+	height:61px;
+	margin:0 auto 10px;
+		width: 168px;
+	
+	
+}
+	#window-bonus{
+		margin:0 auto;
+		padding:5px 3px;
+		text-align:center;
+	}
+	.bonus-item{
+		position:relative;
+		display:inline-block;
+		margin:0 1px;
+		text-align:center;
+	}
+		.bonus-item span{
+			display:block;
+			width:100%;
+			font-size:10px;
+			text-align:center;
+			position:absolute;
+			bottom:-6px;
+			text-shadow: -1px -1px 1px #222;
+		}
+		.lightup{
+			/*+4px*/
+			width:49px;
+			height:49px;
+			margin:0 auto;
+			border:1px #B08C85 solid;
+			/*background:url(http://amw.konaminet.jp/amw/naboo/img/campaign/login_bonus/item_lightup_bg.png) no-repeat;
+			background-size: 49px 49px;*/
+		}
+		.lightup img{
+			margin:2px;
+			width:45px;
+		}
+
+
+
+/*  */
+.box-area-ticket{
+	background-color:rgba(0,0,0,0.9);
+	margin: -7px auto;
+	position: relative;
+	border:#aba499 1px solid;
+	border-radius: 3px;
+	box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.8) inset;
+}
+
+#title-gacha-ticket{
+	padding: 5px 5px 10px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+	background-position:bottom center;
+	background-size:280px 1px;
+	background-repeat:no-repeat;
+	text-align:center;
+}
+
+#title-gacha-ticket img{
+	width:100%;
+}
+
+#title-gacha-ticket p{
+	padding:0 5px;
+	text-align:left;
+	margin-top:-15px;
+}
+
+select.ticket-select{
+	margin:-10px auto 0;
+}
+
+.gacha-ticket-each{
+	padding:0 8px 10px;
+	position:relative;
+}
+
+.gacha-message {
+	padding: 0 6px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+	.gacha-ticket-each.sr-ticket{
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/ticket_sr_bg.png);
+		background-position:center 130%;
+		background-size:100%;
+		background-repeat:no-repeat;
+	}
+
+	.gacha-ticket-each.platinum-ticket{
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/ticket_platinum_bg.png);
+		background-position:center 130%;
+		background-size:100%;
+		background-repeat:no-repeat;
+	}
+
+	.gacha-ticket-each.gold-ticket{
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/ticket_gold_bg.png), url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+		background-position:center bottom, center bottom;
+		background-size:100%, 280px 1px;
+		background-repeat:no-repeat, no-repeat;
+	}
+
+	.gacha-ticket-each.silver-ticket{
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/ticket_silver_bg.png), url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+		background-position:center bottom, center bottom;
+		background-size:100%, 280px 1px;
+		background-repeat:no-repeat, no-repeat;
+	}
+
+	.gacha-ticket-each.premium-ticket{
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+		background-position: center bottom;
+		background-size: 280px 1px;
+		background-repeat: no-repeat;
+	}
+	
+.gacha-ticket-each .gacha-content{
+	display:table;
+}
+	
+	.gacha-price {
+		text-align: left;
+		box-sizing: border-box;
+		font-size: 13px;
+		position:relative;
+	}
+
+.gacha-ticket-each .gacha-content .gacha-img{
+	display:table-cell;
+	width:70px;
+	height:75px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.gacha-ticket-each .gacha-content .gacha-info{
+	display:table-cell;
+	width:190px;
+	vertical-align:middle;
+	padding-left: 5px;
+	text-align:left;
+}
+
+.gacha-ticket-each .gacha-btn{
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+}
+
+
+.toppage .btn-wrapper {
+	padding-bottom: 0;
+}
+
+
+
+div.gacha10-list div.card-list ul.card-info li.level span.level-title{
+	width:100%;
+}
+
+#received-num{
+	text-align:center;
+}
+
+#received-num span{
+	color:#666666;
+}
+
+
+#first_card_area{
+	height:21px;
+	text-align:center;
+	margin:5px auto;
+}
+
+#gachaget-content{
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(12,12,12,0)), color-stop(20%,rgba(41,39,39,0.4)), color-stop(50%,rgba(41,39,39,1)), color-stop(80%,rgba(41,39,39,0.4)), color-stop(100%,rgba(12,12,12,0))); /* Chrome,Safari4+ */
+}
+
+#gachaget-img{
+	margin:5px auto;
+	text-align:center;
+}
+
+#card-param, #skill-info, #card-message, div#gacha1-card-param{
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-position:bottom center;
+	background-size:280px 1px;
+	background-repeat:no-repeat;
+	padding:10px;
+	text-align:left;
+}
+
+#gachaget-content #btn-wrapper{
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-position:bottom center;
+	background-size:280px 1px;
+	background-repeat:no-repeat;
+	padding:10px;
+	text-align:center;
+}
+
+#gacha-next-act{
+	text-align:center;
+}
+
+ul#gacha1-card-param{
+	text-align:left;
+}
+
+ul#gacha1-card-param li.param:last-child:after{
+	display:none;
+}
+
+ul#gacha1-card-param li.param {
+	display:inline-block;
+	width:50%;
+	line-height: 12px;
+	height:24px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+	background-position:left bottom;
+	background-size:150px 2px;
+	background-repeat:no-repeat;
+	padding:5px 0 5px 0;
+	text-indent:5px;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	float:left;
+}
+ul#gacha1-card-param li.param img {
+	vertical-align: middle;
+}
+ul#gacha1-card-param li.param:after{
+
+}
+
+ul#gacha1-card-param li.param span{
+	margin: 0 2px;
+	font-size:12px;
+}
+
+div#gacha1-card-param ul#gacha1-cost{
+	width:220px;
+}
+
+div#gacha1-card-param ul#gacha1-rarity li{
+	display:block;
+	width:100%;
+	font-size:12px;
+	padding:2px 0;
+}
+
+div#gacha1-card-param ul#gacha1-cost li{
+	display:inline-block;
+	width:50%;
+	text-align:center;
+	padding:2px 0;
+}
+
+div#gacha1-card-param ul li span{
+	color:#b6b5b5;
+	font-size:12px;
+	margin-right:5px;
+}
+
+div#ally-point{
+	padding:10px 0 30px;
+	text-align:center;
+}
+
+p.ally-point-left{
+	margin-bottom:10px;
+}
+
+div#player-info{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid #dcdcdc;
+	border-top:1px solid #dcdcdc;
+	margin-bottom:10px;
+}
+
+div#player-info ul li{
+	padding:3px 0;
+}
+
+div#player-info ul li span{
+	color:#666666;
+	margin-right:5px;
+}
+
+#confirm-dialog .btn-wrapper, #leader-confirm-dialog .btn-wrapper{
+	padding:20px 0;
+}
+
+/*-- 10 --*/
+
+#title-gacha10 span{
+	margin: 0 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------   */
+/*----------------------------------------------------- Library */
+
+#library-wrapper {
+	/*display: none;*/
+	/*position: absolute;*/
+	width: 320px;
+	min-height: 450px;
+	top: 0;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_content.jpg) no-repeat top center;
+	background-size: 100% 100%;
+}
+
+/*  */
+
+#first-wrapper {
+	position: absolute;
+	top: 0;
+	width: 320px;
+	height: 100%;
+}
+
+#first-wrapper .first {
+	display: table;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+	#first-wrapper .first div {
+		display: table-cell;
+		width: 100%;
+		height: 150px;
+		vertical-align: middle;
+	}
+	#first-wrapper .first div p {
+		display: block;
+		width: 100%;
+		height: 150px;
+	}
+
+/* Pager-content-area */
+.pager-area {
+	display: block;
+	width: 100%;
+	margin: 10px auto;
+	text-align: center;
+}
+
+
+/*-----------------------------------------------------   */
+.card_elems {
+	position: relative;
+	display: table;
+	width: 308px;
+	height: 373px;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+.card_elems ul {
+	display: block;
+	position: relative;
+	width: 250px;
+	height: 270px;
+	margin: -17px auto auto;
+	padding: 10px;
+	vertical-align: middle;
+	text-align: center;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_card-list.png) no-repeat center;
+	background-size: 105% 105%;
+}
+.card_elems ul li {
+	display: inline-block;
+	float: left;
+	width: 40px;
+	height: 57px;
+	margin: 5px;
+	padding: 0;
+}
+.card_elems ul li.empty {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/thumb_card-empty.png) no-repeat center;
+	background-size: 282px 310px;
+	opacity: 0.7;
+}
+
+/*-----------------------------------------------------  */
+#sort-menu {
+	position: relative;
+	width: 100%;
+	min-height: 90px;
+	margin: 0 auto;
+	text-align: center;
+	background: rgba(0,0,0,0.8);
+}
+
+#sort-menu span {
+	display: block;
+	margin: auto;
+	padding-top: 5px;
+	color: #fff;
+	font-size: 13px;
+}
+
+/*  */
+.search-area-content {
+	position: relative;
+	margin: 10px auto;
+}
+
+#rarity_sorter {
+	position: relative;
+}
+
+/*  */
+.search-area-content section {
+	display: table;
+	position: relative;
+	width: 75%;
+	margin: 50px auto 10px;
+	overflow: hidden;
+}
+
+.search-area-content section label {
+	display: table-cell;
+	float: left;
+	width: 50%;
+	height: 22px;
+	margin-bottom: 10px;
+	text-align: left;
+	overflow:hidden
+}
+
+
+/*  */
+/* input */
+.search-area-content section label input {
+	display: none;
+}
+
+.search-area-content section label span.check-box {
+	display: inline-block !important;
+	float: left;
+	width: 21px;
+	height: 20px;
+	margin-right: 8px !important;
+	padding: 0 !important;
+	cursor: pointer;
+}
+
+.search-area-content section label span.check-box.off {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/btn-checkbox_off.png) no-repeat center;
+	background-size: 21px 20px;
+}
+
+.search-area-content section label span.check-box.on {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/btn-checkbox_on.png) no-repeat center;
+	background-size: 21px 20px;
+}
+
+.search-area-content section label span.rarity {
+	display: inline-block;
+	height: 20px;
+	padding: 0 !important;
+	line-height: 1.6;
+}
+
+
+.select-txt-tbl {
+	position: relative;
+	text-align: center;
+	cursor: pointer;
+}
+	/*  */
+	.select-txt-tbl.bg {
+		display: table;
+		width: 100%;
+		margin: auto;
+		padding-bottom: 20px;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/line-transparent.png) no-repeat center bottom;
+		background-size:100% 10px;
+	}
+	/* padding */
+	.select-txt-tbl.pad {
+		padding: 10px 0 20px;
+	}
+	.select-txt-tbl.pad p {
+		z-index: 15;
+	}
+
+.btn-sw-s span.ps {
+	width: 130% !important;
+	margin: auto;
+	position: absolute;
+	bottom: 0;
+	left: -8px;
+	text-align: center;
+}
+
+
+/*-----------------------------------------------------  */
+
+/* div() */
+.transeparent {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+}
+
+/*  */
+.disable .check-box {
+	opacity: 0.5;
+}
+
+/*  */
+.disable .rarity {
+	color: #AAA !important;
+}
+
+
+/*  */
+.disable input {
+	color: #AAA !important;
+}
+
+
+/*-----------------------------------------------------    */
+div.trigger {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 62px;
+	text-align: center;
+	font-size: 13px;
+	z-index: 0;
+}
+	/* Down BTN */
+	div.trigger.down span.down {
+		display: block;
+		position: absolute;
+		width: 100%;
+		top: 28px;
+		margin: auto;
+		text-align: center;
+		color: #ffffff;
+		text-shadow: 1px 1px 3px rgba(15,39,255,1),
+		0px 0px 5px rgba(15,39,255,1);
+		z-index: 1;
+		cursor: pointer;
+		
+	}
+
+	/* Up BTN */
+	div.trigger.up span.up {
+		display: block;
+		position: absolute;
+		width: 100%;
+		top: 32px;
+		margin: auto;
+		text-align: center;
+		color: #ffffff;
+		text-shadow: 1px 1px 3px rgba(15,39,255,1),
+					 0px 0px 5px rgba(15,39,255,1);
+		z-index: 1;
+		cursor: pointer;
+	}
+
+
+/*   */
+div.re-area {
+	display: table;
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+	div.re-area select {
+		position: absolute;
+		width: 80%;
+		margin-left: 10%;
+		z-index: 40;
+	}
+
+
+/*-----------------------------------------------------   */
+
+.detail-area-content {
+	display: block;
+	width: 100%;
+	min-height: 400px;
+	padding-bottom: 20px;
+	/*top:0;*/
+	background: #1f1f1f;
+	z-index: 50;
+}
+
+div#card-detail-info{
+	width:100%;
+	display:table;
+}
+
+div#card-img-wrapper{
+	width:50%;
+	display:table-cell;
+	float:left;
+}
+
+div#card-detail-wrapper{
+	width:50%;
+	display:table-cell;
+	float:right;
+}
+
+div#card-detail-wrapper ul{
+	padding:0 5px 0 10px;
+}
+
+div#card-detail-wrapper ul li{
+	display:block;
+	text-align:left;
+	padding:2px 3px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	background-size:100% 1px;
+}
+
+div#card-detail-wrapper ul li span.title-param{
+	font-size:13px;
+	margin-right:3px;
+}
+
+div#card-detail-wrapper ul li span#detail_rarity{
+	color:#FEFFB6;
+	font-weight:bold;
+}
+
+div#detail_comment{
+	text-align:left;
+}
+
+#news-card {
+	 position:relative;
+	 width:320px;
+}
+
+#news-card .badge{
+	z-index:4001;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: block;
+	width: 140px;
+	height: 19px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+	background-size: 140px 19px;
+	background-position: left center;
+	margin:0;
+}
+
+#news-card .btn_s {
+	width:284px;
+	margin: 0px auto;
+}
+
+/*------------------------------------------------------- */
+/* +Friens Ship */
+/*------------------------------------------------------- */
+.panel-area-inner.friendship-pack {
+	padding:5px 7px;
+}
+
+	.panel-area-inner.friendship-pack h2{
+		margin:0 auto;
+		width:270px;
+		height:30px;
+		padding-bottom:10px !important;
+	}
+
+	.panel-area-inner.friendship-pack .gacha-message {
+		padding: 0 10px;
+		text-align: left;
+	}
+		.gacha-price .gray{
+			margin-right:5px;
+		}
+
+/* -------------------------------------------------------------------------------- */
+/*   */
+/* -------------------------------------------------------------------------------- */
+.arrived h1 {
+	margin-bottom: 10px;
+	text-shadow: 0px 0px 5px rgba(255,106,0,1),
+				 0px 0px 5px rgba(255,106,0,1);
+}
+
+/*  */
+.arrived .card-list-outer {
+	padding: 0 5px;
+}
+	
+	.arrived .card-list-outer .card-list {
+		padding: 4px;
+	}
+	
+	.arrived .card-list-outer .skill {
+		width: 98%;
+		margin: auto;
+	}
+.arrived .card-list-outer:before{
+		background: none;
+}
+
+/*------------------------------------------------------- */
+/**/
+/*------------------------------------------------------- */
+.recomend-frame {
+	position: relative;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_recomend_bg.png);
+	background-size: 320px 100%;
+	background-position: center;
+	background-repeat: repeat-y;
+	margin-top: 5px;
+	margin-bottom:27px;
+}
+	.recomend-frame h2{
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_recomend_top.png);
+		background-size: 320px 44px;
+		background-position: top center;
+		background-repeat: no-repeat;
+		height: 42px;
+		text-shadow: 1px 1px 1px black;
+		text-align: center;
+		font-weight:bold;
+	}
+	.recomend-rarity img{
+        width: 74px !important;
+	}
+		.recomend-frame h2 span{
+			display:inline-block;
+			vertical-align: middle;
+		}
+		.recomend-side.darkside{
+			color:red;
+		}
+		.recomend-side.lightside{
+			color:#00d8ff;
+		}
+		.recomend-rarity{
+			color:#FEFFB6;
+			vertical-align: middle;
+		}
+		.recomend-name{
+			margin: 2px 0;
+			font-size: 16px;
+		}
+	.recomend-frame:after{
+		position: absolute;
+		bottom: -15px;
+		left: 0;
+		width: 320px;
+		height: 15px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_recomend_bottom.png);
+		background-size: 320px 16px;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+	}
+	.recomend-frame .card-list-outer{
+		margin:0 3px;	
+	}
+	.recomend-frame .card-img-recomend{
+		text-align:center;
+		padding-bottom:10px;
+	}
+	.card-info-recomend{
+		padding:0 4px;	
+	}
+	.card-info-recomend li{
+		display:inline-block;
+		width:49%;
+		padding:3px 0;
+		font-size:14px;
+		background: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat right bottom;
+		background-size: 290px 1px;
+	}
+	.card-info-recomend li:nth-child(odd){
+		margin-right:3px;	
+	}
+	.card-info-recomend li span{
+		color:#AAA;
+		font-size:12px;
+		margin-right:5px;	
+	}
+	.card-info-recomend li span.rarity-icon{
+		color:#FEFFB6;
+		font-size:14px;
+	}
+	
+.recomend-frame .card-status {
+	padding-bottom: 5px;
+	text-align: center;
+}
+	.recomend-frame .card-status p {
+		display: inline-block;
+		padding: 0 8px 3px 0;
+	}
+		.recomend-frame .card-status span {
+			color: #AAA;
+		}
+	
+/*------------------------------------------------------- */
+/**/
+/*------------------------------------------------------- */
+.gold-frame{
+	position: relative;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_gold_bg.png);
+	background-size: 320px 100%;
+	background-position: center;
+	background-repeat: repeat-y;
+	margin-bottom:27px;
+	padding:0 4px;
+}
+	.gold-frame:before{
+		position: absolute;
+		top: -17px;
+		left: 0;
+		width: 320px;
+		height: 17px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_gold_top.png);
+		background-size: 320px 17px;
+		background-position: center top;
+		background-repeat: no-repeat;
+	}
+	.gold-frame:after{
+		position: absolute;
+		bottom: -12px;
+		left: 0;
+		width: 320px;
+		height: 12px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_gold_bottom.png);
+		background-size: 320px 12px;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+	}
+	
+/*------------------------------------------------------- */
+/**/
+/*------------------------------------------------------- */
+.silver-frame{
+	position: relative;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_silver_bg.png);
+	background-size: 320px 100%;
+	background-position: center;
+	background-repeat: repeat-y;
+	margin-bottom:22px;
+	padding:0 4px;
+}
+	.silver-frame:before{
+		position: absolute;
+		top: -17px;
+		left: 0;
+		width: 320px;
+		height: 17px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_silver_top.png);
+		background-size: 320px 17px;
+		background-position: center top;
+		background-repeat: no-repeat;
+	}
+	.silver-frame:after{
+		position: absolute;
+		bottom: -12px;
+		left: 0;
+		width: 320px;
+		height: 12px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_silver_bottom.png);
+		background-size: 320px 12px;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+	}
+
+/*------------------------------------------------------- */
+/**/
+/*------------------------------------------------------- */
+.bronze-frame{
+	position: relative;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_bronz_bg.png);
+	background-size: 320px 100%;
+	background-position: center;
+	background-repeat: repeat-y;
+	margin-bottom:21px;
+	padding:0 4px;
+}
+	.bronze-frame:before{
+		position: absolute;
+		top: -12px;
+		left: 0;
+		width: 320px;
+		height: 12px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_bronz_top.png);
+		background-size: 320px 12px;
+		background-position: center top;
+		background-repeat: no-repeat;
+	}
+	.bronze-frame:after{
+		position: absolute;
+		bottom: -7px;
+		left: 0;
+		width: 320px;
+		height: 7px;
+		content: "";
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_bg/card_frame_bronz_bottom.png);
+		background-size: 320px 7px;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+	}
+
+.btn-add-history{
+	display:block;
+	padding:10px 0;
+	text-align:center;
+	border:outset 3px;
+	border-color: #A2A2A2 #222 #181818 #4E4E4E;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(42,42,42,1)), color-stop(100%,rgba(24,24,24,1)));
+	background-size: 12px 12px, 100%;
+	background-position: right center, center;
+	background-repeat: no-repeat, no-repeat;
+}
+
+
+/*------------------------------------------------------- */
+/*  */
+/*------------------------------------------------------- */
+.arrived {
+	padding-bottom: 20px;
+}
+
+.arrived .btn-wrapper.packBtn {
+	margin-top: -15px;
+}
+
+
+/*------------------------------------------------------- */
+/*  */
+/*------------------------------------------------------- */
+#card_detail .title-rarity {
+width: 100%;
+text-align: center;
+margin: -5px auto 3px;
+}
+
+/*------------------------------------------------------- */
+/*  24h */
+/*------------------------------------------------------- */
+.banner-rookies{
+	box-shadow: 0 3px 10px #2D2925;
+	width: 300px;
+	margin: 10px auto 0;
+}
+
+.banner-rookies-txt{
+	width: 300px;
+	margin: 3px auto 0;
+	font-weight: bold;
+	text-align:center;
+}
+
+/*------------------------------------------------------- */
+/*  */
+/*------------------------------------------------------- */
+.btn-pick-area-01,
+.btn-pick-area-02{
+	display:block;
+	position:relative;
+	width:230px;
+	height:85px;
+	margin:0 auto;
+	background-repeat:no-repeat;
+	background-position:top center;
+	background-size:230px 85px;
+}
+
+a.btn-pick-01,
+a.btn-pick-02{
+	display:block;
+	width:230px;
+	height:85px;
+}
+input.btn-pick-01{
+	display:block;
+	width:230px;
+	padding-top:50px;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+}
+input.btn-pick-02{
+	display:block;
+	width:230px;
+	padding-top:55px;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+}
+
+	.btn-pick-01 .blink-hover,
+	.btn-pick-area-01 .blink-hover{
+		background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_01_green.png);
+		-webkit-animation-name: btnBlinkAnimPick;
+		width:230px;
+		height:85px;
+	}
+	.btn-pick-02 .blink-hover,
+	.btn-pick-area-02 .blink-hover{
+		-webkit-animation-name: btnBlinkAnimPick;
+		width:230px;
+		height:85px;
+	}
+
+	@-webkit-keyframes btnBlinkAnimPick {
+		0% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+.btn-pick-area-01 span,
+.btn-pick-area-02 span{
+	display:block;
+	position:absolute;
+	text-shadow: -1px -1px 1px #222;
+}
+.btn-pick-area-01 span.required{
+	top:15px;
+	left:15px;
+	background-repeat:no-repeat;
+	background-position:8px;
+	background-size:17px 17px;
+	padding:0 0 0 28px;
+	width:62px;
+	height:17px;
+	text-align:left;
+}
+.btn-pick-area-02 span.required{
+	top:10px;
+	left:15px;
+	background-repeat:no-repeat;
+	background-position:8px;
+	background-size:17px 17px;
+	padding:8px 0 0 28px;
+	width:62px;
+	height:24px;
+	text-align:left;
+}
+.btn-pick-area-02 span.line-through{
+	top:10px;
+	right:15px;
+	width:110px;
+	text-align:center;
+	font-size:11px;
+}
+	.btn-pick-area-02 span.line-through:after{
+		content: "";
+		display: block;
+		position: absolute;
+		top: 13px;
+		right: 0;
+		width: 110px;
+		height: 5px;
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/tutorial/next_arrow.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 10px 5px;
+	}
+.btn-pick-area-01 span.now-price{
+	top:16px;
+	right:15px;
+	width:110px;
+	text-align:center;
+	font-weight:bold;
+}
+.btn-pick-area-02 span.now-price{
+	top:27px;
+	right:15px;
+	width:110px;
+	text-align:center;
+	font-weight:bold;
+}
+.btn-pick-area-01 span.pick,
+.btn-pick-area-02 span.pick{
+	bottom:15px;
+	left:15px;
+	width:200px;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+}
+
+.recover{
+	display: inline-block;
+	width: 62px;
+	height: 22px;
+	background-repeat: no-repeat;
+	background-position: center -22px;
+	background-size: 100% 100%;
+	line-height: 14px;
+	text-indent: 7px;
+	font-size: 10px;
+	text-shadow: 1px 1px 3px black, -1px -1px 3px black;
+	z-index: 40;
+	text-align: left;
+	padding-left: 4px;
+	position:absolute;
+	top:-2px;
+	right:0;
+}
+
+	/*------------------------------------------------ DECK*/
+
+#btn_deck_bottom_wrapper{
+	padding:10px;
+	clear:both;
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------- DECK list.xhtml */
+/* Deck Information */
+div.deck-user-info {
+	width: 100%;
+	color:#AAA;
+	font-size:12px;
+	text-align:center;
+	margin: 20px 10px;
+	margin:0px;
+	padding:20px 0 15px;
+	position:relative;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_param.png);
+	background-repeat:no-repeat;
+	background-size:320px 17px;
+	background-position: center 8px;
+}
+	div.deck-user-info span {
+		display: inline-block;
+	}
+	div.deck-user-info span.deck-number {
+		position: absolute;
+		left: 10px;
+	}
+	
+	span#init_cost, span#init_def, span#init_atk, span#use_cost, span#use_def, span#use_atk, span.dmp_max{
+		color:#FFF;
+		font-size:16px;
+	}
+
+div#deck_param_after_token{
+	display:block:
+	height:12px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/param_change_arrow.png);
+	background-repeat:no-repeat;
+	background-size:40px 12px;
+	background-position:center;
+	visibility:hidden;
+	-webkit-animation-name: paramArrowAnim;
+	-webkit-animation-duration: 1.3s;
+	-webkit-animation-iteration-count: 10;
+	-webkit-animation-direction: forwards;
+	-webkit-animation-fill-mode: both;
+}
+
+	@-webkit-keyframes paramArrowAnim{
+	   0%{
+		  opacity:1;
+	   }
+	   50%{
+		  opacity:0.2;
+	   }
+	   100%{
+		  opacity:1;
+	   }
+	}
+	
+	div#deck_param_after_token span{
+		opacity:0;
+	}
+
+#swipe_card_area #select_area{
+	padding:0 6px;
+}
+	
+#deck_atk_after.deck_param1 span, #deck_def_after.deck_param1 span, #deck_cost_after.deck_param2 span{
+	color:#a4f301 !important;
+}
+
+#confirm_panel_remove h2.title-line, #confirm_panel_all_autoset_all h2.title-line, #confirm_panel_all_autoset h2.title-line{
+	text-align:left;
+	padding: 5px 25px;
+}
+
+
+/* common */
+#sw-content.deck div.panel-area:before{
+	content:"";
+	display: block;
+	width:100%;
+	background-size:100%;
+}
+
+#sw-content.deck div.panel-area{
+	width:100%;
+	padding:0;
+	margin:0 auto;
+	position:relative;
+}
+
+#sw-content.deck div.panel-area:after{
+	content:"";
+	display: block;
+	width:100%;
+	background-size:100%;
+}
+#sw-content.deck div.panel-area-inner{
+	width:100%;
+}
+
+
+
+	#sw-content.deck div#forcus_card_info_wrap div.panel-area-inner{
+		padding: 0px 6px 200px !important;
+	}
+
+
+/*  */
+div.deck-area-box {
+	position: relative;
+	width: 300px;
+	min-height: 250px;
+	margin: 0 auto;
+	padding: 0;
+
+	min-height: 110px;
+}
+
+	/*  */
+	div.card-list-outer{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(43,42,37,0)), color-stop(100%,rgba(43,42,37,1)));
+	}
+
+	/*  */
+	div.card-list-outer.lightside_outer{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(21,47,52,0)), color-stop(100%,rgba(21,47,52,1)));
+	}
+	
+	/*  */
+	div.card-list-outer.darkside_outer{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(47,15,15,0)), color-stop(100%,rgba(47,15,15,1)));
+	}
+
+
+/*  */
+div.card-list-small div.info div.name .stack-select {
+	float: right;
+	width: 40px;
+	font-size: 12px;
+	margin-top: 0x;
+}
+
+
+div.deck-area-inner {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+.small_img {
+}
+.large2_img {
+	height: 96px;
+}
+.large3_img {
+	height: 146px;
+}
+.hidden {
+	visibility: hidden;
+}
+div.level table tbody {
+	width: 100%;
+	display: block;
+	border-radius: 3px 0 0 3px;
+	height: 4px;
+}
+.ui-btn {
+	margin-top: -15px;
+	height: 1;
+}
+.ui-btn-text {
+	visibility: hidden;
+}
+.battle-deck-content div.deck-area-content .item-box span.block {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 0.9;
+	border: white 1px solid;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.battle-deck-content div.deck-area-content .item-box span {
+	position: absolute;
+	right: 1px;
+	bottom: 0px;
+	font-size: 10px;
+	background: rgba(0, 0, 0, 0.7);
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	border: 0px solid black;
+	-webkit-box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+	box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+	text-shadow: 1px 0px 2px rgba(0, 0, 0, 1), 1px 1px 8px rgba(0, 0, 0, 1);
+	z-index: 10;
+}
+.battle-deck-content span.range {
+	left: 0;
+	top: 0;
+}
+.battle-deck-content div.deck-area-content .item-box span.block {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 0.9;
+	border: white 1px solid;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.battle-deck-content span.number {
+	right: 0;
+	bottom: 0;
+}
+
+#test_message {
+	position: absolute;
+	height: 30px;
+	font-size: 10px;
+	color: #FF0000;
+	margin-left: 3px;
+}
+
+#area_box {
+	position: absolute;
+	display: block;
+	width: 45px;
+	height: 45px;
+	z-index: 6000;
+	border: 5px solid rgba(255,0,0,0.3);
+}
+
+/* Confirm Area */
+.submit-area {
+	display: table;
+	margin: auto;
+	width: 100%;
+	text-align: center;
+}
+
+#auto_btn {
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 20px;
+	top: 305px;
+	left:240px;
+	font-size: 12px;
+	padding: 10px 0 0 10px;
+	background: rgba(0,0,0,0.3);
+}
+#auto_form {
+	position: absolute;
+	display: block;
+	top: 310px;
+	left:150px;
+	font-size: 12px;
+}
+
+.auto-select {
+	width: 80px;
+}
+
+
+.panel2 {
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 150px;
+	z-index: 5500;
+	margin: 20px 0 0 10px;
+	/*top: 100px;*/
+	text-align: center;
+}
+
+.panel_bg {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 280px;
+	z-index: 500;
+}
+
+.confirm_bg {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 380px;
+	z-index: 30;
+	background: rgba(0,0,0,0.5);
+}
+
+/*  */
+.attachment-box {
+	font-size: 10px;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.cont {
+	display: block;
+	width: 100px;
+	height: 80px;
+	float: left;
+	margin: 10px 10px 10px 30px;
+	font-size: 12px;
+}
+
+/*  */
+.card-info-content {
+	position: absolute;
+	top: 220px;
+	left: 20px;
+	z-index: 0;
+	opacity: 0.5;
+	font-size: 10px;
+}
+/*  */
+.test_cover {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 450px;
+	z-index: 8500;
+	background-color:#3d485a;
+}
+
+.stack_form {
+	width: 50px;
+}
+
+.stack-select {
+	width: 50px;
+}
+
+
+/*  */
+div.panel-area-inner.deck-nopad {
+	display: table;
+	width: 100%;
+	padding: 7px 0 20px;
+}
+
+/*  */
+.card-status-content {
+	display: table;
+	width: 90%;
+	margin: 10px auto;
+}
+.card-status-content .thumb {
+	display: table-cell;
+	vertical-align: middle;
+	margin: auto;
+	text-align: center;
+	min-width: 70px;
+}
+.card-status-content .status {
+	display: table-cell;
+	vertical-align: middle;
+	margin: auto;
+	text-align: left;
+	font-size: 13px;
+}
+
+
+/* -----------------------------------------------  */
+div.panel-area-inner.nopad-two {
+	padding: 0 0 20px;	
+}
+
+/* How to Deck Dialog */
+div.howto-edit {
+	text-align: center;
+	margin: -10px auto auto;
+}
+
+div.card-list-small {
+	position: relative;
+}
+.hidden {
+	display: none;
+}
+
+/* ----------------------------------------------- TIPS */
+#first_dialog .panel-area {
+	top: -80px !important;
+}
+
+/* --------------------------------------------------------- deck.xhtml  */
+
+/*    */
+.deck-status-content {
+	display: block;
+	padding:0 10px 1px;
+	margin: 1px auto;
+	clear: both;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_title_line.png);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+	background-size:320px 11px;
+}
+
+.deck-status-content span {
+	display: inline-block;
+		color: #0099cc;
+}
+
+.deck-status-content span.deck-number {
+	float: left;
+	width: 100px;
+	font-size: 14px;
+}
+.deck-status-content span.front {
+	width: 95px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_front.png) no-repeat 20% center,
+				url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_front.png) no-repeat 80% center;
+	background-size: 6px 6px,6px 6px;
+	text-align: center;
+}
+
+.deck-status-content span.set {
+	float: right;
+	height: 100%;
+	margin: 0;
+}
+
+/*  */
+.deck-user-content {
+	display: block;
+	width: 300px;
+	height: 22px;
+	margin: 2px auto 10px;
+	font-size: 12px;
+}
+	.deck-user-content:after {
+		content: '';
+		display: block;
+		width: 300px;
+		height: 2px;
+		background: -webkit-gradient(linear, left top, right top, 
+									color-stop(5%,rgba(7, 45, 66, 0)),
+									color-stop(30%,rgba(13, 90, 131, 1)), 
+									color-stop(100%,rgba(13, 90, 131, 1)));
+	}
+
+.deck-user-content span {
+	display: inline-block;
+	height: 22px;
+	line-height: 20px;
+}
+
+.deck-user-content .edit-btn {
+	display: inline-block;
+	float: right;
+	width: 60px;
+	height: 19px;	
+	line-height: 19px;
+	text-align: center;
+}
+
+.battle-deck-content {
+	position: relative;
+	display: table;
+	width: 300px;
+	height: 151px;
+	margin: auto;
+	padding-top: 1px;
+}
+
+/*  */
+.battle .battle-deck-content {
+	margin: 10px auto auto -5px;
+}
+
+/*  */
+.battle-deck-content div.deck-area-content {
+	display: table-cell;
+	width: 300px;
+	min-height: 151px;
+	margin: 1px auto 8px;
+	padding: 0;
+	font-size: 10px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_grid.png) no-repeat top center;
+	background-size: 300px 150px;
+}
+
+	/**/
+	.battle-deck-content div.deck-area-content.window {
+		background: url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_grid.png) no-repeat center,
+					url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_border.png) no-repeat center;
+		background-size: 300px 150px, 300px 150px;
+	}
+
+
+
+
+/*  */
+/*.attachment-box,*/ 
+.battle-deck-content div.deck-area-content .deck {
+	display: block;
+	position: relative;
+	width: 46px;
+	height: 46px;
+	margin: 2px;
+	padding: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+
+	/* Small */
+	.battle-deck-content div.deck-area-content .deck.small-1x1 {
+		width: 46px;
+}
+	/* Large */
+	/* 1 x 2 */
+	.battle-deck-content div.deck-area-content .deck.large-1x2  {
+	width: 46px;
+	height: 96px;
+	}
+	
+	/* 1 x 3 */
+	.battle-deck-content div.deck-area-content .deck.large-1x3  {
+	width: 46px;
+	height: 146px;
+	}
+	
+	/* 2 x 2 */
+	.battle-deck-content div.deck-area-content .deck.large-2x2  {
+	width: 96px;
+	height: 96px;
+	top: 50px;
+	}	
+	
+	/* 2 x 3 */
+	.battle-deck-content div.deck-area-content .deck.large-2x3  {
+		width: 96px;
+		height: 146px;
+		top: 50px;
+		padding-top: 10px;
+	}
+	
+	/* 3 x 2 */
+	.battle-deck-content div.deck-area-content .deck.large-3x2  {
+		width: 146px;
+		height: 96px;
+		top: 50px;
+	}
+		
+	/* 3 x 3 */	
+	.battle-deck-content div.deck-area-content .deck.large-3x3  {
+		width: 146px;
+		height: 146px;
+	}	
+		.battle-deck-content div.deck-area-content .deck.large img {
+			display: table-cell;
+			margin: 6px auto auto;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.battle-deck-content div.deck-area-content .deck.small-1x1 img {
+			display: table-cell;
+			margin: 3px auto auto;
+			text-align: center;
+			vertical-align: middle;
+		}
+				
+	/* */
+	/* LIGHTSIDE */
+	/*.attachment-box .deck.lightside,*/
+	.battle-deck-content div.deck-area-content .deck.lightside {
+		-webkit-box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(28,160,216,1);
+		box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(28,160,216,1);
+	}
+	/* DARKSIDE */
+	/*.attachment-boxt .deck.darkside,*/
+	.battle-deck-content div.deck-area-content .deck.darkside {
+		-webkit-box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(229,26,48,0.9);
+		box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(229,26,48,0.9);
+	}
+	/* NEUTRAL */
+	/*.attachment-box .deck.neutral,*/
+	.battle-deck-content div.deck-area-content .deck.neutral{
+		-webkit-box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(255,255,255,1);
+		box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(255,255,255,1);
+	}
+
+
+/* RANGE and Number */
+/*.attachment-box span.block,*/
+.battle-deck-content div.deck-area-content .deck span.block {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 0.9;
+	border: #fff 1px solid;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+	/* RANGE */
+	.attachment-box span.range,
+	.battle-deck-content span.range {
+		left: 0;
+		top: 0;
+	}
+	/* STACK CARD Number */
+	.attachment-box span.number,
+	.battle-deck-content span.number {
+		right: 0;
+		bottom: 0;
+	}
+
+/*  */
+.battle-deck-content div.deck-area-content .deck span {
+	position: absolute;
+	right: 1px;
+	bottom: 0px;
+	font-size: 10px;
+	background: rgba(0,0,0,0.7);
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	border: 0px solid #000000;
+	-webkit-box-shadow:
+		-1px -1px 4px rgba(0,0,0,0.7),
+		inset 0px 0px 10px rgba(0,0,0,0.7);
+	box-shadow:
+		-1px -1px 4px rgba(0,0,0,0.7),
+		inset 0px 0px 10px rgba(0,0,0,0.7);
+	text-shadow:
+		1px 0px 2px rgba(0,0,0,1),
+		1px 1px 8px rgba(0,0,0,1);
+	z-index: 10;
+}
+
+
+
+/* -----------------------------------------------  */
+div.panel-area-inner.nopad-two {
+	padding: 0 0 20px;	
+}
+
+/* How to Deck Dialog */
+div.howto-edit {
+	text-align: center;
+	margin: -10px auto auto;
+}
+/* -----------------------------------------------  */
+/* tab:6 */
+ul.tab-box.six{
+	width:300px;
+}
+
+ul.tab-box.six li {
+	width:50px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab4_off.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 50px 30px;
+}
+
+ul.tab-box.six li.selected {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab4_on.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 50px 30px;
+}
+
+
+div#sw-content.deck{
+	position: relative;
+}
+
+/* LUCASCSS */
+
+div.panel-area100{
+	width:100%;
+	padding:0;
+	margin:0 auto;
+	position:relative;
+}
+
+div.panel-area100-inner{
+	padding:0 0 3px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_grid_bottom.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	background-size:320px 2px;
+}
+
+#deck-btn-top{
+	padding:0 10px;
+}
+
+.alert_btn_wrapper{
+	padding-top:10px;
+}
+.alert_message span{
+	display:block;
+}
+
+
+.formation_tap{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.5em;
+	text-align: center;
+	color: #AAA;
+	font-size:10px !important;
+	line-height:1;
+}
+	#ad_newcard{
+		display:block;
+		width:100%;
+		height:120px;
+		overflow:hidden;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/effect/bg_card.png) no-repeat center bottom;
+		background-size:100%;
+		position:relative;
+		opacity:0;
+		font-size:90%;
+	}
+		#ad_newcard.show{
+			-webkit-animation-name: showAnim;
+			-webkit-animation-duration: 1s;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-direction: normal;
+			-webkit-animation-fill-mode: both;
+			-webkit-perspective: 300;
+			-webkit-transform : translate3d(0, 0, 0);
+			-webkit-transform-style: preserve-3d;
+			-webkit-animation-timing:cubic-bezier(0.040, 1.485, 0.645, 0.735);
+		}
+			@-webkit-keyframes showAnim{
+				0% {
+					opacity:0;
+				}
+				100% {
+					opacity:1;
+				}
+			}
+		#ad_newcard #ad_newcard_pointer{
+			position:absolute;
+			top:5px;
+			right:5px;
+		}
+		#ad_newcard #ad_newcard_pointer .pointer{
+			display:block;
+			width:5px;
+			height:5px;
+			background:rgba(255,255,255,0.5);
+			float:left;
+			margin-right:3px;
+		}
+			#ad_newcard #ad_newcard_pointer .pointer.on{
+				background:rgba(255,255,255,1);
+				box-shadow:0 0 5px #00a2ff;
+				-webkit-box-shadow:0 0 5px #00a2ff;
+			}
+		
+	.ad_newcard_each_container{
+		display:table;
+		width:100%;
+		padding:10px 10px 0 10px;
+		box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		text-shadow:0 0 3px rgba(0,0,0,1);
+	}
+		.ad_newcard_each.lightside .info .name{
+			text-shadow: 1px 1px 6px #00a2ff, -1px -1px 6px #00a2ff;
+		}
+		.ad_newcard_each.darkside .info .name{
+			text-shadow: 0 0 6px #ff0000;
+		}
+			.ad_newcard_each .info .name.small{
+				font-size:14px;
+			}
+		.ad_newcard_each .info .name.small + li span + span {
+			margin-right:-10px;
+		}
+		
+		.ad_newcard_each .thumb{
+			display:table-cell;
+			width:60px;
+			vertical-align:top;
+			position:relative;
+			
+		}
+			@-webkit-keyframes thumbAnim{
+				0% {
+					-webkit-transform: translateX(-20px);
+					opacity:0;
+				}
+				100% {
+					-webkit-transform: translateX(0);
+					opacity:1;
+				}
+			}
+			.ad_newcard_each .thumb .iconEv{
+				display:block;
+				width:16px;
+				height:16px;
+				background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_epc_m.png) no-repeat center;
+				background-size:100%;
+				position:absolute;
+				right:3px;
+				top:-5px;
+			}
+			
+		.ad_newcard_each .info{
+			display:table-cell;
+			vertical-align:top;
+			padding-top:2px;
+		}
+			.ad_newcard_each .info li{
+				display:inline-block;
+				width:50%;
+			}
+				.ad_newcard_each .info li.name{
+					width:100%;
+					clear:both;
+					margin-bottom:5px;
+					font-size:18px;
+				}
+				.ad_newcard_each .info li.cmt{
+					width:100%;
+					clear:both;
+					line-height:11px;
+					font-size:11px;
+					margin-top:3px;
+				}
+
+</style>
+
+<div id="sw-content" class="gacha toppage"><h1 style="margin-bottom:0 !important;">CARD PACK</h1><section id="ad_newcard"><ul id="ad_newcard_pointer"></ul><div class="ad_newcard_each darkside"><div class="ad_newcard_each_container"><div class="thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101722055/1017220550_ms.png" width="50" /></div><ul class="info"><li class="name fontBold small"><span>Darth Maul [Rage of the Sith]</span></li><li><span class="fontS">MAX ATK:  </span><span class="colorGold fontM fontBold" data-text="10120">10120</span></li><li><span class="fontS">MAX DEF:  </span><span class="colorGold fontM fontBold" data-text="9200">9200</span></li><li class="cmt">Has top class ATK and DEF values making it one of the most formidable Cards up-to-date!</li></ul></div><div class="txtAR"><a href="http://amw.konaminet.jp/amw/naboo/battle/battle/flash?demobattle=1&demobattle_card_id=1017220550&demobattle_back_type=1&demobattle_back_page=0&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnS s se_sys_menu_entr">DEMO BATTLE</a></div></div><div class="ad_newcard_each lightside"><div class="ad_newcard_each_container"><div class="thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101511045/1015110450_ms.png" width="50" /></div><ul class="info"><li class="name fontBold small"><span>Qui-Gon Jinn [The Final Duel]</span></li><li><span class="fontS">MAX ATK:  </span><span class="colorGold fontM fontBold" data-text="9190">9190</span></li><li><span class="fontS">MAX DEF:  </span><span class="colorGold fontM fontBold" data-text="10040">10040</span></li><li class="cmt">Has top class ATK and DEF values making it one of the most formidable Cards up-to-date!</li></ul></div><div class="txtAR"><a href="http://amw.konaminet.jp/amw/naboo/battle/battle/flash?demobattle=1&demobattle_card_id=1015110450&demobattle_back_type=1&demobattle_back_page=0&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnS s se_sys_menu_entr">DEMO BATTLE</a></div></div></section><hr class="sub" /><script type="text/javascript">var eachCardWrapper = $('#ad_newcard');var eachCard = $('.ad_newcard_each', eachCardWrapper);var eachCardName = $('.name span', eachCard);var pointerWrapper = $('#ad_newcard_pointer');var currentIndex = 0;var maxIndex = eachCard.length;var displayTime = 5000;eachCard.css({"display":"none"});for(var i = 0; i < maxIndex; i++){pointerWrapper.prepend("<li class='pointer'></li>");}function showCard(){$('li', pointerWrapper).not(':eq('+ currentIndex + ')').removeClass("on");$('li', pointerWrapper).eq(currentIndex).addClass("on");eachCard.not(':eq('+ currentIndex + ')').css({"display":"none"});eachCard.eq(currentIndex).fadeIn("slow",function(){setTimeout(function(){eachCard.eq(currentIndex).fadeOut('slow',function(){currentIndex ++;if(currentIndex > (maxIndex-1)){currentIndex = 0;}showCard();});}, displayTime);});}$(document).ready(function(e) {$('#ad_newcard').addClass("show");showCard();});</script><div class="clearfix marB10 txtAC"><a href="http://amw.konaminet.jp/amw/naboo/gacha/gacha/arrived?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnS s green se_sys_menu_entr fontSS">NEW CARDS ADDED</a><a href="http://amw.konaminet.jp/amw/naboo/gacha/gacha/introduce?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnS s green se_sys_menu_entr fontSS">5-STAR CARD LIST</a></div><div class="marB10"><div class="panel-area">
+	<div class="panel-area-inner">
+					<h2><img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/pack/allypoint001/allypoint001.png" width="100%" /></h2>
+		
+		
+		<div class="padT10 padL10 padR10 padB fontS">Uses your AP to draw. Rare Cards included. One free try every day!</div>
+		
+		
+		
+				
+		<div class="boxArea01 txtAC clearfix">
+							29951 AP
+					</div>
+		
+					
+							<div class="txtAC">
+					<a href="http://amw.konaminet.jp/amw/naboo/gacha/friend/gacha?gacha_id=102&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnN se_sys_menu_entr btnFree">FREE</a>
+				</div>
+				<script type="text/javascript">sendMessageToApp("game.shortcut", {sh:"http://amw.konaminet.jp/amw/naboo/gacha/friend/gacha?gacha_id=102&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334", sn:"DRAW", sp:"0"});</script>
+
+			
+						</div>
+</div>
+
+<script type="text/javascript">
+	var isClick = false;
+	$('.btnFree').click(function(){
+		if(isClick == true){
+			$('.btnFree').attr("href","javascript:void(0)");
+		}else{
+			isClick = true;
+		}
+	});
+</script></div><script type="text/javascript">
+$(document).ready(function(){
+
+    var _post = swfc.gacha();
+
+    var _regular_num = 0;
+    var _present_num = 115;
+
+    
+    	    
+	    $("#confirm_not_enough_crystal").implant_dialog({closer:'#cancel', scroll:false});
+	    function confirmNotEnough(){
+		    $("#confirm_not_enough_crystal").call_implant_dialog();
+	    }
+    
+	/*  Redraw6  */
+	$("#gacha_redraw_02").click(function() {
+	        var _name = 'Chosen One Redraw Card Pack';
+	        var _link = 'http://amw.konaminet.jp/amw/naboo/gacha/payment_multi/payment?gacha_id=31&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334';
+
+				        var _after_crystal = '-1385';
+		        var _price = '1500';
+		
+		$("#gacha_name").html(_name);
+		$("#gacha-payment").attr('action',_link);
+		$('.after_crystal').html(_after_crystal);
+		_post.setConsume(_price, _regular_num, _present_num);
+	});
+
+	$("#gacha_enough_btn06").hide();
+
+	
+						$("#gacha_redraw_btn06").hide();
+
+							$("#gacha_normal_btn06").hide();
+				$("#gacha_enough_btn06").show();
+						
+});
+
+</script>
+
+<div class="panel-area gold marB10 marT10"><div class="panel-area-inner"><h2 class="title_panel01">Chosen One Redraw Card Pack</h2><div class="txtAC"><img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/pack/redraw/redraw003.png" width="100%" /><p class="padL10 padR10 padT10 padB fontS txtAC colorCaution">End Date: 11/6 00:59 (ET)</p><div class="padL10 padR10 padB10 fontS txtAL">This Card Pack offers one of the following options:<br>1) Keep all six Cards from the initial Draw.<br>2) Choose one Card to keep from the initial Draw.  Return the remaining five Cards and redraw five Cards.<br>3) Return all six Cards from the initial Draw and redraw six Cards.</div><hr /><style>.gacha_info_wrapper{display:table;padding:10px 0;}.gacha_thumb{display:table-cell;width:80px;vertical-align:top;padding:0 10px;text-align:center;box-sizing:border-box;-webkit-box-sizing:border-box;}.gacha_info{display:table-cell;vertical-align:middle;padding:0 10px;text-align:left;box-sizing:border-box;-webkit-box-sizing:border-box;}.gacha_info h2{margin-bottom:10px;}.price_original{display:inline-block;padding-bottom:14px;margin-bottom:4px;background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png), url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png), url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png);background-size:10px;background-repeat:no-repeat;background-position:center bottom, right bottom, left bottom;font-size:12px;}</style><div class="gacha_info_wrapper"><div class="gacha_thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/item/cm/cardpack_premium001_06_m.png" width="60" /></div><div class="gacha_info"><h2>5 Cards<span class="colorEmphasis"> +1</span> Bonus Card<br>and the option to Redraw!</h2><p class="marB10 fontS">When redrawing, the initially drawn Cards will be returned to the Card Pack, from which the next Cards will be drawn.</p>Required: <span class="fontBold marR">1500</span>Crystals</div></div><div id="gacha_redraw_02"><div id="gacha_redraw_btn06"><div class="colorCaution">You have a pending Card Pack.<br>Please Accept the Card or choose to Redraw.<br>If you have a pending Card Pack after the Card Pack ends, the Cards drawn will automatically be sent to your INBOX.</div><a href="http://amw.konaminet.jp/amw/naboo/gacha/payment_multi/result.php?gacha_id=31&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="submit btnN blink" style="display:inline-block;"><span>Accept or Redraw</span></a></div><div id="gacha_normal_btn06"><a style="display:inline-block;" href="javascript:void(0)" onclick="$('#confirm_panel_use_item').call_implant_dialog();" class="se_sys_menu_entr marB10"><input type="button" class="submit mar0 btnN green blink" value="DRAW" /></a></div><div id="gacha_enough_btn06"><a style="display:inline-block;" href="javascript:void(0)" onclick="$('#confirm_not_enough_crystal').call_implant_dialog();" class="se_sys_menu_entr"><span class="btnN green mar0">DRAW</span></a></div></div><style>
+	.crystal_num_wrapper{
+		display:table;
+		margin:0 auto;
+		padding:5px;
+	}
+	.crystal_num{
+		display:table-cell;
+		vertical-align:middle;
+	}
+	.crystal_btn{
+		display:table-cell;
+		vertical-align:middle;
+		padding-left:8px;
+	}
+	.icon_arrow{
+		margin-left:5px;
+		padding-left:20px;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center left;
+		background-size:10px;
+	}
+</style>
+
+<div class="boxArea01">
+	<div class="crystal_num_wrapper">
+		<div class="crystal_num">
+			<span class="colorGray">You Have: </span>
+							<span>115</span>
+									<span>Crystals</span>
+		</div>
+		<div class="crystal_btn">
+		
+					<a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnPlus" onclick="se_sys_tap();"></a>
+				</div>
+	</div>
+	    
+</div>
+
+</div></div></div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+    var _post = swfc.gacha();
+
+    var _regular_num = 0;
+    var _present_num = 115;
+
+    
+    	    
+	    $("#confirm_not_enough_crystal").implant_dialog({closer:'#cancel', scroll:false});
+	    function confirmNotEnough(){
+		    $("#confirm_not_enough_crystal").call_implant_dialog();
+	    }
+    
+
+	/*  Redraw  */
+	$("#gacha_redraw_01").click(function() {
+	        var _name = 'Redraw Card Pack (1 Card)';
+	        var _link = 'http://amw.konaminet.jp/amw/naboo/gacha/payment/payment?gacha_id=13&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334';
+
+				        var _after_crystal = '-185';
+		        var _price = '300';
+		
+		$("#gacha_name").html(_name);
+		$("#gacha-payment").attr('action',_link);
+		$('.after_crystal').html(_after_crystal);
+		_post.setConsume(_price, _regular_num, _present_num);
+	});
+
+	$("#gacha_enough_btn").hide();
+
+	
+						$("#gacha_redraw_btn").hide();
+
+							$("#gacha_normal_btn").hide();
+				$("#gacha_enough_btn").show();
+						
+});
+
+</script>
+
+<div class="panel-area gold marB10 marT10"><div class="panel-area-inner"><h2 class="title_panel01">Redraw Card Pack (1 Card)</h2><div class="txtAC"><img src="http://amw.konaminet.jp/amw/naboo/img/banner/en/pack/redraw/redraw001.png" width="100%" /><p class="padL10 padR10 padT10 padB fontS txtAC colorCaution">End Date: 11/6 00:59 (ET)</p><div class="padL10 padR10 padB10 fontS txtAL">Redraw Card Packs offer you a chance to redraw your Cards if you want to try for rarer Cards. If you decide to redraw, your initial draws will be returned to the Card Pack. Rarities: 3 - 5 Stars</div><hr /><style>.gacha_info_wrapper{display:table;padding:10px 0;}.gacha_thumb{display:table-cell;width:80px;vertical-align:top;padding:0 10px;text-align:center;box-sizing:border-box;-webkit-box-sizing:border-box;}.gacha_info{display:table-cell;vertical-align:middle;padding:0 10px;text-align:left;box-sizing:border-box;-webkit-box-sizing:border-box;}.gacha_info h2{margin-bottom:10px;}.price_original2{display:inline-block;padding-bottom:14px;margin-bottom:4px;background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png), url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png), url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png);background-size:10px;background-repeat:no-repeat;background-position:center bottom, right bottom, left bottom;font-size:12px;}</style><div class="gacha_info_wrapper"><div class="gacha_thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/item/cm/cardpack_premium001_01_m.png" width="60" /></div><div class="gacha_info"><h2>1 Card in a Pack<br>and the option to Redraw!</h2><p class="marB10 fontS">Return your first Card and draw again if you want to try for a rarer Card.</p>Required: <span class="fontBold marR">300</span>Crystals</div></div><div id="gacha_redraw_01"><div id="gacha_redraw_btn"><div class="marB10 colorCaution">You have a pending Card Pack.<br>Please Accept the Card or choose to Redraw.<br>If you have a pending Card Pack after the Card Pack ends, the Cards drawn will automatically be sent to your INBOX.</div><a href="http://amw.konaminet.jp/amw/naboo/gacha/payment/result.php?gacha_id=13&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="submit mar0 btnN blink" style="display:inline-block;"><span>Accept or Redraw</span></a></div><div id="gacha_normal_btn"><a style="display:inline-block;" href="javascript:void(0)" onclick="$('#confirm_panel_use_item').call_implant_dialog();" class="se_sys_menu_entr"><input type="button" class="submit mar0 btnN green blink" value="DRAW" /></a></div><div id="gacha_enough_btn"><a style="display:inline-block;" href="javascript:void(0)" onclick="$('#confirm_not_enough_crystal').call_implant_dialog();" class="se_sys_menu_entr"><span class="btnN green mar0">DRAW</span></a></div></div><style>
+	.crystal_num_wrapper{
+		display:table;
+		margin:0 auto;
+		padding:5px;
+	}
+	.crystal_num{
+		display:table-cell;
+		vertical-align:middle;
+	}
+	.crystal_btn{
+		display:table-cell;
+		vertical-align:middle;
+		padding-left:8px;
+	}
+	.icon_arrow{
+		margin-left:5px;
+		padding-left:20px;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center left;
+		background-size:10px;
+	}
+</style>
+
+<div class="boxArea01">
+	<div class="crystal_num_wrapper">
+		<div class="crystal_num">
+			<span class="colorGray">You Have: </span>
+							<span>115</span>
+									<span>Crystals</span>
+		</div>
+		<div class="crystal_btn">
+		
+					<a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnPlus" onclick="se_sys_tap();"></a>
+				</div>
+	</div>
+	    
+</div>
+
+</div></div></div>
+<div class="panel-area marB10 marT10"><div class="panel-area-inner"><div id="title-gacha-ticket"><img src="http://amw.konaminet.jp/amw/naboo/img/gacha/gacha_thumb/gacha_title_ticket.png" width="290" height="" /><form name="navi" class="ticket-select-navi"><select name="tickets" class="ticket-select"><option selected>Silver Card Pack Ticket (7)</option></select></form></div><div class="gacha-ticket-each silver-ticket clearfix "><div class="gacha-content"><div class="gacha-img"><img src="http://amw.konaminet.jp/amw/naboo/img/item/cm/ticket_rarity_02hc_s.png" width="60" height="" /></div><div class="gacha-info"><h2 class="title-blur">Silver Card Pack Ticket</h2><p class="gacha-price"><span>You Have:</span> 7</p></div></div><div class="gacha-message fontS"><p> Allows you to draw from a Silver Card Pack. A 2-Star Card or better guaranteed. Rarities: 2-5 Stars</p></div><div class="gacha-btn"><a href="http://amw.konaminet.jp/amw/naboo/gacha/ticket/gacha?gacha_id=302&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnN se_sys_menu_entr doubleClickCheck"><span>USE THIS TICKET</span></a></div></div></div></div><div id="confirmSideDialog" class="panel-dialog"><div class="panel-dialog-inner"><h2 class="title_panel01">CONFIRM</h2><p id="side_confirm_message" class="pad10"></p><div class="padB10 txtAC"><a href="javascript:void(0)" class="btnS se_sys_menu_entr cancel"><span>CANCEL</span></a><a href="" class="btnS se_sys_menu_entr doubleClickCheck" id="side_confirm_url"><span>OK</span></a></div></div></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#confirmSideDialog").implant_dialog({closer:".cancel"});
+	});
+	
+	function openConfirmSide(side,url){
+		if(side == 'light'){
+			$("#side_confirm_message").html('Draw a Light Side Card using this Ticket?');
+			$("#side_confirm_url").addClass('blue');
+			$("#side_confirm_url").removeClass('red');
+		}else if(side == 'dark'){
+			$("#side_confirm_message").html('Draw a Dark Side Card using this Ticket?');
+			$("#side_confirm_url").addClass('red');
+			$("#side_confirm_url").removeClass('blue');
+		}
+		$("#side_confirm_url").attr('href',url);
+		$("#confirmSideDialog").call_implant_dialog();
+	}
+
+	var protectDC1 = new btnManager(".doubleClickCheck");
+	protectDC1.protectDC();
+</script><style>div.card-list ul.card-info li.name.card{}#card_info_name{color: #fff;font-size: 16px;}div.card-list ul.card-info li.name.player{background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);background-size: 270px 1px;background-repeat: no-repeat;background-position: top right;margin: 4px 0 0 0;padding: 7px 0 0 0;}#user_info_name{display: inline-block;width: 130px;word-wrap: break-word;}.gacha_drawn{display: table-cell;vertical-align: middle;padding-right:5px;white-space: nowrap;}.gacha_drawn:last-child{padding-right:0;white-space: normal;}.card_wrapper .cardListOuter:first-child:before{background-image: none;}.cardList:before{display: none;}.cardList .card{width: 60px;}.cardList .card img{width: 60px;height: auto;}.cardList .param li.full {text-align: left;}.cardList .param li.nameCard{margin-left:3px;}</style><div class="panel-area"><div class="panel-area-inner"><h3 class="title_panel01">5-Star Card Recipients!</h3><div class="card_wrapper"><div class="cardListOuter darkside"><a href="javascript:void(0)" onclick='display_card_detail({"card_id":"1035220250","name":"Jango Fett","thumb":"card\/chara\/103522025\/1035220250","comment":"With a reputation as one of the most feared bounty hunters in all of the galaxy, Jango Fett is not to be trifled with. He earned his armor from the legendary Mandalorian warriors.","rarity":"4","sub_rarity":"0","attribute":"2","type":"1","specialized_type":"0","race":"131329","max_level":"60","cost":"18","attack":"6520","defence":"4220","skill_id":"0","price":"5800","sub_type":"0","lvup_attack_pat":"1","lvup_attack":"9880","lvup_defence_pat":"0","lvup_defence":"6300","series_id":"1035220250","evol_level":"0","evol_max_level":"3","evol_card_id":"1035220251","evol_hp":"0","awake_power":1,"permission":"0","character_id":"352","slot_x":"1","slot_y":"1","stackable_cnt":"1","max_usable_cnt":"1","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"42","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"160","avoid":"80","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","best_lvup_attack":"9880","best_lvup_defence":"6300","prob_gacha1":"13","prob_gacha2":"7229","prob_gacha3":"2353","prob_gacha4":"11538","prob_gacha5":"256410","prob_gacha6":"26","prob_gacha7":"2051","prob_gacha8":"2692","prob_gacha9":"7692","prob_gacha10":"7692","prob_gacha11":"49","prob_gacha12":"2469","prob_gacha13":"0","prob_gacha14":"25532","prob_gacha15":"0","prob_gacha16":"15000","prob_gacha17":"1351","prob_gacha18":"4054","prob_gacha19":"13","prob_gacha20":"459","appear_date":"2013-11-15 06:15:00","last_update":"2014-10-23 06:14:06","is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"per_num":1,"per_text":"1 per Turn","event_power_txt":"","rarity_full":"\u003Cimg class=\u0022rarity_l_05\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s5_long.png\u0022 \/\u003E","range":"Medium"}, 4, this);' class="se_sys_window_opn"><div class="cardList clearfix"><div class="card"><span id="user_info_leader_card_img"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/103522025/1035220250_m.png" width="60"/></span></div><ul class="param clearfix"><li class="nameItem"><span id="user_info_name" class="">The PRO</span></li><li class="nameCard"><span class="sideIcon"></span>Jango Fett</li><li class="rarity"><span class="rarity-icon"><img class="rarity_l_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png" /></span></li><li class="full"><span class="colorParamTitle ">8 sec ago</span></li></ul><div class="raceIcon" style="display:none;"><span class="iconType0"></span><span class="iconType8"></span><span class="iconType17"></span></div></div><div class="boxArea01"><span class="fontS colorParamTitle gacha_drawn">Drawn From</span><span class="colorCaution gacha_drawn">Chosen One Redraw Card Pack</span></div><a href="javascript:void(0)" onclick="blessingManager.blessing('http://amw.konaminet.jp/amw/naboo/gacha/gacha/ajax/blessing?serial=776445&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334', $(this), 0);" class="btnN blessing_btn se_sys_menu_entr">Send Congratulations</a></a></div><div class="cardListOuter lightside"><a href="javascript:void(0)" onclick='display_card_detail({"card_id":"1016210350","name":"Jar Jar Binks","thumb":"card\/chara\/101621035\/1016210350","comment":"Jar Jar is a well-intentioned but bumbling Gungan. He was commissioned as a General in the Gungan Grand Army during the battle of Naboo and later became a Junior Representative in the Senate; eventually proposing the Emergency Powers Act.","rarity":"4","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"12289","max_level":"60","cost":"16","attack":"4730","defence":"2860","skill_id":"0","price":"5600","sub_type":"0","lvup_attack_pat":"2","lvup_attack":"6960","lvup_defence_pat":"0","lvup_defence":"4090","series_id":"1016210350","evol_level":"0","evol_max_level":"3","evol_card_id":"1016210351","evol_hp":"0","awake_power":1,"permission":"0","character_id":"162","slot_x":"1","slot_y":"1","stackable_cnt":"1","max_usable_cnt":"1","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"51","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"170","avoid":"160","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","best_lvup_attack":"6960","best_lvup_defence":"4090","prob_gacha1":"9","prob_gacha2":"5422","prob_gacha3":"1765","prob_gacha4":"8654","prob_gacha5":"192308","prob_gacha6":"19","prob_gacha7":"1538","prob_gacha8":"2019","prob_gacha9":"5769","prob_gacha10":"5769","prob_gacha11":"0","prob_gacha12":"0","prob_gacha13":"7965","prob_gacha14":"0","prob_gacha15":"11250","prob_gacha16":"0","prob_gacha17":"1014","prob_gacha18":"3041","prob_gacha19":"10","prob_gacha20":"344","appear_date":"2013-11-05 06:15:00","last_update":"2014-10-23 06:14:06","is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"per_num":1,"per_text":"1 per Turn","event_power_txt":"","rarity_full":"\u003Cimg class=\u0022rarity_l_05\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s5_long.png\u0022 \/\u003E","range":"Short"}, 4, this);' class="se_sys_window_opn"><div class="cardList clearfix"><div class="card"><span id="user_info_leader_card_img"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101621035/1016210350_m.png" width="60"/></span></div><ul class="param clearfix"><li class="nameItem"><span id="user_info_name" class="">Sir Snugsalot</span></li><li class="nameCard"><span class="sideIcon"></span>Jar Jar Binks</li><li class="rarity"><span class="rarity-icon"><img class="rarity_l_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png" /></span></li><li class="full"><span class="colorParamTitle ">1 min ago</span></li></ul><div class="raceIcon" style="display:none;"><span class="iconType0"></span><span class="iconType12"></span><span class="iconType13"></span></div></div><div class="boxArea01"><span class="fontS colorParamTitle gacha_drawn">Drawn From</span><span class="colorCaution gacha_drawn">Gold Card Pack Ticket Boosted by 5 (Side Selectable)</span></div><a href="javascript:void(0)" onclick="blessingManager.blessing('http://amw.konaminet.jp/amw/naboo/gacha/gacha/ajax/blessing?serial=776444&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334', $(this), 0);" class="btnN blessing_btn se_sys_menu_entr">Send Congratulations</a></a></div><div class="cardListOuter lightside"><a href="javascript:void(0)" onclick='display_card_detail({"card_id":"1010910450","name":"Anakin Skywalker [Padawan]","thumb":"card\/chara\/101091045\/1010910450","comment":"Anakin is a gifted Padawan learner. Due to his young age, he often feels shackled by old Jedi traditions, and frequently disobeys his Jedi teacher, Obi-Wan Kenobi.","rarity":"4","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"589857","max_level":"60","cost":"17","attack":"6680","defence":"4290","skill_id":"0","price":"5700","sub_type":"0","lvup_attack_pat":"1","lvup_attack":"10290","lvup_defence_pat":"2","lvup_defence":"6610","series_id":"1010910450","evol_level":"0","evol_max_level":"3","evol_card_id":"1010910451","evol_hp":"0","awake_power":1,"permission":"0","character_id":"109","slot_x":"1","slot_y":"1","stackable_cnt":"1","max_usable_cnt":"1","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"1","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"170","avoid":"80","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","best_lvup_attack":"10290","best_lvup_defence":"6610","prob_gacha1":"16","prob_gacha2":"9036","prob_gacha3":"2941","prob_gacha4":"14423","prob_gacha5":"320513","prob_gacha6":"32","prob_gacha7":"2564","prob_gacha8":"3365","prob_gacha9":"9615","prob_gacha10":"9615","prob_gacha11":"62","prob_gacha12":"3086","prob_gacha13":"13274","prob_gacha14":"0","prob_gacha15":"18750","prob_gacha16":"0","prob_gacha17":"1689","prob_gacha18":"5068","prob_gacha19":"17","prob_gacha20":"574","appear_date":"2013-10-07 06:15:00","last_update":"2014-10-23 06:14:06","is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"per_num":1,"per_text":"1 per Turn","event_power_txt":"","rarity_full":"\u003Cimg class=\u0022rarity_l_05\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s5_long.png\u0022 \/\u003E","range":"Short"}, 4, this);' class="se_sys_window_opn"><div class="cardList clearfix"><div class="card"><span id="user_info_leader_card_img"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101091045/1010910450_m.png" width="60"/></span></div><ul class="param clearfix"><li class="nameItem"><span id="user_info_name" class="">mhhstanny1815</span></li><li class="nameCard"><span class="sideIcon"></span>Anakin Skywalker [Padawan]</li><li class="rarity"><span class="rarity-icon"><img class="rarity_l_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png" /></span></li><li class="full"><span class="colorParamTitle ">1 min ago</span></li></ul><div class="raceIcon" style="display:none;"><span class="iconType0"></span><span class="iconType5"></span><span class="iconType16"></span><span class="iconType19"></span></div></div><div class="boxArea01"><span class="fontS colorParamTitle gacha_drawn">Drawn From</span><span class="colorCaution gacha_drawn">Chosen One Redraw Card Pack</span></div><a href="javascript:void(0)" onclick="blessingManager.blessing('http://amw.konaminet.jp/amw/naboo/gacha/gacha/ajax/blessing?serial=776443&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334', $(this), 0);" class="btnN blessing_btn se_sys_menu_entr">Send Congratulations</a></a></div><div class="cardListOuter darkside"><a href="javascript:void(0)" onclick='display_card_detail({"card_id":"1045920150","name":"Clone Commander Appo","thumb":"card\/chara\/104592015\/1045920150","comment":"Clone Commander CC-1119 is a member of the Republic Grand Army\u0027s 501st Legion and a veteran of the Clone Wars. After Order 66 was given, Appo was one of the Clone Troopers assigned to attack the Jedi Temple on Coruscant. ","rarity":"4","sub_rarity":"0","attribute":"2","type":"1","specialized_type":"0","race":"100361","max_level":"60","cost":"28","attack":"6540","defence":"4240","skill_id":"61031","price":"6800","sub_type":"0","lvup_attack_pat":"1","lvup_attack":"8730","lvup_defence_pat":"0","lvup_defence":"6070","series_id":"1045920150","evol_level":"0","evol_max_level":"3","evol_card_id":"1045920151","evol_hp":"0","awake_power":1,"permission":"0","character_id":"459","slot_x":"1","slot_y":"1","stackable_cnt":"1","max_usable_cnt":"1","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"41","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"160","avoid":"70","favorite_map_id":"0","max_hp":"1000","assist_entry_pattern":"0","best_lvup_attack":"8730","best_lvup_defence":"6070","prob_gacha1":"9","prob_gacha2":"5422","prob_gacha3":"1765","prob_gacha4":"8654","prob_gacha5":"192308","prob_gacha6":"19","prob_gacha7":"1538","prob_gacha8":"2019","prob_gacha9":"5769","prob_gacha10":"5769","prob_gacha11":"37","prob_gacha12":"1852","prob_gacha13":"0","prob_gacha14":"19149","prob_gacha15":"0","prob_gacha16":"11250","prob_gacha17":"1014","prob_gacha18":"3041","prob_gacha19":"10","prob_gacha20":"344","appear_date":"2014-05-22 06:10:00","last_update":"2014-10-23 06:14:07","skill":{"skill_id":"61031","name":"3-Unit Clone Trooper ATK Up [Sml]","comment":"Increases ATK, HEA, and REP by %s for the three Clone Trooper units in front of and diagonally in front of this Unit.\u003Cflashnodisp\u003E(Affects:\u003Cspan class=\u0027iconType11\u0027\u003E\u003C\/span\u003E)\u003C\/flashnodisp\u003E","type":"2","is_deck":"1","priority":"0","target":"1","attack_dist":"0","attribute":"0","kind":"2048","extract":"0","effect_type":"1","prob":"100","lvup_prob_pat":"0","lvup_prob":"100","effect":"7","lvup_effect_pat":"2","lvup_effect":"15","max_level":"40","last_update":"0000-00-00 00:00:00"},"skill_name":"3-Unit Clone Trooper ATK Up [Sml]","skill_comment":"Increases ATK, HEA, and REP by 7.0% for the three Clone Trooper units in front of and diagonally in front of this Unit.\u003Cflashnodisp\u003E(Affects:\u003Cspan class=\u0027iconType11\u0027\u003E\u003C\/span\u003E)\u003C\/flashnodisp\u003E","skill_level":1,"skill_max_level":10,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"per_num":1,"per_text":"1 per Turn","event_power_txt":"","rarity_full":"\u003Cimg class=\u0022rarity_l_05\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s5_long.png\u0022 \/\u003E","range":"Medium"}, 4, this);' class="se_sys_window_opn"><div class="cardList clearfix"><div class="card"><span id="user_info_leader_card_img"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/104592015/1045920150_m.png" width="60"/></span></div><ul class="param clearfix"><li class="nameItem"><span id="user_info_name" class="">Butler Guard</span></li><li class="nameCard"><span class="sideIcon"></span>Clone Commander Appo</li><li class="rarity"><span class="rarity-icon"><img class="rarity_l_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png" /></span></li><li class="full"><span class="colorParamTitle ">1 min ago</span></li></ul><div class="raceIcon" style="display:none;"><span class="iconType0"></span><span class="iconType3"></span><span class="iconType11"></span><span class="iconType15"></span><span class="iconType16"></span></div></div><div class="boxArea01"><span class="fontS colorParamTitle gacha_drawn">Drawn From</span><span class="colorCaution gacha_drawn">Redraw Card Pack (1 Card)</span></div><a href="javascript:void(0)" onclick="blessingManager.blessing('http://amw.konaminet.jp/amw/naboo/gacha/gacha/ajax/blessing?serial=776442&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334', $(this), 0);" class="btnN blessing_btn se_sys_menu_entr">Send Congratulations</a></a></div><div class="cardListOuter lightside"><a href="javascript:void(0)" onclick='display_card_detail({"card_id":"1013310950","name":"Obi-Wan Kenobi [Jedi Master]","thumb":"card\/chara\/101331095\/1013310950","comment":"Obi-Wan Kenobi is a Jedi Master, a member of the Jedi High Council, and a Republic General in the Clone Wars. His ability to find solutions by talking to his opponents before resorting to force made him an excellent negotiator during the Clone Wars.","rarity":"4","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"65569","max_level":"60","cost":"31","attack":"4970","defence":"7230","skill_id":"40002","price":"7100","sub_type":"0","lvup_attack_pat":"0","lvup_attack":"7100","lvup_defence_pat":"1","lvup_defence":"10330","series_id":"1013310950","evol_level":"0","evol_max_level":"3","evol_card_id":"1013310951","evol_hp":"0","awake_power":1,"permission":"0","character_id":"133","slot_x":"1","slot_y":"1","stackable_cnt":"1","max_usable_cnt":"1","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"1","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"170","avoid":"90","favorite_map_id":"0","max_hp":"1000","assist_entry_pattern":"0","best_lvup_attack":"7100","best_lvup_defence":"10330","prob_gacha1":"9","prob_gacha2":"5422","prob_gacha3":"1765","prob_gacha4":"8654","prob_gacha5":"192308","prob_gacha6":"19","prob_gacha7":"1538","prob_gacha8":"2019","prob_gacha9":"5769","prob_gacha10":"5769","prob_gacha11":"37","prob_gacha12":"1852","prob_gacha13":"7965","prob_gacha14":"0","prob_gacha15":"11250","prob_gacha16":"0","prob_gacha17":"1014","prob_gacha18":"3041","prob_gacha19":"10","prob_gacha20":"344","appear_date":"2014-03-19 06:10:00","last_update":"2014-10-23 06:14:06","skill":{"skill_id":"40002","name":"Blaster Reflection [Med]","comment":"Chance to reflect blaster attacks (%s of the original attack) to attacker for that turn.","type":"1","is_deck":"1","priority":"0","target":"0","attack_dist":"0","attribute":"0","kind":"0","extract":"0","effect_type":"10","prob":"30","lvup_prob_pat":"0","lvup_prob":"30","effect":"80","lvup_effect_pat":"2","lvup_effect":"120","max_level":"40","last_update":"0000-00-00 00:00:00"},"skill_name":"Blaster Reflection [Med]","skill_comment":"Chance to reflect blaster attacks (80.0% of the original attack) to attacker for that turn.","skill_level":1,"skill_max_level":10,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"per_num":1,"per_text":"1 per Turn","event_power_txt":"","rarity_full":"\u003Cimg class=\u0022rarity_l_05\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s5_long.png\u0022 \/\u003E","range":"Short"}, 4, this);' class="se_sys_window_opn"><div class="cardList clearfix"><div class="card"><span id="user_info_leader_card_img"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101331095/1013310950_m.png" width="60"/></span></div><ul class="param clearfix"><li class="nameItem"><span id="user_info_name" class="">Racer Diligent</span></li><li class="nameCard"><span class="sideIcon"></span>Obi-Wan Kenobi [Jedi Master]</li><li class="rarity"><span class="rarity-icon"><img class="rarity_l_05" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s5_long.png" /></span></li><li class="full"><span class="colorParamTitle ">2 min ago</span></li></ul><div class="raceIcon" style="display:none;"><span class="iconType0"></span><span class="iconType5"></span><span class="iconType16"></span></div></div><div class="boxArea01"><span class="fontS colorParamTitle gacha_drawn">Drawn From</span><span class="colorCaution gacha_drawn">ROOKIE CARD PACK</span></div><a href="javascript:void(0)" onclick="blessingManager.blessing('http://amw.konaminet.jp/amw/naboo/gacha/gacha/ajax/blessing?serial=776441&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334', $(this), 0);" class="btnN blessing_btn se_sys_menu_entr">Send Congratulations</a></a></div></div><hr class="sub"/><div class="pad10 colorEmphasis">Congratulate a player on the above list and receive 40 AP for yourself and reward them with 10 AP!</div><div class="padB10 padL10 padR10 colorCaution">*You can congratulate other players up to 10 times a day!</div><div class="txtAC marB10"><a href="javascript:void(0)" id="btn_about_rarity" class="btnN se_sys_menu_entr"><span>Rarity Details</span></a></div><hr class="sub"/></div></div><div class="panel-area marB10 marT10"><div class="panel-area-inner"><p class="pad10 colorCaution">If your connection drops during the Card Pack animation, your Cards will be automatically sent to your Card Binder.</p><div class="txtAC marB10"><a href="http://amw.konaminet.jp/amw/naboo/gacha/gacha_history/index?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnN se_sys_menu_entr"><span>Cards You Recently Drew</span></a></div></div></div></div><div class="panel-dialog" id="cereb_dialog"><div class="panel-dialog-inner"><span class="dialogClose se_sys_window_cls"></span><h2 id="cereb_dialog_title" class="title_panel01">Result</h2><p id="cereb_dialog_txt" class="pad15"></p><div class="txtAC"><span class="btnS se_sys_menu_entr" id="cereb_dialog_cls" onclick="blessingDialogButton()">OK</span></div></div></div><div id="error-dialog"><div class="panel-area"><div class="panel-area-inner"><p>ERROR</p><p class="message">Failed to draw from the Card Pack. Please try again.</p></div></div></div><div id="error-dialog2" class="dialog"><div class="panel-area"><div class="panel-area-inner"><p>ERROR</p><p class="message">Sorry, your Rookie Card Pack is expired.</p></div></div></div><div id="dialog_rarity" class="panel-area dialogAnim"><div class="panel-area-inner"><p class="dialogClose se_sys_window_opn"></p><h2 class="title_panel01">RARITIES</h2><br /><p class="boxArea01 txtAL">Stars indicate the Stat potential of all Cards. More Stars = a higher Rarity. Rare cards will help lead you to victory! May the Force be with you!</p><br /><p class="star_list padB"></p><div class="pad txtAC"><a href="javascript:void(0)" class="btnS half btn_rarity_close se_sys_menu_entr">OK</a></div></div></div><div id="card_detail" class="dialog-box dialogAnim"><div class="panel-area"><div class="panel-area-inner"><div id="card-detail-info" class="clearfix"><h2 id="detail_name" class="title_panel01">YODA</h2><div class="padT10 padB10"><div class="card-detail-img"><img id="detail_thumb" src="http://amw.konaminet.jp/amw/naboo/img/common/background/no_bg.png" width="110" height="" /></div><div class="gacha-card-param"><ul class="clearfix"><li id ="is_type_character1" class="param"><span class="txtParam">Rarity: </span><span id="detail_rarity" class="detail-rarity"></span></li><li id ="is_type_character2" class="param"><span class="txtParam">Lvl </span><span id="detail_level"></span></li><li class="param"><span class="txtParam">Cost: </span><span id="detail_cost"></span></li><li class="param"><span class="txtParam">RANGE: </span><span id="detail_attack_dist_max"></span></li><li class="param"><span class="txtParam">ATK: </span><span id="detail_attack"></span></li><li class="param"><span class="txtParam">DEF: </span><span id="detail_defence"></span></li><li class="param"><span class="txtParam">HP: </span><span id="detail_hp"></span></li><li class="param"><span class="txtParam">TYPE: </span><span id="detail_type"></span></li><li class="param"><span class="txtParam">Price: </span><span id="detail_selling_price"></span> Credits</li></ul></div></div><div id="skill-info"><ul class="skill"><li class="param"><span class="title-param">Skill: </span><span id="detail_skillname"></span></li><li class="param"><span class="title-param">Skill Info: </span><span id="detail_skillinfo"></span></li></ul></div><div id="detail_comment" class="pad10"></div></div><p id="detail_closer" class="dialogClose se_sys_window_cls"><span>CONFIRM</span></p></div></div></div><script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/gacha.js?2014103001"></script>
+	
+    	
+        <div id="confirm_not_enough_crystal" class="" >
+            <div class="panel-dialog">
+                <div class="panel-dialog-inner">
+					<span id="cancel" class="dialogClose se_sys_window_cls"></span>
+                    <h2 class="title_panel01">NOT ENOUGH CRYSTALS</h2>
+					<div class="pad15">You do not have enough Crystals.</div>
+
+					 <style>
+	.crystal_num_wrapper{
+		display:table;
+		margin:0 auto;
+		padding:5px;
+	}
+	.crystal_num{
+		display:table-cell;
+		vertical-align:middle;
+	}
+	.crystal_btn{
+		display:table-cell;
+		vertical-align:middle;
+		padding-left:8px;
+	}
+	.icon_arrow{
+		margin-left:5px;
+		padding-left:20px;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center left;
+		background-size:10px;
+	}
+</style>
+
+<div class="boxArea01">
+	<div class="crystal_num_wrapper">
+		<div class="crystal_num">
+			<span class="colorGray">You Have: </span>
+							<span>115</span>
+									
+				<span class="after_crystal icon_arrow"></span>
+						<span>Crystals</span>
+		</div>
+		<div class="crystal_btn">
+		
+					<a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnPlus" onclick="se_sys_tap();"></a>
+				</div>
+	</div>
+	    
+</div>
+
+
+
+                    <div class="pad txtAC clearfix">
+                   		<a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334" class="btnN green se_sys_menu_entr">Go to the Crystal Shop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	
+<script type="text/javascript">var app_version="0.0.0";$(document).ready(function(){sendMessageToApp('back.enable');});function jump_prev_page() {ajax_load("http://amw.konaminet.jp/amw/naboo/home/home.php?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025334&a=campaign%2Flogin_bonus%2Fnormal%2Fflash&t=4890",{"_history":"back"},function(){});}</script>
+						</div>
+						<div id="debug_view"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
+

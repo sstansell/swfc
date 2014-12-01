@@ -1,0 +1,46 @@
+<h1>Overview</h1>
+<h2>After {{{total}}} 5* Cards Pulled</h2>
+<table width="25%">
+	<thead>
+		<tr>
+			<th>Card Name</th>
+			<th>Pulls</th>
+		</tr>
+	</thead>
+	<tbody class="list">
+	  {{#each cards}}
+	    <tr>
+	    	<td class="name">{{_id}}</td>
+	    	<td class="count">{{{value}}}</td>
+	    </tr>
+	  {{/each}}
+	  <tr>
+	  	<td><strong>Total</strong></td>
+	  	<td><strong>{{{total}}}</strong></td>
+	  </tr>
+	</tbody>
+</table>
+<table width="25%">
+	<thead>
+		<tr>
+			<th>Pack Name</th>
+			<th>Pulls</th>
+		</tr>
+	</thead>
+	<tbody class="list">
+	  {{#each packs}}
+	    <tr>
+	    	<td class="name">{{_id}}</td>
+	    	<td class="count">{{{value}}}</td>
+	    </tr>
+	  {{/each}}
+	  <tr>
+	  	<td><strong>Total</strong></td>
+	  	<td><strong>{{{total}}}</strong></td>
+	  </tr>
+	</tbody>
+</table>
+
+
+<div>{{{error}}}</div>
+

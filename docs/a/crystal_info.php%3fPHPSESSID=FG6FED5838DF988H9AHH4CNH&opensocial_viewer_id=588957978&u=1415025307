@@ -1,0 +1,108 @@
+<div id="ev_recover_bp">
+    ﻿<style>div#title_area{padding-top:3px;}h2#title_no_point{width:255px;text-align:center;padding:3px 25px 10px;background-size:290px 15px, 20px 20px, 20px 20px;background-repeat:no-repeat;background-position:center bottom, 2% top, 97% top;margin:0 auto;text-shadow:0 0 3px #cb2d2d;-webkit-text-shadow:0 0 3px #cb2d2d;color:#ffa7a7;}.no_point_navi_wrapper{width:270px;margin:0 auto;border:1px solid #807f7f;padding:10px 0;box-shadow:inset 0 3px 6px #000;background:#1c1c1c;border-radius:2px;-webkit-border-radius:2px;}div#no_point_navi p.title-blur{margin-bottom:5px;}div#no_point_navi .btn-sw-s:last-child{margin-right:0;}div#no_point_pt{padding:3px 0;display:none;margin-top: -20px;margin-bottom:5px;}#item_ep_1, #item_ep_half_1{position:relative;display: table;width: 100%;height: 56px;padding:3px;text-align:left;box-sizing:border-box;-webkit-box-sizing:border-box;}#item_ep_1.show, #item_ep_half_1.show{/*border:1px solid #FF0000;*/}#text_ep_half_potion_1.show, #text_ep_potion_1.show{display:block;}#text_ep_half_potion_1.hidden, #text_ep_potion_1.hidden{display:none;}div.item-list{text-align:center;width: 100%;}#item_ep_1.hidden, #item_ep_half_1.hidden{opacity:0.5;/*border:1px solid #000000;*/}#text_ep_half_potion_1.show, #text_ep_potion_1.show{display:block;}#text_ep_half_potion_1.hidden, #text_ep_potion_1.hidden{display:none;}div.item-list .item{width:50px !important;float:left;}.not_enough{width:80%;margin-left:-40%;position: absolute;top: 27%;left: 50%;color: #FFF;background: rgba(255, 0, 0, 0.8);border: 1px solid;border-color: rgba(255, 0, 0, 0.8);box-sizing: border-box;z-index: 2;padding: 5px;text-align:center;text-shadow: 0 0 3px #000;-webkit-text-shadow: 0 0 3px #000;}div.status ul li.item_name{padding-bottom: 2px;}div.status ul li.item_private{margin-top: 0;}.btn-wrapper-sw {position: relative;width: 100%;min-height: 60px;padding-bottom: 20px;text-align: center;box-sizing: border-box;-webkit-box-sizing: border-box;}#no_point_wrapper{display:table !important;height: 100%;width:100%;}#no_point_inner{display:table-cell !important;vertical-align:middle;}#recovery_speed{margin: 5px 0;}/* 他モードへの遷移 */.nabi-outer {background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);background-repeat: no-repeat;background-position: center top;background-size: 280px 1px;}/* 鍵アイコン */.btn-sw-s.lock:before {background-size: 31px 38px;}</style><script>$(document).ready(function() {});function change_item_ep_1(){$("#item_ep_1").removeClass("hidden").addClass("show");$("#item_ep_half_1").removeClass("show").addClass("hidden");$("#text_ep_half_potion_1").removeClass("show").addClass("hidden");$("#text_ep_potion_1").removeClass("hidden").addClass("show");$("#use_potion_1").removeClass("disable").attr("href", "http://amw.konaminet.jp/amw/naboo/item/use/confirm?item_id=14&use_type=2&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309");$("#buy_button_1").removeClass("positive02")}</script><div id="no_point_wrapper" class="clearfix fadeIn" style="color:#fff;"><div id="no_point_inner" class="clearfix"><div class="panel-dialog"><div class="panel-dialog-inner txtAC"><span class="dialogClose" onclick="se_sys_window_cls();"></span><div id="title_area pad0"><h2 class="title_panel01 marB">RECOVER BATTLE POINTS</h2><div id="rest_time" class="boxArea01 txtAC"><span class="colorGray">Full Recovery Time: </span><p class="colorEmphasis txtAC fontS pad">1 BP recovers every 15 minutes.</p></div><div class="colorCaution marB"><p>
+    
+            
+                    
+	    <p class="title-blur"> Crystals are needed to fully recover your BP</p>
+            </p>
+</div></div><div class="recover_item_wrapper"><div class="recover_item"><img src="http://amw.konaminet.jp/amw/naboo/img/item/cm/item_crystal01_s.png" width="50" /></div><div class="recover_info"><div class="txtAR"><p class="btnS disable">USE</p></div></div></div><style>
+	.crystal_num_wrapper{
+		display:table;
+		margin:0 auto;
+		padding:5px;
+	}
+	.crystal_num{
+		display:table-cell;
+		vertical-align:middle;
+	}
+	.crystal_btn{
+		display:table-cell;
+		vertical-align:middle;
+		padding-left:8px;
+	}
+	.icon_arrow{
+		margin-left:5px;
+		padding-left:20px;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center left;
+		background-size:10px;
+	}
+</style>
+
+<div class="boxArea01">
+	<div class="crystal_num_wrapper">
+		<div class="crystal_num">
+			<span class="colorGray">You Have: </span>
+							<span>115</span>
+									<span>Crystals</span>
+		</div>
+		<div class="crystal_btn">
+		
+					<a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309" class="btnPlus" onclick="se_sys_tap();"></a>
+				</div>
+	</div>
+	    
+</div>
+
+<style>.recover_item_wrapper{display:table;width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;padding:0 10px;}.recover_item{width:70px;display:table-cell;vertical-align:middle;}.recover_info{display:table-cell;vertical-align:middle;text-align:left;}</style><div id="no_point_pt" class="clearfix center" ><a href="http://amw.konaminet.jp/amw/naboo/common/uppoint?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309" class="btnN" onclick="se_sys_menu_entr();"><span>0 PT(s) Available</span></a></div></div></div></div></div>
+
+</div>
+
+<div id="ev_recover_ep">
+    ﻿<style>div#title_area{padding-top:3px;}h2#title_no_point{width:255px;text-align:center;padding:3px 25px 10px;background-size:290px 15px, 20px 20px, 20px 20px;background-repeat:no-repeat;background-position:center bottom, 2% top, 97% top;margin:0 auto;text-shadow:0 0 3px #cb2d2d;-webkit-text-shadow:0 0 3px #cb2d2d;color:#ffa7a7;}.no_point_navi_wrapper{width:270px;margin:0 auto;border:1px solid #807f7f;padding:10px 0;box-shadow:inset 0 3px 6px #000;background:#1c1c1c;border-radius:2px;-webkit-border-radius:2px;}div#no_point_navi p.title-blur{margin-bottom:5px;}div#no_point_navi .btn-sw-s:last-child{margin-right:0;}div#no_point_pt{padding:3px 0;display:none;margin-top: -20px;margin-bottom:5px;}#item_ep_2, #item_ep_half_2{position:relative;display: table;width: 100%;height: 56px;padding:3px;text-align:left;box-sizing:border-box;-webkit-box-sizing:border-box;}#item_ep_2.show, #item_ep_half_2.show{/*border:1px solid #FF0000;*/}#text_ep_half_potion_2.show, #text_ep_potion_2.show{display:block;}#text_ep_half_potion_2.hidden, #text_ep_potion_2.hidden{display:none;}div.item-list{text-align:center;width: 100%;}#item_ep_2.hidden, #item_ep_half_2.hidden{opacity:0.5;/*border:1px solid #000000;*/}#text_ep_half_potion_2.show, #text_ep_potion_2.show{display:block;}#text_ep_half_potion_2.hidden, #text_ep_potion_2.hidden{display:none;}div.item-list .item{width:50px !important;float:left;}.not_enough{width:80%;margin-left:-40%;position: absolute;top: 27%;left: 50%;color: #FFF;background: rgba(255, 0, 0, 0.8);border: 1px solid;border-color: rgba(255, 0, 0, 0.8);box-sizing: border-box;z-index: 2;padding: 5px;text-align:center;text-shadow: 0 0 3px #000;-webkit-text-shadow: 0 0 3px #000;}div.status ul li.item_name{padding-bottom: 2px;}div.status ul li.item_private{margin-top: 0;}.btn-wrapper-sw {position: relative;width: 100%;min-height: 60px;padding-bottom: 20px;text-align: center;box-sizing: border-box;-webkit-box-sizing: border-box;}#no_point_wrapper{display:table !important;height: 100%;width:100%;}#no_point_inner{display:table-cell !important;vertical-align:middle;}#recovery_speed{margin: 5px 0;}/* 他モードへの遷移 */.nabi-outer {background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);background-repeat: no-repeat;background-position: center top;background-size: 280px 1px;}/* 鍵アイコン */.btn-sw-s.lock:before {background-size: 31px 38px;}</style><script>$(document).ready(function() {});function change_item_ep_2(){$("#item_ep_2").removeClass("hidden").addClass("show");$("#item_ep_half_2").removeClass("show").addClass("hidden");$("#text_ep_half_potion_2").removeClass("show").addClass("hidden");$("#text_ep_potion_2").removeClass("hidden").addClass("show");$("#use_potion_2").removeClass("disable").attr("href", "http://amw.konaminet.jp/amw/naboo/item/use/confirm?item_id=14&use_type=1&PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309");$("#buy_button_2").removeClass("positive02")}</script><div id="no_point_wrapper" class="clearfix fadeIn" style="color:#fff;"><div id="no_point_inner" class="clearfix"><div class="panel-dialog"><div class="panel-dialog-inner txtAC"><span class="dialogClose" onclick="se_sys_window_cls();"></span><div id="title_area pad0"><h2 class="title_panel01 marB">RECOVER ENERGY POINTS</h2><div id="rest_time" class="boxArea01 txtAC"><span class="colorGray">Full Recovery Time: </span><p class="colorEmphasis txtAC fontS pad">1 EP recovers every minute.</p></div><div class="colorCaution marB"><p>
+    
+            
+                    
+	    <p class="title-blur"> Crystals are needed to fully recover your EP</p>
+            </p>
+</div></div><div class="recover_item_wrapper"><div class="recover_item"><img src="http://amw.konaminet.jp/amw/naboo/img/item/cm/item_crystal01_s.png" width="50" /></div><div class="recover_info"><div class="txtAR"><p class="btnS disable">USE</p></div></div></div><style>
+	.crystal_num_wrapper{
+		display:table;
+		margin:0 auto;
+		padding:5px;
+	}
+	.crystal_num{
+		display:table-cell;
+		vertical-align:middle;
+	}
+	.crystal_btn{
+		display:table-cell;
+		vertical-align:middle;
+		padding-left:8px;
+	}
+	.icon_arrow{
+		margin-left:5px;
+		padding-left:20px;
+		background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center left;
+		background-size:10px;
+	}
+</style>
+
+<div class="boxArea01">
+	<div class="crystal_num_wrapper">
+		<div class="crystal_num">
+			<span class="colorGray">You Have: </span>
+							<span>115</span>
+									<span>Crystals</span>
+		</div>
+		<div class="crystal_btn">
+		
+					<a href="http://amw.konaminet.jp/amw/naboo/item/shop/list?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309" class="btnPlus" onclick="se_sys_tap();"></a>
+				</div>
+	</div>
+	    
+</div>
+
+<style>.recover_item_wrapper{display:table;width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;padding:0 10px;}.recover_item{width:70px;display:table-cell;vertical-align:middle;}.recover_info{display:table-cell;vertical-align:middle;text-align:left;}</style><div id="no_point_pt" class="clearfix center" ><a href="http://amw.konaminet.jp/amw/naboo/common/uppoint?PHPSESSID=FG6FED5838DF988H9AHH4CNH&opensocial_viewer_id=588957978&u=1415025309" class="btnN" onclick="se_sys_menu_entr();"><span>0 PT(s) Available</span></a></div></div></div></div></div>
+
+</div>
+<script>
+    
+    var noHpDialogH = getWVHeight();
+    $('#ev_recover_ep').implant_dialog({"closer":"#home_closer, .dialogClose"});
+    $("#ev_recover_ep").css({"height": noHpDialogH + "px"});
+    $('#ev_recover_bp').implant_dialog({"closer":"#home_closer, .dialogClose"});
+    $("#ev_recover_bp").css({"height": noHpDialogH + "px"});
+    
+    
+            $("#crystal_total_num").empty().html("115");
+</script>

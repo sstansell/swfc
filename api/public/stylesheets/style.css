@@ -1,0 +1,59 @@
+body {
+  padding: 50px;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+}
+a {
+  color: #00B7FF;
+}
+
+
+.controls{
+	padding-bottom:20px;
+}
+
+.list {
+  font-family:sans-serif;
+}
+td {
+  padding:7px; 
+  border:solid 1px #eee;
+  font-size: 14px;
+}
+
+.rarity{
+	text-align:center;
+}
+
+.rarity1{
+	background-color:#034500;
+	color:#fff;
+}
+.rarity2{
+	background-color:#156711;
+	color:#fff;
+}
+.rarity3{
+	background-color:#5AAC56;
+	color:#000;
+}
+.rarity4{
+	background-color:#C1C326;
+	color:#000;
+}
+.rarity5{
+	background-color:#C39B27;
+	color:#fff;
+}
+.rarity6{
+	background-color:#C36F27;
+	color:#fff;
+}
+.rarity7{
+	background-color:#B73030;
+	color:#fff;
+}

@@ -1,0 +1,4223 @@
+{
+    variable: {
+        maxFrameSkip: 3,
+        "text_force_1": "FORCE BONUS!",
+        "text_force_2": "ATK \u0026 DEF Bonuses on all units on the Battler's Side of the Force!",
+        "text_leader_1": "MORALE BOOST!",
+        "text_leader_2": "All units get ATK \u0026 DEF bonuses while the Leader Card is present!",
+        "bs_text": "Battle Strength: ",
+        "side": "1",
+        "cutin_order": "3",
+        "side_a": "",
+        "side_b": "",
+        "cutin_bgm": "",
+        "bgm_battle": "bg_sith_spacecraft",
+        "view_user_id": "4323611",
+        "preload_flg": "0",
+        "callback": "http://amw.konaminet.jp/amw/naboo/battle/result.php?battle_id=167205305812789310\u0026attack_user_id=1672053\u0026defense_user_id=4323611\u0026first_access=0\u0026replay=1\u0026add_ap_on_help=\u0026add_ap=\u0026is_beginner_rental=\u0026is_debug_battle=\u0026PHPSESSID=D88D7P9J4GF8APK7HNDPF9FR\u0026opensocial_viewer_id=588957978\u0026u=1415126407\u0026PHPSESSID=D88D7P9J4GF8APK7HNDPF9FR\u0026opensocial_viewer_id=588957978\u0026u=1415126407",
+        "data": {
+            "base": {
+                "sver": 9,
+                "owner_user_id": "1672053",
+                "owner_user_name": "Larry Self",
+                "owner_user_attribute": "1",
+                "enemy_user_id": "4323611",
+                "enemy_user_name": "Ragamuffin",
+                "enemy_user_attribute": "1",
+                "turn_num": 16,
+                "turn_limit": 60,
+                "threshold_reduce_defense": 100,
+                "intervening_grid_num": 7,
+                "owner_leader_unit_id": 6,
+                "enemy_leader_unit_id": 12,
+                "win_lose": 0,
+                "reason": 1,
+                "battle_strength": {
+                    "owner": {
+                        "org": 261934,
+                        "now": 268761,
+                        "max_update": 0,
+                        "max_attack": {
+                            "type": -1,
+                            "value": 0,
+                            "result": 0
+                        },
+                        "attribute": {
+                            "type": 1,
+                            "value": 5387,
+                            "result": 267321
+                        },
+                        "leader": {
+                            "type": 1,
+                            "value": 10463,
+                            "result": 277784
+                        },
+                        "skill": [
+                            {
+                                "type": 1,
+                                "value": 2610,
+                                "result": 280394
+                            }
+                        ]
+                    },
+                    "enemy": {
+                        "org": 331816,
+                        "now": 364245,
+                        "max_update": 0,
+                        "max_attack": {
+                            "type": -1,
+                            "value": 0,
+                            "result": 0
+                        },
+                        "attribute": {
+                            "type": 1,
+                            "value": 4548,
+                            "result": 336364
+                        },
+                        "leader": {
+                            "type": 1,
+                            "value": 19889,
+                            "result": 356253
+                        },
+                        "skill": [
+                            {
+                                "type": 2,
+                                "value": -11633,
+                                "result": 268761
+                            },
+                            {
+                                "type": 1,
+                                "value": 5097,
+                                "result": 361350
+                            },
+                            {
+                                "type": 1,
+                                "value": 2895,
+                                "result": 364245
+                            }
+                        ]
+                    }
+                },
+                "card_of_battle_unit_id": [
+                    0,
+                    11
+                ],
+                "most_attacked_unit_id": [
+                    8,
+                    13
+                ],
+                "most_survived_unit_id": [
+                    0,
+                    13
+                ],
+                "card_of_battle_evol_level": [
+                    3,
+                    3
+                ],
+                "most_attacked_evol_level": [
+                    1,
+                    3
+                ],
+                "most_survived_evol_level": [
+                    3,
+                    3
+                ],
+                "owner_rental_card_unit_id": [
+                    18
+                ],
+                "enemy_rental_card_unit_id": [
+                    
+                ],
+                "bg_img_no": 3,
+                "skill_info": [
+                    {
+                        "skill_id": 1111,
+                        "skill_name": "Medium DEF Up [Sml]\n(Grd. 4)   ",
+                        "skill_comment": "Increases 5.2% of DEF on all the medium-ranged units in the Formation.",
+                        "skill_level": 4,
+                        "skill_type": 0,
+                        "skill_is_deck": 1,
+                        "skill_priority": 0,
+                        "skill_target": 1,
+                        "skill_attribute": 0,
+                        "skill_kind": 0,
+                        "skill_extract": 0,
+                        "skill_effect_type": 2,
+                        "skill_prob": 80,
+                        "skill_effect": 5.1844880786136,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 80,
+                        "skill_effect_for_string": 5.2
+                    },
+                    {
+                        "skill_id": 2101,
+                        "skill_name": "Short DEF Down [Sml]\n(Grd. 24)   ",
+                        "skill_comment": "Decreases 11.2% of DEF on all the short-ranged units in the opposing Formation.",
+                        "skill_level": 24,
+                        "skill_type": 0,
+                        "skill_is_deck": 1,
+                        "skill_priority": 0,
+                        "skill_target": 2,
+                        "skill_attribute": 0,
+                        "skill_kind": 0,
+                        "skill_extract": 0,
+                        "skill_effect_type": 4,
+                        "skill_prob": 80,
+                        "skill_effect": 11.177424045029,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 80,
+                        "skill_effect_for_string": 11.2
+                    },
+                    {
+                        "skill_id": 11311,
+                        "skill_name": "Droid EVA Up [Sml]\n(Grd. 10)   ",
+                        "skill_comment": "Increases 14.5% of EVA on all the Droid units in the Formation.",
+                        "skill_level": 10,
+                        "skill_type": 0,
+                        "skill_is_deck": 1,
+                        "skill_priority": 0,
+                        "skill_target": 1,
+                        "skill_attribute": 0,
+                        "skill_kind": 4,
+                        "skill_extract": 0,
+                        "skill_effect_type": 6,
+                        "skill_prob": 80,
+                        "skill_effect": 14.456265803178,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 80,
+                        "skill_effect_for_string": 14.5
+                    },
+                    {
+                        "skill_id": 1031,
+                        "skill_name": "Light ATK Up [Sml]\n(Grd. 1)   ",
+                        "skill_comment": "Increases 5.0% of ATK, HEA and REP on all Light side units in the Formation.",
+                        "skill_level": 1,
+                        "skill_type": 0,
+                        "skill_is_deck": 1,
+                        "skill_priority": 0,
+                        "skill_target": 1,
+                        "skill_attribute": 1,
+                        "skill_kind": 0,
+                        "skill_extract": 0,
+                        "skill_effect_type": 1,
+                        "skill_prob": 60,
+                        "skill_effect": 5,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 60,
+                        "skill_effect_for_string": 5
+                    },
+                    {
+                        "skill_id": 51432,
+                        "skill_name": "3-Unit Light Side All Stats Up [Med]\n(Grd. 1)   ",
+                        "skill_comment": "Increases ATK, HEA, REP, DEF, ACC, and EVA by 8.0% for the three Light side units in front of and diagonally in front of this Unit.",
+                        "skill_level": 1,
+                        "skill_type": 2,
+                        "skill_is_deck": 1,
+                        "skill_priority": 1,
+                        "skill_target": 1,
+                        "skill_attribute": 1,
+                        "skill_kind": 0,
+                        "skill_extract": 0,
+                        "skill_effect_type": 20,
+                        "skill_prob": 100,
+                        "skill_effect": 8,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 100,
+                        "skill_effect_for_string": 8
+                    },
+                    {
+                        "skill_id": 51431,
+                        "skill_name": "3-Unit Light Side All Stats Up [Sml]\n(Grd. 1)   ",
+                        "skill_comment": "Increases ATK, HEA, REP, DEF, ACC, and EVA by 5.0% for the three Light side units in front of and diagonally in front of this Unit.",
+                        "skill_level": 1,
+                        "skill_type": 2,
+                        "skill_is_deck": 1,
+                        "skill_priority": 0,
+                        "skill_target": 1,
+                        "skill_attribute": 1,
+                        "skill_kind": 0,
+                        "skill_extract": 0,
+                        "skill_effect_type": 20,
+                        "skill_prob": 100,
+                        "skill_effect": 5,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 100,
+                        "skill_effect_for_string": 5
+                    },
+                    {
+                        "skill_id": 45002,
+                        "skill_name": "3-Unit Combat Skill Effect Down [Med]\n(Grd. 1)   ",
+                        "skill_comment": "Constantly decreases the effects of Combat Skills that affect the three enemy units in front of and diagonally in front of this unit, by 7.0%.",
+                        "skill_level": 1,
+                        "skill_type": 7,
+                        "skill_is_deck": 1,
+                        "skill_priority": 1,
+                        "skill_target": 2,
+                        "skill_attribute": 0,
+                        "skill_kind": 0,
+                        "skill_extract": 0,
+                        "skill_effect_type": 101,
+                        "skill_prob": 100,
+                        "skill_effect": 7,
+                        "skill_max_level": "40",
+                        "skill_prob_for_string": 100,
+                        "skill_effect_for_string": 7
+                    }
+                ],
+                "cutin_info": {
+                    "cutin_id": 0,
+                    "owner_unit_id_array": [
+                        
+                    ],
+                    "owner_head_unit_id": -1,
+                    "enemy_unit_id_array": [
+                        
+                    ],
+                    "enemy_head_unit_id": -1,
+                    "order": 0
+                },
+                "additional_info": [
+                    
+                ],
+                "exp": 1,
+                "rival_exp": 0,
+                "money": 0,
+                "base_money": 0,
+                "before_bp": 10,
+                "after_bp": 8,
+                "no_lose_disp": 0,
+                "decrement_card_info": {
+                    "decrement_stack": [
+                        
+                    ],
+                    "decrement_usecnt_vehicle": [
+                        
+                    ],
+                    "deleted_vehicle": [
+                        
+                    ],
+                    "update_def_deck": 0
+                },
+                "decrement_slot_info": [
+                    
+                ],
+                "view_battle_strength": 1
+            },
+            "card": [
+                {
+                    "thumb": "card\/chara\/104601024\/1046010243",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 41,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 4,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Clone Commander Cody",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "M",
+                    "card_id": "1046010243",
+                    "character_id": "460",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/101401014\/1014010140",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 1,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 0,
+                    "add_hp": 0,
+                    "name": "Ki-Adi-Mundi",
+                    "rarity": 3,
+                    "max_hp": 1000,
+                    "cml": "S",
+                    "card_id": "1014010140",
+                    "character_id": "140",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/102361013\/1023610133",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 4,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Mace Windu",
+                    "rarity": 2,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1023610133",
+                    "character_id": "236",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/103522045\/1035220450",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 141,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 0,
+                    "add_hp": 0,
+                    "name": "Jango Fett [The Original Warrior]",
+                    "rarity": 4,
+                    "max_hp": 1000,
+                    "cml": "S",
+                    "card_id": "1035220450",
+                    "character_id": "352",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/107101095\/1071010952",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 52,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 2,
+                    "add_hp": 500,
+                    "name": "Leia Organa [1st Anniversary Limited Edition]",
+                    "rarity": 4,
+                    "max_hp": 1500,
+                    "cml": "S",
+                    "card_id": "1071010952",
+                    "character_id": "710",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/101282014\/1012820141",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 42,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 4,
+                    "evol_level": 1,
+                    "add_hp": 250,
+                    "name": "Aurra Sing",
+                    "rarity": 3,
+                    "max_hp": 1250,
+                    "cml": "M",
+                    "card_id": "1012820141",
+                    "character_id": "128",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/107091075\/1070910753",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 1,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Luke Skywalker [May the 4th Limited Edition]",
+                    "rarity": 4,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1070910753",
+                    "character_id": "709",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/102031065\/1020310650",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 51,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 0,
+                    "add_hp": 0,
+                    "name": "Queen Amidala",
+                    "rarity": 4,
+                    "max_hp": 1000,
+                    "cml": "S",
+                    "card_id": "1020310650",
+                    "character_id": "203",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/108032014\/1080320141",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 42,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 4,
+                    "evol_level": 1,
+                    "add_hp": 250,
+                    "name": "General Veers",
+                    "rarity": 3,
+                    "max_hp": 1250,
+                    "cml": "M",
+                    "card_id": "1080320141",
+                    "character_id": "803",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/102441064\/1024410641",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 3,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 1,
+                    "add_hp": 250,
+                    "name": "Master Yoda",
+                    "rarity": 3,
+                    "max_hp": 1250,
+                    "cml": "S",
+                    "card_id": "1024410641",
+                    "character_id": "244",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/101401014\/1014010143",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 1,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Ki-Adi-Mundi",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1014010143",
+                    "character_id": "140",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/102361024\/1023610243",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 4,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Mace Windu",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1023610243",
+                    "character_id": "236",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/102361024\/1023610243",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 4,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Mace Windu",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1023610243",
+                    "character_id": "236",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/104862035\/1048620353",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 11,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "General Grievous",
+                    "rarity": 4,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1048620353",
+                    "character_id": "486",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/104862024\/1048620243",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 11,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "General Grievous",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "S",
+                    "card_id": "1048620243",
+                    "character_id": "486",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/104602014\/1046020143",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 41,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 4,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Clone Commander Cody",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "M",
+                    "card_id": "1046020143",
+                    "character_id": "460",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/104141013\/1041410130",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 51,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 1,
+                    "evol_level": 0,
+                    "add_hp": 0,
+                    "name": "Bail Organa",
+                    "rarity": 2,
+                    "max_hp": 1000,
+                    "cml": "S",
+                    "card_id": "1041410130",
+                    "character_id": "414",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/103522014\/1035220140",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 2,
+                    "type": 1,
+                    "weapon_type": 42,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 4,
+                    "evol_level": 0,
+                    "add_hp": 0,
+                    "name": "Jango Fett",
+                    "rarity": 3,
+                    "max_hp": 1000,
+                    "cml": "M",
+                    "card_id": "1035220140",
+                    "character_id": "352",
+                    "die_animation_id": 0
+                },
+                {
+                    "thumb": "card\/chara\/104621014\/1046210143",
+                    "size_x": 1,
+                    "size_y": 1,
+                    "attribute": 1,
+                    "type": 1,
+                    "weapon_type": 41,
+                    "motion_type": 0,
+                    "stackable": 0,
+                    "attack_dist_min": 1,
+                    "attack_dist_max": 4,
+                    "evol_level": 3,
+                    "add_hp": 750,
+                    "name": "Clone Commander Bly",
+                    "rarity": 3,
+                    "max_hp": 1750,
+                    "cml": "M",
+                    "card_id": "1046210143",
+                    "character_id": "462",
+                    "die_animation_id": 0
+                }
+            ],
+            "unit": [
+                {
+                    "serial": "300000000068725861",
+                    "uid": 1672053,
+                    "card_id": 0,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000071723752",
+                    "uid": 1672053,
+                    "card_id": 1,
+                    "stack": 1,
+                    "init_hp": 1000,
+                    "max_hp": 1000,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000063827332",
+                    "uid": 1672053,
+                    "card_id": 2,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000092815977",
+                    "uid": 1672053,
+                    "card_id": 3,
+                    "stack": 1,
+                    "init_hp": 1000,
+                    "max_hp": 1000,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000091786639",
+                    "uid": 1672053,
+                    "card_id": 4,
+                    "stack": 1,
+                    "init_hp": 1500,
+                    "max_hp": 1500,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000081336239",
+                    "uid": 1672053,
+                    "card_id": 5,
+                    "stack": 1,
+                    "init_hp": 1250,
+                    "max_hp": 1250,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000036318039",
+                    "uid": 1672053,
+                    "card_id": 6,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000083692678",
+                    "uid": 1672053,
+                    "card_id": 7,
+                    "stack": 1,
+                    "init_hp": 1000,
+                    "max_hp": 1000,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000100098284",
+                    "uid": 1672053,
+                    "card_id": 8,
+                    "stack": 1,
+                    "init_hp": 1250,
+                    "max_hp": 1250,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "300000000083866250",
+                    "uid": 4323611,
+                    "card_id": 9,
+                    "stack": 1,
+                    "init_hp": 1250,
+                    "max_hp": 1250,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "300000000079067367",
+                    "uid": 4323611,
+                    "card_id": 10,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000083560896",
+                    "uid": 4323611,
+                    "card_id": 11,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000075573594",
+                    "uid": 4323611,
+                    "card_id": 12,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000065556769",
+                    "uid": 4323611,
+                    "card_id": 13,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000066336047",
+                    "uid": 4323611,
+                    "card_id": 14,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000067771552",
+                    "uid": 4323611,
+                    "card_id": 15,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "500000000077216882",
+                    "uid": 4323611,
+                    "card_id": 16,
+                    "stack": 1,
+                    "init_hp": 1000,
+                    "max_hp": 1000,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "300000000078881588",
+                    "uid": 4323611,
+                    "card_id": 17,
+                    "stack": 1,
+                    "init_hp": 1000,
+                    "max_hp": 1000,
+                    "disp_mode": 0
+                },
+                {
+                    "serial": "600000000095998569",
+                    "uid": 1672053,
+                    "card_id": 18,
+                    "stack": 1,
+                    "init_hp": 1750,
+                    "max_hp": 1750,
+                    "disp_mode": 0
+                }
+            ],
+            "deck": [
+                [
+                    [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    [
+                        -1,
+                        -1,
+                        6,
+                        7,
+                        8,
+                        -1
+                    ],
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                [
+                    [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14
+                    ],
+                    [
+                        -1,
+                        15,
+                        16,
+                        17,
+                        -1,
+                        -1
+                    ],
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ]
+            ],
+            "scenario": [
+                {
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 0,
+                            "sklid": 0,
+                            "skltunidary": [
+                                0,
+                                5,
+                                8,
+                                18
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 15,
+                            "sklid": 1,
+                            "skltunidary": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                6,
+                                7
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 14,
+                            "sklid": 2,
+                            "skltunidary": [
+                                13,
+                                14
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 10,
+                            "sklid": 3,
+                            "skltunidary": [
+                                9,
+                                10,
+                                11,
+                                12,
+                                16
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "entry": [
+                        {
+                            "uid": 1672053,
+                            "unid": 18,
+                            "tx": 2,
+                            "ty": 2,
+                            "mode": 0
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 14,
+                            "results": [
+                                {
+                                    "tunid": 14,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1240,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1730,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1490,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 2,
+                            "results": [
+                                {
+                                    "tunid": 2,
+                                    "v": 78,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1672,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 22
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 14,
+                            "results": [
+                                {
+                                    "tunid": 14,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1240,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1230,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 990,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 1,
+                            "results": [
+                                {
+                                    "tunid": 1,
+                                    "v": 292,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 708,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 1,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 2,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1730,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1720,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1730,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1720,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1710,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1720,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1710,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 4,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 25,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1685,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 75
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1720,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1675,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1240,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1490,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1230,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 251,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 739,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 2,
+                            "results": [
+                                {
+                                    "tunid": 2,
+                                    "v": 456,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1216,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 729,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 1,
+                            "results": [
+                                {
+                                    "tunid": 1,
+                                    "v": 868,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 1,
+                            "results": [
+                                {
+                                    "tunid": 1,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1730,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 3,
+                            "sklid": 6,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        },
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "move": [
+                        {
+                            "unid": 0,
+                            "fx": 0,
+                            "fy": 0,
+                            "tx": 1,
+                            "ty": 0
+                        }
+                    ],
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 14,
+                            "results": [
+                                {
+                                    "tunid": 14,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 2,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1700,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1690,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1710,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1665,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1680,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1700,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1655,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 4,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 61,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1594,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 39
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 66,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1528,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 34
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1220,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1220,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 384,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1106,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1096,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 258,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 471,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 2,
+                            "results": [
+                                {
+                                    "tunid": 2,
+                                    "v": 422,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 794,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 2,
+                            "results": [
+                                {
+                                    "tunid": 2,
+                                    "v": 79,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 715,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 21
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 292,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1438,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 153,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1285,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1275,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1265,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 3,
+                            "sklid": 6,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        },
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 2,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1670,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1660,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1650,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1690,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1518,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1640,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1680,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1508,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 4,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 85,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1423,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 15
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 62,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1158,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 38
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1423,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1210,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 362,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 734,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 461,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 271,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 190,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 2,
+                            "results": [
+                                {
+                                    "tunid": 2,
+                                    "v": 439,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 276,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1255,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 297,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 958,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 182,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 776,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 766,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 756,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 3,
+                            "sklid": 6,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        },
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1630,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 2,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1620,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1680,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1610,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1670,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1413,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 3,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1600,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1660,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                },
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1403,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 4,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 106,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1297,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1650,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1148,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1200,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 373,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 361,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1190,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 274,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 2,
+                            "results": [
+                                {
+                                    "tunid": 2,
+                                    "v": 420,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 3,
+                            "results": [
+                                {
+                                    "tunid": 3,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 332,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 424,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 203,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 221,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 211,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 201,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 1672053,
+                            "unid": 3,
+                            "sklid": 6,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        },
+                        {
+                            "uid": 1672053,
+                            "unid": 7,
+                            "sklid": 4,
+                            "skltunidary": [
+                                2,
+                                4
+                            ]
+                        },
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "move": [
+                        {
+                            "unid": 6,
+                            "fx": 2,
+                            "fy": 1,
+                            "tx": 2,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 7,
+                            "fx": 3,
+                            "fy": 1,
+                            "tx": 3,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 18,
+                            "fx": 2,
+                            "fy": 2,
+                            "tx": 2,
+                            "ty": 1
+                        }
+                    ],
+                    "action": [
+                        {
+                            "unid": 0,
+                            "tunid": 14,
+                            "results": [
+                                {
+                                    "tunid": 14,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 6,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 71,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1529,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 29
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 7,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1640,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 4,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 41,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1256,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 59
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 113,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1143,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1133,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1180,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 361,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 351,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 7,
+                            "results": [
+                                {
+                                    "tunid": 7,
+                                    "v": 516,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 484,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 350,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 0,
+                            "results": [
+                                {
+                                    "tunid": 0,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "move": [
+                        {
+                            "unid": 6,
+                            "fx": 2,
+                            "fy": 0,
+                            "tx": 1,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 18,
+                            "fx": 2,
+                            "fy": 1,
+                            "tx": 1,
+                            "ty": 1
+                        },
+                        {
+                            "unid": 7,
+                            "fx": 3,
+                            "fy": 0,
+                            "tx": 2,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 4,
+                            "fx": 4,
+                            "fy": 0,
+                            "tx": 3,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 8,
+                            "fx": 4,
+                            "fy": 1,
+                            "tx": 3,
+                            "ty": 1
+                        },
+                        {
+                            "unid": 5,
+                            "fx": 5,
+                            "fy": 0,
+                            "tx": 4,
+                            "ty": 0
+                        }
+                    ],
+                    "action": [
+                        {
+                            "unid": 6,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 7,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1519,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 4,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1630,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 122,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1011,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 10,
+                            "results": [
+                                {
+                                    "tunid": 10,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1001,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1170,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 353,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 817,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 341,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 4,
+                            "results": [
+                                {
+                                    "tunid": 4,
+                                    "v": 422,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 7,
+                            "results": [
+                                {
+                                    "tunid": 7,
+                                    "v": 526,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1740,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 497,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1243,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 345,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 898,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 898,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 14,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 888,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "move": [
+                        {
+                            "unid": 8,
+                            "fx": 3,
+                            "fy": 1,
+                            "tx": 3,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 18,
+                            "fx": 1,
+                            "fy": 1,
+                            "tx": 2,
+                            "ty": 1
+                        },
+                        {
+                            "unid": 6,
+                            "fx": 1,
+                            "fy": 0,
+                            "tx": 2,
+                            "ty": 0
+                        }
+                    ],
+                    "action": [
+                        {
+                            "unid": 6,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 86,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1433,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 14
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 27,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1603,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 73
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1423,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 9,
+                            "results": [
+                                {
+                                    "tunid": 9,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1148,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 807,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 337,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 470,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 470,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 8,
+                            "results": [
+                                {
+                                    "tunid": 8,
+                                    "v": 626,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 624,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 888,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 8,
+                            "results": [
+                                {
+                                    "tunid": 8,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 624,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 484,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 404,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 354,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 50,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 6,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 93,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1330,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 7
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 18,
+                            "tunid": 13,
+                            "results": [
+                                {
+                                    "tunid": 13,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": "1750",
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 8,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1593,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1583,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 9,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 460,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 355,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 105,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 8,
+                            "results": [
+                                {
+                                    "tunid": 8,
+                                    "v": 128,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 496,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 8,
+                            "results": [
+                                {
+                                    "tunid": 8,
+                                    "v": 643,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 292,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 6,
+                            "results": [
+                                {
+                                    "tunid": 6,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "move": [
+                        {
+                            "unid": 18,
+                            "fx": 2,
+                            "fy": 1,
+                            "tx": 2,
+                            "ty": 0
+                        },
+                        {
+                            "unid": 5,
+                            "fx": 4,
+                            "fy": 0,
+                            "tx": 3,
+                            "ty": 0
+                        }
+                    ],
+                    "action": [
+                        {
+                            "unid": 18,
+                            "tunid": 12,
+                            "results": [
+                                {
+                                    "tunid": 12,
+                                    "v": 81,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1249,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 19
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 5,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1583,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 10,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 392,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 485,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 1265,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 5,
+                            "results": [
+                                {
+                                    "tunid": 5,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 693,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 572,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 544,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 28,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": [
+                        {
+                            "unid": 18,
+                            "tunid": 11,
+                            "results": [
+                                {
+                                    "tunid": 11,
+                                    "v": 0,
+                                    "result": 2,
+                                    "act_type": 1,
+                                    "rhp": 1583,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 15,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 10,
+                                    "result": 3,
+                                    "act_type": 1,
+                                    "rhp": 18,
+                                    "rstk": 1,
+                                    "grz": 0,
+                                    "rddef": 90
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 11,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 491,
+                                    "result": 4,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 12,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 17,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        },
+                        {
+                            "unid": 13,
+                            "tunid": 18,
+                            "results": [
+                                {
+                                    "tunid": 18,
+                                    "v": 0,
+                                    "result": 0,
+                                    "act_type": 1,
+                                    "rhp": 0,
+                                    "rstk": 0,
+                                    "grz": 0,
+                                    "rddef": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "skill": [
+                        {
+                            "uid": 4323611,
+                            "unid": 16,
+                            "sklid": 5,
+                            "skltunidary": [
+                                10,
+                                11,
+                                12
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        
+    },
+    image: {
+        "31": "http://amw.konaminet.jp/amw/naboo/img/card/chara/104601024/1046010243_ms.png",
+        "140": "http://amw.konaminet.jp/amw/naboo/img/card/chara/101401014/1014010140_ms.png",
+        "142": "http://amw.konaminet.jp/amw/naboo/img/card/chara/102361013/1023610133_ms.png",
+        "144": "http://amw.konaminet.jp/amw/naboo/img/card/chara/103522045/1035220450_ms.png",
+        "146": "http://amw.konaminet.jp/amw/naboo/img/card/chara/107101095/1071010952_ms.png",
+        "148": "http://amw.konaminet.jp/amw/naboo/img/card/chara/101282014/1012820141_ms.png",
+        "150": "http://amw.konaminet.jp/amw/naboo/img/card/chara/107091075/1070910753_ms.png",
+        "152": "http://amw.konaminet.jp/amw/naboo/img/card/chara/102031065/1020310650_ms.png",
+        "154": "http://amw.konaminet.jp/amw/naboo/img/card/chara/108032014/1080320141_ms.png",
+        "156": "http://amw.konaminet.jp/amw/naboo/img/card/chara/102441064/1024410641_ms.png",
+        "158": "http://amw.konaminet.jp/amw/naboo/img/card/chara/101401014/1014010143_ms.png",
+        "160": "http://amw.konaminet.jp/amw/naboo/img/card/chara/102361024/1023610243_ms.png",
+        "162": "http://amw.konaminet.jp/amw/naboo/img/card/chara/102361024/1023610243_ms.png",
+        "164": "http://amw.konaminet.jp/amw/naboo/img/card/chara/104862035/1048620353_ms.png",
+        "166": "http://amw.konaminet.jp/amw/naboo/img/card/chara/104862024/1048620243_ms.png",
+        "168": "http://amw.konaminet.jp/amw/naboo/img/card/chara/104602014/1046020143_ms.png",
+        "170": "http://amw.konaminet.jp/amw/naboo/img/card/chara/104141013/1041410130_ms.png",
+        "172": "http://amw.konaminet.jp/amw/naboo/img/card/chara/103522014/1035220140_ms.png",
+        "174": "http://amw.konaminet.jp/amw/naboo/img/card/chara/104621014/1046210143_ms.png",
+        "875": "http://amw.konaminet.jp/amw/naboo/img/battle/bg/battle_bg_003.png",
+        
+    },
+    rootPath: "http://amw.konaminet.jp/amw/naboo/swf/battle/en/battle/",
+    width: 320,
+    fullScreen: false,
+    autoTouch: false
+};

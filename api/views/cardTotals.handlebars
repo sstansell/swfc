@@ -1,0 +1,39 @@
+<h1>Card Totals ({{{total}}})</h1>
+<div id="cards">
+<div class="controls">
+<form method="get" action="">
+From: <input type="text" value="10/1/2014" id="fromDate" name="fromDate" class="date"> To: <input type="text" id="toDate" name="toDate" class="date" value="1/1/2015"> <input type="submit" value="Go">
+</form>
+</div>
+	<table>
+		<thead>
+			<tr>
+				<!--<th>Thumb</th>-->
+				<th>Card Name</th>
+				<th>Pulls</th>
+				<!--<th>Links</th>-->
+				<th>Rarity</th>
+			</tr>
+		</thead>
+		<tbody class="list">
+		  {{#each cards}}
+		    <tr id="{{cardId}}">
+		    	<!--<td class="thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/{{thumb}}_s.png"></td> -->
+		    	<td class="name">{{name}}</td>
+		    	<td class="count">{{{count}}}</td>
+		    	<!--<td class="links"><a href="/history/card/{{{card_id}}}">History</a> | <a href="/packs/card/{{card_id}}">Packs</a></td>-->
+		    	<td class="rarity rarity{{{rarity}}}"">&nbsp;</td>
+		    </tr>
+		  {{/each}}
+		  <tr>
+		  	<td><strong>Total</strong></td>
+		  	<td><strong>{{{total}}}</strong></td>
+		  </tr>
+		</tbody>
+	</table>
+</div>
+<script>
+$( ".date" ).datepicker();
+</script>
+<div>{{{error}}}</div>
+

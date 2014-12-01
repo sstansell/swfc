@@ -1,0 +1,4 @@
+mongoexport --csv --db SWFC --collection skills --fields "skill_id,skill_name,skill_comment,skill_level,skill_type,skill_is_deck,skill_priority,skill_target,skill_attribute,skill_kind,skill_extract,skill_effect_type,skill_prob,skill_effect,skill_max_level" --out "skills.csv"
+
+
+mongoexport --csv --db SWFC --collection CardPulls --fields "card_id,name,rarity,sub_rarity,attribute,type,specialized_type,sub_type,evol_card_id,awake_power,permission,character_id,weapon_type,prob_gacha1,prob_gacha2,prob_gacha3,prob_gacha4,prob_gacha5,prob_gacha6,prob_gacha7,prob_gacha8,prob_gacha9,prob_gacha10,prob_gacha11,prob_gacha12,prob_gacha13,prob_gacha14,prob_gacha15,prob_gacha16,prob_gacha17,prob_gacha18,prob_gacha19,prob_gacha20,appear_date,last_update,pack,user" --out "cardPulls1.csv"

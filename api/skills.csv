@@ -1,0 +1,107 @@
+skill_id,skill_name,skill_comment,skill_level,skill_type,skill_is_deck,skill_priority,skill_target,skill_attribute,skill_kind,skill_extract,skill_effect_type,skill_prob,skill_effect,skill_max_level
+2101,"Short DEF Down [Sml]
+(Grd. 24)   ","Decreases 11.2% of DEF on all the short-ranged units in the opposing Formation.",24,0,1,0,2,0,0,0,4,,11.177424045029,"40"
+1031,"Light ATK Up [Sml]
+(Grd. 1)   ","Increases 5.0% of ATK, HEA and REP on all Light side units in the Formation.",1,0,1,0,1,1,0,0,1,60,5,"40"
+51431,"3-Unit Light Side All Stats Up [Sml]
+(Grd. 1)   ","Increases ATK, HEA, REP, DEF, ACC, and EVA by 5.0% for the three Light side units in front of and diagonally in front of this Unit.",1,2,1,0,1,1,0,0,20,100,5,"40"
+11222,"Ewok ACC Up [Med]
+(Grd. 1)   ","Increases 20.0% of ACC on all the Ewok units in the Formation.",1,0,1,1,1,0,1024,0,5,60,20,"40"
+11191,"Jedi DEF Up [Sml]
+(Grd. 1)   ","Increases 10.0% of DEF on all the Jedi units in the Formation.",1,0,1,0,1,0,32,0,2,80,10,"40"
+11011,"Droid ATK Up [Sml]
+(Grd. 1)   ","Increases 10.0% of ATK, HEA and REP on all the Droid units in the Formation.",1,0,1,0,1,0,4,0,1,80,10,"40"
+1101,"Short DEF Up [Sml]
+(Grd. 1)   ","Increases 5.0% of DEF on all the short-ranged units in the Formation.",1,0,1,0,1,0,0,0,2,80,5,"40"
+2131,"Light DEF Down [Sml]
+(Grd. 1)   ","Decreases 5.0% of DEF on all Light side units in the opposing Formation.",1,0,1,0,2,1,0,0,4,60,5,"40"
+11311,"Droid EVA Up [Sml]
+(Grd. 10)   ","Increases 14.5% of EVA on all the Droid units in the Formation.",10,0,1,0,1,0,4,0,6,80,14.456265803178,"40"
+11111,"Droid DEF Up [Sml]
+(Grd. 1)   ","Increases 10.0% of DEF on all the Droid units in the Formation.",1,0,1,0,1,0,4,0,2,80,10,"40"
+31711,"The Fallen One
+(Grd. 5)   ","A high probability of increasing this Unit's own ATK, DEF, ACC, and EVA by 5.1% for that turn.",5,1,1,0,1,0,0,0,22,48.75,5.1343671349961,"40"
+2232,"Light ACC Down [Med]
+(Grd. 8)   ","Decreases 16.8% of ACC on all Light side units in the opposing Formation.",8,0,1,1,2,1,0,0,7,45,16.782308481032,"40"
+5001,"Skill Effect Down [Sml]
+(Grd. 10)   ","Reduces the effectiveness of all (DOWN/UP) Skills on the opposing formation by 16.1%",10,0,1,0,2,0,0,0,100,80,16.140664507946,"40"
+1141,"Dark DEF Up [Sml]
+(Grd. 10)   ","Increases 6.1% of DEF on all Dark side units in the Formation.",10,0,1,0,1,2,0,0,2,60,6.1406645079459,"40"
+40002,"Blaster Reflection [Med]
+(Grd. 33)   ","Chance to reflect blaster attacks (109.1% of the original attack) to attacker for that turn.",33,1,1,0,0,0,0,0,10,30,109.11709219685,"40"
+12311,"Droid EVA Down [Sml]
+(Grd. 1)   ","Decreases 14.0% of EVA on all the Droid units in the opposing Formation.",1,0,1,0,2,0,4,0,8,80,14,"40"
+21001,"Sith ATK Up [Sml]
+(Grd. 1)   ","Increases 10.0% of ATK, HEA and REP on all the Sith units in the Formation.",1,0,1,0,1,0,64,0,1,80,10,"40"
+31112,"Self DEF Up [Med]
+(Grd. 40)   ","Chance to increase this unit's DEF by 100.0% for that turn.",40,1,1,1,1,0,0,0,2,60,100,"40"
+2331,"Light EVA Down [Sml]
+(Grd. 10)   ","Decreases 10.8% of EVA on all Light side units in the opposing Formation.",10,0,1,0,2,1,0,0,8,60,10.760443005297,"40"
+1211,"Medium ACC Up [Sml]
+(Grd. 1)   ","Increases 10.0% of ACC on all the medium-ranged units in the Formation.",1,0,1,0,1,0,0,0,5,80,10,"40"
+31911,"Dark Absorption
+(Grd. 20)   ","Absorbs 12.9% of ATK and DEF from Dark side and Neutral Units adjacent (L/R) to this Card. The Units adjacent to this Card receive a decrease of 12.9% to their ATK and DEF. (In the event that a Unit is adjacent to two Units bearing this Skill, this Skill's effect will overlap, resulting in a consecutive decrease of the Unit's ATK and DEF.)",20,6,1,0,1,0,0,1,24,100,12.926117308328,"40"
+51441,"3-Unit Dark Side All Stats Up [Sml]
+(Grd. 10)   ","Increases ATK, HEA, REP, DEF, ACC, and EVA by 5.4% for the three Dark side units in front of and diagonally in front of this Unit.",10,2,1,0,1,2,0,0,20,100,5.3802215026486,"40"
+31112,"Self DEF Up [Med]
+(Grd. 1)   ","Chance to increase this unit's DEF by 50.0% for that turn.",1,1,1,1,1,0,0,0,2,60,50,"40"
+11171,"Galactic Empire DEF Up [Sml]
+(Grd. 14)   ","Increases 11.5% of DEF on all the Galactic Empire units in the Formation.",14,0,1,0,1,0,32768,0,2,80,11.472142409025,"40"
+40002,"Blaster Reflection [Med]
+(Grd. 10)   ","Chance to reflect blaster attacks (83.0% of the original attack) to attacker for that turn.",10,1,1,0,0,0,0,0,10,30,83.041772021189,"40"
+2361,"All EVA Down [Sml]
+(Grd. 14)   ","Decreases 11.5% of EVA on all the units in the opposing Formation.",14,0,1,0,2,0,0,0,8,40,11.472142409025,"40"
+1021,"Long ATK Up [Sml]
+(Grd. 31)   ","Increases 14.8% of ATK on all the long-ranged units in the Formation.",31,0,1,0,1,0,0,0,1,80,14.799560015395,"40"
+1041,"Dark ATK Up [Sml]
+(Grd. 6)   ","Increases 5.4% of ATK, HEA and REP on all Dark side units in the Formation.",6,0,1,0,1,2,0,0,1,60,5.4140330257933,"40"
+61061,"3-Unit Jabba's Crime Syndicate ATK Up [Sml]
+(Grd. 5)   ","Increases ATK, HEA, and REP by 7.2% for the three Jabba's Crime Syndicate units in front of and diagonally in front of this Unit.",5,2,1,0,1,0,1048576,0,1,100,7.1535624399955,"40"
+12181,"Male DEF Down [Sml]
+(Grd. 1)   ","Decreases 10.0% of DEF on all the Male units in the opposing Formation.",1,0,1,0,2,0,1,0,4,80,10,"40"
+12111,"Droid DEF Down [Sml]
+(Grd. 1)   ","Decreases 10.0% of DEF on all the Droid units in the opposing Formation.",1,0,1,0,2,0,4,0,4,80,10,"40"
+1331,"Light EVA Up [Sml]
+(Grd. 1)   ","Increases 10.0% of EVA on all Light side units in the Formation.",1,0,1,0,1,1,0,0,6,60,10,"40"
+31011,"Self ATK Up [Sml]
+(Grd. 1)   ","A small chance to increase this unit's ATK by 50.0% for that turn.",1,1,1,0,1,0,0,0,1,5,50,"40"
+31011,"Self ATK Up [Sml]
+(Grd. 1)   ","A small chance to increase this unit's ATK by 50.0% for that turn.",1,1,1,0,1,0,0,0,1,5,50,"40"
+31811,"Defender of the Weak
+(Grd. 8)   ","Earns ATK and/or DEF boosts from certain Light side and Neutral Units. The ATK/DEF boost will be equally divided from 1.1% of the sum of the differences between this Unit's ATK/DEF and the ATK/DEF of only Light/Neutral Unit(s) in the formation, bearing ATK/DEF LOWER than this Unit.",8,5,1,0,1,0,0,0,23,100,1.1466828401935,"40"
+31611,"Last of the Order
+(Grd. 10)   ","A high probability of increasing this Unit's own ATK, DEF, ACC, and EVA by 5.5% for that turn.",10,1,1,0,1,0,0,0,21,57.5,5.5323101037081,"40"
+40001,"Blaster Reflection [Sml]
+(Grd. 4)   ","A small chance to reflect blaster attacks (80.5% of the original attack) to attacker for that turn.",4,1,1,0,0,0,0,0,10,20,80.491968209636,"40"
+2061,"All ATK Down [Sml]
+(Grd. 20)   ","Decreases 9.4% of ATK, HEA and REP on all the units in the opposing Formation.",20,0,1,0,2,0,0,0,3,40,9.389175962492001,"40"
+1011,"Medium ATK Up [Sml]
+(Grd. 1)   ","Increases 5.0% of ATK on all the medium-ranged units in the Formation.",1,0,1,0,1,0,0,0,1,80,5,"40"
+11171,"Galactic Empire DEF Up [Sml]
+(Grd. 10)   ","Increases 10.8% of DEF on all the Galactic Empire units in the Formation.",10,0,1,0,1,0,32768,0,2,80,10.760443005297,"40"
+31012,"Self ATK Up [Med]
+(Grd. 26)   ","Chance to increase this unit's ATK by 73.9% for that turn.",26,1,1,1,1,0,0,0,1,10,73.853008408116,"40"
+61131,"3-Unit Clone Trooper DEF Up [Sml]
+(Grd. 5)   ","Increases DEF by 7.2% for the three Clone Trooper units in front of and diagonally in front of this Unit.",5,2,1,0,1,0,2048,0,2,100,7.1535624399955,"40"
+61031,"3-Unit Clone Trooper ATK Up [Sml]
+(Grd. 28)   ","Increases ATK, HEA, and REP by 11.4% for the three Clone Trooper units in front of and diagonally in front of this Unit.",28,2,1,0,1,0,2048,0,1,100,11.364103185288,"40"
+5002,"Skill Effect Down [Med]
+(Grd. 2)   ","Reduces the effectiveness of all (DOWN/UP) Skills on the opposing formation by 20.1%",2,0,1,1,2,0,0,0,100,60,20.061590862062,"40"
+2121,"Long DEF Down [Sml]
+(Grd. 1)   ","Decreases 5.0% of DEF on all the long-ranged units in the opposing Formation.",1,0,1,0,2,0,0,0,4,80,5,"40"
+45002,"3-Unit Combat Skill Effect Down [Med]
+(Grd. 1)   ","Constantly decreases the effects of Combat Skills that affect the three enemy units in front of and diagonally in front of this unit, by 7.0%.",1,7,1,1,2,0,0,0,101,100,7,"40"
+1361,"All EVA Up [Sml]
+(Grd. 30)   ","Increases 16.2% of EVA on all the units in the Formation.",30,0,1,0,1,0,0,0,6,40,16.167648533994,"40"
+53242,"Adjacent Dark ACC Up [Med]
+(Grd. 24)   ","A high probability of increasing the ACC of the two Dark side units adjacent (L/R) to this Unit, by 32.4% .",24,3,1,1,1,2,0,0,5,50,32.354848090059,"40"
+31211,"Self ACC Up [Sml]
+(Grd. 1)   ","A small chance to increase this unit's ACC by 25.0% for that turn.",1,1,1,0,1,0,0,0,5,40,25,"40"
+51442,"3-Unit Dark Side All Stats Up [Med]
+(Grd. 9)   ","Increases ATK, HEA, REP, DEF, ACC, and EVA by 8.4% for the three Dark side units in front of and diagonally in front of this Unit.",9,2,1,1,1,2,0,0,20,100,8.432226648859499,"40"
+31511,"Self HEA/REP Up [Sml]
+(Grd. 1)   ","A small chance to increase this unit's HEA/REP by 10.0% for that turn.",1,1,1,0,1,0,0,0,1,5,10,"40"
+32401,"Minion Shield
+(Grd. 40)   ","When this Skill activates, a received attack is transferred to a Droid  unit positioned either directly in front, back, left, or right and will result in a guaranteed hit for that turn. The ATK of the transferred attack will be reduced by 20.0%. This Skill is not effective against range attacks.",40,14,1,0,1,0,4,0,28,70,20,"40"
+32801,"Confront Droid Army
+(Grd. 40)   ","Constantly increases its own EVA by 20.0%, if the enemy unit positioned directly in front is a Droid  unit.",40,12,1,0,1,0,4,0,6,100,20,"40"

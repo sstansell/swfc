@@ -1,0 +1,1730 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+						<meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=143" />
+		        <meta name="format-detection" content="telephone=no, address=no" />
+        <script language="JavaScript">
+            var is_content_viewer = true;
+            var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+            var IS_BROWSER        = 0;
+            var APP_SCHEME        = "dciapp";
+            var ERROR_URL         = "http://amw.konaminet.jp/amw/naboo/error/error.php?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302";
+            var CARRIER           = "android";
+			var TB                = null;
+			
+							var COMMON_FOOTER_HEIGHT = (60 + 20);	
+				var COMMOM_SIDEBAR_WIDTH = 0;			
+										
+									var VIEWPORT_SCALE	= 1.0;
+				
+				
+				var availWidth = screen.width - COMMOM_SIDEBAR_WIDTH;
+				var availHeight = screen.height;
+
+									var SCREEN_WIDTH			= 320;
+				
+				var SCREEN_HEIGHT			= ~~((availHeight - COMMON_FOOTER_HEIGHT) * (SCREEN_WIDTH / availWidth));
+				var SCREEN_HEIGHT_NONAVI	= ~~(availHeight * (SCREEN_WIDTH / availWidth));
+
+						function getWVHeight(){
+									
+					return (window.innerHeight -3);
+							}
+        </script>
+        <script language="JavaScript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.2.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.url.parser.js?2014110601"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load_nocv.min.js?2014110601"></script>
+		        <script>
+			var WINDOW_WIDTH		= $(window).width();
+						
+			var BASE_URL = 'http://amw.konaminet.jp/amw/naboo';
+			var CONTAINER_PATH = '/content_viewer/content_viewer.php';
+            
+			function greeThumbnail(ids, huge) {
+                if (!!ids == false || ids.length <= 0) return;
+
+				$(".gree-thumb").each(function(i) {
+					$(this).attr('src', "http://amw.konaminet.jp/amw/naboo/img/test/avatar.png");
+				});
+
+            }
+			function version_compare (v1, v2, operator) {compare = 0;vm = {'dev': -6,'alpha': -5,'a': -5,'beta': -4,'b': -4,'RC': -3,'rc': -3,'#': -2,'p': -1,'pl': -1},prepVersion = function (v) {v = ('' + v).replace(/[_\-+]/g, '.');v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.');return (!v.length ? [-8] : v.split('.'));};numVersion = function (v) {return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10));};v1 = prepVersion(v1);v2 = prepVersion(v2);x = Math.max(v1.length, v2.length);for (i = 0; i < x; i++) {if (v1[i] == v2[i]) {continue;}v1[i] = numVersion(v1[i]);v2[i] = numVersion(v2[i]);if (v1[i] < v2[i]) {compare = -1;break;} else if (v1[i] > v2[i]) {compare = 1;break;}}if (!operator) {return compare;}switch (operator) {case '>':case 'gt':return (compare > 0);case '>=':case 'ge':return (compare >= 0);case '<=':case 'le':return (compare <= 0);case '==':case '=':case 'eq':return (compare === 0);case '<>':case '!=':case 'ne':return (compare !== 0);case '':case '<':case 'lt':return (compare < 0);default:alert(operator);return null;}}
+			
+			
+			function jumpAnchor(anchor) {
+				var p = $(anchor).offset().top;
+									sendMessageToApp("scroll.pos", {"py":p, "scale":VIEWPORT_SCALE, "animate":1});
+							}			
+        </script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.overlay.min.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.transition_animate.min.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_link.min.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.implant_dialog.min.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.swipe_gallary.min.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.scroll_event.min.js?2014110601"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/global_footer_menu.js?2014110601"></script>
+		        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_ctrl.js?2014110601"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_refresh.js?2014110601"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/se.js?2014110601"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_hover.js?2014110601"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_manager.js?2014110601"></script>
+		<link href="http://amw.konaminet.jp/amw/naboo/csstpl/global?2014110601&ln=en" rel="stylesheet" type="text/css" />
+        <title>SWFC</title>
+            </head>
+    <body>
+
+    <div id="wrapper">
+
+		<div id="sw-wrapper" class="lightside">
+		<div id="sw-container">
+		<script type="text/javascript">
+			
+			function user_grade_update() {
+									GREE.ui(
+						{
+							'method':'upgrade',
+							'grade':3,
+							'callback_url':'http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302'
+						},
+						function(response){
+							if(response.data.upgraded) {
+			
+								top.location.href = "http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302";
+							}
+						}
+					);
+							}
+	
+										sendMessageToApp('session.start', {id:'3AACQQNAJ37592MDQF52K2A4', 'ua':navigator.userAgent});
+									sendMessageToApp('menu.setdata', {'value':'http://amw.konaminet.jp/amw/naboo/', 'name':'BASE_URL'});
+						$(window).resize(function(){
+				var WINDOW_HEIGHT	= $("#sw-content").height();
+				$("#sw-content").css({"height": getWVHeight() +"px"});
+			});
+			$(document).ready(function(){
+				
+					var WINDOW_HEIGHT	= $("#sw-content").height();
+					if( SCREEN_HEIGHT >= WINDOW_HEIGHT){
+													
+							$("#sw-content").css({"height": getWVHeight() +"px"});
+											}
+				
+				$(".btnN.blink, .btnS.blink, .btnSS.blink").append("<div class='whiteBlink'></div>");
+				
+				
+								
+									/*sendMessageToApp('menu.show');*/
+                                            sendMessageToApp('menu.show', {'battle_lock':0});
+                    				                sendMessageToApp('page.scroll');
+			});	
+			function scroll_lock(e){
+				e.preventDefault();
+			}
+
+			function reload_page(){return false;}
+			function jump_next_page(){return false;}
+			function jump_renew_cache(url,dac){
+				unixTIme = parseInt((new Date)/1000);
+				to=url.replace(/u=[0-9]+/,'u='+unixTIme);
+				if(dac==undefined) {
+					sendMessageToApp('music.status',{volume:'default'});
+				}
+				location.href=to;
+			}
+			function show_settingmenu()
+			{
+				sendMessageToApp('game.setting');
+				globalFooterMenuClose();
+			}
+			function show_gree_dashboard()
+			{
+				GREE.ui({'method':'open', 'view':'dashboard'});
+				globalFooterMenuClose();
+			}
+			
+			
+			var push_back="";
+			var onclick_back="";
+			function setPushBack(back){
+				push_back = back;
+				console.log(push_back);
+			}
+			function pushBack(){
+							var url = location.href;
+				if(is_redirect){
+					
+					document.location = redirect_url;
+				}else if(url.indexOf("card/deck/list") >= 0){
+					document.location= "http://amw.konaminet.jp/amw/naboo/card/deck/list?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302";
+				}else if(is_page_reload){
+					
+					document.location.reload();
+				}else if(is_dialog_open){
+					
+					if(dialog_target.length >= 2){
+						document.location.reload();
+					}else{
+						$(dialog_target[dialog_target.length-1]).close_implant_dialog();
+					}
+				}else{
+					
+					if(url.indexOf("home/home") == -1){
+						if(url.indexOf("help/user_policy") >= 0){
+							
+							   sendMessageToApp('page.title');
+						}else{
+							if(push_back != ""){
+								
+								document.location = push_back;
+							}else if(onclick_back != ""){
+								
+								onclick_back();
+							}else{
+															document.location= "http://amw.konaminet.jp/amw/naboo/home/home?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302";
+														}
+						}
+					}else{
+						sendMessageToApp('app.quitDialog');
+					}
+				}
+						}
+		</script>
+		<div id="page_content">
+
+<script type="text/javascript">
+    try {
+        document.execCommand('BackgroundImageCache', false, true);
+
+		sendMessageToApp('music.play', {file:"bg_battle_of_hoth"});
+    } catch(e) {}
+    var is_content_viewer;
+    if(is_content_viewer == undefined) {
+        var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+        var IS_BROWSER        = 0;
+        var APP_SCHEME        = "dciapp";
+        require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.1.min.js?2014110601",
+            function(){
+                require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load.min.js?2014110601",
+                    function(){
+                        $(document).ready(function(){
+                            sendMessageToApp('loading.finish',{url:""});
+                        });
+                    }
+                )  
+            }
+        );   
+    }else{
+		        $(document).ready(function(){
+									sendMessageToApp('loading.finish',{url:""});
+			        });
+    }
+    
+    function fix_select_box(){
+        var target = $("form select");
+        if(target){
+            target.before("<div class='select-txt'></div>");
+            target.change(function(){
+                $(this).prev().text($("option:selected",this).text());
+            }).trigger("change");   
+        }
+    }
+    
+    function require_js( src, callback )
+    {
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.onload = function(){
+            callback();
+        };
+        script.src = src;
+        document.body.appendChild( script );
+    }
+</script>
+<style>
+
+	#sw-wrapper{
+			}
+
+	.activeLink.blink{
+		-webkit-animation-name: activeBlink;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-fill-mode: both;
+		-webkit-perspective: 300;
+		-webkit-transform : translate3d(0, 0, 0);
+		-webkit-transform-style: preserve-3d;
+	}
+	@-webkit-keyframes activeBlink{
+		0% {
+			opacity:0;
+		}
+		50% {
+			opacity:0.7;
+		}
+		100% {
+			opacity:0;
+		}
+	}
+</style>
+
+
+<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/formatter.js?2014110601"></script>
+
+<style>
+	/*------------------------------------------------ DECK*/
+
+#btn_deck_bottom_wrapper{
+	padding:10px;
+	clear:both;
+	width:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------- DECK list.xhtml */
+/* Deck Information */
+div.deck-user-info {
+	width: 100%;
+	color:#AAA;
+	font-size:12px;
+	text-align:center;
+	margin: 20px 10px;
+	margin:0px;
+	padding:20px 0 15px;
+	position:relative;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_param.png);
+	background-repeat:no-repeat;
+	background-size:320px 17px;
+	background-position: center 8px;
+}
+	div.deck-user-info span {
+		display: inline-block;
+	}
+	div.deck-user-info span.deck-number {
+		position: absolute;
+		left: 10px;
+	}
+	
+	span#init_cost, span#init_def, span#init_atk, span#use_cost, span#use_def, span#use_atk, span.dmp_max{
+		color:#FFF;
+		font-size:16px;
+	}
+
+div#deck_param_after_token{
+	display:block:
+	height:12px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/param_change_arrow.png);
+	background-repeat:no-repeat;
+	background-size:40px 12px;
+	background-position:center;
+	visibility:hidden;
+	-webkit-animation-name: paramArrowAnim;
+	-webkit-animation-duration: 1.3s;
+	-webkit-animation-iteration-count: 10;
+	-webkit-animation-direction: forwards;
+	-webkit-animation-fill-mode: both;
+}
+
+	@-webkit-keyframes paramArrowAnim{
+	   0%{
+		  opacity:1;
+	   }
+	   50%{
+		  opacity:0.2;
+	   }
+	   100%{
+		  opacity:1;
+	   }
+	}
+	
+	div#deck_param_after_token span{
+		opacity:0;
+	}
+
+#swipe_card_area #select_area{
+	padding:0 6px;
+}
+	
+#deck_atk_after.deck_param1 span, #deck_def_after.deck_param1 span, #deck_cost_after.deck_param2 span{
+	color:#a4f301 !important;
+}
+
+#confirm_panel_remove h2.title-line, #confirm_panel_all_autoset_all h2.title-line, #confirm_panel_all_autoset h2.title-line{
+	text-align:left;
+	padding: 5px 25px;
+}
+
+
+/* common */
+#sw-content.deck div.panel-area:before{
+	content:"";
+	display: block;
+	width:100%;
+	background-size:100%;
+}
+
+#sw-content.deck div.panel-area{
+	width:100%;
+	padding:0;
+	margin:0 auto;
+	position:relative;
+}
+
+#sw-content.deck div.panel-area:after{
+	content:"";
+	display: block;
+	width:100%;
+	background-size:100%;
+}
+#sw-content.deck div.panel-area-inner{
+	width:100%;
+}
+
+
+
+	#sw-content.deck div#forcus_card_info_wrap div.panel-area-inner{
+		padding: 0px 6px 200px !important;
+	}
+
+
+/*  */
+div.deck-area-box {
+	position: relative;
+	width: 300px;
+	min-height: 250px;
+	margin: 0 auto;
+	padding: 0;
+
+	min-height: 110px;
+}
+
+	/*  */
+	div.card-list-outer{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(43,42,37,0)), color-stop(100%,rgba(43,42,37,1)));
+	}
+
+	/*  */
+	div.card-list-outer.lightside_outer{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(21,47,52,0)), color-stop(100%,rgba(21,47,52,1)));
+	}
+	
+	/*  */
+	div.card-list-outer.darkside_outer{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(47,15,15,0)), color-stop(100%,rgba(47,15,15,1)));
+	}
+
+
+/*  */
+div.card-list-small div.info div.name .stack-select {
+	float: right;
+	width: 40px;
+	font-size: 12px;
+	margin-top: 0x;
+}
+
+
+div.deck-area-inner {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+.small_img {
+}
+.large2_img {
+	height: 96px;
+}
+.large3_img {
+	height: 146px;
+}
+.hidden {
+	visibility: hidden;
+}
+div.level table tbody {
+	width: 100%;
+	display: block;
+	border-radius: 3px 0 0 3px;
+	height: 4px;
+}
+.ui-btn {
+	margin-top: -15px;
+	height: 1;
+}
+.ui-btn-text {
+	visibility: hidden;
+}
+.battle-deck-content div.deck-area-content .item-box span.block {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 0.9;
+	border: white 1px solid;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.battle-deck-content div.deck-area-content .item-box span {
+	position: absolute;
+	right: 1px;
+	bottom: 0px;
+	font-size: 10px;
+	background: rgba(0, 0, 0, 0.7);
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	border: 0px solid black;
+	-webkit-box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+	box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0, 0, 0, 0.7);
+	text-shadow: 1px 0px 2px rgba(0, 0, 0, 1), 1px 1px 8px rgba(0, 0, 0, 1);
+	z-index: 10;
+}
+.battle-deck-content span.range {
+	left: 0;
+	top: 0;
+}
+.battle-deck-content div.deck-area-content .item-box span.block {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 0.9;
+	border: white 1px solid;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.battle-deck-content span.number {
+	right: 0;
+	bottom: 0;
+}
+
+#test_message {
+	position: absolute;
+	height: 30px;
+	font-size: 10px;
+	color: #FF0000;
+	margin-left: 3px;
+}
+
+#area_box {
+	position: absolute;
+	display: block;
+	width: 45px;
+	height: 45px;
+	z-index: 6000;
+	border: 5px solid rgba(255,0,0,0.3);
+}
+
+/* Confirm Area */
+.submit-area {
+	display: table;
+	margin: auto;
+	width: 100%;
+	text-align: center;
+}
+
+#auto_btn {
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 20px;
+	top: 305px;
+	left:240px;
+	font-size: 12px;
+	padding: 10px 0 0 10px;
+	background: rgba(0,0,0,0.3);
+}
+#auto_form {
+	position: absolute;
+	display: block;
+	top: 310px;
+	left:150px;
+	font-size: 12px;
+}
+
+.auto-select {
+	width: 80px;
+}
+
+
+.panel2 {
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 150px;
+	z-index: 5500;
+	margin: 20px 0 0 10px;
+	/*top: 100px;*/
+	text-align: center;
+}
+
+.panel_bg {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 280px;
+	z-index: 500;
+}
+
+.confirm_bg {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 380px;
+	z-index: 30;
+	background: rgba(0,0,0,0.5);
+}
+
+/*  */
+.attachment-box {
+	font-size: 10px;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.cont {
+	display: block;
+	width: 100px;
+	height: 80px;
+	float: left;
+	margin: 10px 10px 10px 30px;
+	font-size: 12px;
+}
+
+/*  */
+.card-info-content {
+	position: absolute;
+	top: 220px;
+	left: 20px;
+	z-index: 0;
+	opacity: 0.5;
+	font-size: 10px;
+}
+/*  */
+.test_cover {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 450px;
+	z-index: 8500;
+	background-color:#3d485a;
+}
+
+.stack_form {
+	width: 50px;
+}
+
+.stack-select {
+	width: 50px;
+}
+
+
+/*  */
+div.panel-area-inner.deck-nopad {
+	display: table;
+	width: 100%;
+	padding: 7px 0 20px;
+}
+
+/*  */
+.card-status-content {
+	display: table;
+	width: 90%;
+	margin: 10px auto;
+}
+.card-status-content .thumb {
+	display: table-cell;
+	vertical-align: middle;
+	margin: auto;
+	text-align: center;
+	min-width: 70px;
+}
+.card-status-content .status {
+	display: table-cell;
+	vertical-align: middle;
+	margin: auto;
+	text-align: left;
+	font-size: 13px;
+}
+
+
+/* -----------------------------------------------  */
+div.panel-area-inner.nopad-two {
+	padding: 0 0 20px;	
+}
+
+/* How to Deck Dialog */
+div.howto-edit {
+	text-align: center;
+	margin: -10px auto auto;
+}
+
+div.card-list-small {
+	position: relative;
+}
+.hidden {
+	display: none;
+}
+
+/* ----------------------------------------------- TIPS */
+#first_dialog .panel-area {
+	top: -80px !important;
+}
+
+/* --------------------------------------------------------- deck.xhtml  */
+
+/*    */
+.deck-status-content {
+	display: block;
+	padding:0 10px 1px;
+	margin: 1px auto;
+	clear: both;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_title_line.png);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+	background-size:320px 11px;
+}
+
+.deck-status-content span {
+	display: inline-block;
+		color: #0099cc;
+}
+
+.deck-status-content span.deck-number {
+	float: left;
+	width: 100px;
+	font-size: 14px;
+}
+.deck-status-content span.front {
+	width: 95px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_front.png) no-repeat 20% center,
+				url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_front.png) no-repeat 80% center;
+	background-size: 6px 6px,6px 6px;
+	text-align: center;
+}
+
+.deck-status-content span.set {
+	float: right;
+	height: 100%;
+	margin: 0;
+}
+
+/*  */
+.deck-user-content {
+	display: block;
+	width: 300px;
+	height: 22px;
+	margin: 2px auto 10px;
+	font-size: 12px;
+}
+	.deck-user-content:after {
+		content: '';
+		display: block;
+		width: 300px;
+		height: 2px;
+		background: -webkit-gradient(linear, left top, right top, 
+									color-stop(5%,rgba(7, 45, 66, 0)),
+									color-stop(30%,rgba(13, 90, 131, 1)), 
+									color-stop(100%,rgba(13, 90, 131, 1)));
+	}
+
+.deck-user-content span {
+	display: inline-block;
+	height: 22px;
+	line-height: 20px;
+}
+
+.deck-user-content .edit-btn {
+	display: inline-block;
+	float: right;
+	width: 60px;
+	height: 19px;	
+	line-height: 19px;
+	text-align: center;
+}
+
+.battle-deck-content {
+	position: relative;
+	display: table;
+	width: 300px;
+	height: 151px;
+	margin: auto;
+	padding-top: 1px;
+}
+
+/*  */
+.battle .battle-deck-content {
+	margin: 10px auto auto -5px;
+}
+
+/*  */
+.battle-deck-content div.deck-area-content {
+	display: table-cell;
+	width: 300px;
+	min-height: 151px;
+	margin: 1px auto 8px;
+	padding: 0;
+	font-size: 10px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_grid.png) no-repeat top center;
+	background-size: 300px 150px;
+}
+
+	/**/
+	.battle-deck-content div.deck-area-content.window {
+		background: url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_grid.png) no-repeat center,
+					url(http://amw.konaminet.jp/amw/naboo/img/battle/deck/bg_border.png) no-repeat center;
+		background-size: 300px 150px, 300px 150px;
+	}
+
+
+
+
+/*  */
+/*.attachment-box,*/ 
+.battle-deck-content div.deck-area-content .deck {
+	display: block;
+	position: relative;
+	width: 46px;
+	height: 46px;
+	margin: 2px;
+	padding: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+
+	/* Small */
+	.battle-deck-content div.deck-area-content .deck.small-1x1 {
+		width: 46px;
+}
+	/* Large */
+	/* 1 x 2 */
+	.battle-deck-content div.deck-area-content .deck.large-1x2  {
+	width: 46px;
+	height: 96px;
+	}
+	
+	/* 1 x 3 */
+	.battle-deck-content div.deck-area-content .deck.large-1x3  {
+	width: 46px;
+	height: 146px;
+	}
+	
+	/* 2 x 2 */
+	.battle-deck-content div.deck-area-content .deck.large-2x2  {
+	width: 96px;
+	height: 96px;
+	top: 50px;
+	}	
+	
+	/* 2 x 3 */
+	.battle-deck-content div.deck-area-content .deck.large-2x3  {
+		width: 96px;
+		height: 146px;
+		top: 50px;
+		padding-top: 10px;
+	}
+	
+	/* 3 x 2 */
+	.battle-deck-content div.deck-area-content .deck.large-3x2  {
+		width: 146px;
+		height: 96px;
+		top: 50px;
+	}
+		
+	/* 3 x 3 */	
+	.battle-deck-content div.deck-area-content .deck.large-3x3  {
+		width: 146px;
+		height: 146px;
+	}	
+		.battle-deck-content div.deck-area-content .deck.large img {
+			display: table-cell;
+			margin: 6px auto auto;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.battle-deck-content div.deck-area-content .deck.small-1x1 img {
+			display: table-cell;
+			margin: 3px auto auto;
+			text-align: center;
+			vertical-align: middle;
+		}
+				
+	/* */
+	/* LIGHTSIDE */
+	/*.attachment-box .deck.lightside,*/
+	.battle-deck-content div.deck-area-content .deck.lightside {
+		-webkit-box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(28,160,216,1);
+		box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(28,160,216,1);
+	}
+	/* DARKSIDE */
+	/*.attachment-boxt .deck.darkside,*/
+	.battle-deck-content div.deck-area-content .deck.darkside {
+		-webkit-box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(229,26,48,0.9);
+		box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(229,26,48,0.9);
+	}
+	/* NEUTRAL */
+	/*.attachment-box .deck.neutral,*/
+	.battle-deck-content div.deck-area-content .deck.neutral{
+		-webkit-box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(255,255,255,1);
+		box-shadow:
+			0px 1px 3px rgba(000,000,000,0.5),
+			inset 0px 0px 30px rgba(255,255,255,1);
+	}
+
+
+/* RANGE and Number */
+/*.attachment-box span.block,*/
+.battle-deck-content div.deck-area-content .deck span.block {
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: top;
+	line-height: 0.9;
+	border: #fff 1px solid;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+	/* RANGE */
+	.attachment-box span.range,
+	.battle-deck-content span.range {
+		left: 0;
+		top: 0;
+	}
+	/* STACK CARD Number */
+	.attachment-box span.number,
+	.battle-deck-content span.number {
+		right: 0;
+		bottom: 0;
+	}
+
+/*  */
+.battle-deck-content div.deck-area-content .deck span {
+	position: absolute;
+	right: 1px;
+	bottom: 0px;
+	font-size: 10px;
+	background: rgba(0,0,0,0.7);
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	border: 0px solid #000000;
+	-webkit-box-shadow:
+		-1px -1px 4px rgba(0,0,0,0.7),
+		inset 0px 0px 10px rgba(0,0,0,0.7);
+	box-shadow:
+		-1px -1px 4px rgba(0,0,0,0.7),
+		inset 0px 0px 10px rgba(0,0,0,0.7);
+	text-shadow:
+		1px 0px 2px rgba(0,0,0,1),
+		1px 1px 8px rgba(0,0,0,1);
+	z-index: 10;
+}
+
+
+
+/* -----------------------------------------------  */
+div.panel-area-inner.nopad-two {
+	padding: 0 0 20px;	
+}
+
+/* How to Deck Dialog */
+div.howto-edit {
+	text-align: center;
+	margin: -10px auto auto;
+}
+/* -----------------------------------------------  */
+/* tab:6 */
+ul.tab-box.six{
+	width:300px;
+}
+
+ul.tab-box.six li {
+	width:50px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab4_off.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 50px 30px;
+}
+
+ul.tab-box.six li.selected {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab4_on.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 50px 30px;
+}
+
+
+div#sw-content.deck{
+	position: relative;
+}
+
+/* LUCASCSS */
+
+div.panel-area100{
+	width:100%;
+	padding:0;
+	margin:0 auto;
+	position:relative;
+}
+
+div.panel-area100-inner{
+	padding:0 0 3px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/card/deck/background/bg_grid_bottom.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	background-size:320px 2px;
+}
+
+#deck-btn-top{
+	padding:0 10px;
+}
+
+.alert_btn_wrapper{
+	padding-top:10px;
+}
+.alert_message span{
+	display:block;
+}
+
+
+.formation_tap{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.5em;
+	text-align: center;
+	color: #AAA;
+	font-size:10px !important;
+	line-height:1;
+}
+.card-detail-img .iconPower{
+	right:3px;
+}
+</style>
+
+<script type="text/javascript">
+	/* sendMessageToApp("music.play", {"file":"bg_menu"}); */
+	
+	$(document).ready(function(){
+		$("#complete-dialog").implant_dialog({closer:'', scroll:true});
+		$("#dialog_error").implant_dialog();
+		$("#dialog-card-menu").implant_dialog();
+		$("#card_detail").implant_dialog({closer:'#detail_closer', scroll:true, top:50});
+		$('#detail_closer').bind('click', function(){
+			$('#sort_param select').attr('disabled', false);
+		});
+		$("#card_menu").bind('click',function(){
+			$("#dialog-card-menu").call_implant_dialog();
+		});
+		$("#detail_thumb_zoom").hide();
+		
+		//$("#dialog_restricted").implant_dialog();
+		//$("#display_dialog_restricted").bind('click',function(){
+		//	$("#dialog_restricted").call_implant_dialog();
+		//});
+	});
+	
+	function display_card_detail(json, rarity, raceAry){
+		close_selling_confirm();
+		close_gift_confirm();
+		close_set_leader_confirm();
+		$('#detail_thumb').attr('src', "http://amw.konaminet.jp/amw/naboo/img/" + [json['thumb']]+"_l.png");
+		$("#card_detail").attr('class', 'marT15 dialogAnim attr' + json['attribute']);
+		$("#detail_name").html(json['name']);
+		$("#detail_level").html(json['level'] + " <span class='colorParamTitle'>( MAX"+json['max_level']+" )</span>");
+		$("#detail_hp").html(json['max_hp']);
+		$("#detail_rarity").html(json['rarity_full']);
+		$("#detail_cost").html(json['cost']);
+		if(json['is_healer']){
+			$(".title-param",".content_atk").html("HEA: ");
+		}else if(json['is_repairer']){
+			$(".title-param",".content_atk").html("REP: ");
+		}else{
+			$(".title-param",".content_atk").html("ATK: ");
+		}
+		
+		$("#detail_attack").html(json['attack']);
+		$("#detail_attack_dist_max").html(json['range']);
+		$("#detail_attack_area").removeClass();
+		$("#detail_attack_area").addClass('attack_area' + json['attack_area_type'] + json['attack_area'] + ' slot_x0' + json['slot_x']);
+		
+		if(json['is_healer']){
+			$("#detail_attack_area_txt").html("Heal");
+			$("#detail_attack_area_detail").html("Heals a single non-droid unit with the least % of HP left, positioned directly in front, to the sides, or behind the Healer Card.");
+			$("#detail_attack_area").addClass('is_healer');
+			$("#detail_attack_area_info .title-param").html("HEAL PATTERN: ");
+		}else if(json['is_repairer']){
+			$("#detail_attack_area_txt").html("Repair");
+			$("#detail_attack_area_detail").html("Repairs a single droid/cyborg/vehicle unit with the least % of HP left, positioned directly in front, to the sides, or behind the Mechanic Card.");
+			$("#detail_attack_area_info .title-param").html("HEAL PATTERN: ");
+			$("#detail_attack_area").addClass('is_repairer');
+		}else if(json['is_stun']){
+			$("#detail_attack_area_txt").html("Stun");
+			$("#detail_attack_area_detail").html("Stuns a non-vehicle enemy unit when the attack succeeds, causing the unit to become inactive during the next turn. No damage is inflicted.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+			$("#detail_attack_area").addClass('is_stun');
+		}else if(json['is_stun_vehicle']){
+			$("#detail_attack_area_txt").html("Vehicle Stun");
+			$("#detail_attack_area_detail").html("Stuns an enemy Vehicle when the attack succeeds, causing the Vehicle to become inactive during the next turn. No damage is inflicted.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+			$("#detail_attack_area").addClass('is_stun_vehicle');
+		}else if(json['attack_area_type'] == 0){
+			$("#detail_attack_area_txt").html("1-on-1");
+			$("#detail_attack_area_detail").html("Attacks 1 unit within range in the front row.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}else if(json['attack_area_type'] == 1){
+			$("#detail_attack_area_txt").html("Sweep");
+			$("#detail_attack_area_detail").html("Attacks units in a single horizontal row.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}else if(json['attack_area_type'] == 2){
+			$("#detail_attack_area_txt").html("Pierce");
+			$("#detail_attack_area_detail").html("Attacks units in a single vertical column.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}else if(json['attack_area_type'] == 3){
+			$("#detail_attack_area_txt").html("Semi-Circle");
+			$("#detail_attack_area_detail").html("Attacks units within a semi-circle pattern around 1 targeted unit.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}else if(json['attack_area_type'] == 4){
+			$("#detail_attack_area_txt").html("Anti-Armor");
+			$("#detail_attack_area_detail").html("Attacks 1 Vehicle within range.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}else if(json['attack_area_type'] == 5){
+			$("#detail_attack_area_txt").html("Cross");
+			$("#detail_attack_area_detail").html("Attacks a unit on the middle row and units positioned directly in front, to the sides, and behind the attacked unit.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}else if(json['attack_area_type'] == 6){
+			$("#detail_attack_area_txt").html("Sniper");
+			$("#detail_attack_area_detail").html("Preferentially attacks units in the second row.");
+			$("#detail_attack_area_info .title-param").html("ATK PATTERN: ");
+		}
+		
+		$("#detail_defence").html(json['defence']);
+		$("#detail_accuracy").html(json['accuracy']);
+		$("#detail_avoid").html(json['avoid']);
+		$("#detail_durability").html(json['durability']);
+		$("#detail_slot_x").html(json['slot_x']);
+		$("#detail_slot_y").html(json['slot_y']);
+		$("#detail_stack_cnt").html(json['stack_cnt']);
+		$("#detail_num_attacks").html(json['per_text']);
+		$("#detail_type").html();
+
+		if(json['sub_type'] == 0) {
+			$("#detail_attack_dist_max").parent(".param").show();
+			$("#detail_num_attacks").parent(".param").show();
+			$("#detail_attack_wrapper").show();
+		}else{
+			$("#detail_attack_dist_max").parent(".param").hide();
+			if(json['attack_time'] == 0){
+				$("#detail_num_attacks").parent(".param").hide();
+			}else{
+				if(json['attack_time'] > 0){
+					$("#detail_num_attacks").html("Number of Attacks Decreases");
+				}else{
+					$("#detail_num_attacks").html("Number of Attacks Increases");
+				}
+				$("#detail_num_attacks").parent(".param").show();
+			}
+			if(json['attack_area_type'] != 0 || json['is_stun'] || json['is_stun_vehicle']){
+				$("#detail_attack_wrapper").show();
+			}else{
+				$("#detail_attack_wrapper").hide();
+			}
+		}
+
+		if(json['race'] > 0){
+	        var detail_type_html = '';
+	        for (var i = 0; i < raceAry.length; i++) {
+	            detail_type_html += '<span class="iconType'+ raceAry[i] +'"></span>';
+	            console.log(raceAry[i]);
+	        }
+	        $("#detail_type").html(detail_type_html);
+	        $("#detail_type").parent(".param").show();
+        }else{
+        	$("#detail_type").html("");
+        	$("#detail_type").parent(".param").hide();
+        }
+
+		$("#detail_selling_price").html(json['price'], false);
+		if(json['skill_id'] > 0){
+			$("#detail_skillname").html(json['skill_name']);
+			$("#detail_skilllvl").html(json['skill_level']);
+			$("#detail_skillmax").html(json['skill_max_level']);
+			$("#detail_skillinfo").html(json['skill_comment']);
+		}
+		if( json['rarity_full'] == "SPECIAL"){
+			$("#notice_area").html("This Card cannot be traded or gifted because it is a Special Rarity Card.");
+		}else{
+			$("#notice_area").html("");
+		}
+		$("#detail_comment").html(json['comment']);
+		if(json['event_power_txt']){
+			$("#card-detail-info .card-detail-img .iconPower").remove();
+			$("#card-detail-info .eventcard").remove();
+			$("#card-detail-info .card-detail-img").prepend("<span class='iconPower'></span>");
+			$("#card-detail-info .card-detail-param").after("<div class='eventcard' style='clear:both;'>"+json['event_power_txt']+"</div>");
+
+		}else{
+			$("#card-detail-info .card-detail-img .iconPower").remove();
+			$("#card-detail-info .eventcard").remove();
+		}
+		
+		$('#card-zoom').implant_dialog({closer:'#setting_closer'});
+		$('#setting_button').click(function() {
+			$('#detail_show').hide();
+			$('#detail_thumb_zoom').attr('src', "").hide();
+			$("#nowLoading").remove();
+			$('#detail_zoom').show().prepend('<p id="nowLoading" style="padding: 150px 0;">now loading...</p>');
+			$('#detail_thumb_zoom').attr('src', "http://amw.konaminet.jp/amw/naboo/img/" + [json['thumb']]+"_ll.png").load(function(){
+	        	$("#nowLoading").remove();
+	        	$(this).show();
+	        });
+		});
+		$('#detail_closer').click(function() {
+			$('#detail_show').show();
+			$('#detail_zoom').hide();
+			$('#detail_thumb_zoom').attr('src', "").hide();
+		});
+		$('#detail_zoom').click(function() {
+			$('#detail_show').show();
+			$('#detail_zoom').hide();
+			$('#detail_thumb_zoom').attr('src', "").hide();
+		});
+
+		var set_confirm_text = "Set %s as your Leader Card?".replace("%s", json['name']);
+		$("#set_confirm_name").html(set_confirm_text);
+		
+		
+		// Enhance
+					if (json['enhancable'] == 0) {
+				$("#enhance_disable").show();
+				$("#enhance_able").hide();
+			} else {
+				$("#enhance_disable").hide();
+				$("#enhance_able").attr("href", "http://amw.konaminet.jp/amw/naboo/fusion/enhance/credit/confirm?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&base="+json['serial']).show();
+			}
+			
+			if (json['level'] == json['max_level']) {
+				$("#enhance_lock").show();
+				$("#enhance_open").hide();
+			} else {
+				$("#enhance_lock").hide();
+				$("#enhance_open").show().attr("href", "http://amw.konaminet.jp/amw/naboo/fusion/enhance/credit/confirm?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&base="+json['serial']).show();
+				$("#enhance_able_open").attr("href", "http://amw.konaminet.jp/amw/naboo/fusion/enhance/credit/confirm?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&base="+json['serial']);
+			}
+				
+		if(json['type'] == 2){
+			//
+			$("#skill_disable").hide();
+			$("#skill-info").hide();
+			$("#skill_link").hide();
+			$("#skill_lock").hide();
+			$("#sell_skill").hide();
+			$("#player_tremotes").html('');
+			$("#detail_obtain_tremotes").html('');
+		}else if(json['skill_id'] > 0){
+			// Enhance
+						$("#skill_link").attr("href", "http://amw.konaminet.jp/amw/naboo/skill_lvup/confirm?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&serial="+json['serial']);
+			$("#skill_link").show();
+			$("#skill_disable").hide();
+			$("#skill_lock").hide();
+						$("#skill-info").show();
+		}else{
+			$("#skill_disable").show();
+			$("#skill-info").hide();
+			$("#skill_link").hide();
+			$("#skill_lock").hide();
+			$("#sell_skill").hide();
+			$("#player_tremotes").html('');
+			$("#detail_obtain_tremotes").html('');
+		}
+		if (json['sellable'] == 0) {
+			$("#sell_disable").show();
+			$("#sell_able").hide();
+			$('#sellnum_selector').hide();
+			$("#selling_link").unbind();
+		} else {
+			$('#player_price').html(AddDigitComma(599980, false));
+			$('#detail_sell_price').html(AddDigitComma(json['price'], false));
+			$("#sell_disable").hide();
+			$("#sell_able").show();
+			
+			if(json['skill_id'] > 0){
+				$("#sell_skill").show();
+				$("#player_tremotes").html();
+				$("#detail_obtain_tremotes").html(json['obtain_tremotes']);
+			}
+			if (json['sellable_list'] != undefined && json['type'] == 3) {
+				$select = $('#sellnum_selector').html('');
+				for (var i = 0; i < json['sellable_list'].length; i ++) {
+					var num = json['sellable_list'][i];
+					$select.append($('<option/>').attr('value', num).html(num));
+				}
+				$('#sort_param select').attr('disabled', true);
+				$select.unbind().change(function() {
+					$('#detail_sell_price').html(AddDigitComma(json['price'] * $(this).val(), false));
+				}).show();
+				$('#detail_sell_price').html(AddDigitComma(json['price'] * $select.val(), false));
+			} else {
+				$('#sellnum_selector').hide();
+				$('#sort_param select').attr('disabled', false);
+			}
+			$("#selling_link").unbind().click(function() {
+				sendMessageToApp('progress.start');
+				var sell_num = $('#sellnum_selector').val();
+				ajax({
+					'url': 'http://amw.konaminet.jp/amw/naboo/card/sell/do?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302',
+					'loading_icon': true,
+					'param': {'card_serial': json['serial'], 'sell_num'	 : sell_num},
+					'callback': function(data) {
+						$("#card_detail").close_implant_dialog();
+						sendMessageToApp('progress.stop');
+						if (data.result) {
+							if( data.bonus_count > 0 ){
+								var bonus_info = "You get a bonus for selling a Card/Cards on your side of the Force! +" + data.bonus_add_price + " Credits";
+								$("#sell-bonus-info").addClass("box-area").html(bonus_info);
+							}
+							$("#complete-dialog").call_implant_dialog();
+						} else {
+							$("#error-message").html(data.error_message);
+							$("#dialog_error").call_implant_dialog();
+						}
+					},
+					'error': function() {
+						$("#error-dialog").call_implant_dialog();
+						sendMessageToApp('progress.stop');
+					}
+				});
+			});
+		}
+		
+		if (json['giftable'] == 0) {
+			$("#gift_disable").show();
+			$("#gift_able").hide();
+		} else {
+			$("#gift_disable").hide();
+			$('#gift_able').unbind().click(function() {
+				se_sys_menu_entr();
+				if (json['type'] == 3) {
+					open_gift_confirm();
+					$select = $('#giftnum_selector').html('');
+					for (var i = 0; i < json['sellable_list'].length; i ++) {
+						var num = json['sellable_list'][i];
+						$select.append($('<option/>').attr('value', num).html(num));
+					}
+					$('#sort_param select').attr('disabled', true);
+					$select.show();
+				} else {
+					ajax_load("http://amw.konaminet.jp/amw/naboo/gift/send/select_ally?category=2&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&item_serial="+json['serial'], null, function(){});
+				}
+			}).show();
+			
+			$("#gift_link").unbind().click(function() {
+				se_sys_menu_entr();
+				var sell_num = $('#giftnum_selector').val();
+				ajax_load("http://amw.konaminet.jp/amw/naboo/gift/send/select_ally?category=2&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&item_serial="+json['serial']+"&stack_cnt="+sell_num, null, function(){});
+			});
+		}
+		$("#wish_link").attr("href", "http://amw.konaminet.jp/amw/naboo/wish/add.php?c=2&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&id="+json['card_id']);
+		
+		if(json['leader_setable'] == 1){
+			$("#set_leader_link").attr("href", "http://amw.konaminet.jp/amw/naboo/card/select_leader/do?jump=detail&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302&card_serial="+json['serial']);
+			$("#set_leader_able").show();
+			$("#set_leader_disable").hide();
+		}else{
+			$("#set_leader_link").attr("href", "javascript:void(0);");
+			$("#set_leader_able").hide();
+			$("#set_leader_disable").show();
+		}
+		
+		if(json['type'] == 1){
+			$("#is_type_character1").show();
+		}else{
+			$("#is_type_character1").hide();
+		}
+		if(json['type'] != 3){
+			$("#is_type_character2").show();
+		}else{
+			$("#is_type_character2").hide();
+		}
+		if(json['type'] == 3){
+			$("#is_type_stack1").show();
+		}else{
+			$("#is_type_stack1").hide();
+		}
+		if(json['type'] == 2){
+			$("#is_type_vehicle1").show();
+			$("#is_type_vehicle2").show();
+			$("#is_type_vehicle3").show();
+		}else{
+			$("#is_type_vehicle1").hide();
+			$("#is_type_vehicle2").hide();
+			$("#is_type_vehicle3").hide();
+		}
+		
+		if(json['rarity'] >= 2){
+			$("#detail_sell_rare").css({'display':'block'});
+		}else{
+			$("#detail_sell_rare").css({'display':'none'});
+		}
+		
+		bind_ajax_load();
+		
+		$("#card_detail").call_implant_dialog();
+		
+				if($('#dialog_overlay').outerHeight() < ($('#card_detail').offset().top+$('#card_detail').outerHeight())){
+			$('#dialog_overlay').height(Math.floor($('#card_detail').offset().top+$('#card_detail').outerHeight()));
+		}
+			}
+	function sell_do(data,dataType){
+		jump_renew_cache("http://amw.konaminet.jp/amw/naboo/card/card/list?jump=detail&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302");
+	}
+	function open_selling_confirm(){
+		$('#sort_param select').attr('disabled', true);
+		$("#pre_confirm").css({'display':'none'});
+		$("#detail_sell_confirm").css({'display':'block'});
+	}
+	function close_selling_confirm(){
+		$('#sort_param select').attr('disabled', false);
+		$("#pre_confirm").css({'display':'block'});
+		$("#detail_sell_confirm").css({'display':'none'});
+	}
+	
+	
+	function open_user_grade_confirm(){
+		$("#pre_confirm").css({'display':'none'});
+		$("#dialog_restricted").css({'display':'block'});
+	}
+	function close_user_grade_confirm(){
+		$("#pre_confirm").css({'display':'block'});
+		$("#dialog_restricted").css({'display':'none'});
+	}
+	
+	function open_gift_confirm(){
+		$("#pre_confirm").css({'display':'none'});
+		$("#detail_gift_confirm").css({'display':'block'});
+	}
+	function close_gift_confirm(){
+		$('#sort_param select').attr('disabled', false);
+		$("#pre_confirm").css({'display':'block'});
+		$("#detail_gift_confirm").css({'display':'none'});
+	}
+	function open_set_leader_confirm(){
+		$("#pre_confirm").css({'display':'none'});
+		$("#detail_set_leader_confirm").css({'display':'block'});
+	}
+	function close_set_leader_confirm(){
+		$("#pre_confirm").css({'display':'block'});
+		$("#detail_set_leader_confirm").css({'display':'none'});
+	}
+	
+</script>
+
+
+<div id="sw-content" class="card"><h1>CARD BINDER</h1><div class="marB"><div id="header_info">
+	<ul class="clearfix">
+		<li>
+			<span class="param_title">Cards: </span>
+			<span class="param_now">109</span>
+			/190
+		</li>
+		<li>
+			<span class="param_title">Credits: </span>
+			599980
+		</li>
+	</ul>
+</div></div><div id="cardlist-content" class="panel-area"><div class="panel-area-inner"><style>
+
+
+select {
+	-webkit-appearance:button;
+    -moz-appearance:button;
+    appearance:button;
+	display: block;
+	border-radius: 0 0 4px 4px;
+	background: -webkit-linear-gradient(top, #828282 0%, #262626 23%, #000 50%, #3a3d38 88%, #a2a1a0 100%);
+	background: linear-gradient(to bottom, #828282 0%, #262626 23%, #000 50%, #3a3d38 88%, #a2a1a0 100%);
+	font-size: 12px;
+	padding-left: 5px;
+	color: #FFF;
+	border: 1px solid #999;
+	width: 139px;
+	margin:14px 5px 5px 5px;	
+	float: left;
+	height: 35px;
+}
+
+.sort_icon {
+	position: absolute;
+	top: -1px;
+	z-index: 1;
+	left: 154px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;	
+	width: 117px;
+	text-align: center;
+}
+
+.sort_icon_long {
+	position: absolute;
+			top: -12px;
+		z-index: 1;
+	left: 49px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;	
+	width: 178px;
+	text-align: center;
+}
+
+.filter_icon {
+	position: absolute;
+	top: -1px;
+	z-index: 1;
+	left: 5px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;
+	width: 117px;
+	text-align: center;	
+}
+
+.rare_icon {
+	position: absolute;
+	text-align: center;
+	top: -1px;
+	z-index: 1;
+	left: 154px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;
+	width: 117px;		
+}
+
+.allow_mark {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 25px;
+	left: 128px;
+}
+
+.allow_mark2 {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 25px;
+	left: 277px;
+}
+
+.allow_mark_long {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 14px;
+	left: 232px;
+}
+
+.allow_mark_long_wishlist {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 32px;
+	left: 232px;
+	z-index: 1;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function delayFilter(){
+	var that = document.getElementById("attribute_filter_selector");
+	setTimeout(function(){ajax_load(that.options[that.selectedIndex].value, null, function(){});}, 100);
+}
+
+$(document).ready(function(){
+	$('#sort_param select').change(function(){
+		var checks={};
+		var rel     = $("#sort_param").serializeArray();
+		$.each(rel,function(i, v) { 
+			checks[v.name] = v.value;
+		});
+		
+		
+						ajax_load("http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=0&type=1&jump=&sort=1&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302",checks,function(){
+			});
+			
+			});
+});
+</script>
+
+
+
+			<div id="sort-attribute">
+			<ul class="tab-box three">
+								<li class="selected"><a href="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=0&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap">CHARACTERS</a></li>
+					<li><a href="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=0&type=3&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap">STACK</a></li>
+					<li><a href="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=0&type=2&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap">VEHICLES</a></li>
+						</ul>
+		</div>
+	
+
+					<div class="clearfix" style="position:relative;">
+			<div class="filter_icon fontS">Filter</div><div class="allow_mark"></div>
+				<select id="attribute_filter_selector" onchange="
+											ajax_load(this.options[this.selectedIndex].value, null, function(){})
+									">
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=0&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"     selected>ALL</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=1&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"   >LIGHT</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=2&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"    >DARK</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=3&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" >NEUTRAL</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=4&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"   >Skill Cards</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=5&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"   >S-Range</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=6&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"  >M/L-Range</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=11&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"    >Healer</option>
+					<option value="http://amw.konaminet.jp/amw/naboo/card/card/list?attribute=12&type=1&sort=1&jump=&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302"  >Mechanic</option>
+				</select>
+		
+
+			<div class="sort_icon fontS">Sort</div><div class="allow_mark2"></div>
+			<form id="sort_param" method="post" action="#" class="gift-sort-area padB">
+				<select name="sort" class="gift-select">
+				
+					<option value="1" selected="selected">Recently Added</option>
+					<option value="20" >LEVEL (High to Low)</option>
+					<option value="2" >ATK (High to Low)</option>
+					<option value="3" >ATK (Low to High)</option>
+					<option value="4" >DEF (High to Low)</option>
+					<option value="5" >DEF (Low to High)</option>
+					
+										<option value="6" >Cost (High to Low)</option>
+					<option value="7" >Cost (Low to High)</option>
+										
+										<option value="8" >Rarity (High to Low)</option>
+					<option value="9" >Rarity (Low to High)</option>
+					
+					
+										<option value="22" >Skill Grd.(High to Low)</option>
+					<option value="23" >Skill Grd.(Low to High)</option>
+					
+					<option value="41" >Card Name (A-Z)</option> 
+					<option value="42" >Card Name (Z-A)</option> 
+					<option value="43" >Skill Name (A-Z)</option> 
+					<option value="44" >Skill Name (Z-A)</option> 
+
+				</select>
+			</form>
+		</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cardListOuter lightside"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000090801493","user_id":"4323611","card_id":"1071010642","stack_cnt":"0","rarity":"3","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"16402","level":"50","exp":"0","cost":"14","attack":"8770","defence":"6294","lvup_attack":"8770","min_attack":"6728","min_defence":"4711","lvup_defence":"6294","evol_level":"2","evol_hp":"500","character_id":"710","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"52","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"150","avoid":"90","favorite_map_id":"1","max_hp":"1500","assist_entry_pattern":"0","skill_id":"12181","skill_level":"1","skill_type":"0","skill_is_deck":"1","skill_priority":"0","skill_target":"2","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"1","skill_extract":"0","skill_effect_type":"4","skill_prob":"80","skill_effect":"10","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-11-04 15:55:29","last_update":"2014-11-04 15:55:16","deleted":"0","deleted_end":"0","name":"Leia Organa [Slave Leia]","thumb":"card\/chara\/107101064\/1071010642","comment":"Leia was captured by Jabba the Hutt following a failed attempt to rescue Han Solo. Held prisoner in Jabba\u0027s throne room as a trophy, Leia eventually turned the tide when she used the chain that bound her to strangle the vile Hutt.","max_level":"50","price":113300,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1071010640","sub_type":"0","best_lvup_attack":"8837","best_lvup_defence":"6341","skill_name":"Male DEF Down [Sml]","skill_comment":"Decreases 10.0% of DEF on all the Male units in the opposing Formation.\u003Cflashnodisp\u003E(Affects:\u003Cspan class=\u0027iconType0\u0027\u003E\u003C\/span\u003E)\u003C\/flashnodisp\u003E","awake_power":1,"skill_max_level":30,"obtain_tremotes":3,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_04\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s4_long.png\u0022 \/\u003E[Evo 2]","rarity_short":"\u003Cimg class=\u0022rarity_s_04\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s4_short.png\u0022 \/\u003E[Evo 2]","durability":0,"range":"Short","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1071010642\u0026card_serial=500000000090801493\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 3, [1,4,14]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Leia Organa [Slave Leia]</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/107101064/1071010642_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_04" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s4_long.png" />[Evo 2]</span></li><li class="level clearfix">50<span class="level_max">50</span></li><li class="cost">14</li><li class="atk">8770</li><li class="def">6294</li><li class="accuracy">150</li><li class="avoid">90</li><li class="hp">1500</li><li class="range">Short</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType1"></span><span class="iconType4"></span><span class="iconType14"></span></li></ul></div><div class="skill"><span class="txtParam">Skill:&nbsp;</span>Male DEF Down [Sml]</div><div class="skill"><span class="txtParam">Skill Grd:&nbsp;</span>1<span class="level_max">30</span></div><div class="cardListLower"></div></a></div><div class="cardListOuter lightside"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000097594339","user_id":"4323611","card_id":"1013410130","stack_cnt":"0","rarity":"2","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"65569","level":"40","exp":"0","cost":"11","attack":"3420","defence":"5270","lvup_attack":"3420","min_attack":"2220","min_defence":"3160","lvup_defence":"5270","evol_level":"0","evol_hp":"0","character_id":"134","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"153","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"130","avoid":"40","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-11-03 20:19:54","last_update":"2014-11-03 20:18:10","deleted":"0","deleted_end":"0","name":"Oppo Rancisis","thumb":"card\/chara\/101341013\/1013410130","comment":"Born of royal heritage, Oppo Rancisis could have been the monarch of the world of Thisspias, but chose to walk the path of the Jedi instead. One of the oldest members of the Council, Rancisis is a font of wisdom and careful contemplation. He knows a threat to the Order when he sees it, and has seen a threat in the form of a boy named Skywalker. ","max_level":"40","price":30350,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1013410130","sub_type":"0","best_lvup_attack":"3420","best_lvup_defence":"5270","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":1,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":0,"leader_setable":1,"in_deck":1,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_short.png\u0022 \/\u003E","durability":0,"range":"Medium","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1013410130\u0026card_serial=500000000097594339\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 2, [0,5,16]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Oppo Rancisis</span></h3><ul class="status"><li class="formation on">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101341013/1013410130_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" /></span></li><li class="level clearfix">40<span class="level_max">40</span></li><li class="cost">11</li><li class="atk">3420</li><li class="def">5270</li><li class="accuracy">130</li><li class="avoid">40</li><li class="hp">1000</li><li class="range">Medium</li><li class="attack_area_stun full">Stun</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType5"></span><span class="iconType16"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter darkside "><a href="javascript:void(0)" onClick='display_card_detail({"serial":"300000000097935246","user_id":"4323611","card_id":"1035320120","stack_cnt":"0","rarity":"1","sub_rarity":"0","attribute":"2","type":"1","specialized_type":"0","race":"131089","level":"1","exp":"0","cost":"2","attack":"700","defence":"540","lvup_attack":"930","min_attack":"700","min_defence":"540","lvup_defence":"1030","evol_level":"0","evol_hp":"0","character_id":"353","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"42","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"110","avoid":"20","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-27 14:23:42","last_update":"2014-10-27 14:23:42","deleted":"0","deleted_end":"0","name":"Shu Mai","thumb":"card\/chara\/103532012\/1035320120","comment":"President of the Commerce Guild, whose forces fought the Republic during the Clone Wars. As a member of the Separatist Council, she is obsessed with status and power. ","max_level":"30","price":1200,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1035320120","sub_type":"0","best_lvup_attack":"930","best_lvup_defence":"1030","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1071010642","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1071010642","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_02\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s2_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_02\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s2_short.png\u0022 \/\u003E","durability":0,"range":"Medium","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1035320120\u0026card_serial=300000000097935246\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 1, [0,4,17]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Shu Mai</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/103532012/1035320120_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_02" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s2_long.png" /></span></li><li class="level clearfix">1<span class="level_max">30</span></li><li class="cost">2</li><li class="atk">700</li><li class="def">540</li><li class="accuracy">110</li><li class="avoid">20</li><li class="hp">1000</li><li class="range">Medium</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType4"></span><span class="iconType17"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter lightside"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000094974429","user_id":"4323611","card_id":"1013310730","stack_cnt":"0","rarity":"2","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"65569","level":"1","exp":"0","cost":"10","attack":"1750","defence":"2520","lvup_attack":"4390","min_attack":"1750","min_defence":"2520","lvup_defence":"4500","evol_level":"0","evol_hp":"0","character_id":"133","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"1","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"140","avoid":"50","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:37:07","last_update":"2014-10-18 23:46:13","deleted":"0","deleted_end":"0","name":"Obi-Wan Kenobi [Jedi Knight]","thumb":"card\/chara\/101331073\/1013310730","comment":"His enemies are often fooled by his quiet and peaceful demeanor. But, they soon come to regret letting their guard down after a taste of his lightning-quick Jedi techniques.","max_level":"40","price":3000,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1013310730","sub_type":"0","best_lvup_attack":"4390","best_lvup_defence":"4500","skill_name":null,"skill_comment":"","awake_power":"120","skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1013310730","main_pilot_aptitude":"3","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1013310730","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1013310730","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:52","last_update":"2014-05-19 06:00:52"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1013310730","main_pilot_aptitude":"3","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1013310730","main_pilot_aptitude":"3","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1013310730","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1013310730","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1013310730","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1013310730","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"ATK x 1.2 \/ DEF x 1.2","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_short.png\u0022 \/\u003E","durability":0,"range":"Short","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1013310730\u0026card_serial=500000000094974429\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 2, [0,5,16]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Obi-Wan Kenobi [Jedi Knight]</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><span class="iconPower"></span><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101331073/1013310730_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" /></span></li><li class="level clearfix">1<span class="level_max">40</span></li><li class="cost">10</li><li class="atk">1750</li><li class="def">2520</li><li class="accuracy">140</li><li class="avoid">50</li><li class="hp">1000</li><li class="range">Short</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType5"></span><span class="iconType16"></span></li></ul></div><div class="eventcard">ATK x 1.2 / DEF x 1.2</div><div class="cardListLower"></div></a></div><div class="cardListOuter"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000095449457","user_id":"4323611","card_id":"1054130130","stack_cnt":"0","rarity":"2","sub_rarity":"0","attribute":"3","type":"1","specialized_type":"0","race":"327689","level":"1","exp":"0","cost":"9","attack":"1540","defence":"1370","lvup_attack":"4010","min_attack":"1540","min_defence":"1370","lvup_defence":"3390","evol_level":"0","evol_hp":"0","character_id":"541","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"51","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"140","avoid":"50","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:37:07","last_update":"2014-10-18 23:46:00","deleted":"0","deleted_end":"0","name":"Lachichuk","thumb":"card\/chara\/105413013\/1054130130","comment":"Lachichuk is a Wookiee warrior who defended the city of Kachirho on Kashyyyk during the Clone Wars. He fought under the command of Captain Merumeru.","max_level":"40","price":2900,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1054130130","sub_type":"0","best_lvup_attack":"4010","best_lvup_defence":"3390","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_short.png\u0022 \/\u003E","durability":0,"range":"Short","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1054130130\u0026card_serial=500000000095449457\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 2, [0,3,16,18]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Lachichuk</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/105413013/1054130130_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" /></span></li><li class="level clearfix">1<span class="level_max">40</span></li><li class="cost">9</li><li class="atk">1540</li><li class="def">1370</li><li class="accuracy">140</li><li class="avoid">50</li><li class="hp">1000</li><li class="range">Short</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType3"></span><span class="iconType16"></span><span class="iconType18"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter lightside"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000094666621","user_id":"4323611","card_id":"1071010540","stack_cnt":"0","rarity":"3","sub_rarity":"0","attribute":"1","type":"1","specialized_type":"0","race":"16402","level":"1","exp":"0","cost":"14","attack":"3900","defence":"4110","lvup_attack":"6000","min_attack":"3900","min_defence":"4110","lvup_defence":"6240","evol_level":"0","evol_hp":"0","character_id":"710","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"41","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"140","avoid":"50","favorite_map_id":"0","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:37:07","last_update":"2014-10-18 23:46:32","deleted":"0","deleted_end":"0","name":"Leia Organa [Endor Celebration]","thumb":"card\/chara\/107101054\/1071010540","comment":"Leia joined the Rebel Commandos that captured the Imperial shield generator on Endor. Just before Luke left to confront the Emperor, she learned that she and Luke were twins. ","max_level":"50","price":4400,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1071010540","sub_type":"0","best_lvup_attack":"6000","best_lvup_defence":"6240","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1071010540","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1071010540","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_04\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s4_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_04\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s4_short.png\u0022 \/\u003E","durability":0,"range":"Medium","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1071010540\u0026card_serial=500000000094666621\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 3, [1,4,14]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Leia Organa [Endor Celebration]</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/107101054/1071010540_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_04" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s4_long.png" /></span></li><li class="level clearfix">1<span class="level_max">50</span></li><li class="cost">14</li><li class="atk">3900</li><li class="def">4110</li><li class="accuracy">140</li><li class="avoid">50</li><li class="hp">1000</li><li class="range">Medium</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType1"></span><span class="iconType4"></span><span class="iconType14"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000093893097","user_id":"4323611","card_id":"1111930930","stack_cnt":"0","rarity":"2","sub_rarity":"0","attribute":"3","type":"1","specialized_type":"0","race":"67593","level":"40","exp":"0","cost":"11","attack":"4500","defence":"4210","lvup_attack":"4500","min_attack":"2470","min_defence":"2310","lvup_defence":"4210","evol_level":"0","evol_hp":"0","character_id":"1119","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"41","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"145","avoid":"50","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:37:07","last_update":"2014-10-18 23:52:36","deleted":"0","deleted_end":"0","name":"Clone Trooper: 41st Elite Corps","thumb":"card\/chara\/111193093\/1111930930","comment":"Thrust onto bitterly hostile worlds away from the front lines, to be assigned to the 41st Elite Corps is far from glamorous. Yet, their primary mission is less to engage the enemy as it is to embed themselves and train natives to defend their own home. When the 41st strikes, an entire angry world strikes with them.","max_level":"40","price":30350,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1111930930","sub_type":"0","best_lvup_attack":"4500","best_lvup_defence":"4210","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000200":{"vehicle_card_id":"2913000200","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_short.png\u0022 \/\u003E","durability":0,"range":"Medium","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1111930930\u0026card_serial=500000000093893097\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 2, [0,3,11,16]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Clone Trooper: 41st Elite Corps</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/111193093/1111930930_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" /></span></li><li class="level clearfix">40<span class="level_max">40</span></li><li class="cost">11</li><li class="atk">4500</li><li class="def">4210</li><li class="accuracy">145</li><li class="avoid">50</li><li class="hp">1000</li><li class="range">Medium</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType3"></span><span class="iconType11"></span><span class="iconType16"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000094159051","user_id":"4323611","card_id":"1111930930","stack_cnt":"0","rarity":"2","sub_rarity":"0","attribute":"3","type":"1","specialized_type":"0","race":"67593","level":"1","exp":"0","cost":"11","attack":"2470","defence":"2310","lvup_attack":"4500","min_attack":"2470","min_defence":"2310","lvup_defence":"4210","evol_level":"0","evol_hp":"0","character_id":"1119","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"41","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"145","avoid":"50","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:37:07","last_update":"2014-10-18 23:52:20","deleted":"0","deleted_end":"0","name":"Clone Trooper: 41st Elite Corps","thumb":"card\/chara\/111193093\/1111930930","comment":"Thrust onto bitterly hostile worlds away from the front lines, to be assigned to the 41st Elite Corps is far from glamorous. Yet, their primary mission is less to engage the enemy as it is to embed themselves and train natives to defend their own home. When the 41st strikes, an entire angry world strikes with them.","max_level":"40","price":3100,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1111930930","sub_type":"0","best_lvup_attack":"4500","best_lvup_defence":"4210","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000200":{"vehicle_card_id":"2913000200","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_short.png\u0022 \/\u003E","durability":0,"range":"Medium","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1111930930\u0026card_serial=500000000094159051\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 2, [0,3,11,16]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Clone Trooper: 41st Elite Corps</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/111193093/1111930930_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" /></span></li><li class="level clearfix">1<span class="level_max">40</span></li><li class="cost">11</li><li class="atk">2470</li><li class="def">2310</li><li class="accuracy">145</li><li class="avoid">50</li><li class="hp">1000</li><li class="range">Medium</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType3"></span><span class="iconType11"></span><span class="iconType16"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter"><a href="javascript:void(0)" onClick='display_card_detail({"serial":"500000000094247329","user_id":"4323611","card_id":"1111930930","stack_cnt":"0","rarity":"2","sub_rarity":"0","attribute":"3","type":"1","specialized_type":"0","race":"67593","level":"1","exp":"0","cost":"11","attack":"2470","defence":"2310","lvup_attack":"4500","min_attack":"2470","min_defence":"2310","lvup_defence":"4210","evol_level":"0","evol_hp":"0","character_id":"1119","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"41","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"4","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"145","avoid":"50","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:37:07","last_update":"2014-10-18 23:52:04","deleted":"0","deleted_end":"0","name":"Clone Trooper: 41st Elite Corps","thumb":"card\/chara\/111193093\/1111930930","comment":"Thrust onto bitterly hostile worlds away from the front lines, to be assigned to the 41st Elite Corps is far from glamorous. Yet, their primary mission is less to engage the enemy as it is to embed themselves and train natives to defend their own home. When the 41st strikes, an entire angry world strikes with them.","max_level":"40","price":3100,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1111930930","sub_type":"0","best_lvup_attack":"4500","best_lvup_defence":"4210","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000200":{"vehicle_card_id":"2913000200","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_03\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s3_short.png\u0022 \/\u003E","durability":0,"range":"Medium","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1111930930\u0026card_serial=500000000094247329\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 2, [0,3,11,16]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Clone Trooper: 41st Elite Corps</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/111193093/1111930930_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_03" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s3_long.png" /></span></li><li class="level clearfix">1<span class="level_max">40</span></li><li class="cost">11</li><li class="atk">2470</li><li class="def">2310</li><li class="accuracy">145</li><li class="avoid">50</li><li class="hp">1000</li><li class="range">Medium</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType3"></span><span class="iconType11"></span><span class="iconType16"></span></li></ul></div><div class="cardListLower"></div></a></div><div class="cardListOuter darkside "><a href="javascript:void(0)" onClick='display_card_detail({"serial":"100000000087254171","user_id":"4323611","card_id":"1017120140","stack_cnt":"0","rarity":"3","sub_rarity":"0","attribute":"2","type":"1","specialized_type":"0","race":"129","level":"1","exp":"0","cost":"9","attack":"3230","defence":"3110","lvup_attack":"4840","min_attack":"3230","min_defence":"3110","lvup_defence":"4740","evol_level":"0","evol_hp":"0","character_id":"171","slot_x":"1","slot_y":"1","stackable_cnt":"1","usable_cnt":"0","delete_on_battle":"0","stackable_cnt_on_slot":"1","stackable_cnt_on_slot_atk":"1","stackable_cnt_on_slot_def":"1","stackable_cnt_on_deck":"18","weapon_type":"51","weapon_motion_type":"0","attack_dist_min":"1","attack_dist_max":"1","attack_area":"1","attack_area_type":"0","attack_time":"1","accuracy":"150","avoid":"60","favorite_map_id":"1","max_hp":"1000","assist_entry_pattern":"0","skill_id":"0","skill_level":"1","skill_type":"0","skill_is_deck":"0","skill_priority":"0","skill_target":"0","skill_attack_dist":"0","skill_attribute":"0","skill_kind":"0","skill_extract":"0","skill_effect_type":"0","skill_prob":"0","skill_effect":"0","is_rental":"0","is_trade":"1","att_priority":"0","def_priority":"0","compo_status":"0","entry_date":"2014-10-20 14:36:54","last_update":"2014-10-18 23:54:54","deleted":"0","deleted_end":"0","name":"Sebulba","thumb":"card\/chara\/101712014\/1017120140","comment":"Sebulba uses dirty tricks to become one of the top Podracers in the Outer Rim. He races against Anakin Skywalker, but could not defeat the resourceful young boy during the Boonta Eve classic.","max_level":"50","price":3900,"max_usable_cnt":"1","evol_max_level":"3","series_id":"1017120140","sub_type":"0","best_lvup_attack":"4840","best_lvup_defence":"4740","skill_name":null,"skill_comment":"","awake_power":1,"skill_max_level":10,"obtain_tremotes":0,"is_healer":0,"is_repairer":0,"is_stun":0,"is_stun_vehicle":0,"is_ride":false,"vehicle_aptitude":{"2920500100":{"vehicle_card_id":"2920500100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2920400100":{"vehicle_card_id":"2920400100","card_id":"1017120140","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2913500100":{"vehicle_card_id":"2913500100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913100100":{"vehicle_card_id":"2913100100","card_id":"1111930930","main_pilot_aptitude":"3","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000100":{"vehicle_card_id":"2913000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2912700100":{"vehicle_card_id":"2912700100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911500100":{"vehicle_card_id":"2911500100","card_id":"1017120140","main_pilot_aptitude":"3","sub_pilot_aptitude":"3","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2911100100":{"vehicle_card_id":"2911100100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910800100":{"vehicle_card_id":"2910800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910600100":{"vehicle_card_id":"2910600100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910500100":{"vehicle_card_id":"2910500100","card_id":"1017120140","main_pilot_aptitude":"3","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2909800100":{"vehicle_card_id":"2909800100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905400100":{"vehicle_card_id":"2905400100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2905000100":{"vehicle_card_id":"2905000100","card_id":"1017120140","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903900100":{"vehicle_card_id":"2903900100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903800100":{"vehicle_card_id":"2903800100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2903700100":{"vehicle_card_id":"2903700100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2903600100":{"vehicle_card_id":"2903600100","card_id":"1111930930","main_pilot_aptitude":"4","sub_pilot_aptitude":"5","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"},"2902000100":{"vehicle_card_id":"2902000100","card_id":"1111930930","main_pilot_aptitude":"2","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2901900100":{"vehicle_card_id":"2901900100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2900100100":{"vehicle_card_id":"2900100100","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"1","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2910700100":{"vehicle_card_id":"2910700100","card_id":"1054130130","main_pilot_aptitude":"1","sub_pilot_aptitude":"0","parts_aptitude":"0","entry_date":"2014-05-19 06:00:00","last_update":"2014-05-19 06:00:00"},"2913000200":{"vehicle_card_id":"2913000200","card_id":"1111930930","main_pilot_aptitude":"1","sub_pilot_aptitude":"2","parts_aptitude":"0","entry_date":"0000-00-00 00:00:00","last_update":"0000-00-00 00:00:00"}},"per_num":1,"per_text":"1 per Turn","event_power_txt":"","enhancable":1,"sellable":1,"giftable":1,"leader_setable":1,"in_deck":0,"in_template":0,"rarity_full":"\u003Cimg class=\u0022rarity_l_04\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s4_long.png\u0022 \/\u003E","rarity_short":"\u003Cimg class=\u0022rarity_s_04\u0022 src=\u0022http:\/\/amw.konaminet.jp\/amw\/naboo\/img\/common\/rarity\/font_rarity_s4_short.png\u0022 \/\u003E","durability":0,"range":"Short","link":"http:\/\/amw.konaminet.jp\/amw\/naboo\/card\/card\/detail.php?card_id=1017120140\u0026card_serial=100000000087254171\u0026page_back=\u0026PHPSESSID=3AACQQNAJ37592MDQF52K2A4\u0026opensocial_viewer_id=588957978\u0026u=1415654302"}, 3, [0,7]);' class="cardListOuterLink se_sys_window_opn"><h3 class="nameCard"><span class="sideIcon"></span><span>Sebulba</span></h3><ul class="status"><li class="formation">Formation</li><li class="template">Template</li><li class="pilot">Pilot</li><li class="btn"><span class="btnSS s mar0 fontS">DETAILS</span></li></ul><div class="cardList"><div class="card"><div style="position:relative;"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101712014/1017120140_ms.png" width="44" /></div></div><ul class="param clearfix"><li class="rarity"><span class="rarity-icon"><img class="rarity_l_04" src="http://amw.konaminet.jp/amw/naboo/img/common/rarity/font_rarity_s4_long.png" /></span></li><li class="level clearfix">1<span class="level_max">50</span></li><li class="cost">9</li><li class="atk">3230</li><li class="def">3110</li><li class="accuracy">150</li><li class="avoid">60</li><li class="hp">1000</li><li class="range">Short</li><li class="attack_area full">1-on-1</li><li class="number_of_attack full">1 per Turn</li><li class="type full"><span class="iconType0"></span><span class="iconType7"></span></li></ul></div><div class="cardListLower"></div></a></div><style>
+.empty{
+	padding:0 !important;	
+}
+</style>
+	<hr class="sub"/>
+	<div class="pagenate">
+		
+		
+				
+									<span class="this">1</span>
+												<a href="http://amw.konaminet.jp/amw/naboo/card/card/list?page=2&attribute=0&type=1&sort=1&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap"><span>2</span></a>
+												<a href="http://amw.konaminet.jp/amw/naboo/card/card/list?page=3&attribute=0&type=1&sort=1&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap"><span>3</span></a>
+												<a href="http://amw.konaminet.jp/amw/naboo/card/card/list?page=4&attribute=0&type=1&sort=1&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap"><span>4</span></a>
+												<a href="http://amw.konaminet.jp/amw/naboo/card/card/list?page=5&attribute=0&type=1&sort=1&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap"><span>5</span></a>
+							
+					<a href="http://amw.konaminet.jp/amw/naboo/card/card/list?page=9&attribute=0&type=1&sort=1&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="se_sys_tap"><span class="next">NEXT</span></a>
+			</div><!-- /pager -->
+		
+</div></div></div><div id="card_detail" class="dialog-box marT15"><div class="panel-dialog"><div class="panel-dialog-inner"><span id="detail_closer" class="dialogClose se_sys_window_cls"></span><h2 id="detail_name" class="title_panel01"></h2><div id="detail_show" class="padT10 padB10"><div id="card-detail-info" class="padB clearfix"><div class="card-detail-img" id="card-list"><p id="setting_button" class="se_sys_window_opn"><img id="detail_thumb" src="javascript:void(0);" width="110" /><br /><a class="btnSS s">ZOOM</a><span id="card_thumb"></span></p></div><div class="card-detail-param"><ul class="clearfix"><li id ="is_type_character1" class="param"><span class="title-param colorParamTitle">Rarity:</span><span id="detail_rarity" class="detail-rarity"></span></li><li id ="is_type_character2" class="param"><span class="title-param colorParamTitle">Lvl:&nbsp;</span><span id="detail_level"></span></li><li class="param"><span class="title-param colorParamTitle">Cost:&nbsp;</span><span id="detail_cost"></span></li><li class="param"><span class="title-param colorParamTitle">RANGE:&nbsp;</span><span id="detail_attack_dist_max"></span></li><li class="param content_atk"><span class="title-param colorParamTitle">ATK:&nbsp;</span><span id="detail_attack"></span></li><li class="param"><span class="title-param colorParamTitle">DEF:&nbsp;</span><span id="detail_defence"></span></li><li class="param"><span class="title-param colorParamTitle">HP:&nbsp;</span><span id="detail_hp"></span></li><li class="param"><span class="title-param colorParamTitle">Accuracy:&nbsp;</span><span id="detail_accuracy"></span></li><li class="param"><span class="title-param colorParamTitle">Evasion:&nbsp;</span><span id="detail_avoid"></span></li><li class="param"><span class="title-param colorParamTitle"># of Actions:&nbsp;</span><span id="detail_num_attacks"></span></li><li class="param"><span class="title-param colorParamTitle">TYPE:&nbsp;</span><span id="detail_type"></span></li><li class="param"><span class="title-param colorParamTitle">Price:&nbsp;</span><span id="detail_selling_price"></span> <span class="colorParamTitle fontS">Credits</span></li></ul></div><div id="skill-info" class="pad padL10 padR10"><ul class="skill-txt fontS"><li class="param"><span class="title-param colorParamTitle">Skill:&nbsp;</span><span id="detail_skillname"></span></li><li class="param"><span class="title-param colorParamTitle">Skill Grd:&nbsp;</span><span id="detail_skilllvl"></span><span class="title-param colorParamTitle"> ( MAX<span id="detail_skillmax"></span> )</span></li><li class="param"><span class="title-param colorParamTitle">Skill Info:&nbsp;</span><span id="detail_skillinfo"></span></li></ul></div></div><div id="detail_attack_wrapper"><div id="detail_attack_area"></div><div id="detail_attack_area_info" class="pad padR10 padL10"><p class="marB"><span class="title-param txtParam">ATK PATTERN:&nbsp;</span><span id="detail_attack_area_txt"></span></p><p><span id="detail_attack_area_detail"></span></p></div></div><div id="detail_middle_wrapper"><div id="detail_comment" class="pad padR10 padL10"></div></div><div id="pre_confirm" class="txtAC clearfix"><div id="set-leader" class="txtAC"><a id="set_leader_able" class="btn-normal btnN positive se_sys_menu_entr marB15" href="javascript:void(0)" onclick="open_set_leader_confirm();">SET AS LEADER</a><a id="set_leader_disable" class="btnN disable se_sys_ng">SET AS LEADER</a></div><a id="gift_able" class="btnS se_sys_menu_entr" href="javascript:void(0)">GIFT</a><span id="gift_disable" class="btnS disable se_sys_ng" >GIFT</span><a id="enhance_lock" class="btnS disable se_sys_ng">ENHANCE</a><a id="enhance_open" class="btnS se_sys_menu_entr">ENHANCE</a><a id="enhance_disable" class="btnS lock se_sys_ng">ENHANCE</a><a id="skill_link" class="btnS se_sys_menu_entr"><span>SKILL</span></a><a id="skill_disable" class="btnS disable se_sys_ng"><span>SKILL</span></a><a id="skill_lock" class="btnS lock se_sys_ng"><span>SKILL</span></a></div><div id="detail_gift_confirm"><p class="titlePanel02"></p><div class="btn-wrapper"><select name="giftnum_selector" id="giftnum_selector"></select></div><div class="padT padB txtAC"><a class="btnS se_sys_ok" href="javascript:void(0);" onclick="close_gift_confirm();">CANCEL</a><a id="gift_link" class="btnS se_sys_menu_entr">CONFIRM</a></div></div><div id="detail_sell_confirm" class="marT15"><p class="titlePanel02">ARE YOU SURE?</p><p id="detail_sell_rare" class="pad"><span class='colorCaution'>You are about to sell a Rare Card. Are you sure you want to sell this Card?</span></p><div class="boxArea01 txtAC"><span id="player_price"></span> + <span id="detail_sell_price"></span>Credits<p id="sell_skill"><span id="player_tremotes"></span> + <span id="detail_obtain_tremotes"></span> T-Remotes</p></div><div><select name="sellnum_selector" id="sellnum_selector"></select></div><div class="padT padB txtAC"><a class="btnS se_sys_ok" href="javascript:void(0);" onclick="close_selling_confirm();">CANCEL</a></div></div><div id="detail_set_leader_confirm" class="marT10"><p id="set_confirm_name" class="titlePanel02"></p><div class="padT padB txtAC"><a href="javascript:void(0);" class="btnS se_sys_cnsl" onclick="close_set_leader_confirm();">CANCEL</a><a class="btnS" onclick="se_sys_menu_entr();" id="set_leader_link" href="">SET</a></div></div></div><div id="detail_zoom" class="txtAC se_sys_window_cls"><img id="detail_thumb_zoom" src="javascript:void(0);" width="260" class="pad10" /></div></div></div></div></div><div id="complete-dialog" class="panel-dialog" style="z-index:9999;"><div class="panel-dialog-inner"><h2 class="title_panel01 marB">The Card has been sold.</h2><div id="sell-bonus-info" class="center green mar"></div><div class="txtAC clearfix"><a href="http://amw.konaminet.jp/amw/naboo/card/card/list?jump=detail&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="btnS se_sys_menu_entr" id="complete-dialog-jump"><span>OK</span></a></div></div></div><div id="dialog_error" class="panel-dialog"><div class="panel-dialog-inner"><h2 class="title_panel01">Failed to sell...</h2><p id="error-message"></p><div class="txtAC center"><div class="btn-area-td"><a href="http://amw.konaminet.jp/amw/naboo/card/card/list?jump=detail&PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&u=1415654302" class="btnS se_sys_ok">BACK</a></div></div></div></div>
+<script type="text/javascript">var app_version="0.0.0";$(document).ready(function(){sendMessageToApp('back.enable');});function jump_prev_page() {ajax_load("http://amw.konaminet.jp/amw/naboo/home/home.php?PHPSESSID=3AACQQNAJ37592MDQF52K2A4&opensocial_viewer_id=588957978&sub_ln=en_US&a=battle_ranking%2Fentrance%2Fentrance&t=818",{"_history":"back"},function(){});}</script>
+						</div>
+						<div id="debug_view"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
