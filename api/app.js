@@ -31,7 +31,17 @@ app.engine('handlebars', exphbs(
                                                 console.log("====================");
                                                 console.log(optionalValue);
                                               }
+                                            },
+                                    formatDate: function(date){
+                                            if (typeof(date) == "undefined") {
+                                              return "Unknown";
                                             }
+                                            if(typeof(date)!="date"){
+                                              date = new Date(date);
+                                            }
+                                            var month = date.getMonth() + 1;
+                                            return month + "/" + date.getDate() + "/" + date.getFullYear();
+                                    }
                                 }
                             }
                         )
