@@ -290,6 +290,10 @@ router.get('/history/card/:cardId', function(req, res) {
 				out: {inline:1}
 			},
 			function(err,results){
+				//get the totals per day
+				//var totals = getTotalCardPulls();
+
+
 				db.close();
 				//add info to the results
 				//var total = getTotal(results);
@@ -297,8 +301,8 @@ router.get('/history/card/:cardId', function(req, res) {
 				var cardInfo = getCardInfo(cardId, function(card,err){
 					if(err.length ==0){ 
 					
-						data.card.name = card.name;
-						data.card.thumb = card.thumb;
+						data.card = card;
+						data.card.id = cardId;
 					}
 
 

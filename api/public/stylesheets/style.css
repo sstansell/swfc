@@ -25,6 +25,19 @@ td {
   font-size: 14px;
 }
 
+.cardInfo{
+	border: 1px solid #eee;
+	background: #eee;
+	width:350px;
+	padding:3px;
+	margin: 5px;
+}
+.cardImage{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;	
+}
+
 .rarity{
 	text-align:center;
 }
