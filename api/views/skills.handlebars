@@ -1,0 +1,25 @@
+<h2>Skills</h2>
+	<h3>Prep Skills</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Skill Name</th>
+				<th>Probability</th>
+				<th>Effect Type</th>
+				<th>Skill Type</th>
+				<th>Comment</th>
+			</tr>
+		</thead>
+		<tbody class="list">
+		  {{#each skills}}
+
+		    <tr>
+		    	<td class="name">{{formatSkill name}}</td>
+		    	<td class="probability">{{{prob}}}%</td>
+		    	<td class="effectType">{{effect_type}}</td>
+		    	<td class="type">{{type}}</td>
+				<td class="count">{{{comment}}}</td>
+		    </tr>
+		  {{/each}}
+		</tbody>
+	</table>

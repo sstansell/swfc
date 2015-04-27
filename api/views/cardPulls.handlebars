@@ -1,0 +1,70 @@
+
+<h2>Track Card Pulls</h2>
+<div class="large-6 columns">
+	<div class="frameContainer">
+		<iframe id="gameScreen" src="/stream/cardPulls" width="100%" height="100%"></iframe>
+	</div>
+</div>
+<div class="large-6 columns">	
+
+		Refresh Page:
+		<div class="switch">
+			<input id="grabDataSwitch" type="checkbox">
+			<label for="grabDataSwitch">Off</label>
+		</div> 
+		<hr>
+		<span class="timer"></span>
+</div>	
+<script>
+var intervals = {
+	timer:0,
+	refresh: 0
+}
+
+$(function() {
+
+	$('#grabDataSwitch').change(function() {
+		console.log($(this).prop('checked'));
+	        if($(this).prop('checked')) {
+				reloadIFrame(100);	            
+	        }else{
+	        	window.clearTimeout(intervals.refresh);
+				window.clearInterval(intervals.timer);
+	        }
+	        //$('#textbox1').val($(this).is(':checked'));        
+	    });
+});
+
+//get a random number of miliseconds between 10000 and 60000
+
+var maxTime = 30000;
+var minTime = 10000;
+
+
+
+function reloadIFrame(time) {
+	intervals.refresh = window.setTimeout(function(){
+		$("#gameScreen").attr("src",$("#gameScreen").attr("src")) ;
+		var newTime = getRefreshTime(minTime,maxTime);
+		reloadIFrame(newTime);
+		clearInterval(intervals.timer);
+		$(".timer").text(getDisplayTime(newTime));
+		intervals.timer = window.setInterval(updateTimer, 1000);
+	}, time);
+	
+}
+
+function getRefreshTime(minTime, maxTime){
+	var ret = Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime;	
+	return ret;
+}
+function getDisplayTime(time){
+	return Math.round(time/1000);
+}
+function updateTimer(){
+	var i = $(".timer").text() - 1;
+	//console.log(i);
+	$(".timer").text(i);
+}
+
+</script>

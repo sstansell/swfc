@@ -6,24 +6,20 @@ var fs = require('fs');
 var mongo = require('mongodb');
 var monk = require('monk');
 var moment = require('moment');
+var http = require('http');
+var url = require('url');
+var c = require('../config');
+var config = c.config;
 
-var dbServer = '10.0.0.15:27017';
-var connectionString = 'mongodb://' + dbServer + '/SWFC';
-var phpSessId = "PBR4H7GG7E68R8NNRGJF78LM";
-var userName = "Ragamuffin";
-var host = "amw.konaminet.jp";
-var pathPostFix = "&opensocial_viewer_id=588957978&sub_ln=en_US&a=home%2Fhome&t=5970"
-	var headers = {
-			'Connection': 'keep-alive',
-			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-		    'User-Agent':       'Mozilla/5.0 (Linux; Android 4.4.2; ' + userName + ' Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36',
-		    'Accept-Encoding': 'gzip,deflate',
-		    'Accept-Language': 'en-US',
-		    'X-Requested-With': 'jp.konami.swfc'
-	    }
+var fileRoot = config.filePath;
+var dbServer = config.db.server;
+var connectionString = config.db.connectionString;
 
-var config = {}
-config.startDate = new Date(2014,10,20);
+var host = config.url.host;
+var pathPostFix = config.url.postFix;
+var headers = config.url.headers;
+
+config.startDate = new Date(2015,03,01);
 
 /*-----------------
 TODO:
@@ -31,52 +27,75 @@ check for duplicates
 
 
 -------------------*/
+/* GET home page */
+router.get('/', function(req,res){
+	res.render('index');
+});
+
+
 
 /* GET cardPulls page. */
 router.get('/cardPulls', function(req, res) {
-	var request = require('request');
-		phpSessId = req.query.phpId;
-		userName = req.query.user;
-
-	// Set the headers
-
-	    
-		var pathPrefix ="/amw/naboo/gacha/gacha/list?PHPSESSID="
-		
-		
-		var path = pathPrefix + phpSessId + pathPostFix;
-	// Configure the request
-		var options = {
-			    host: host,
-			    method: 'GET',
-			    headers: headers,
-			    path: path
-		   	}
-
-		getGzipped(options, function(err, data) {
-			console.log(options.path);
-			//console.log(response.headers);
-		   //console.log(data);
-		   if(err !== null){
-		   		console.log(err);
-		   }
-		   
-		   res.send(data);
-		   parseCardList(data, function(cards){
-		   		//write cards to db...
-				var cardLength = cards.length;
-				for (var i = 0; i < cardLength; i++) {
-				    
-				    writeCardToDB(cards[i],"CardPulls",true);
-				}
-		   });
-		})
-
+	res.render('cardPulls');
 
 });
 
+/* GET cardArchive page. */
+router.get('/cardArchive', function(req, res) {
+	res.render('cardArchive');
+
+});
+
+/* GET cardPulls stream page. */
+router.get('/stream/cardPulls', function(req, res) {
+	var request = require('request');
+
+		getConfigFromDB(function(config){
+			phpSessId = config.user.sessionId;
+			userName = config.user.name;
+
+		// Set the headers
+
+		    
+			var pathPrefix ="/amw/naboo/gacha/gacha/list?PHPSESSID="
+			
+			
+			var path = pathPrefix + phpSessId + pathPostFix;
+			buildHeaders(req,function(headers){
+			// Configure the request
+				var options = {
+					    host: host,
+					    method: 'GET',
+					    headers: headers,
+					    path: path
+				   	}
+
+				getGzipped(options, function(err, data) {
+					console.log("Path: " + options.path);
+					//console.log(options.headers);
+					//console.log(response.headers);
+				   //console.log("Data: " + data);
+				   if(err !== null){
+				   		console.log(err);
+				   }
+				   res.send(data);
+				   //res.render('cardPulls', {data: data});
+				   parseCardList(data, function(cards){
+				   		//write cards to db...
+						var cardLength = cards.length;
+						for (var i = 0; i < cardLength; i++) {
+						    
+						    writeCardToDB(cards[i],"CardPulls",true);
+						}
+				   });
+				})
+
+			});
+		});	
+});
+
 /* GET card binder page. */
-router.get('/cardBinder', function(req, res) {
+router.get('/stream/cardBinder', function(req, res) {
 	var request = require('request');
 
 	// Set the headers
@@ -111,242 +130,226 @@ router.get('/cardBinder', function(req, res) {
 				}		   		
 		   });
 		})
+});
 
+
+/* GET eventQuest page. */
+router.get('/stream/eventQuest', function(req, res) {
+	var request = require('request');
+		phpSessId = req.query.phpId;
+		userName = req.query.user;
+
+	// Set the headers
+
+	    ///amw/naboo/event/normal/024_grandarmy/quest/main?&flid=11&PHPSESSID=43ARMGF892G63FE4H383KL56&opensocial_viewer_id=521175497&u=1427725539
+		var pathPrefix ="/amw/naboo/event/normal/024_grandarmy/quest/main?&flid=2&PHPSESSID="
+		
+		
+		var path = pathPrefix + phpSessId + pathPostFix;
+	// Configure the request
+		var options = {
+			    host: host,
+			    method: 'GET',
+			    headers: headers,
+			    path: path
+		   	}
+
+		getGzipped(options, function(err, data) {
+			console.log(options.path);
+			//console.log(response.headers);
+		   //console.log(data);
+		   if(err !== null){
+		   		console.log(err);
+		   }
+		   
+		   //res.send(data);
+		   analyzeQuestBattle(data,function(action){
+		   		//console.log("Action: "  + action);
+		   		res.send(action);
+		   });
+		   /*parseCardList(data, function(cards){
+		   		//write cards to db...
+				var cardLength = cards.length;
+				for (var i = 0; i < cardLength; i++) {
+				    
+				    writeCardToDB(cards[i],"CardPulls",true);
+				}
+		   });*/
+		})
+});
+
+/* GET cardArchive stream page. */
+router.get('/stream/cardArchive', function(req, res) {
+	var request = require('request');
+	getConfigFromDB(function(config){
+		phpSessId = config.user.sessionId;
+		userName = req.query.user;
+		page = req.query.page;
+		rarity = req.query.rarity;
+		userId = config.user.userId;
+		attribute = 0;
+console.log("*****************************");	
+console.log("CARD ARCHIVE");
+console.log("*****************************");			
+console.log("SessionId: " + phpSessId);
+console.log("userId: " + userId);
+console.log("userAgent: " + config.user.userAgent);
+console.log("*****************************");	
+		// Set the headers
+
+		    //http://amw.konaminet.jp/amw/naboo/book/book/list?page=1&attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=HP3KP65C53NE89HQ6J5H6GED&opensocial_viewer_id=521175497&u=1429717153
+			var pathPrefix ="/amw/naboo/book/book/list?page=" + page + "&rarity=" + rarity + "&attribute=" + attribute + "&type=1&PHPSESSID="
+			var path = pathPrefix + phpSessId + pathPostFix;
+		buildHeaders(req,function(headers){
+		// Configure the request
+			var options = {
+				    host: host,
+				    method: 'GET',
+				    headers: headers,
+				    path: path
+			   	}
+
+			getGzipped(options, function(err, data) {
+				console.log("Path: " + options.path);
+				//console.log(options.headers);
+				//console.log(response.headers);
+			   //console.log("Data: " + data);
+			   if(err !== null){
+			   		console.log("Card Archive Error: " + err);
+			   }
+			   res.send(data);
+			   //res.send("got it");
+			   parseCardArchivePage(data,function(cardList){
+			   	console.log(cardList);
+			   	if(cardList.length > 0){
+			   		cardList.forEach(function(element,index,array){
+			   			//get /stream/cardDetails/:cardId
+			   			var detailsUrl = "http://localhost:3000/stream/cardDetails/" + element + "?sessionId=" + phpSessId + "&userId=" + userId;
+			   			console.log("Card Archive Details URL: " + detailsUrl);
+			   			request(detailsUrl, function(error, response, body){
+						  if(error){
+						  	console.log("Card Archive Error: " + error);
+						  }
+						  if (!error) {
+						    console.log("Card Archive Success");  
+						  }			   				
+			   			})
+			   		})
+			   	}
+			   })
+
+			})
+
+		});					
+	})	
+});
+
+/* GET cardDetail page. */
+router.get('/stream/cardDetails/:cardId', function(req,res){
+	var request = require('request');
+	getConfigFromDB(function(config){
+		phpSessId = config.user.sessionId;
+		userId = config.user.userId;
+		cardId = req.params.cardId;
+console.log("*****************************");			
+console.log("GET CARD DETAILS");
+console.log("*****************************");	
+console.log("cardId: " + cardId);
+console.log("*****************************");	
+	    //http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1014010140&user_id=4951069&series=1014010140&PHPSESSID=4HF9QG74MQQ5CGJ4GE7R3H3G&opensocial_viewer_id=397916324&u=1428762081
+		var pathPrefix ="/amw/naboo/book/book/detail?card_id=" + cardId + "&user_id=" + userId + "&series=" + cardId + "&PHPSESSID=";
+		var path = pathPrefix + phpSessId + pathPostFix;		
+		buildHeaders(req,function(headers){
+		// Configure the request
+			var options = {
+				    host: host,
+				    method: 'GET',
+				    headers: headers,
+				    path: path
+			   	}
+
+			getGzipped(options, function(err, data) {
+			   //console.log("Path: " + options.path);
+			   if(err !== null){
+			   		console.log("Card Details Error" + err);
+			   		res.send(err);
+			   }else{
+			   	//console.log("Data: " + data);
+			   	if(data.length > -1){
+				   var ret = JSON.parse(data);
+				   //console.log(ret);
+				   res.send(ret.card);
+
+				   //write the base card info to the database
+				   writeCardToDB(ret.card, "cards", true);
+
+				   //write the skill info to the database (if applicable)
+				   if("skill" in ret.card){
+				   	//console.log("Found skill");
+				   	writeSkillToDB(ret.card.skill, "skills", true);
+				   }				   
+				   //download the image
+				   //http://amw.konaminet.jp/amw/naboo/img/card/chara/101401014/1014010140_l.png
+				   var url = ret.card.img;
+				   var localFilePath = fileRoot + 'card/' + ret.card.card_id + "_l.png";
+				   //console.log(localFilePath);
+				   request(url).pipe(fs.createWriteStream(localFilePath));
+				   /*downloadFile(url, localFilePath, function(){
+
+				   }*/
+				}
+			   }
+			})
+
+		});
+	})
+
+
+
+		
+
+	
 
 });
 
-/* GET card totals page. */
-router.get('/total/cards', function(req, res) {
-	var from = req.query.fromDate;
-	var to = req.query.toDate;
-
-	console.log("From: " + from);
-	console.log("To: " + to);
-	
-	var startDate = new Date(2014,10,20);
-	var endDate = new Date(2015,0,1);
-	var cards = [];
-
+/* GET the loader page. */
+router.get('/loader', function(req, res) {
 	var db = mongo.connect(connectionString, function(err,db){
-		if(err!==null&&err!=undefined){
-			console.log(err.toString());
-			res.send(err.toString());
-		}else{
-			var cardPulls = db.collection("CardPulls");
+		var accounts = db.collection("accounts");
 
-
-
-			var map = function(){
-				emit({name: this.name, cardId: this.card_id, thumb: this.thumb}, 1);
-			}
-			var reduce = function(name, count){
-				return Array.sum(count);
-			}
-
-			cardPulls.mapReduce(
-				map,
-				reduce,
-				{
-					query: {insertTime:{$gte: config.startDate}},
-					//query: {},
-					out: {inline:1}
-				},
+		accounts.find({}).sort().toArray(
 				function(err,results){
 					db.close();
-					if(err!==null&&err!=undefined){
-						console.log(err.toString());
-						res.send(err.toString());
-					}else{
-					//console.log(results);
+					res.render('loader', {"title":"Login", "accounts":results, "error":err});
+				});
+	});	
 
-						results.sort(sort_by('value', false, parseInt));
-						var total = getTotal(results);
-						results.forEach(function(element,index,array){
-							/*getCardInfo(element.card_id, function(){
-
-							});*/
-							element.rarity = calculateRarity(element.value, total);
-							cards.push({
-								cardId: element._id['cardId'],
-								name: element._id['name'],
-								thumb: element._id['thumb'],
-								count: element.value,
-								rarity: element.rarity
-							});
-
-						});						
-						res.render('cardTotals', {"title":"Card Totals", "results":results, "error":err, "total": total, "cards":cards})
-					}
-				}
-			);			
-		}
-
-	});
 });
 
+/* POST the custom loader page. */
+router.post('/loader', function(req, res) {
+	var sessionId = req.body.sessionId;
+	var userId = parseInt(req.body.selAccount,10);
 
-/* GET pack totals page. */
-router.get('/total/packs', function(req, res) {
+	//fetch the userinfo based on the id
 	var db = mongo.connect(connectionString, function(err,db){
-		var cardPulls = db.collection("CardPulls");
+		var accounts = db.collection("accounts");
 
-		var map = function(){
-			emit(this.pack, 1);
-		}
-		var reduce = function(name, count){
-			return Array.sum(count);
-		}
+		accounts.find({userId: userId}).sort().toArray(
+				function(err,results){
+					db.close();
+					console.log(results)
+					var userAgent = results[0].userAgent;
+					config.user.userId = userId;
+					config.user.userAgent = userAgent;
+					config.user.sessionId = sessionId;
+					writeConfigToDB(config,"config")
+				});
+	});		
 
-		cardPulls.mapReduce(
-			map,
-			reduce,
-			{
-				//query: {insertTime:{$gte: new Date(2014,10,20)}},
-				query: {insertTime:{$gte: config.startDate}},
-				out: {inline:1}
-			},
-			function(err,results){
-				db.close();
-				results.sort(sort_by('value', false, parseInt));
-				var total = getTotal(results);
-				res.render('cardTotals', {"title":"Pack Totals", "results":results, "error":err, "total": total})
-			}
-		);
-	});
+	res.redirect('/');
 });
 
-
-/* GET hourly totals page. */
-router.get('/total/hours', function(req, res) {
-	var db = mongo.connect(connectionString, function(err,db){
-		var cardPulls = db.collection("CardPulls");
-
-		var map = function(){
-			var stamp = this._id.getTimestamp();
-			var hours = stamp.getHours();
-			if(hours < "10"){
-				hours = "0" + hours;
-			}
-			hours = hours + ":00";
-			var dateString = stamp.getMonth() + '/' + stamp.getDate() + " " + hours;
-
-			emit(dateString, 1);
-		}
-		var reduce = function(name, count){
-			return Array.sum(count);
-		}
-
-		cardPulls.mapReduce(
-			map,
-			reduce,
-			{
-				query: {insertTime:{$gte: config.startDate}},
-				out: {inline:1}
-			},
-			function(err,results){
-				db.close();
-				results.sort(sort_by('_id', false, parseInt));
-				var total = getTotal(results);
-				res.render('hours', {"title":"Hourly Totals", "results":results, "error":err, "total": total})
-			}
-		);
-	});
-});
-
-/* GET card history page. */
-router.get('/history/card/:cardId', function(req, res) {
-	var db = mongo.connect(connectionString, function(err,db){
-		var data = {};
-		data.card = {};
-		data.days = [];
-
-		var cardPulls = db.collection("CardPulls");
-		//var cardId = req.query.cardId;
-		var cardId = req.params.cardId;
-
-		map = function() {
-		  id = this._id;
-		  ts = id.getTimestamp();  
-		    
-		  day = Date.UTC(ts.getFullYear(), ts.getMonth(), ts.getDate());
-
-		  emit({day: day, card_id: this.card_id}, {count: 1});
-		}
-		reduce = function(key, values) {
-		  var count = 0;
-
-		  values.forEach(function(v) {
-		    count += v['count'];
-		  });
-
-		  return {count: count};
-		}
-
-		cardPulls.mapReduce(
-			map,
-			reduce,
-			{
-				query: {card_id:cardId, insertTime:{$gte: config.startDate}},
-				out: {inline:1}
-			},
-			function(err,results){
-				//get the totals per day
-				//var totals = getTotalCardPulls();
-
-
-				db.close();
-				//add info to the results
-				//var total = getTotal(results);
-				data.card.id = cardId;
-				var cardInfo = getCardInfo(cardId, function(card,err){
-					if(err.length ==0){ 
-					
-						data.card = card;
-						data.card.id = cardId;
-					}
-
-
-					var total = 0;
-					results.forEach(function(element,index,array){
-						if(element._id['card_id']==data.card.id){
-							total = total + element.value['count'];
-							var prettyDate = moment(element._id['day']);
-							data.days.push({
-												date: prettyDate.format("MM/DD/YYYY"),
-												rawDate: element._id['day'],
-												count: element.value['count']
-											}
-							);						
-						}
-					data.total = total;		
-
-					});
-
-					res.render('cardHistory', {"title":"Card History", "data":data, "error":err})					
-				})
-
-			}
-		);
-	});
-});
-
-router.get('/update/time', function(req, res) {
-	var db = mongo.connect(connectionString, function(err,db){
-		var cardPulls = db.collection("CardPulls");
-
-		//cardPulls.find({timeStamp:null})
-
-		cardPulls.find({timeStamp:null}).each(
-			function(doc) {
-		  		//doc.timeStamp = doc._id.getTimestamp();
-		  		//cardPulls.save(doc);
-		  		console.log(doc.name);
-		  		//cardPulls.update({_id:doc._id}, {$set: {timeStamp: doc._id.getTimestamp()}});
-			});
-		res.send("done");
-	});
-
-});
 
 
 /*---------------------------------------
@@ -381,32 +384,28 @@ function getGzipped(options, callback) {
     });
 };
 
+function buildHeaders(req, callback){
+	var userAgent = config.user.userAgent;
+	    /*if(req.cookies.userAgent != ""){
+	    	userAgent = req.cookies.userAgent;
+	    }else{
+	    	userAgent = 'Mozilla/5.0 (Linux; Android 4.4.2; Dummy 1 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36'
+	    }	*/
+	var headers = {
+		'Connection': 'keep-alive',
+		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+	    'Accept-Encoding': 'gzip,deflate',
+	    'Accept-Language': 'en-US',
+	    'X-Requested-With': 'jp.konami.swfc',
+	    'User-Agent': userAgent
+    }
 
-
-function getCardInfo(cardId,callback){
-	var db = monk(dbServer + '/SWFC');
-
-    // Set our collection
-    var collection = db.get("CardPulls");
-   	collection.findOne(
-    			{card_id:cardId},
-    			function(err,doc){
-    				console.log("error: " + err);
-    				console.log("doc:" + doc.name);
-    				db.close();
-    				if(doc!==null&&doc!==undefined){
-			    			callback(doc,"");
-		    		}else{
-		    			console.log("Could Not Find Card With ID " + cardId);
-		    			callback({},"Could Not Find Card");
-					    		    			
-		    		}
-			    		
-
-
-    			})
+    callback(headers);
 
 }
+
+
+
 
 function getWordsBetweenCurlies(str) {
   var results = [], re = /{([^}]+)}/g, text;
@@ -415,6 +414,77 @@ function getWordsBetweenCurlies(str) {
     results.push(text[1]);
   }
   return results;
+}
+
+function analyzeQuestBattle(data, callback){
+	//get the config
+	var action = {};
+	var suggestion = "skip";
+	if(data!==null&&data!==undefined){
+		$ = cheerio.load(data);	
+		var configScript = $("script:contains('config=')").text();
+		configScript = configScript.substring(configScript.indexOf("{")+1, configScript.lastIndexOf("}"));
+		configScript = configScript.substring(configScript.indexOf("{"), configScript.indexOf("}")-3);
+		configScript = configScript+ "}";
+
+		//configScript = configScript.replace('variable', '"variable"');
+		configScript = configScript.replace('maxFrameSkip', '"maxFrameSkip"');
+		var battle = JSON && JSON.parse(configScript) || $.parseJSON(configScript);
+		
+		console.log(battle.encount_turn);
+		var turn = battle.encount_turn;
+
+		//always battle NPCs
+		if(turn > 0 && battle.is_npc > 0){
+			suggestion = "battle";
+		}
+		//if it's not an NPC, only battle if we don't wast too much EP getting there
+		if(turn > 0 && turn < 3){
+			suggestion = "battle";
+		}
+		action.data={
+			"suggestion":suggestion
+		}
+		action.links={
+			"link1":battle.callback1,
+			"link2":battle.callback2,
+			"link3":battle.callback3,
+			"link4":battle.callback4,
+			"link5":battle.callback5,
+			"link6":battle.callback6
+		}		
+		action.enemyData = {
+			"turn": battle.encount_turn,
+			"is_npc": battle.is_npc,
+			"enemy":{
+				"lvl": battle.ene_lvl,
+				"cost": battle.ene_cost,
+				"name": battle.ene_name,
+				"side": battle.ene_side,
+				"comment" : battle.player_comment
+			}
+		}
+		action.battle = battle;
+		//action = battle;
+		//console.log("Config Script: " + configScript);
+	}
+	//get the enemy info
+
+	//calculate recommended action
+
+	callback(action);
+}
+
+
+
+function downloadFile(url, dest, cb) {
+  var file = fs.createWriteStream(dest);
+  var request = http.get(url, function(response) {
+    response.pipe(file);
+    file.on('finish', function() {
+      file.close(cb);  // close() is async, call cb after close completes.
+    });
+  });
 }
 
 function parseCardList(data, callback){
@@ -454,7 +524,7 @@ function parseCardList(data, callback){
 					//console.log("Time: " + timeStamp);
 					//console.log("Card: " + card.card_id);
 					//console.log("File: " + fileName);
-					//writeCardToDB(card, collection);
+					//(card, collection);
 					//writeFile(fileName, JSON.stringify(card));
 					cards.push(card);
 				}			
@@ -465,6 +535,21 @@ function parseCardList(data, callback){
 	}
 
 
+}
+
+function parseCardArchivePage(data, callback){
+	if(data!==null&&data!==undefined){
+		$ = cheerio.load(data);	
+			var cards = [];
+			$(".detail").each(function(index){
+				var href = $(this).attr("href");
+				var urlParts = url.parse(href,true);
+				var cardId = urlParts.query.card_id;
+				cards.push(cardId);
+			})
+				
+	}	
+	callback(cards);	
 }
 
 function writeFile(fileName, data){
@@ -511,50 +596,76 @@ function writeCardToDB(card, collectionName, checkForDupes){
 
     			})
     }
+}
+function writeSkillToDB(skill, collectionName, checkForDupes){
+    // Set our internal DB variable
+    skill.insertTime = new Date();
+	var db = monk(dbServer + '/SWFC');
 
+    // Set our collection
+    var collection = db.get(collectionName);
 
-    // Submit to the DB
-    /*collection.insert(card, function (err, doc) {
+    if(checkForDupes){
+    	collection.find(
+    			{skill_id:skill.skill_id}, 'skill_id',
+    			function(err,docs){
+    				if(docs!==null&&docs!==undefined){
+			    		if(docs.length>0){
+			    			console.log("Ignoring Duplicate");
+			    			db.close();
+			    		}else{
+						    collection.insert(skill, function (err, doc) {
+						        if (err) {
+						            // If it failed, return error
+						            console.log("There was a problem adding the information to the database. - /r/n" + err);
+						        }
+						        else {
+									console.log("Skill written to " + collectionName + " - " + skill.name + "(" + skill.skill_id + ")");
+						        }
+						        db.close();
+
+						    });		    			
+			    		}
+			    		
+    				}
+
+    			})
+    }
+}
+
+function writeConfigToDB(config, collectionName){
+    // Set our internal DB variable
+    config.insertTime = new Date();
+	var db = monk(dbServer + '/SWFC');
+
+    // Set our collection
+    var collection = db.get(collectionName);
+    //remove the current config
+    collection.remove();
+    collection.insert(config, function (err, doc) {
         if (err) {
             // If it failed, return error
             console.log("There was a problem adding the information to the database. - /r/n" + err);
         }
         else {
-			console.log("Card written to " + collectionName + " - " + card.name + "(" + card.card_id + ")");
+			console.log("Config written to " + collectionName);
         }
-    });*/
+        db.close();
+
+    });
 }
 
-function calculateRarity(count, total){
-	var rarity = 0;
-
-	//rarity = Math.floor((count*100/total));
-	rarity = (40-round5(Math.floor(count*1000/total)))/5;
-
-	return rarity;
+function getConfigFromDB(callback){
+	var db = mongo.connect(connectionString, function(err,db){
+		var config = db.collection("config");
+			config.find({}).toArray(
+					function(err,results){
+						db.close();
+						callback(results[0]);
+					});	
+	});	
 }
 
-function round5(x)
-{
-    return Math.floor(x/5)*5;
-}
-
-var sort_by = function(field, reverse, primer){
-   var key = function (x) {return primer ? primer(x[field]) : x[field]};
-
-   return function (a,b) {
-	  var A = key(a), B = key(b);
-	  return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];                  
-   }
-}
-
-function getTotal(collection){
-	var total = 0;
-	collection.forEach(function(element,index,array){
-		total = total + element.value;
-	});
-	return total;
-}
 
 
 module.exports = router;

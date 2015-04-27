@@ -1,0 +1,30 @@
+<h2>Set User Info</h2>
+<form id="frmLoader" action="/loader" method="post" enctype="application/x-www-form-urlencoded">
+<label>Session ID
+	<input type="text" style="width:90%" id="sessionId" name="sessionId">
+</label>
+<br>
+<label>Account
+	<select id="selAccount" name="selAccount" width="300px">
+		<option value="">Select One</option>
+		{{#each accounts}}
+			<option value="{{userId}}">{{{name}}}</option>
+		{{/each}}
+	</select>
+</label>
+
+<!--<label>User ID
+	<input type="text" style="width:300px" id="userId" name="userId">
+</label>
+<br>
+<label>User Agent
+	<input type="text" style="width:90%" id="userAgent" name="userAgent">
+</label>-->
+<br>
+<input type="submit">
+<br>
+<hr width="100%">
+</form>
+
+
+

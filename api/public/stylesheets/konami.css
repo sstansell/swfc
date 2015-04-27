@@ -1,0 +1,3759 @@
+/*@charset "utf-8";
+html:lang(ja), html:lang(ja) body {
+	font-family: "Hiragino Kaku Gothic ProN",  Roboto,  "Droid Sans",  sans-serif !important;
+	font-size:13px !important;
+	line-height:1.3077;
+}
+
+html:lang(ja) h1, html:lang(ja) h2 {
+	font-size:13px;
+	line-height:1.3077;
+}
+
+html:lang(ja) .fontBold, html:lang(ja) .font-sw01, html:lang(ja) .font-sw02, html:lang(ja) .font-sw03 {
+	font-family: "HiraKakuProN-W6",  Roboto,  sans-serif;
+	font-weight:bold;
+}
+
+html:lang(ja) .nameCard  {
+	font-size:15px !important;
+	font-family: "HiraKakuProN-W6",  Roboto,  sans-serif;
+	font-weight:700;
+}
+
+html:lang(ja) .fontSS  {
+	font-size:10px !important;
+}
+
+html:lang(ja) .fontS  {
+	font-size:12px !important;
+}
+
+html:lang(ja) .fontM  {
+	font-size:13px !important;
+}
+
+html:lang(ja) .fontL  {
+	font-size:18px !important;
+}
+
+html:lang(ja) .fontLL  {
+	font-size:22px !important;
+}
+
+html:lang(ja) ul.tab-box li, html:lang(ja) ul.tab-box li a {
+	font-size:11px !important;
+}
+
+html:lang(ja) .cardListOuter .leader, html:lang(ja) .cardListOuter .formation, html:lang(ja) .cardListOuter .special, html:lang(ja) .cardListOuter .newCard, html:lang(ja) .cardListOuter .template, html:lang(ja) .cardListOuter .pilot {
+	font-size:10px !important;
+	;;
+}
+
+html,  body,  div,  span,  applet,  object,  iframe, h1,  h2,  h3,  h4,  h5,  h6,  p,  blockquote,  pre, a,  abbr,  acronym,  address,  big,  cite,  code, del,  dfn,  em,  font,  img,  ins,  kbd,  q,  s,  samp, small,  strike,  strong,  sub,  sup,  tt,  var, b,  u,  i,  center, dl,  dt,  dd,  ol,  ul,  li, fieldset,  form,  label,  legend, table,  caption,  tbody,  tfoot,  thead,  tr,  th,  td  {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align:baseline;
+	-webkit-tap-highlight-color: rgba(0,  0,  0,  0);
+	word-break: break-word;
+}
+
+img {
+	vertical-align:bottom;
+}
+
+body, div, table, input,  textarea,  select,  option,  h1,  h2  {
+	font-family:'AlpsNormal',  sans-serif;
+	font-size: 14px;
+	line-height: 1em;
+}
+
+html, body  {
+	line-height:130%;
+	-webkit-text-size-adjust: none;
+}
+
+ol,  ul  {
+	list-style: none;
+}
+
+.clearfix:after {
+	content:"";
+	display: block;
+	clear:both;
+}
+
+.clearfix:after {
+	content:"";
+	display: block;
+	clear:both;
+}
+
+input[type="button"]  {
+	padding:0;
+	color:#FFF;
+	border:none;
+	border-image:none;
+	background-color:transparent;
+	border-radius:0 !important;
+}
+
+input[type="button"]::-webkit-button-decoration  {
+	display: none;
+}
+
+#page_content {
+	min-height:100% !important;
+	height:auto !important;
+}
+
+a  {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	color:#FFF;
+	text-decoration:none;
+	-letter-kern: 1px 1px 0 0 01px 0 2px 0 00 0 0;
+	-webkit-touch-callout: none;
+	-webkit-user-select:none;
+}
+
+#debug_wrapper {
+	margin:10px auto;
+	background:#111;
+	border-top:1px solid #222;
+}
+
+ul.list_link li a,  ul.list_link li input {
+	display:block;
+	width:100%;
+	height:100%;
+	border-bottom:1px solid #000;
+	border-top:1px solid #222;
+	padding:10px 15px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	word-wrap: break-word;
+	text-align: left;
+	cursor:pointer;
+}
+
+ul.list_link li a:hover,  ul.list_link li input:hover {
+	background:#222;
+}
+*/
+.pad {
+	padding:5px !important;
+}
+
+.pad0 {
+	padding:0 !important;
+}
+
+.padT {
+	padding-top:5px !important;
+}
+
+.padB {
+	padding-bottom:5px !important;
+}
+
+.padR {
+	padding-right:5px !important;
+}
+
+.padL {
+	padding-left:5px !important;
+}
+
+.pad10 {
+	padding:10px !important;
+}
+
+.padT10 {
+	padding-top:10px !important;
+}
+
+.padB10 {
+	padding-bottom:10px !important;
+}
+
+.padR10 {
+	padding-right:10px !important;
+}
+
+.padL10 {
+	padding-left:10px !important;
+}
+
+.pad15 {
+	padding:15px !important;
+}
+
+.padT15 {
+	padding-top:15px !important;
+}
+
+.padB15 {
+	padding-bottom:15px !important;
+}
+
+.padR15 {
+	padding-right:15px !important;
+}
+
+.padL15 {
+	padding-left:15px !important;
+}
+
+.mar {
+	margin:5px !important;
+}
+
+.mar0 {
+	margin:0 !important;
+}
+
+.marT {
+	margin-top:5px !important;
+}
+
+.marB {
+	margin-bottom:5px !important;
+}
+
+.marR {
+	margin-right:5px !important;
+}
+
+.marL {
+	margin-left:5px !important;
+}
+
+.mar10 {
+	margin:10px !important;
+}
+
+.marT10 {
+	margin-top:10px !important;
+}
+
+.marB10 {
+	margin-bottom:10px !important;
+}
+
+.marR10 {
+	margin-right:10px !important;
+}
+
+.marL10 {
+	margin-left:10px !important;
+}
+
+.mar15 {
+	margin:15px !important;
+}
+
+.marT15 {
+	margin-top:15px !important;
+}
+
+.marB15 {
+	margin-bottom:15px !important;
+}
+
+.marR15 {
+	margin-right:15px !important;
+}
+
+.marL15 {
+	margin-left:15px !important;
+}
+
+.noList {
+	padding:50px 15px !important;
+}
+
+.flR {
+	float:right !important;
+}
+
+.flL {
+	float:left !important;
+}
+
+.colorLight {
+	 color:#aeebff;
+}
+
+.colorDark {
+	 color:#ffbbbb;
+}
+
+.colorBlack {
+	 color:#12214c;
+}
+
+.colorGray {
+	 color:#AAAAAA;
+}
+
+.colorOff {
+	 color:#666666;
+}
+
+.colorEp {
+	 color:#ffad00;
+}
+
+.colorBp {
+	 color:#6ccff6;
+}
+
+.colorBill {
+	 color:#d1ff00;
+}
+
+.colorEmphasis {
+	 color:#35FC00;
+}
+
+.colorCaution {
+	 color:#fdf684;
+}
+
+.colorWarning {
+	 color:#FF7800;
+}
+
+.colorParamTitle {
+	 color:#AAAAAA;
+}
+
+.colorGold  {
+	display: inline-block;
+	position: relative;
+	color: #e4d392;
+}
+
+.colorGold:before  {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #FFF;
+	-webkit-mask-image: -webkit-linear-gradient(bottom,  rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0) 51%,  rgba(0, 0, 0, 1) 50%,  rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 91%);
+	z-index: 10;
+	width:100%;
+}
+
+.colorGold:after  {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #e4d392;
+	-webkit-mask-image: -webkit-linear-gradient(top,  rgba(0, 0, 0, 1),  rgba(0, 0, 0, 0.4) 50%,  rgba(0, 0, 0, 0.2) 51%,  rgba(0, 0, 0, 0));
+	width:100%;
+}
+
+.colorSilver  {
+	display: inline-block;
+	position: relative;
+	color: #E5EBEE;
+}
+
+.colorSilver:before  {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #FFF;
+	-webkit-mask-image: -webkit-linear-gradient(bottom,  rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0) 51%,  rgba(0, 0, 0, 1) 50%,  rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 91%);
+	z-index: 10;
+}
+
+.colorSilver:after  {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #e4d392;
+	-webkit-mask-image: -webkit-linear-gradient(top,  rgba(0, 0, 0, 1),  rgba(0, 0, 0, 0.4) 50%,  rgba(0, 0, 0, 0.2) 51%,  rgba(0, 0, 0, 0));
+}
+
+.shadowLight {
+	text-shadow:1px 1px 6px #00a2ff,  -1px -1px 6px #00a2ff;
+	 -webkit-text-shadow:1px 1px 6px #00a2ff,  -1px -1px 6px #00a2ff;
+}
+
+.shadowDark {
+	text-shadow:0 0 6px #ff0000;
+	 -webkit-text-shadow:0 0 6px #ff0000;
+}
+
+.shadowBlack {
+	text-shadow:0 0 6px #000000;
+	 -webkit-text-shadow:0 0 6px #000000;
+}
+
+.bevel {
+	text-shadow:1px 1px 1px #000000;
+	 -webkit-text-shadow:1px 1px 1px #000000;
+}
+
+.font-sw01 {
+	 font-family: 'ChaneyBold',  sans-serif !important;
+	 ;
+}
+
+.font-sw02 {
+	 font-family: 'ChaneyNormal',  sans-serif !important;
+	 ;
+}
+
+.font-sw03 {
+	 font-family: 'ChaneyNormal',  sans-serif !important;
+	 ;
+}
+
+.fontSS  {
+	font-size:10px !important;
+}
+
+.fontS 	 {
+	font-size:12px !important;
+}
+
+.fontM 	 {
+	font-size:14px !important;
+}
+
+.fontL 	 {
+	font-size:18px !important;
+}
+
+.fontLL  {
+	font-size:22px !important;
+}
+
+.fontBold  {
+	font-weight:700;
+}
+
+.txtAR {
+	text-align:right;
+}
+
+.txtAL {
+	text-align:left;
+}
+
+.txtAC {
+	text-align:center;
+}
+
+.txtSales {
+	 color:#FF7800;
+	 font-family: 'AlpsBold';
+}
+
+.txtParam {
+	 color:#AAA;
+	 font-size:12px;
+}
+
+.swTable {
+	width:auto;
+	margin:5px auto;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size:90%;
+	border: 1px solid #333333;
+}
+
+.swTable th {
+	color: #fff;
+	padding: 5px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align:middle;
+	border: 1px solid #333333;
+}
+
+.swTable th:first-child  {
+}
+
+.swTable th:last-child  {
+}
+
+.swTable tr td  {
+	padding: 5px;
+	text-align: left;
+	vertical-align:middle;
+	border: 1px solid #333333;
+}
+
+.swTable tr td:last-child  {
+	border-right: 1px solid #333333;
+}
+
+.swTable tr:nth-child(2n+1)  {
+	background: #222222;
+}
+
+.swTable tr:last-child td  {
+}
+
+.swTable tr:last-child td:first-child  {
+}
+
+.swTable tr:last-child td:last-child  {
+}
+
+.table {
+	display:table;
+	width:100%;
+	margin:0 auto;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+.table_cell {
+	display:table-cell;
+	padding:5px;
+	vertical-align:middle;
+}
+
+.table_cell.top {
+	vertical-align:top;
+}
+
+.table_cell.middle {
+	vertical-align:middle;
+}
+
+.table_cell.bottom {
+	vertical-align:bottom;
+}
+
+.iconLeader  {
+	-webkit-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: -5px;
+	margin-right: -5px;
+	text-indent: 3px;
+	text-align:center;
+	padding-bottom: 2px;
+	margin-bottom: -4px;
+}
+
+#sw-wrapper.lightside .iconLeader  {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/lightside/leader_card_title.png);
+	text-shadow:1px 1px 6px #00a2ff,  -1px -1px 6px #00a2ff;
+	 -webkit-text-shadow:1px 1px 6px #00a2ff,  -1px -1px 6px #00a2ff;
+	color:#aeebff;
+}
+
+#sw-wrapper.darkside .iconLeader  {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/darkside/leader_card_title.png);
+	text-shadow:0 0 6px #ff0000;
+	 -webkit-text-shadow:0 0 6px #ff0000;
+	color:#ffbbbb;
+}
+
+#sw-wrapper.lightside.gold .iconLeader, #sw-wrapper.darkside.gold .iconLeader  {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/darkside/leader_card_title.png);
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/gold/leader_card_title.png);
+	color: #ebda9a !important;
+	text-shadow: 1px 1px 5px rgba(208, 137, 0, 1),  -1px -1px 5px rgba(208, 137, 0, 1) !important;
+}
+
+.iconCaution {
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:-5px;
+	right:-5px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/alert/caution_icon.png) no-repeat center;
+	background-size:20px;
+}
+
+.iconPower {
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:-2px;
+	right:-7px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_epc_m.png) no-repeat center;
+	background-size:20px;
+}
+
+.card-detail-img .iconPower {
+	width:25px;
+	height:25px;
+	position:absolute;
+	top:-7px;
+	right:12px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_epc_m.png) no-repeat center;
+	background-size:25px;
+}
+
+.iconPowerUP  {
+	width: 16px;
+	height: 18px;
+	position:absolute;
+	top: -1px;
+	left: -5px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/vehicle_powerup_icon_s.png) no-repeat center;
+	background-size: 16px;
+}
+
+.iconLeader + .iconPower  {
+	top:11px;
+}
+
+.iconLeader + .iconPowerUP, .iconLeader + .iconPower + .iconPowerUP  {
+	top:12px;
+}
+
+.iconPowerL {
+	width:32px;
+	height:32px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_epc_l.png) no-repeat center;
+	-webkit-background-size: 32px;
+	background-size: 32px;
+}
+
+.awake  {
+	position:relative;
+	 display: inline-block;
+}
+
+.awake .iconPowerL {
+	position:absolute;
+	top:-10px;
+	right:-10px;
+}
+
+.rarity_s_01 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_02 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_03 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_04 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_05 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_06 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_07 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_08 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_09 {
+	width:32px;
+	 ;
+}
+
+.rarity_s_10 {
+	width:32px;
+	 ;
+}
+
+.rarity_l_01 {
+	width:16px;
+	 height:16px;
+}
+
+.rarity_l_02 {
+	width:29px;
+	 height:16px;
+}
+
+.rarity_l_03 {
+	width:42px;
+	 height:16px;
+}
+
+.rarity_l_04 {
+	width:55px;
+	 height:16px;
+}
+
+.rarity_l_05 {
+	width:68px;
+	 height:16px;
+}
+
+.rarity_l_06 {
+	width:81px;
+	 height:16px;
+}
+
+.rarity_l_07 {
+	width:94px;
+	 height:16px;
+}
+
+.rarity_l_08 {
+	width:107px;
+	 height:16px;
+}
+
+.rarity_l_09 {
+	width:120px;
+	 height:16px;
+}
+
+.rarity_l_10 {
+	width:135px;
+	 height:16px;
+}
+
+.imgArrow {
+	display:inline-block;
+	 width:20px;
+	 height:14px;
+	 background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat center center;
+	 background-size:12px;
+}
+
+.imgArrowS {
+	display:inline-block;
+	 width:12px;
+	 height:8px;
+	 background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right_s.png) no-repeat center center;
+	 background-size:8px;
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-direction: normal;
+	-webkit-animation-fill-mode: both;
+	-webkit-transform : translate3d(0,  0,  0);
+	-webkit-transform-style: preserve-3d;
+}
+
+@-webkit-keyframes fadeIn {
+	0%  {
+	opacity:0;
+}
+
+100%  {
+	opacity:1;
+}
+
+}.badge01 {
+	position: absolute;
+	top: -10px;
+	right: 0;
+	height: 20px;
+	min-width: 20px;
+	min-height: 20px;
+	color: #fff;
+	font-weight:bold;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	text-align:center;
+	border: #fff 2px solid;
+	box-shadow:0 2px 2px #000;
+	-webkit-box-shadow:0 2px 2px #000;
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(0%, #ff9999),  color-stop(13%, #ff9999),  color-stop(36%, #e20001),  color-stop(74%, #e20001),  color-stop(100%, #c60102));
+	z-index:100;
+	padding:3px;
+	box-sizing:border-box;
+	line-height:7px;
+}
+
+hr {
+	display:block;
+	width:100%;
+	height:6px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_line01.png) no-repeat center;
+	background-size:100%;
+	border:0;
+	margin:0;
+}
+
+hr.sub {
+	display:block;
+	width:100%;
+	height:6px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_line02.png) no-repeat center;
+	background-size:100%;
+	border:0;
+	margin:0;
+}
+
+hr.sub02 {
+	display:block;
+	width:100%;
+	height:1px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat center;
+	background-size:100% 1px;
+	border:0;
+	margin:0;
+}
+
+.card-list-outer {
+	position:relative;
+}
+
+.card-list-outer:before {
+	display:block;
+	width:100%;
+	height:2px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_line_02.png) no-repeat center;
+	background-size:100% 2px;
+	position:absolute;
+	content:'';
+	top:0;
+	left:0;
+}
+
+.cardListOuter  {
+	display: table;
+	position: relative;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cardListOuter:before {
+	display:block;
+	width:100%;
+	height:6px;
+	content:'';
+	margin-bottom:5px;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_line01.png);
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size:100% 6px;
+}
+
+.cardListWrapper .cardListOuter:first-child:before {
+	display:none;
+}
+
+.cardListOuter.lightside, .card-list-outer.lightside {
+	background-image: -webkit-gradient(linear,  left top,  right top,  color-stop(0%, rgba(21, 47, 52, 0)),  color-stop(100%, rgba(21, 47, 52, 1)));
+}
+
+.cardListOuter.darkside, .card-list-outer.darkside {
+	background-image: -webkit-gradient(linear,  left top,  right top,  color-stop(0%, rgba(47, 15, 15, 0)),  color-stop(100%, rgba(47, 15, 15, 1)));
+}
+
+.cardListOuter.checkBox {
+	padding-left:26px;
+	 overflow:hidden;
+}
+
+.cardListWrapper .cardListOuter.checkBox:not(:first-child)  {
+	padding-top: 6px;
+}
+
+.cardListWrapper .cardListOuter.checkBox:before {
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.cardListWrapper .cardListOuter.checkBox:after {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	width: 26px;
+	height: 100%;
+	background-image:-webkit-gradient(linear,  left top,  right top,  color-stop(75%, rgba(10, 10, 10, 0)),  color-stop(100%, rgba(10, 10, 10, 0.8)));
+	background-color: #212121;
+	top: 6px;
+	left: 0;
+	z-index: 0;
+}
+
+.cardListWrapper .cardListOuter.checkBox:first-child:after {
+	 top:0;
+	 ;
+}
+
+.cardListOuter.avator .cardList .param li  {
+	padding:1px 2px;
+}
+
+.cardListOuter.avator .card-list  {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png);
+	background-size: 15px 15px;
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+
+.checkbox  {
+	display: none;
+}
+
+#checkBoxArea  {
+	position: absolute;
+	top: 50%;
+	left: 2px;
+	z-index: 10;
+}
+
+.checkBoxImage  {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_checkbox_off.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 20px 20px;
+}
+
+.checkBoxImage.on  {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_checkbox_on.png);
+}
+
+.checkBoxImage.lock:before  {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_parts_checkbox_mask.png);
+	background-size: 100% 100%;
+	background-position: center,  right bottom;
+	background-repeat: no-repeat,  no-repeat;
+	opacity: 1;
+	z-index: 2;
+}
+
+.checkBoxImage .hoverMask {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_parts_checkbox_mask.png) right bottom no-repeat;
+	background-size:20px 20px;
+}
+
+.cardListOuter .nameCard {
+	position: relative;
+	display:block;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	min-height: 18px;
+	font-size:16px;
+	line-height: 18px;
+	padding: 5px 5px 5px 30px;
+	font-weight:700;
+	margin-bottom: 0;
+	text-align:left;
+	word-break: break-word;
+}
+
+.nameCard .perfect_evolve {
+	color:#fdf684;
+}
+
+.cardListOuter .nameCard:not(:first-child) {
+	margin: auto;
+}
+
+.cardListOuter a.cardListOuterLink > .nameCard.sideOff {
+	width:auto;
+}
+
+.nameCard.sideOff {
+	padding-left: 10px;
+}
+
+.nameCard .sideIcon {
+	display: block;
+	width: 24px;
+	height: 20px;
+	float: left;
+	position: absolute;
+	left: 5px;
+	top: 4px;
+}
+
+.nameCard .sideIcon:after {
+	display:block;
+	width:13px;
+	height:13px;
+	padding: 2px;
+	margin-right:5px;
+	text-align:center;
+	font-size:10px;
+	line-height:13px;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	position: absolute;
+	top: 50%;
+	left: 2px;
+	margin-top: -8px;
+}
+
+.cardListOuter .nameCard .sideIcon:after {
+	box-shadow:0 0 6px #ffffff,  inset 0 0 2px #ffffff;
+	-webkit-box-shadow:0 0 6px #ffffff,  inset 0 0 2px #ffffff;
+	content:'N';
+}
+
+.cardListOuter.lightside .nameCard .sideIcon:after {
+	box-shadow:0 0 6px #83c0c5,  inset 0 0 2px #83c0c5;
+	-webkit-box-shadow:0 0 6px #83c0c5,  inset 0 0 2px #83c0c5;
+	content:'L';
+}
+
+.cardListOuter.darkside .nameCard .sideIcon:after {
+	box-shadow:0 0 6px #ff0000,  inset 0 0 2px #ff0000;
+	-webkit-box-shadow:0 0 6px #ff0000,  inset 0 0 2px #ff0000;
+	content:'D';
+}
+
+.nameCard.neutral .sideIcon:after, .nameCard.neutralside .sideIcon:after {
+	box-shadow:0 0 6px #ffffff,  inset 0 0 2px #ffffff !important;
+	-webkit-box-shadow:0 0 6px #ffffff,  inset 0 0 2px #ffffff !important;
+	content:'N' !important;
+}
+
+.nameCard.lightside .sideIcon:after {
+	box-shadow:0 0 6px #83c0c5,  inset 0 0 2px #83c0c5 !important;
+	-webkit-box-shadow:0 0 6px #83c0c5,  inset 0 0 2px #83c0c5 !important;
+	content:'L' !important;
+}
+
+.nameCard.darkside .sideIcon:after {
+	box-shadow:0 0 6px #ff0000,  inset 0 0 2px #ff0000 !important;
+	-webkit-box-shadow:0 0 6px #ff0000,  inset 0 0 2px #ff0000 !important;
+	content:'D' !important;
+}
+
+.cardListOuter .nameCard a {
+	float: right;
+}
+
+#detail_attack_wrapper {
+	display:table;
+	-webkit-box-sizing:border-box;
+	padding:5px 10px;
+}
+
+#detail_attack_area, .detail_attack_area {
+	display:table-cell;
+	width:60px;
+	height:85px;
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin:0 auto;
+	padding:5px 10px;
+}
+
+.attack_area01.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area01.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area01.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area11.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_line_01.png);
+}
+
+.attack_area11.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_line_02.png);
+}
+
+.attack_area11.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_line_03.png);
+}
+
+.attack_area12.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_line_01.png);
+}
+
+.attack_area12.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_line_02.png);
+}
+
+.attack_area12.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_line_03.png);
+}
+
+.attack_area21.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_pierce_01.png);
+}
+
+.attack_area21.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_pierce_02.png);
+}
+
+.attack_area21.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_pierce_03.png);
+}
+
+.attack_area22.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_pierce_01.png);
+}
+
+.attack_area22.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_pierce_02.png);
+}
+
+.attack_area22.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_pierce_03.png);
+}
+
+.attack_area31.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_circle_01.png);
+}
+
+.attack_area31.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_circle_02.png);
+}
+
+.attack_area31.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_circle_03.png);
+}
+
+.attack_area32.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_circle_01.png);
+}
+
+.attack_area32.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_circle_02.png);
+}
+
+.attack_area32.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_circle_03.png);
+}
+
+.attack_area41.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area41.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area41.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area42.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area42.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area42.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_normal_01.png);
+}
+
+.attack_area51.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_cross_01.png);
+}
+
+.attack_area51.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_cross_01.png);
+}
+
+.attack_area51.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_cross_01.png);
+}
+
+.attack_area52.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_cross_02.png);
+}
+
+.attack_area52.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_cross_02.png);
+}
+
+.attack_area52.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_cross_02.png);
+}
+
+.attack_area61.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_snipe_01.png);
+}
+
+.attack_area61.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_snipe_01.png);
+}
+
+.attack_area61.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_snipe_01.png);
+}
+
+.attack_area62.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_snipe_01.png);
+}
+
+.attack_area62.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_snipe_01.png);
+}
+
+.attack_area62.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_snipe_01.png);
+}
+
+.attack_area71.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_superlaser_01.png);
+}
+
+.attack_area71.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_superlaser_01.png);
+}
+
+.attack_area71.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_superlaser_01.png);
+}
+
+.attack_area72.slot_x01 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_superlaser_01.png);
+}
+
+.attack_area72.slot_x02 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_superlaser_01.png);
+}
+
+.attack_area72.slot_x03 {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_superlaser_01.png);
+}
+
+.is_healer {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_heal_01.png) !important;
+}
+
+.is_repairer {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_repair_01.png) !important;
+}
+
+.is_stun, .is_stun_vehicle {
+	background-position:center 5px;
+	height:54px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/attack_area/attack_area_stun_01.png) !important;
+}
+
+.none  {
+	display: none !important;
+}
+
+.status {
+	display:table;
+	width:100%;
+	padding:2px 5px;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+.status li {
+	display: table-cell;
+}
+
+.cardListOuter .leader, .cardListOuter .formation, .cardListOuter .special, .cardListOuter .newCard, .cardListOuter .template, .cardListOuter .pilot {
+	display:inline-block;
+	color:#666;
+	margin-right:4px;
+	padding:1px 2px;
+	font-size:12px;
+	border:1px solid #666;
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	box-shadow:0 0 3px #666,  inset 0 0 2px #666;
+	-webkit-box-shadow:0 0 3px #666,  inset 0 0 2px #666;
+}
+
+.cardListOuter .newCard  {
+	-webkit-border-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_frame02_off.png) 3 7 3 7/ 3px 7px 3px 7px repeat;
+	border-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_frame02_off.png) 3 7 3 7 fill/ 3px 7px 3px 7px round;
+}
+
+.cardListOuter .leader.on {
+	color:#FF7800;
+	border:1px solid #FF7800;
+	box-shadow:0 0 3px #FF7800,  inset 0 0 2px #FF7800;
+	-webkit-box-shadow:0 0 3px #FF7800,  inset 0 0 2px #FF7800;
+}
+
+.cardListOuter .formation.on {
+	color:#6ccff6;
+	border:1px solid #6ccff6;
+	box-shadow:0 0 3px #6ccff6,  inset 0 0 2px #6ccff6;
+	-webkit-box-shadow:0 0 3px #6ccff6,  inset 0 0 2px #6ccff6;
+}
+
+.cardListOuter .template.on {
+	color:#6ccff6;
+	border:1px solid #6ccff6;
+	box-shadow:0 0 3px #6ccff6,  inset 0 0 2px #6ccff6;
+	-webkit-box-shadow:0 0 3px #6ccff6,  inset 0 0 2px #6ccff6;
+}
+
+.cardListOuter .pilot.on {
+	color:#6ccff6;
+	border:1px solid #6ccff6;
+	box-shadow:0 0 3px #6ccff6,  inset 0 0 2px #6ccff6;
+	-webkit-box-shadow:0 0 3px #6ccff6,  inset 0 0 2px #6ccff6;
+}
+
+.cardListOuter .special.on {
+	color: #f0ff00;
+	border:1px solid #f0ff00;
+	box-shadow:0 0 3px #f0ff00,  inset 0 0 2px #f0ff00;
+	-webkit-box-shadow:0 0 3px #f0ff00,  inset 0 0 2px #f0ff00;
+}
+
+.cardListOuter .newCard.on {
+	color:#FF7800;
+	border:1px solid #FF7800;
+	box-shadow:0 0 3px #FF7800,  inset 0 0 2px #FF7800;
+	-webkit-box-shadow:0 0 3px #FF7800,  inset 0 0 2px #FF7800;
+}
+
+.cardListOuter .btn {
+	display:inline-block;
+	 float:right;
+}
+
+.cardList {
+	position: relative;
+	display:table;
+	width: 100%;
+	margin-bottom: 1px;
+	padding: 3px 10px 0;
+	box-sizing: border-box;
+}
+
+.cardList:before  {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 3px;
+	top: 0;
+	left: 0;
+}
+
+h3 + .cardList:before, .status + .cardList:before {
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat center center;
+	background-size: 100% 1px;
+}
+
+.avator .cardList  {
+	display: table;
+	padding: 8px 5px 10px;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png);
+	background-size: 15px 15px;
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+
+.avator .cardList:before  {
+	display: none;
+}
+
+.cardList .card {
+	display:table-cell;
+	width:44px;
+	text-align:center;
+	vertical-align:middle;
+	position:relative;
+}
+
+.cardList .card img {
+	width: 44px;
+	margin: 5px 0;
+}
+
+.cardList .avatar {
+	display:table-cell;
+	width:44px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.cardList .avatar img {
+	width:40px;
+	 height:40px;
+}
+
+.cardList .param {
+	display:table-cell;
+}
+
+.cardList .param li {
+	display:inline-block;
+	float: left;
+	width:50%;
+	text-align:right;
+	position:relative;
+	box-sizing:border-box;
+	padding:1px 0 1px 10px;
+}
+
+.cardList .param li.full {
+	width:100%;
+}
+
+.cardList .param li.nextClear + li  {
+	clear:left;
+}
+
+.cardList .param li.latest_login {
+	width:100%;
+	float:none;
+}
+
+.cardList .param li:before {
+	display:inline;
+	font-size:12px;
+	color:#AAA;
+	font-weight:normal;
+	float:left;
+}
+
+.cardList .param li.ally_bond:before {
+	content:'Bond: ';
+}
+
+.cardList .param li.latest_login:before {
+	content:'Latest Log In: ';
+}
+
+.cardList .param li.rarity:before {
+	content:'Rarity: ';
+}
+
+.cardList .param li.level:before {
+	content:'Lvl: ';
+}
+
+.cardList .param li.cost:before {
+	content:'Cost: ';
+}
+
+.cardList .param li.atk:before {
+	content:'ATK: ';
+}
+
+.cardList .param li.hea:before {
+	content:'HEA: ';
+}
+
+.cardList .param li.rep:before {
+	content:'REP: ';
+}
+
+.cardList .param li.def:before {
+	content:'DEF: ';
+}
+
+.cardList .param li.max_atk:before {
+	content:'MAX ATK: ';
+}
+
+.cardList .param li.max_rep:before {
+	content:'MAX REP: ';
+}
+
+.cardList .param li.max_hea:before {
+	content:'MAX HEA: ';
+}
+
+.cardList .param li.max_def:before {
+	content:'MAX DEF: ';
+}
+
+.cardList .param li.hp:before {
+	content:'HP: ';
+}
+
+.cardList .param li.attack_area:before {
+	content:'ATK PATTERN: ';
+	 ;
+}
+
+.cardList .param li.range:before {
+	content:'RANGE: ';
+}
+
+.cardList .param li.accuracy:before {
+	content:'ACC: ';
+}
+
+.cardList .param li.avoid:before {
+	content:'EVA: ';
+}
+
+.cardList .param li.num_card:before {
+	content:'Cards: ';
+}
+
+.cardList .param li.num_friend:before {
+	content:'Allies: ';
+}
+
+.cardList .param li.friend_bond:before {
+	content:'Ally Bond';
+}
+
+.cardList .param li.durability:before {
+	content:'Dur: ';
+}
+
+.cardList .param li.size_x:before {
+	content:'X-size: ';
+}
+
+.cardList .param li.size_y:before {
+	content:'Y-size: ';
+}
+
+.cardList .param li.bp:before {
+	content:'BP: ';
+}
+
+.cardList .param li.cost_max:before {
+	content:'Cost: ';
+}
+
+.cardList .param li.hp_max:before {
+	content:'HP MAX';
+}
+
+.cardList .param li.num_stack:before {
+	content:'In Stock: ';
+}
+
+.cardList .param li.stack:before {
+	content:'STACK: ';
+}
+
+.cardList .param li.time:before {
+	content:'Time: ';
+}
+
+.cardList .param li.expiration:before {
+	content:'Expiration: ';
+}
+
+.cardList .param li.message_received:before {
+	content:'Received: ';
+}
+
+.cardList .param li.have_num:before {
+	content:'You Have: ';
+}
+
+.cardList .param li.number_of_attack:before {
+	content:'# of Actions: ';
+}
+
+.cardList .param li.call_help:before {
+	content:'Previously Called: ';
+}
+
+.cardList .param li.call_help {
+	width:100%;
+}
+
+.cardList .param li.attack_area_heal:before {
+	content:'HEAL PATTERN: ';
+}
+
+.cardList .param li.attack_area_stun:before, .cardList .param li.attack_area_stun_vehicle:before {
+	content:'ATK PATTERN: ';
+}
+
+.cardList .param li.aptitude:before {
+	content:'Vehicle Affinity: ';
+}
+
+.cardList .param li.atk_add:before {
+	content:'Vehicle ATK Boost: ';
+}
+
+.cardList .param li.def_add:before {
+	content:'Vehicle DEF Boost: ';
+}
+
+.cardList .param li.equip_cnt:before {
+	content:'NUMBER SET: ';
+}
+
+.cardList .param li.equip_same_category_cnt:before {
+	content:'SAME CATEGORY: ';
+}
+
+.cardList .param li.type:before {
+	content:'TYPE: ';
+}
+
+.cardList .param .rarity {
+	color:#feffb6;
+	font-weight:700;
+	font-size:90%;
+	display: block;
+	width:100%;
+	text-align:left;
+}
+
+.cardList .param .friend_bond, .cardList .param .num_stack, .cardList .param .bp, .cardList .param .time, .cardList .param .expiration, .cardList .param .message_received  {
+	display: block;
+	width: 100%;
+	text-align: left;
+}
+
+.cardList .param span.level_max, .skill span.level_max  {
+	display: inline-block;
+	margin-bottom: -1px;
+	color: #AAA;
+	font-size:12px;
+}
+
+.cardList .param span.level_max:before, .skill span.level_max:before {
+	content:'( MAX';
+}
+
+.cardList .param span.level_max:after, .skill span.level_max:after {
+	content:' )';
+}
+
+.cardList .param li.bp .now:after  {
+	content: '';
+	display: inline-block;
+	width:16px;
+	height:10px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right_s.png) no-repeat center center;
+	background-size:8px 8px;
+}
+
+.cardList .param li.expiration span:after  {
+	content: ' left';
+	display: inline;
+}
+
+.cardList .param li.message_received span:after  {
+	content: ' ago';
+	display: inline;
+}
+
+.cardList .param li.nameCard {
+	position: relative;
+	display:block !important;
+	width: 100%;
+	font-size:16px;
+	font-weight:700;
+	margin-bottom: 0;
+	word-break: break-word;
+	line-height: 18px;
+	padding: 5px 5px 5px 30px;
+	text-align:left;
+}
+
+.cardList .param li.nameCard.sideOff {
+	padding-left: 10px;
+}
+
+.cardList .param li.nameItem {
+	width: 100%;
+	font-size:14px;
+	font-weight:bold;
+	line-height:14px;
+	word-break: normal;
+	padding-bottom: 5px;
+	text-align: left;
+}
+
+.skill {
+	margin: 5px 10px;
+	font-size:12px;
+}
+
+ul.skill {
+	clear:both;
+	padding:5px 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	color:#fff;
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(0%, rgba(255, 255, 255, 0.4)),  color-stop(73%, rgba(255, 255, 255, 0.2)),  color-stop(100%, rgba(255, 255, 255, 0)));
+}
+
+[class*="iconType"]  {
+	display:inline-block;
+	vertical-align:middle;
+	width: 15px;
+	height: 15px;
+	background: url(/images/attribute.png) no-repeat left top;
+	background-size: 90px 90px;
+	margin-top:-2px;
+	background-color: #000;
+	padding:3px;
+}
+
+[class*="iconType"] + [class*="iconType"]  {
+	margin-left:4px;
+}
+
+.param .type [class*="iconType"]  {
+	margin-top:0;
+}
+
+div#card-detail-info .card-detail-param li.param span[class*="iconType"]  {
+	margin-right:0;
+}
+
+.iconType0 {
+	background-position: 0 0;
+}
+
+.iconType1 {
+	background-position: -19px 0;
+}
+
+.iconType2 {
+	background-position: -38px 0;
+}
+
+.iconType3 {
+	background-position: -57px 0;
+	display:none;
+}
+
+.iconType4 {
+	background-position: -76px 0;
+	display:none;
+}
+
+.iconType5 {
+	background-position: 0 -19px;
+}
+
+.iconType6 {
+	background-position: -19px -19px;
+}
+
+.iconType7 {
+	background-position: -38px -19px;
+}
+
+.iconType8 {
+	background-position: -57px -19px;
+}
+
+.iconType9 {
+	background-position: -76px -19px;
+}
+
+.iconType10 {
+	background-position: 0 -38px;
+}
+
+.iconType11 {
+	background-position: -19px -38px;
+}
+
+.iconType12 {
+	background-position: -38px -38px;
+}
+
+.iconType13 {
+	background-position: -57px -38px;
+}
+
+.iconType14 {
+	background-position: -76px -38px;
+}
+
+.iconType15 {
+	background-position: 0 -57px;
+}
+
+.iconType16 {
+	background-position: -19px -57px;
+}
+
+.iconType17 {
+	background-position: -38px -57px;
+}
+
+.iconType18 {
+	background-position: -57px -57px;
+}
+
+.iconType19 {
+	background-position: -76px -57px;
+}
+
+.iconType20 {
+	background-position: 0 -76px;
+}
+
+.iconType21 {
+	background-position: -19px -76px;
+	display:none;
+}
+
+.iconType22 {
+	background-position: -38px -76px;
+	display:none;
+}
+
+.iconType23 {
+	background-position: -57px -76px;
+	display:none;
+}
+
+.iconType24 {
+	background-position: -76px -76px;
+	display:none;
+}
+
+[class*="iconMap"]  {
+	display:inline-block;
+	vertical-align:middle;
+	width: 20px;
+	height: 14px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 20px auto;
+	margin-top:-2px;
+}
+
+[class*="iconMap"] + [class*="iconMap"]  {
+	margin-left:4px;
+}
+
+.iconMapFast  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_mapquest_ff.png);
+}
+
+.iconMapSwitch  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/icon_mapquest_switch.png);
+}
+
+.param .type [class*="iconType"]  {
+	margin-top:0;
+}
+
+.eventcard {
+	margin: 0 10px;
+}
+
+.eventcard:before {
+	display:inline;
+	font-size:12px;
+	color:#f0ff00 !important;
+	font-weight:normal;
+	content:'Event-Power: ';
+}
+
+.comment  {
+	padding:5px;
+	border:1px solid rgba(255, 255, 255, 0.2);
+	background-color:rgba(0, 0, 0, 0.1);
+	box-shadow:inset 0 0 30px rgba(0, 0, 0, 0.7);
+	border-radius:3px;
+	margin:0 5px 5px;
+	word-break:break-word;
+}
+
+.comment.listImage li {
+	position:relative;
+	 padding-left:15px;
+}
+
+.comment.listImage li:before  {
+	content:'2022';
+	 position:absolute;
+	 left:5px;
+}
+
+.comment.cardPack li  {
+	color:#FF7800;
+}
+
+.comment.cardPack:before  {
+	content: 'From';
+	display: inline;
+	float: left;
+	margin-right: 5px;
+	color: #AAA;
+}
+
+.cardListLower:before  {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 3px;
+	top: 0;
+	left: 0;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat center top;
+	background-size: 100% 1px;
+}
+
+.cardListLower .content.listImage  {
+	margin: 3px 5px 0px;
+}
+
+.bluprintArea {
+	position: relative;
+	display:table;
+	width: 100%;
+	margin-bottom: 3px;
+	padding: 3px 10px 0;
+	box-sizing: border-box;
+}
+
+.bluprintArea div {
+	display:table-cell;
+	 vertical-align:middle;
+	 height:100%;
+}
+
+.subInfo  {
+	display:table;
+	width:100%;
+	min-height: 26px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.subInfo li  {
+	display:table-cell;
+	width: 50%;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.subInfo li:first-child  {
+	width: 40%;
+}
+
+.subInfo li:last-child  {
+	width: 60%;
+}
+
+.subInfo select  {
+	display:inline-block;
+	 width:70%;
+	 margin:0;
+}
+
+.subInfo li.sell  {
+	text-align:right;
+	 font-size:16px;
+	 font-weight:700;
+}
+
+.subInfo li.sell:before, .subInfo li.card_sell_confirm:before,  .subInfo li.sell:after  {
+	display: inline;
+	font-size: 12px;
+	color: #AAA;
+	font-weight: normal;
+}
+
+.subInfo li.sell:before  {
+	content: 'Price: ';
+	 margin-right: 2px;
+	 float: left;
+}
+
+.subInfo li.card_sell_confirm:before  {
+	content: 'Sell: ';
+	 margin-right: 2px;
+	 float: left;
+}
+
+.subInfo li.sell:after,  .subInfo li.card_sell_confirm:after  {
+	content: 'Credits ';
+	 margin-left: 2px;
+	float: right;
+}
+
+div#card-detail-info {
+	display:table;
+	width:100%;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 280px 1px;
+}
+
+div#card-detail-info .card-detail-img {
+	position:relative;
+	display:table-cell;
+	width:42%;
+	text-align:center;
+	vertical-align: top;
+}
+
+div#card-detail-info .card-detail-param {
+	display:table-cell;
+	width:58%;
+	vertical-align: top;
+}
+
+div#card-detail-info .card-detail-param li.param {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 280px 1px;
+	padding:2px 0;
+}
+
+div#card-detail-info .card-detail-param li.param:last-child {
+	background:none;
+}
+
+div#card-detail-info .card-detail-param li.param span {
+	font-size:12px;
+	margin-right:5px;
+}
+
+#skill-info, #skill_info  {
+	display: table;
+	width: 100%;
+	box-sizing: border-box;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 280px 1px;
+}
+
+#detail_sell_price {
+	margin-right:3px;
+}
+
+div#detail_comment {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 280px 1px;
+	clear:both;
+}
+
+.gaugeArea-content  {
+	width: auto;
+	padding: 4px 5px 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.gaugeStatus  {
+	display: inline-block;
+	height: 14px;
+	padding-right: 3px;
+	line-height: 15px;
+	font-size: 12px;
+	text-shadow: 2px 1px 2px rgba(000, 000, 000, 1), 0px 1px 0px rgba(255, 255, 255, 0.3);
+}
+
+.txtStatus  {
+	position: absolute;
+	width: 85%;
+	top: -1px;
+	right: 0;
+	padding-right: 5px;
+	text-align: right;
+	font-size: 10px;
+	z-index: 30;
+	text-shadow: 2px 1px 3px black,  -1px -1px 3px black;
+}
+
+#gaugeTbl  {
+	position: relative;
+	width: 170px;
+	height: 11px;
+	margin-top: -0.5px;
+	background: #353535;
+	border: 2px solid #000;
+	border-radius: 20px;
+	text-align: center;
+}
+
+#gaugeTbl .innershadow  {
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 11px;
+	top: -2px;
+	left: -2px;
+	border: 2px solid #000;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5),  inset 0px 0px 5px rgba(0, 0, 0, 1);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5),  inset 0px 0px 5px rgba(0, 0, 0, 1);
+	border-radius: 20px;
+	z-index: 20;
+}
+
+#gaugeTbl table  {
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	border-spacing: 0;
+	overflow: hidden;
+}
+
+#gaugeTbl tbody  {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+#gaugeTbl tr  {
+	display: block;
+	height: 100%;
+	overflow: hidden;
+}
+
+#gaugeTbl.ep tr  {
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(60%, rgba(243,  136,  0,  1)),  color-stop(100%, rgba(255,  194,  0,  1)));
+}
+
+#gaugeTbl.bp tr  {
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(60%, rgba(16, 120, 202, 1)),  color-stop(100%, rgba(92, 185, 255, 1)));
+}
+
+#gaugeTbl.ap tr  {
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(60%, rgba(63, 106, 114, 1)),  color-stop(100%, rgba(93,  164,  182,  1)));
+}
+
+#gaugeTbl.card tr  {
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(60%, rgba(64, 207, 8, 1)),  color-stop(100%, rgba(184,  241,  2,  1)));
+}
+
+.lightside #gaugeTbl.exp tr  {
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(60%, rgba(96,  221,  203,  1)),  color-stop(100%, rgba(111,  255,  226,  1)));
+}
+
+.darkside #gaugeTbl.exp tr  {
+	background: -webkit-gradient(linear,  left top,  right top,  color-stop(60%, rgba(157,  49,  62,  1)),  color-stop(100%, rgba(206,  39,  59,  1)));
+}
+
+#gaugeTbl tr td  {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+#gaugeTbl.ep .innerlight  {
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(30%, rgba(255,  175,  6, 0.2)),  color-stop(100%, rgba(255,  175,  6,  1)));
+}
+
+#gaugeTbl.bp .innerlight  {
+	background: -webkit-gradient(linear,  left top,  left bottom, color-stop(30%, rgba(57, 161, 243, 0.2)),  color-stop(100%, rgba(57, 161, 243, 1)));
+}
+
+#gaugeTbl.ap .innerlight  {
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(30%, rgba(71,  129,  150, 0.2)),  color-stop(100%, rgba(71,  129,  150,  1)));
+}
+
+#gaugeTbl.card .innerlight  {
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(30%, rgba(162,  224,  30, 0.2)),  color-stop(100%, rgba(162,  224,  30,  1)));
+}
+
+.lightside #gaugeTbl.exp .innerlight  {
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(30%, rgba(0, 240, 236, 0.2)),  color-stop(100%, rgba(0, 240, 236, 1)));
+}
+
+.darkside #gaugeTbl.exp .innerlight  {
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(30%, rgba(189,  49,  65, 0.2)),  color-stop(100%, rgba(189,  49,  65, 1)));
+}
+
+#gaugeTbl .light  {
+	position: absolute;
+	display: inline-block;
+	width: 160px;
+	height: 35%;
+	background: -webkit-gradient(linear,  left top,  left bottom, color-stop(0%, rgba(255, 255, 255, 0.1)),  color-stop(100%, rgba(255, 255, 255, 1)));
+	margin: 1px auto;
+	border-radius: 20px;
+	left: 5px;
+	z-index: 20;
+}
+
+#gaugeTbl tr td .innerlight  {
+	position: absolute;
+	display: inline-block;
+	width: 160px;
+	height: 35%;
+	margin: 1px auto;
+	border-radius: 30px;
+	left: 5px;
+	bottom: 0.5px;
+	z-index: 10;
+}
+
+header #gaugeTbl  {
+	width: 130px;
+}
+
+header #gaugeTbl .light  {
+	width: 122px !important;
+}
+
+header #gaugeTbl tr td .innerlight  {
+	width: 122px !important;
+}
+
+#gaugeTbl .gaugeArea  {
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 30;
+}
+
+#gaugeTbl .gaugeArea .gaugeGrid  {
+	height: 100%;
+	float: left;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/header/bp_gauge.png) no-repeat right center;
+	background-size: 2px 100%;
+}
+
+#gaugeTbl .gaugeArea .gaugeGrid:last-child  {
+	content: '';
+	display: none;
+}
+
+.select-area {
+	text-align:center;
+}
+/*
+select {
+	display:block;
+	border-radius:4px;
+	background:#000;
+	font-size:12px;
+	padding-left:5px;
+	color:#FFF;
+	border:1px solid #999;
+	width:200px;
+	margin:5px auto;
+}
+*/
+div.card-list-small div.info div.level span {
+	margin-right:5px;
+	position:absolute;
+	left:0;
+}
+
+/*html  {
+	min-height:100%;
+	width:100%;
+}
+
+body  {
+	min-height:100%;
+	width:100%;
+	background-color:#000000 !important;
+	color:#FFF;
+	position:relative;
+	background-position:top;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+}
+
+textarea {
+	-webkit-user-select:auto !important;
+}
+
+input[type=text] {
+	-webkit-user-select:auto !important;
+}
+*/
+#sw-wrapper {
+	width:auto;
+	height:auto;
+	margin:0;
+	position:relative;
+	background-repeat:no-repeat,  no-repeat;
+	background-position:top center,  bottom center;
+	background-size:380px,  380px;
+}
+
+#sw-wrapper-ipad {
+	width:320px;
+	margin:0 auto;
+	position:relative;
+	-webkit-transform-origin-y:0;
+	-webkit-transform:scale(2.4, 2.4);
+}
+
+#sw-container {
+	position:relative;
+}
+
+#inner_wrapper {
+	padding:10px;
+}
+
+#sw-content {
+	display: block;
+	width: 320px;
+	margin:0 auto;
+	min-height:320px;
+	position:relative;
+	padding-bottom:26px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+#sw-content.mypage.lightside {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_grid_light.png),  url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_default_light.jpg);
+}
+
+#sw-content.mypage.darkside {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_grid_dark.png),  url(http://amw.konaminet.jp/amw/naboo/img/home/home/bg/bg_default_dark.jpg);
+}
+/*
+h1  {
+	position: relative;
+	display: block;
+	width: 100%;
+	height:20px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/headding/title_pagetitle.png) no-repeat center;
+	background-size: 100% 100%;
+	text-align: center;
+	line-height: 20px;
+	text-shadow:0 0 3px rgba(0, 0, 0, 1);
+	margin-bottom:23px !important;
+	z-index:1;
+}
+*/
+div#header_info {
+	width:100%;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/headding/title_status_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/headding/title_status_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/headding/title_status_middle.png);
+	background-position:top center,  bottom center,  center center;
+	background-size:100%,  100%,  100% 3px;
+	background-repeat:no-repeat,  no-repeat,  repeat-y;
+	padding: 5px 0;
+	font-size: 12px;
+	margin:-23px 0 5px;
+	text-align:center;
+}
+
+div#header_info ul {
+	display:block;
+	width:100%;
+	text-align:center;
+}
+
+div#header_info ul li {
+	display:inline-block;
+	margin-right:10px;
+	text-shadow:0 0 1px #000000;
+}
+
+.title_panel01,  .titlePanel01 {
+	min-height:14px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	text-align:center;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_title.png) no-repeat center;
+	background-size:100% 100%;
+	margin:0;
+	margin-left:-2px;
+	margin-top:-2px;
+	text-shadow:1px 1px 3px rgba(0, 0, 0, 1);
+	padding:0;
+	padding-bottom:2px;
+}
+
+.panel-dialog .title_panel01,  .panel-dialog .titlePanel01 {
+	padding:0 20px 2px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_window_title.png) no-repeat center;
+	background-size:100% 100%;
+}
+
+.title_panel02,  .titlePanel02 {
+	margin-left:-1px;
+	min-height:23px;
+	color:#EEEEEE;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	padding:5px;
+	text-align:center;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_subtitle_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_subtitle_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_subtitle_middle.png);
+	background-repeat:no-repeat,  no-repeat,  repeat-y;
+	background-position:center top,  center bottom,  center center;
+	background-size:100%,  100%,  100% 2px;
+}
+
+ul.btnList {
+	border-top:1px solid rgba(164,  164,  165,  0.8);
+}
+
+ul.btnList li {
+	border-bottom:1px solid rgba(164,  164,  165,  0.8);
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(0%, rgba(0, 0, 0, 0.8)),  color-stop(1%, rgba(15, 15, 15, 0.8)),  color-stop(5%, rgba(73, 73, 73, 0.8)),  color-stop(8%, rgba(0, 0, 0, 0.8)),  color-stop(92%, rgba(0, 0, 0, 0.8)),  color-stop(95%, rgba(73, 73, 73, 0.8)),  color-stop(100%, rgba(14, 14, 14, 0.8)));
+	position:relative;
+	text-align:left;
+}
+
+ul.btnList li a {
+	padding:15px 35px 15px 15px;
+	display:block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat 98% center;
+	background-size:15px;
+}
+
+li.btnListChild {
+	border-top:1px solid rgba(164,  164,  165,  0.8);
+	border-bottom:1px solid rgba(164,  164,  165,  0.8);
+	background: -webkit-gradient(linear,  left top,  left bottom,  color-stop(0%, rgba(0, 0, 0, 0.8)),  color-stop(1%, rgba(15, 15, 15, 0.8)),  color-stop(5%, rgba(73, 73, 73, 0.8)),  color-stop(8%, rgba(0, 0, 0, 0.8)),  color-stop(92%, rgba(0, 0, 0, 0.8)),  color-stop(95%, rgba(73, 73, 73, 0.8)),  color-stop(100%, rgba(14, 14, 14, 0.8)));
+	position:relative;
+	text-align:right;
+}
+
+li.btnListChild a {
+	padding:10px 35px 10px 15px;
+	display:block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_right.png) no-repeat 98% center;
+	background-size:15px;
+}
+
+.btnBack,  .btn-back {
+	position:relative;
+	width:135px;
+	height:30px;
+	display:block;
+	text-align:center;
+	line-height:30px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_back.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:130px 30px;
+	padding:0 5px 0 10px;
+	box-sizing:border-box;
+	margin: 10px 0 10px 7px;
+}
+
+.btnBack > .hoverMask, .btn-back > .hoverMask {
+	width:130px;
+	height:30px;
+	margin-left:3px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_text_mask_back.png) center center no-repeat;
+	background-size: 130px 30px;
+}
+
+.btnPlus {
+	width:20px;
+	height:20px;
+	line-height:20px;
+	display:inline-block;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	font-size:12px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_buy.png) no-repeat center center;
+	background-size:20px;
+}
+
+.btnN,  .btnS,  .btnSS,  .btnSSS,  .btnBN,  .btnBS,  .btnAnchorTop {
+	text-align:center;
+	font-weight:bold;
+	position:relative;
+	text-shadow:1px 1px 1px #000000;
+}
+
+.btnN {
+	width:230px;
+	height:30px;
+	line-height:30px;
+	display:block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_01_normal.png) no-repeat center;
+	background-size:230px 30px;
+	margin:10px auto;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.btnN.l {
+	width:230px;
+	height:40px;
+	line-height:40px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_01_normal.png) no-repeat center;
+	background-size:230px 40px;
+	margin:5px auto;
+}
+
+.btnN.s {
+	width:230px;
+	height:20px;
+	line-height:20px;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_01_normal.png) no-repeat center;
+	background-size:230px 20px;
+}
+
+.btnN.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_01_green.png);
+}
+
+.btnN.l.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_01_green.png);
+}
+
+.btnN.s.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_01_green.png);
+}
+
+.btnN.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_01_red.png);
+}
+
+.btnN.l.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_01_red.png);
+}
+
+.btnN.s.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_01_red.png);
+}
+
+.btnN.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_01_blue.png);
+}
+
+.btnN.l.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_01_blue.png);
+}
+
+.btnN.s.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_01_blue.png);
+}
+
+.btnS {
+	width:130px;
+	height:30px;
+	line-height:30px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_02_normal.png) no-repeat center;
+	background-size:130px 30px;
+	margin:5px 6px;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.btnS.l {
+	width:130px;
+	height:40px;
+	line-height:40px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_02_normal.png) no-repeat center;
+	background-size:130px 40px;
+}
+
+.btnS.s {
+	width:130px;
+	height:20px;
+	line-height:20px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_02_normal.png) no-repeat center;
+	background-size:130px 20px;
+}
+
+.btnS.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_02_green.png);
+}
+
+.btnS.l.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_02_green.png);
+}
+
+.btnS.s.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_02_green.png);
+}
+
+.btnS.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_02_red.png);
+}
+
+.btnS.l.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_02_red.png);
+}
+
+.btnS.s.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_02_red.png);
+}
+
+.btnS.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_02_blue.png);
+}
+
+.btnS.l.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_02_blue.png);
+}
+
+.btnS.s.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_02_blue.png);
+}
+
+.btnSS {
+	width:85px;
+	height:30px;
+	line-height:30px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_03_normal.png) no-repeat center;
+	background-size:85px 30px;
+	margin:5px 4px;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.btnSS.l {
+	width:85px;
+	height:40px;
+	line-height:40px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_03_normal.png) no-repeat center;
+	background-size:85px 40px;
+}
+
+.btnSS.l.active {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_03_active.png) no-repeat center;
+	background-size:85px 40px;
+	text-shadow:0 -1px 1px #000000;
+}
+
+.btnSS.s {
+	width:85px;
+	height:20px;
+	line-height:20px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_03_normal.png) no-repeat center;
+	background-size:85px 20px;
+}
+
+.btnSS.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_03_green.png);
+}
+
+.btnSS.l.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_03_green.png);
+}
+
+.btnSS.s.green {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_03_green.png);
+}
+
+.btnSS.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_03_red.png);
+}
+
+.btnSS.l.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_03_red.png);
+}
+
+.btnSS.s.red {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_03_red.png);
+}
+
+.btnSS.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_s_03_blue.png);
+}
+
+.btnSS.l.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_m_03_blue.png);
+}
+
+.btnSS.s.blue {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_text_ss_03_blue.png);
+}
+
+.btnSSS {
+	width:58px;
+	height:18px;
+	line-height:18px;
+	display:inline-block;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	font-size:12px;
+}
+
+.btnSSS.green {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_green.png) no-repeat center;
+	background-size:58px 18px;
+}
+
+.btnSSS.blue {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_normal.png) no-repeat center;
+	background-size:58px 18px;
+}
+
+.btnS .whiteBlink,  .btnSS .whiteBlink,  .btnN .whiteBlink {
+	display:block;
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/hover_text_white.png) no-repeat center center;
+	background-size:100% 100%;
+	opacity:1;
+	z-index:2;
+	-webkit-animation-name: btnBlinkAnim;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-transform-style: preserve-3d;
+}
+
+@-webkit-keyframes btnBlinkAnim  {
+	0%  {
+	opacity: 1;
+}
+
+50%  {
+	opacity: 0.5;
+}
+
+100%  {
+	opacity: 1;
+}
+
+}.activeLink.blink {
+	-webkit-animation-name: activeBlink;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: normal;
+	-webkit-animation-fill-mode: both;
+	-webkit-perspective: 300;
+	-webkit-transform : translate3d(0,  0,  0);
+	-webkit-transform-style: preserve-3d;
+}
+
+@-webkit-keyframes activeBlink {
+	0%  {
+	opacity:0;
+}
+
+50%  {
+	opacity:0.7;
+}
+
+100%  {
+	opacity:0;
+}
+
+}.btnS.lock:before,  .btnSS.lock:before,  .btnN.lock:before,  .btnBN.lock:before,  .btnBS.lock:before {
+	display:block;
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-position:center,  right bottom;
+	background-repeat:no-repeat,  no-repeat;
+	opacity:1;
+	z-index:2;
+}
+
+.btnN.l.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_40.png);
+	background-size: 15px,  230px 40px;
+}
+
+.btnN.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_30.png);
+	background-size: 15px,  230px 30px;
+}
+
+.btnN.s.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_20.png);
+	background-size: 15px,  230px 20px;
+}
+
+.btnS.l.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_40.png);
+	background-size: 15px,  130px 40px;
+}
+
+.btnS.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_30.png);
+	background-size: 15px,  130px 30px;
+}
+
+.btnS.s.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_20.png);
+	background-size: 15px,  130px 20px;
+}
+
+.btnSS.l.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_40.png);
+	background-size: 15px,  85px 40px;
+}
+
+.btnSS.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_30.png);
+	background-size: 15px,  85px 30px;
+}
+
+.btnSS.s.lock:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/icon/quest_key.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_20.png);
+	background-size: 15px,  85px 20px;
+}
+
+.btnBN.lock:before, .btnBS.lock:before  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_decision_mask.png);
+	background-size: 230px 40px;
+}
+
+.btnS.disable:before,  .btnSS.disable:before,  .btnN.disable:before {
+	display:block;
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_270_45.png);
+	background-size:270px 45px;
+	background-position:right bottom;
+	background-repeat:no-repeat;
+	opacity:1;
+	z-index:2;
+}
+
+.btnN.l.disable:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_40.png);
+	background-size: 230px 40px;
+}
+
+.btnN.disable:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_30.png);
+	background-size: 230px 30px;
+}
+
+.btnN.s.disable:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_20.png);
+	background-size: 230px 20px;
+}
+
+.btnS.l.disable:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_40.png);
+	background-size: 130px 40px;
+}
+
+.btnS.disable:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_30.png);
+	background-size: 130px 30px;
+}
+
+.btnS.s.disable:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_20.png);
+	background-size: 130px 20px;
+}
+
+.btnSS.l.disable:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_40.png);
+	background-size: 85px 40px;
+}
+
+.btnSS.disable:before {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_30.png);
+	background-size: 85px 30px;
+}
+
+.btnSS.s.disable:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_20.png);
+	background-size: 85px 20px;
+}
+
+.btnSSO  {
+	width:103px;
+	height:18px;
+	line-height:18px;
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_add_normal_l.png) no-repeat center;
+	background-size:103px 18px;
+	margin:5px 4px;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.btnBN {
+	width:230px;
+	min-height:40px;
+	line-height:40px;
+	font-size:16px;
+	display:block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_decision_normal.png) center no-repeat;
+	background-size:230px 40px;
+	margin:5px auto;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.btnBN.disable:before {
+	display:block;
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_decision_mask.png);
+	background-size:230px 40px;
+	background-position:right bottom;
+	background-repeat:no-repeat;
+	opacity:1;
+	z-index:2;
+}
+
+.btnBN .hoverMask {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_decision_mask.png) center no-repeat;
+	background-size:230px 40px;
+}
+
+.btnBS {
+	width:230px;
+	min-height:40px;
+	line-height:40px;
+	font-size:16px;
+	display:block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_decision_side.png) center no-repeat;
+	background-size:230px 40px;
+	margin:5px auto;
+	text-align:center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.btnBS.disable:before {
+	display:block;
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_decision_mask.png);
+	background-size:230px 40px;
+	background-position:right bottom;
+	background-repeat:no-repeat;
+	opacity:1;
+	z-index:2;
+}
+
+.btnBS .hoverMask {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_decision_mask.png) center no-repeat;
+	background-size:230px 40px;
+}
+
+.btnMenu {
+	position:relative;
+	display:inline-block;
+	width:100%;
+}
+
+.btnMenu.half {
+	width:144px;
+}
+
+.btnMenu.third {
+	width:96px;
+}
+
+.btnMenu.fourth {
+	width:70px;
+}
+
+.btnMenu .hoverMask {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_menu_mask_300_135.png) center center no-repeat;
+	background-size:300px 135px;
+}
+
+.btnMenu.half .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_menu_mask_148_65.png);
+	background-size: 148px 65px;
+}
+
+.btnMenu.third .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_menu_mask_96_65.png);
+	background-size: 96px 65px;
+}
+
+.btnMenu.fourth .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_menu_mask_71_65.png);
+	background-size: 71px 65px;
+}
+
+.cardListOuterLink {
+	display:block;
+}
+
+.cardListOuterLink.disable  {
+	-webkit-pointer-events : none;
+	pointer-events : none;
+}
+
+.cardListOuterLink .hoverMask {
+	background:rgba(0, 0, 0, 1);
+}
+
+.hoverMask {
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	background:rgba(0, 0, 0, 1);
+	width:100%;
+	height:100%;
+	opacity:0;
+	z-index:999 !important;
+}
+
+.cardListOuterLink.disable .hoverMask {
+	background:rgba(0, 0, 0, 1);
+	opacity:0.4;
+	cursor: default;
+}
+
+.touch {
+	opacity: 0.4;
+}
+
+.wrapHover {
+	position: relative;
+}
+
+.wrapHover .btnN + .hoverMask {
+	margin: 0 auto;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_30.png) center center no-repeat;
+	background-size: 230px 30px;
+}
+
+.	wrapHover .btnS + .hoverMask {
+	margin: 0 auto;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_30.png) center center no-repeat;
+	background-size: 230px 30px;
+}
+
+.btnS .hoverMask,  .btnSS .hoverMask,  .btnN .hoverMask {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_270_45.png) center center no-repeat;
+	background-size:270px 45px;
+}
+
+.btnN.l .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_40.png);
+	background-size: 230px 40px;
+}
+
+.btnN .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_30.png);
+	background-size: 230px 30px;
+}
+
+.btnN.s .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_230_20.png);
+	background-size: 230px 20px;
+}
+
+.btnS.l .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_40.png);
+	background-size: 130px 40px;
+}
+
+.btnS .hoverMask {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_30.png);
+	background-size: 130px 30px;
+}
+
+.btnS.s .hoverMask {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_130_20.png);
+	background-size: 130px 20px;
+}
+
+.btnSS.l .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_40.png);
+	background-size: 85px 40px;
+}
+
+.btnSS .hoverMask {
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_30.png);
+	background-size: 85px 30px;
+}
+
+.btnSS.s .hoverMask {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_txt_mask_85_20.png);
+	background-size: 85px 20px;
+}
+
+.btnSSS .hoverMask {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_add_mask.png);
+	background-size: 58px 18px;
+}
+
+form input.touch {
+	opacity:0.7;
+}
+
+.btnAnchorNext  {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_next.png) no-repeat center center;
+	display:inline-block;
+	background-size: 16px 16px;
+}
+
+.btnAnchorNext .hoverMask  {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_parts_next_mask.png) no-repeat center center;
+	background-size:16px 16px;
+}
+
+.btnAnchorTop  {
+	display:inline-block;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_gotop.png) no-repeat right center;
+	background-size: 20px 20px;
+	padding-right: 26px;
+	white-space: nowrap;
+	margin: 10px 0;
+	line-height: 30px;
+	height: 30px;
+}
+
+.btnAnchorTop .hoverMask  {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/mask/btn_parts_gotop_mask.png) center center no-repeat;
+	background-size: 20px 20px;
+	background-position: right center;
+}
+
+.btnAnchorTop.flR  {
+	margin-right: 8px;
+}
+
+.boxArea01 {
+	width:90%;
+	max-width:300px;
+	padding: 5px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	margin: 10px auto;
+	word-break: break-word;
+}
+
+.noticeArea {
+	display:block;
+	text-align:left;
+	padding:10px;
+}
+
+.noticeArea h2 {
+	display:block;
+	width:90%;
+	margin:0 auto 10px;
+	text-align:center;
+}
+
+.noticeArea ul li  {
+	padding: 2px 5px 2px 0;
+}
+
+.noticeArea ul li:before  {
+	content: '';
+	display: inline-block;
+	width: 17px;
+	height: 8px;
+	padding-right: 7px;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/player_force/ico_rect.png) no-repeat center center;
+	background-size: 17px 8px;
+}
+
+.noticeArea ul li.listImageOff:before  {
+	background: none;
+}
+
+.noticeArea ul li:nth-child(even)  {
+	background: #444;
+}
+
+div.panel-area {
+	width:310px;
+	position:relative;
+	margin:0 auto;
+}
+
+div.panel-area:before {
+	content:"";
+	display: block;
+	width:100%;
+	height:12px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_top_blue.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:100%;
+}
+
+.lightside div.panel-area:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_top_blue.png);
+}
+
+.darkside div.panel-area:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_top_red.png);
+}
+
+div.panel-area.gold:before {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_top_gold.png);
+}
+
+div.panel-area:after {
+	content:"";
+	display: block;
+	width:100%;
+	height:12px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_bottom_blue.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:100%;
+}
+
+.lightside div.panel-area:after {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_bottom_blue.png);
+}
+
+.darkside div.panel-area:after {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_bottom_red.png);
+}
+
+div.panel-area.gold:after {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_bottom_gold.png);
+}
+
+div.panel-area-inner {
+	width:310px;
+	padding:1px 6px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	position:relative;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_left_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_right_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_left_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_right_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_right.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_left.png),  -webkit-gradient(linear,  left top,  left bottom,  color-stop(0%, rgba(11, 11, 11, 1)),  color-stop(15%, rgba(27, 27, 27, 1)),  color-stop(50%, rgba(27, 27, 27, 1)),  color-stop(85%, rgba(27, 27, 27, 1)),  color-stop(100%, rgba(11, 11, 11, 1)));
+	background-repeat:no-repeat,  no-repeat,  no-repeat,  no-repeat,  repeat-y,  repeat-y;
+	background-position:left top,  right top,  left bottom,  right bottom,  right center,  left center;
+	background-size:6px 20px,  6px 20px,  6px 20px,  6px 20px,  6px 5px,  6px 5px,  100% 100%;
+}
+
+div.panel-dialog,  .panelDialog {
+	width:310px;
+	position:relative;
+	margin:0 auto;
+}
+
+div.panel-dialog:before,  .panelDialog:before {
+	content:"";
+	display: block;
+	width:100%;
+	height:2px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_header.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:100% 2px;
+}
+
+div.panel-dialog:after,  .panelDialog:after {
+	content:"";
+	display: block;
+	width:100%;
+	height:2px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_footer.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:100% 2px;
+}
+
+div.panel-dialog-inner,  .panelDialogInner {
+	width:310px;
+	padding:1px 2px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	position:relative;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_sideline_left_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_sideline_right_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_sideline_left_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_sideline_right_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_sideline_right.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/modal/modal_sideline_left.png),  -webkit-gradient(linear,  left top,  left bottom,  color-stop(0%, rgba(11, 11, 11, 1)),  color-stop(15%, rgba(27, 27, 27, 1)),  color-stop(50%, rgba(27, 27, 27, 1)),  color-stop(85%, rgba(27, 27, 27, 1)),  color-stop(100%, rgba(11, 11, 11, 1)));
+	background-repeat:no-repeat,  no-repeat,  no-repeat,  no-repeat,  repeat-y,  repeat-y;
+	background-position:left top,  right top,  left bottom,  right bottom,  right center,  left center;
+	background-size:2px 18px,  2px 18px,  2px 18px,  2px 18px,  2px 10px,  2px 10px,  100% 100%;
+}
+
+div.panel-area-s {
+	width:310px;
+	position:relative;
+	margin:0 auto;
+}
+
+div.panel-area-s:before {
+	content:"";
+	display: block;
+	width:100%;
+	height:5px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_s_top.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:contain;
+}
+
+div.panel-area-s:after {
+	content:"";
+	display: block;
+	width:100%;
+	height:5px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_s_bottom.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size: 100% 5px;
+}
+
+div.panel-area-s-inner {
+	width:310px;
+	padding:1px 6px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	position:relative;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_left_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_right_top.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_left_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_right_bottom.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_right.png),  url(http://amw.konaminet.jp/amw/naboo/img/common/panel/panel_sideline_left.png),  -webkit-gradient(linear,  left top,  left bottom,  color-stop(0%, rgba(11, 11, 11, 1)),  color-stop(15%, rgba(27, 27, 27, 1)),  color-stop(50%, rgba(27, 27, 27, 1)),  color-stop(85%, rgba(27, 27, 27, 1)),  color-stop(100%, rgba(11, 11, 11, 1)));
+	background-repeat:no-repeat,  no-repeat,  no-repeat,  no-repeat,  repeat-y,  repeat-y;
+	background-position:left top,  right top,  left bottom,  right bottom,  right center,  left center;
+	background-size:6px 20px,  6px 20px,  6px 20px,  6px 20px,  6px 5px,  6px 5px,  100% 100%;
+}
+
+.dialogAnim {
+	-webkit-animation-name: dialogAnim;
+	-webkit-animation-duration: 0.1s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-direction: forwards;
+	-webkit-animation-fill-mode: both;
+	transform-style:preserve-3d;
+	-webkit-transition-timing-function: ease-out;
+}
+
+@-webkit-keyframes dialogAnim {
+	0% {
+	-webkit-transform: scale(0.8);
+	opacity:0;
+}
+
+100% {
+	-webkit-transform: scale(1);
+	opacity:1;
+}
+
+}.dialogClose,  .dialog_close,  .close {
+	display:block;
+	width:25px;
+	height:25px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_close.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 25px 25px;
+	position: absolute;
+	top: -10px;
+	right: -5px;
+	z-index: 20;
+	box-shadow: -2px 2px 5px #000;
+}
+
+.dialogClose span {
+	display:none;
+}
+
+ul.tab-box  {
+	display:block;
+	position: relative;
+	height:29px;
+	margin:10px auto;
+	font-size:12px;
+	text-shadow:1px 1px 1px rgba(0, 0, 0, 0.8);
+	text-align:center;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png) no-repeat center bottom;
+	background-size: 150% 1px;
+	box-sizing:border-box;
+	box-shadow: 0 5px 7px #666;
+	-webkit-box-shadow: 0 5px 7px #666;
+}
+
+ul.tab-box li  {
+	display:inline-block;
+	position: relative;
+	width:50%;
+	height:29px;
+	line-height: 29px;
+	background:none;
+	cursor:pointer;
+	text-align: center;
+	vertical-align:middle;
+	margin: 0;
+	z-index: 0;
+	position:relative;
+	margin-right:2px;
+}
+
+ul.tab-box li:last-child {
+	margin:0;
+}
+
+ul.tab-box li a {
+	display:block;
+	width:100%;
+	height:100%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	padding-left:5px;
+	text-align:center;
+}
+
+ul.tab-box li.selected  {
+	color: #FFF;
+	z-index: 100;
+	margin-top:1px;
+}
+
+ul.tab-box.two li  {
+	width:134px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab2_off.png);
+	background-position:center top;
+	background-repeat:no-repeat;
+	background-size: 100% 29px;
+}
+
+ul.tab-box.two li.lightside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab2_off_light.png);
+}
+
+ul.tab-box.two li.darkside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab2_off_dark.png);
+}
+
+ul.tab-box.two li.selected {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab2_on.png);
+	background-repeat:no-repeat;
+	background-size: 100% 29px;
+	position: relative;
+}
+
+ul.tab-box.two li.selected.lightside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab2_on_light.png);
+}
+
+ul.tab-box.two li.selected.darkside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab2_on_dark.png);
+}
+
+ul.tab-box.three li  {
+	width:91px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab3_off.png);
+	background-position:center top;
+	background-repeat:no-repeat;
+	background-size: 100% 29px;
+}
+
+ul.tab-box.three li.selected  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab3_on.png);
+	background-repeat:no-repeat;
+	background-size: 100% 29px;
+}
+
+ul.tab-box.four li  {
+	width:69px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab4_off.png);
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size: 100% 29px;
+	font-size:10px;
+}
+
+ul.tab-box.four li.selected  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab4_on.png);
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size: 100% 29px;
+}
+
+ul.tab-box span {
+	display:inline-block;
+}
+
+.tab-content  {
+	width:100%;
+	margin:0 auto 10px;
+}
+
+.hide  {
+	display: none;
+}
+
+div.pagenate  {
+	position: relative;
+	width: 100%;
+	height:32px;
+	margin: auto;
+	padding: 10px 0;
+	line-height: 32px;
+	text-align: center;
+}
+
+div.pagenate span  {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin: auto 3px;
+	font-size: 14px;
+	text-align: center;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_pager.png) no-repeat;
+	background-size: 30px 30px;
+	background-position: center;
+	line-height: 30px;
+	text-shadow: -1px -1px 1px rgba(0,  0,  0,  1);
+}
+
+div.pagenate p.empty {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin: auto 4px;
+}
+
+div.pagenate span.this  {
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_pager_active.png) no-repeat;
+	background-size: 30px 30px;
+	background-position: center;
+}
+
+div.pagenate.mar  {
+	margin-bottom: -20px;
+}
+
+div.pagenate .txt  {
+	display: inline-block;
+	width: 60px !important;
+	height: 20px;
+	margin: auto 6px;
+	font-size: 14px;
+	text-align: center;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_pager_text.png) no-repeat !important;
+	background-size: 60px 20px !important;
+	background-position: center;
+	line-height: 1.6;
+	text-shadow: -1px -1px 1px rgba(0,  0,  0,  1);
+}
+
+div.pagenate .txt.this  {
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_pager_active.png) no-repeat !important;
+	background-size: 60px 20px !important;
+	background-position: center;
+}
+
+div.pagenate .info  {
+	display: inline-block;
+	width: 44px;
+	height: 25px;
+	margin: auto 6px;
+	font-size: 14px;
+	text-align: center;
+	text-shadow: -1px -1px 1px rgba(0,  0,  0,  1);
+	background: none;
+}
+
+div.pagenate span.small  {
+	position: relative;
+	font-size: 10px;
+	line-height: 28px;
+	letter-spacing: -5px;
+}
+
+div.pagenate span.small.first  {
+	text-align:left;
+}
+
+div.pagenate span.small.last  {
+	text-align:center;
+}
+
+div.pagenate .small.back  {
+	margin-left: -10px;
+}
+
+div.pagenate .small.next  {
+	margin-right: -10px;
+}
+
+div.pagenate span.next  {
+	margin-left: 0;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_pager_arrow_right.png) no-repeat;
+	background-size: 32px 32px;
+	background-position: center;
+	text-indent: -9999px;
+}
+
+div.pagenate span.back  {
+	margin-right: 0;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/btn/text/btn_parts_pager_arrow_left.png) no-repeat;
+	background-size: 30px 30px;
+	background-position: center;
+	text-indent: -9999px;
+}
+
+.list-sort  {
+	position:relative;
+	width:230px;
+	height:18px;
+	margin:5px auto 0;
+}
+
+.select-menu {
+	position:relative;
+	border:1px solid #646465;
+	width:180px;
+	height:18px;
+	margin:0;
+	padding: 0px;
+	font-size:12px;
+	color: #fff;
+	background: #000;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.sort {
+	position:absolute;
+	height:18px;
+	margin:0 8px;
+	font-size:12px;
+	color: #fff;
+	background: #000;
+	border:1px solid #646465;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.text {
+	position:relative;
+	border:1px solid #999999;
+	width:180px;
+	height:16px;
+	margin:0;
+	padding: 0 5px 0 5px;
+	font-size:12px;
+	color: #fff;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #999999;
+	-webkit-box-shadow:2px 2px 2px 0 rgba(93, 93, 93, 0.8) inset;
+	box-shadow:2px 2px 2px 0 rgba(93, 93, 93, 0.8) inset;
+}
+
+.card-force-sort  {
+	margin:10px auto;
+	padding:0;
+	text-shadow:0 -1px 3px #202020;
+}
+
+.card-force-sort ul  {
+	display:table;
+	width:276px;
+}
+
+.card-force-sort li  {
+	display: table-cell;
+	float: left;
+	width: 69px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_off.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 69px 30px;
+}
+
+.card-force-sort li.lightside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_off_light.png);
+}
+
+.card-force-sort li.selected.lightside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_on_light.png);
+}
+
+.card-force-sort li.darkside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_off_dark.png);
+}
+
+.card-force-sort li.selected.darkside  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_on_dark.png);
+}
+
+.card-force-sort li.neutral  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_off_neutral.png);
+}
+
+.card-force-sort li.selected.neutral  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_on_neutral.png);
+}
+
+.card-force-sort li a  {
+	text-align:center;
+	display:block;
+	line-height:30px;
+	outline:none;
+}
+
+.card-force-sort li.selected  {
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/tab/tab_sq_on.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 69px 30px;
+}
+
+.card-force-sort li.selected a  {
+	color:#FFF;
+	text-decoration:none;
+	text-align:center;
+	display:block;
+	line-height:30px;
+	outline:none;
+}
+
+

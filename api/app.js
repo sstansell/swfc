@@ -8,14 +8,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+
+
 var exphbs = require('express-handlebars');
 
 var routes = require('./routes/index');
+var reports = require('./routes/report');
+var api = require('./routes/api');
 var users = require('./routes/users');
+
 var compress = require('compression');
 
 
 var app = express();
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(cookieParser());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,6 +53,35 @@ app.engine('handlebars', exphbs(
                                             }
                                             var month = date.getMonth() + 1;
                                             return month + "/" + date.getDate() + "/" + date.getFullYear();
+                                    },
+                                    calculatePercentage: function(count,totalCount){
+                                            if (typeof(count) == "undefined"||typeof(totalCount)=="undefined") {
+                                              return "Unknown";
+                                            }
+                                            var percentage = (count/totalCount) * 100;
+                                            return percentage.toFixed(2);
+                                    },
+                                    formatSkill: function(skillText){
+                                            var ret = skillText;
+                                            if (typeof(skillText) == "undefined") {
+                                              return "Unknown";
+                                            }
+                                            if(skillText.indexOf("(")> -1){
+                                              ret = skillText.substring(0,skillText.indexOf("(")-1);
+                                            }
+                                            
+                                            
+                                            return ret;
+                                    },
+                                    adjustRarity: function(rarity){
+                                            var ret = rarity;
+                                            if (typeof(rarity) == "undefined") {
+                                              return "Unknown";
+                                            }
+                                            ret = parseInt(rarity,10) + 1;
+                                            
+                                            
+                                            return ret;
                                     }
                                 }
                             }
@@ -60,8 +99,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-
+app.use('/reports', reports);
+app.use('/api', api);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -92,6 +131,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
 
 
 module.exports = app;

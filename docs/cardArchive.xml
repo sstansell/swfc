@@ -1,0 +1,1609 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+						<script>
+					var terminal = navigator.userAgent.indexOf("Nexus 9");
+					var dpi = Math.min(400, Math.max(70, Math.ceil(160*(320/(screen.width/window.devicePixelRatio)))));
+					if(terminal != -1 && document.URL.indexOf("home/home") != -1){
+						dpi = 100;
+					}else if(terminal != -1 && document.URL.indexOf("home/global_menu") != -1){
+						dpi = 100;
+					}
+					document.write('<meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=' + dpi + '" />');
+				</script>
+		        <meta name="format-detection" content="telephone=no, address=no" />
+        <script language="JavaScript">
+            var is_content_viewer = true;
+            var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+            var IS_BROWSER        = 0;
+            var APP_SCHEME        = "dciapp";
+            var ERROR_URL         = "http://amw.konaminet.jp/amw/naboo/error/error.php?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892";
+            var CARRIER           = "android";
+			var TB                = null;
+			
+							var COMMON_FOOTER_HEIGHT = (60 + 20);	
+				var COMMOM_SIDEBAR_WIDTH = 0;			
+										
+									var VIEWPORT_SCALE	= 1.0;
+				
+				
+				var availWidth = screen.width - COMMOM_SIDEBAR_WIDTH;
+				var availHeight = screen.height;
+
+									var SCREEN_WIDTH			= 320;
+				
+				var SCREEN_HEIGHT			= ~~((availHeight - COMMON_FOOTER_HEIGHT) * (SCREEN_WIDTH / availWidth));
+				var SCREEN_HEIGHT_NONAVI	= ~~(availHeight * (SCREEN_WIDTH / availWidth));
+
+						function getWVHeight(){
+									
+					return (window.innerHeight -3);
+							}
+        </script>
+        <script language="JavaScript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.2.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.url.parser.js?2015033101"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load_nocv.min.js?2015033101"></script>
+		        <script>
+			var WINDOW_WIDTH		= $(window).width();
+						
+			var BASE_URL = 'http://amw.konaminet.jp/amw/naboo';
+			var CONTAINER_PATH = '/content_viewer/content_viewer.php';
+            
+			function greeThumbnail(ids, huge) {
+                if (!!ids == false || ids.length <= 0) return;
+
+				$(".gree-thumb").each(function(i) {
+					$(this).attr('src', "http://amw.konaminet.jp/amw/naboo/img/test/avatar.png");
+				});
+
+            }
+			function version_compare (v1, v2, operator) {compare = 0;vm = {'dev': -6,'alpha': -5,'a': -5,'beta': -4,'b': -4,'RC': -3,'rc': -3,'#': -2,'p': -1,'pl': -1},prepVersion = function (v) {v = ('' + v).replace(/[_\-+]/g, '.');v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.');return (!v.length ? [-8] : v.split('.'));};numVersion = function (v) {return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10));};v1 = prepVersion(v1);v2 = prepVersion(v2);x = Math.max(v1.length, v2.length);for (i = 0; i < x; i++) {if (v1[i] == v2[i]) {continue;}v1[i] = numVersion(v1[i]);v2[i] = numVersion(v2[i]);if (v1[i] < v2[i]) {compare = -1;break;} else if (v1[i] > v2[i]) {compare = 1;break;}}if (!operator) {return compare;}switch (operator) {case '>':case 'gt':return (compare > 0);case '>=':case 'ge':return (compare >= 0);case '<=':case 'le':return (compare <= 0);case '==':case '=':case 'eq':return (compare === 0);case '<>':case '!=':case 'ne':return (compare !== 0);case '':case '<':case 'lt':return (compare < 0);default:alert(operator);return null;}}
+			
+			
+			function jumpAnchor(anchor) {
+				var p = $(anchor).offset().top;
+									sendMessageToApp("scroll.pos", {"py":p, "scale":VIEWPORT_SCALE, "animate":1});
+							}			
+        </script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.overlay.min.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.transition_animate.min.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_link.min.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.implant_dialog.min.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.swipe_gallary.min.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.scroll_event.min.js?2015033101"></script>
+					<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/global_footer_menu.js?2015033101"></script>
+		        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_ctrl.js?2015033101"></script>
+        <script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/header_refresh.js?2015033101"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/se.js?2015033101"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_hover.js?2015033101"></script>
+		<script type="text/javascript" src="http://amw.konaminet.jp/amw/naboo/js/common/btn_manager.js?2015033101"></script>
+		<link href="http://amw.konaminet.jp/amw/naboo/csstpl/global?2015033101&ln=en" rel="stylesheet" type="text/css" />
+        <title>SWFC</title>
+            </head>
+    <body>
+
+    <div id="wrapper">
+
+		<div id="sw-wrapper" class="darkside">
+		<div id="sw-container">
+		<script type="text/javascript">
+			
+			function user_grade_update() {
+									GREE.ui(
+						{
+							'method':'upgrade',
+							'grade':3,
+							'callback_url':'http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892'
+						},
+						function(response){
+							if(response.data.upgraded) {
+			
+								top.location.href = "http://amw.konaminet.jp/amw/naboo/content_viewer/initialize?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892";
+							}
+						}
+					);
+							}
+	
+										sendMessageToApp('session.start', {id:'28HF7D8Q8M4M6FB5FMB4KNHD', 'ua':navigator.userAgent});
+									sendMessageToApp('menu.setdata', {'value':'http://amw.konaminet.jp/amw/naboo/', 'name':'BASE_URL'});
+						$(window).resize(function(){
+				var WINDOW_HEIGHT	= $("#sw-content").height();
+				$("#sw-content").css({"height": getWVHeight() +"px"});
+			});
+			$(document).ready(function(){
+				
+					var WINDOW_HEIGHT	= $("#sw-content").height();
+					if( SCREEN_HEIGHT >= WINDOW_HEIGHT){
+													
+							$("#sw-content").css({"height": getWVHeight() +"px"});
+											}
+				
+				$(".btnN.blink, .btnS.blink, .btnSS.blink").append("<div class='whiteBlink'></div>");
+				
+				
+								
+									/*sendMessageToApp('menu.show');*/
+                                            sendMessageToApp('menu.show', {'battle_lock':0});
+                    				                sendMessageToApp('page.scroll');
+			});	
+			function scroll_lock(e){
+				e.preventDefault();
+			}
+
+			function reload_page(){return false;}
+			function jump_next_page(){return false;}
+			function jump_renew_cache(url,dac){
+				unixTIme = parseInt((new Date)/1000);
+				to=url.replace(/u=[0-9]+/,'u='+unixTIme);
+				if(dac==undefined) {
+					sendMessageToApp('music.status',{volume:'default'});
+				}
+				location.href=to;
+			}
+			function show_settingmenu()
+			{
+				sendMessageToApp('game.setting');
+				globalFooterMenuClose();
+			}
+			function show_gree_dashboard()
+			{
+				GREE.ui({'method':'open', 'view':'dashboard'});
+				globalFooterMenuClose();
+			}
+			
+			
+			var push_back="";
+			var onclick_back="";
+			function setPushBack(back){
+				push_back = back;
+				console.log(push_back);
+			}
+			function pushBack(){
+							var url = location.href;
+				if(is_redirect){
+					
+					document.location = redirect_url;
+				}else if(url.indexOf("card/deck/list") >= 0){
+					document.location= "http://amw.konaminet.jp/amw/naboo/card/deck/list?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892";
+				}else if(is_page_reload){
+					
+					document.location.reload();
+				}else if(is_dialog_open){
+					
+					if(dialog_target.length >= 2){
+						document.location.reload();
+					}else{
+						$(dialog_target[dialog_target.length-1]).close_implant_dialog();
+					}
+				}else{
+					
+					if(url.indexOf("home/home") == -1){
+						if(url.indexOf("help/user_policy") >= 0){
+							
+							   sendMessageToApp('page.title');
+						}else{
+							if(push_back != ""){
+								
+								document.location = push_back;
+							}else if(onclick_back != ""){
+								
+								onclick_back();
+							}else{
+															document.location= "http://amw.konaminet.jp/amw/naboo/home/home?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892";
+														}
+						}
+					}else{
+						sendMessageToApp('app.quitDialog');
+					}
+				}
+						}
+		</script>
+		<div id="page_content">
+
+<script type="text/javascript">
+    try {
+        document.execCommand('BackgroundImageCache', false, true);
+
+		sendMessageToApp('music.play', {file:"bg_yoda_and_the_younglings"});
+    } catch(e) {}
+    var is_content_viewer;
+    if(is_content_viewer == undefined) {
+        var JQUERY_PLUGIN_DIR = "http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/";
+        var IS_BROWSER        = 0;
+        var APP_SCHEME        = "dciapp";
+        require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/jquery-1.7.1.min.js?2015033101",
+            function(){
+                require_js("http://amw.konaminet.jp/amw/naboo/js/jquery/plugin/jquery.ajax_load.min.js?2015033101",
+                    function(){
+                        $(document).ready(function(){
+                            sendMessageToApp('loading.finish',{url:""});
+                        });
+                    }
+                )  
+            }
+        );   
+    }else{
+		        $(document).ready(function(){
+									sendMessageToApp('loading.finish',{url:""});
+			        });
+    }
+    
+    function fix_select_box(){
+        var target = $("form select");
+        if(target){
+            target.before("<div class='select-txt'></div>");
+            target.change(function(){
+                $(this).prev().text($("option:selected",this).text());
+            }).trigger("change");   
+        }
+    }
+    
+    function require_js( src, callback )
+    {
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.onload = function(){
+            callback();
+        };
+        script.src = src;
+        document.body.appendChild( script );
+    }
+</script>
+<style>
+
+	#sw-wrapper{
+			}
+
+	.activeLink.blink{
+		-webkit-animation-name: activeBlink;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: normal;
+		-webkit-animation-fill-mode: both;
+		-webkit-perspective: 300;
+		-webkit-transform : translate3d(0, 0, 0);
+		-webkit-transform-style: preserve-3d;
+	}
+	@-webkit-keyframes activeBlink{
+		0% {
+			opacity:0;
+		}
+		50% {
+			opacity:0.7;
+		}
+		100% {
+			opacity:0;
+		}
+	}
+</style>
+
+<style>
+	/* -------------------------------------------------------------------------------- */
+/* Library  */
+/* -------------------------------------------------------------------------------- */
+#sw-content.library {
+	position: relative;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_content.jpg) no-repeat top center;
+	background-size: cover;
+	min-height: 480px;
+/*	padding: 0 0 20px;*/
+}
+
+#library-wrapper {
+	position: relative;
+	display: table-cell;
+	width: 320px;
+	//padding: 118px 0 0;
+	vertical-align: middle;
+}
+
+.explanation {
+	background-position: center bottom;
+}
+
+/* ---------------------------------------- */
+/*  */
+/* ---------------------------------------- */
+
+#first-wrapper {
+	//position: absolute;
+	top: 0;
+	width: 320px;
+	height: 100%;
+}
+
+#first-wrapper .first {
+	display: table;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+	#first-wrapper .first div {
+		display: table-cell;
+		width: 100%;
+		height: 150px;
+		vertical-align: middle;
+	}
+	#first-wrapper .first div p {
+		display: block;
+		width: 100%;
+		height: 150px;
+	}
+
+
+/* ---------------------------------------- */
+/*  */
+/* ---------------------------------------- */
+.pager-wrapper {
+	/*position: absolute;*/
+	width: 100%;
+	bottom: 10px;
+	left: 0;
+}
+.pager-area {
+	display: block;
+	width: 100%;
+	max-height: 52px;
+	margin: 0px auto 10px;
+	text-align: center;
+}
+
+.pager-area.now {
+	margin: 0 auto;
+	padding-bottom: 5px;
+	text-shadow: 1px 1px 1px rgba(000,000,000,1), -1px -1px 1px rgba(0,0,0,1);
+}
+
+.pager-area.bottom {
+/*	margin: -8px auto -10px;*/
+	padding-bottom: 0;
+}
+
+
+/* ---------------------------------------- */
+/*  */
+/* ---------------------------------------- */
+#card_list {
+	display: block;
+	min-height: 224px;
+	vertical-align: middle;
+}
+
+.card_elems {
+	position: relative;
+	display: table;
+	width: 308px;
+	margin: auto;
+	padding: 0;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_card-list.png) no-repeat center;
+	background-size: 100% 105%;
+}
+.card_elems ul {
+	display: block;
+	position: relative;
+	width: 270px;
+	min-height: 214px;
+	margin: auto;
+	padding: 10px;
+	vertical-align: middle;
+	text-align: center;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+	.card_elems ul li {
+		display: inline-block;
+		float: left;
+		width: 40px;
+		height: 58px;
+		margin: 5px;
+		padding: 0;
+	}
+	.card_elems ul li.empty {
+		background:url(http://amw.konaminet.jp/amw/naboo/img/book/parts/thumb_card-empty.png) no-repeat center;
+		background-size: 100% 100%;
+	}
+			.card_elems ul li a {
+				display: block;
+				width: 100%;
+				height: 100%;
+				text-align: center
+			}
+	/* 6 */
+	.card_elems.vehicle-outer ul {
+		padding-top: 17px;
+	}
+	.card_elems.vehicle-outer ul li {
+		width: 73px;
+		height: 85px;
+		padding-top: 2px;
+		background-image: url(http://amw.konaminet.jp/amw/naboo/img/book/parts/line_vhecle_thumb.png),
+						  url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_center_vhecle_thumb.png),
+						  url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_bottom_vhecle_thumb.png);
+		background-repeat: no-repeat, no-repeat, no-repeat;
+		background-size: 100% 100%, 73px 72px, 73px 12px;
+		background-position: center center, center top, center 95%;
+		background-color: rgba(0,0,0,0.5);
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+
+/* ---------------------------------------- */
+/*   */
+/* ---------------------------------------- */
+.detail-area-content {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 106%;
+	top: 0;
+	left: 0;
+	padding:15px 0 0;
+	background: -webkit-gradient(linear, left top, left bottom,
+			color-stop(5%,rgba(0, 6, 19, 1)),
+			color-stop(28%,rgba(7, 17, 41, 1)),
+			color-stop(95%,rgba(31, 31, 31, 1)));
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	z-index: 50;
+}
+
+/*  */
+.close.detail {
+	z-index: 5;
+	top: -5px;
+	right: 6px;
+	width: 30px;
+	height: 30px;
+	background-size: 30px 30px;
+}
+
+
+.detail-image-area .library-thumb {
+	display: table-cell;
+	margin: auto;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/*  */
+.detail-info {
+	display: block;
+	position: relative;
+	width: 100%;
+	min-height: 200px;
+	margin: 0 auto 20px;
+
+}
+
+.detail-info .status {
+	display: block;
+	width: 80%;
+	padding: 5px 0 0;
+	margin: auto;
+	background:url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png) no-repeat center bottom;
+	background-size: 100% 1px;
+}
+
+/*  */
+ul#library-card-param{
+	text-align:left;
+}
+
+ul#library-card-param li.param:nth-child(even){
+	clear:both;
+}
+
+ul#library-card-param li.param:last-child:after{
+	display:none;
+}
+
+ul#library-card-param li.param{
+	display:inline-block;
+	width:50%;
+	line-height: 12px;
+	background-image:url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+	background-position:bottom center;
+	background-size:150px 1px;
+	background-repeat:no-repeat;
+	padding:5px;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+ul#library-card-param li.param span:nth-child(odd){
+	margin: 0;
+}
+
+div#library-card-param ul#library-cost{
+	width:220px;
+}
+
+div#library-card-param ul#library-rarity li{
+	display:block;
+	width:100%;
+	padding:2px 0;
+}
+
+div#library-card-param ul#library-cost li{
+	display:inline-block;
+	width:50%;
+	text-align:center;
+	padding:2px 0;
+}
+
+div#library-card-param ul li span{
+	margin-right:5px;
+}
+
+/*  */
+div#card-detail-info {
+	display:table;
+	width:100%;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 100% 1px;
+	padding: 0 10px 5px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+div#card-detail-info .card-detail-img {
+	display: table-cell;
+	width: 50%;
+	height: 200px;
+	float: left;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_detail.jpg) no-repeat center center;
+	background-size: 178px 200px;
+	text-align: center;
+}
+	div#card-detail-info .card-detail-img p {
+		position: relative;
+		width: 110px;
+		height: 190px;
+		margin: 8px auto auto;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+div#card-detail-info .card-detail-param {
+	display: table-cell;
+	width: 50%;
+	height: 100%;
+	padding-left: 10px;
+	float: right;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+/*  */
+div#card-detail-info .btnN.third {
+	position: absolute;
+	width: 65px;
+	height: 25px;
+	bottom: 0;
+	left: 18px;
+	background-size: 100%;
+	font-size: 13px;
+	line-height: 25px;
+}
+
+div#card-detail-info .card-detail-param li.param{
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/cardlist_back.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 280px 1px;
+	padding:2px 0;
+}
+
+div#card-detail-info .card-detail-param li.param:last-child{
+	background:none;
+}
+
+/*--  --*/
+span.side-icon{
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	width:13px;
+	height:13px;
+	margin-right:5px;
+	text-align:center;
+	line-height:13px;
+	display:inline-block;
+}
+
+span.side-icon.light{
+	box-shadow:0 0 6px #009fd7, inset 0 0 2px #009fd7;
+	-webkit-box-shadow:0 0 6px #009fd7, inset 0 0 2px #009fd7;
+}
+span.side-icon.dark{
+	box-shadow:0 0 6px #ff0000, inset 0 0 2px #ff0000;
+	-webkit-box-shadow:0 0 6px #ff0000, inset 0 0 2px #ff0000;
+}
+
+span.side-icon.neutral{
+	box-shadow:0 0 6px #ffffff, inset 0 0 2px #ffffff;
+	-webkit-box-shadow:0 0 6px #ffffff, inset 0 0 2px #ffffff;
+}
+
+/* SKILL Area */
+.skill-area {
+	position: relative;
+	padding: 5px 10px;
+	background-image: url(http://amw.konaminet.jp/amw/naboo/img/common/list/list_back.png);
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	background-size: 98% 1px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#card_skill ul {
+	display: table;
+	width: 100%;
+	padding: 1px;
+}
+
+#card_skill ul li {
+	float: left;
+}
+
+#card_skill ul li:nth-child(odd) {
+	margin: 0 2px;
+}
+
+/*  */
+#library-wrapper #card-message {
+	padding: 5px;
+	margin: 5px 5px 0;
+	background: rgba(255, 255, 255, 0.1);
+	background-size: 280px 1px, 100%;
+}
+
+/*  */
+
+
+/* ---------------------------------------- */
+/*   */
+/* ---------------------------------------- */
+.zoom-wrapper {
+	width: 100%;
+	height: 100%;
+	top: 0 !important;
+	left: 0 !important;
+	padding: 0 !important;
+	background: #000;
+	text-align: center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.zoom-outer {
+	position: relative;
+	display: table;
+	width: 320px;
+	height: 528px;
+	text-align: center;
+	margin: 0 auto;
+}
+.zoom-outer .zoom-img {
+	position: relative;
+	display: table-cell;
+	height: 320px;
+	vertical-align: middle;
+}
+.zoom-outer .zoom-img .zoom-img-thumb { 
+	position: relative;
+	display: block;
+	width: 226px;
+	height: 320px;
+	margin: auto;
+}
+.zoom-outer .zoom-img .zoom-print-thumb { 
+	position: relative;
+	display: none;
+	width: 285px;
+	height: 320px;
+	margin: auto;
+	display: none;
+}
+/* Now Loading */
+.now_loading {
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+	top: 45%;
+	left: 0;
+	z-index: 1;
+}
+
+
+/*  */
+.zoom-outer .zoom-img-bg {
+	position: absolute;
+	left: 0;
+	top: -40px;
+}
+.zoom-outer .zoom-img .zoom-img-thumb .thumb {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.zoom-outer .zoom-img  .zoom-img-thumb .thumb.blueprint {
+	display: block;
+	width: 285px;
+	height: 201px;
+	position: absolute;
+	top: 100px;
+	left: -29px;
+	z-index: 100;
+}
+.zoom-outer .zoom-img .zoom-print-thumb p img.thumb.bluebpirnt{
+	position: absolute;
+	left:0;
+	bottom: 20px;
+}
+.zoom-outer .zoom-img .zoom-print-thumb img.shadow.blueprint {
+	position: absolute;
+	bottom: 0;
+	left: -19px;
+	display:none;
+}
+/* back */
+.zoom-back{
+position: absolute;
+bottom: 0;
+left: 0;
+}
+
+/*  */
+.zoom-outer .zoom-img  .zoom-img-thumb .thumb.card {
+}
+/*
+.zoom-outer .zoom-img  .zoom-img-thumb .thumb.vehicle {
+	-webkit-box-reflect: below -35px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(0.7, transparent), to(rgba(0,0,0,0.6)));
+}
+.zoom-outer .zoom-img  .zoom-img-thumb .thumb.blueprint {
+	-webkit-box-reflect: below 8px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(0.8, transparent), to(rgba(0,0,0,0.6)));
+}
+*/
+
+/*  */
+.zoom-outer .zoom-img  .zoom-img-thumb .shadow {
+	position: absolute;
+	z-index: 10;
+}
+	.zoom-outer .zoom-img  .zoom-img-thumb .shadow.card {
+		bottom: -15px;
+		left: -47px;
+	}
+	.zoom-outer .zoom-img  .zoom-img-thumb .shadow.stack {
+		bottom: -15px;
+		left: 8px;
+	}
+	.zoom-outer .zoom-img  .zoom-img-thumb .shadow.vehicle {
+		bottom: -20px;
+		left: 44px;
+	}	
+	.zoom-outer .zoom-img  .zoom-img-thumb .shadow.blueprint {
+		bottom: 4px;
+		left: -47px;
+	}	
+	
+.zoom-outer .zoom-img  .zoom-img-thumb .zoom-img-bg {
+	position: absolute;
+	left: -47px;
+	top: -105px;
+}
+
+.zoom-outer .close.detail {
+	top: 0;
+	right: -4px;
+}
+
+
+.evo-select{
+	display:block;
+	border-radius:4px;
+	background:#000;
+	padding-left:5px;
+	border:1px solid #999;
+	width:130px;
+	margin:5px auto;
+}
+
+
+
+/*-----------------------------------------------------   */
+
+.card-set-area {
+	margin: 20px auto 0;
+	text-align: center;
+}
+
+.card-set-area select {
+	margin-bottom: 20px;
+}
+	#dialog_overlay{
+		opacity: 1 !important;
+	}
+	.card-force-sort{
+		margin: 0 auto;
+	}
+</style>
+<script type="text/javascript">
+
+function returnAttackParam (_obj){
+	var _data = eval(_obj)
+	var attackAreaParam = {
+		"target": '',
+		"detail":'',
+		"patternName":'',
+		"className":''
+	};
+	
+	if(_data.is_healer == true){
+		attackAreaParam.target = 'Heal';
+		attackAreaParam.detail = 'Heals a single non-droid unit with the least % of HP left, positioned directly in front, to the sides, or behind the Healer unit.';
+		attackAreaParam.patternName ='HEAL PATTERN';
+		attackAreaParam.className = 'is_healer';
+	}else if(_data.is_repairer == true){
+		attackAreaParam.target = 'Repair';
+		attackAreaParam.detail = 'Repairs a single droid/cyborg/vehicle unit with the least % of HP left, positioned directly in front, to the sides, or behind the Mechanic unit.';
+		attackAreaParam.patternName ='HEAL PATTERN';
+		attackAreaParam.className = 'is_repairer';
+	}else if(_data.is_stun == true){
+		attackAreaParam.target = 'Stun';
+		attackAreaParam.detail = 'Stuns a non-vehicle enemy unit when the attack succeeds, causing the unit to become inactive during the next turn. No damage is inflicted.';
+		attackAreaParam.patternName ='ATK PATTERN';
+		attackAreaParam.className = 'is_stun';
+	}else if(_data.is_stun_vehicle == true){
+		attackAreaParam.target = 'Vehicle Stun';
+		attackAreaParam.detail = 'Stuns an enemy Vehicle when the attack succeeds, causing the Vehicle to become inactive during the next turn. No damage is inflicted.';
+		attackAreaParam.patternName ='ATK PATTERN';
+		attackAreaParam.className = 'is_stun_vehicle';
+	}else if(_data.is_giant_killing == true){
+		attackAreaParam.target = 'Giant Slayer';
+		attackAreaParam.detail = 'When attacking a Vehicle, this unit\'s ATK is calculated by dividing the opposing Vehicle\'s size (LxW) by 2 and then multiplying the result with the attacking unit\'s ATK.';
+		attackAreaParam.patternName ='ATK PATTERN';
+		if(_data.sub_type == 1){
+			attackAreaParam.className = 'none';
+		}
+	}else if(_data.attack_area_type == 0){
+		attackAreaParam.target = '1-on-1';
+		attackAreaParam.detail = 'Attacks 1 unit within range in the front row.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 1){
+		attackAreaParam.target = 'Sweep';
+		attackAreaParam.detail = 'Attacks units in a single horizontal row.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 2){
+		attackAreaParam.target = 'Pierce';
+		attackAreaParam.detail = 'Attacks units in a single vertical column.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 3){
+		attackAreaParam.target = 'Semi-Circle';
+		attackAreaParam.detail = 'Attacks units within a semi-circle pattern around 1 targeted unit.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 4){
+		attackAreaParam.target = 'Anti-Armor';
+		attackAreaParam.detail = 'Attacks 1 Vehicle within range.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 5){
+		attackAreaParam.target = 'Cross';
+		attackAreaParam.detail = 'Attacks a unit on the middle row and units positioned directly in front, to the sides, and behind the attacked unit.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 6){
+		attackAreaParam.target = 'Sniper';
+		attackAreaParam.detail = 'Preferentially attacks units in the second row.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}else if(_data.attack_area_type == 7){
+		attackAreaParam.target = 'Superlaser';
+		attackAreaParam.detail = 'Attacks all units in the opposing Formation and inflicts a damage equal to 2% of this unit\'s ATK (non-integers are rounded down), regardless of the opposing unit\'s DEF.';
+		attackAreaParam.patternName ='ATK PATTERN';
+	}
+	return attackAreaParam;
+};
+
+	
+	
+	var cardDetail = null;
+	var CardDetail = function() {
+		this.card   = null;
+		this.series = null;
+		this.doms   = null;
+		this.elem   = $('#card-detal');
+		this.list   = $('#card_list');
+		this.zoom   = $('#card-zoom');
+		
+		this.setData = function(data,data2) {
+			this.card = data;
+			this.series = data2;
+			return this;
+		}
+
+		this.show = function() {
+			if (!this.doms) this.setDoms();
+			var doms = this.doms;
+			var card = this.card;
+			var series = this.series;
+
+			$('#evo_1').remove();
+			$('#evo_2').remove();
+			$('#evo_3').remove();
+			$('#evo_4').remove();
+			var evoLevelMin = null;
+			$.each( series, function ( i, seriesData ) {
+				var evoLevel	= Number(seriesData.evol_level);
+				var evoId			= evoLevel + 1;
+				evoLevelMin = ( evoLevelMin == null ) ? evoLevel : Math.min( evoLevelMin, evoLevel );
+				switch ( evoLevel ) {
+					case 0:
+						$('#evolution').append('<option value="' + evoLevel + '" id="evo_' + evoId + '">Non-Evolved</option>');
+						break;
+					case 1:
+						$('#evolution').append('<option value="' + evoLevel + '" id="evo_' + evoId + '">Evo 1</option>');
+						break;
+					case 2:
+						$('#evolution').append('<option value="' + evoLevel + '" id="evo_' + evoId + '">Evo 2</option>');
+						break;
+					case 3:
+						$('#evolution').append('<option value="' + evoLevel + '" id="evo_' + evoId + '">Evo max</option>');
+						break;
+				}
+			});
+
+			
+			$('#evo_lve').change(function(){
+				var evo_id = $("#evolution").val();
+				var param = null;
+				$.each( series, function( i, seriesData ) {
+				  if ( seriesData.evol_level == evo_id ) {
+				    param = seriesData;
+				  }
+				});
+				doms.card_attack.html(param.attack);
+				doms.card_defence.html(param.defence);
+				doms.card_max_hp.html(param.max_hp);
+				doms.card_price.html(param.price);
+				doms.card_thumb.attr('src', param.thumb);
+				doms.card_img.attr('src', param.img);
+			});
+
+
+			if (card.type == 1) {
+				if (card.attribute == 1) {
+					doms.card_side_icon.attr('class', 'side-icon').addClass('light').html('L');
+				} else if (card.attribute == 2) {
+					doms.card_side_icon.attr('class', 'side-icon').addClass('dark').html('D');
+				} else {
+					doms.card_side_icon.attr('class', 'side-icon').addClass('neutral').html('N');
+				}
+				doms.card_side_icon.show();
+			
+				doms.rarity.show();
+				doms.card_rarity.html(card.rarity_name).show();
+			} else {
+				doms.rarity.hide();
+				doms.card_side_icon.hide();
+			}
+			
+			if (card.type == 3) {
+				doms.max_level.hide();
+			}else{
+				doms.max_level.show();
+			}
+
+			
+			if (card.type == 2) {
+				doms.slot.show();
+				doms.card_slot_x.html(card.slot_x).show();
+				doms.card_slot_y.html(card.slot_y).show();
+				if(card.blue_print_thumb.length != 0){
+					doms.bp_vehicle.show();
+				}else{
+				
+					doms.zoom_bp_thumb.hide();
+					doms.bp_vehicle.hide();
+				}
+			} else {
+				doms.bp_vehicle.hide();
+				doms.slot.hide();
+			}
+			
+			doms.zoom_bp_thumb.hide();
+			
+			if (card.skill_id > 0) {
+				
+				doms.skill_name.show();
+				doms.card_skill_name.html(card.skill_name).show();
+				
+				/*doms.skill_level.show();
+				skill_level_txt.html(card.skill_level).show();*/
+				
+				doms.skill_info.show();
+				doms.card_skill_info.html(card.skill_comment).show();
+			} else {
+				
+				doms.skill_name.hide();
+				doms.card_skill_name.hide();
+				
+				
+				doms.skill_info.hide();
+				doms.card_skill_info.hide();
+			}
+
+			
+			var defaultCardData = ( card.type == 1 ) ? series[0] : card;
+			doms.card_thumb.attr('src', defaultCardData.thumb);
+			//ipad ipad:L(L) :M
+							doms.card_img.attr('src', 'http://amw.konaminet.jp/amw/naboo/img/'+defaultCardData.thumb+'_m.png');
+						doms.card_price.html(defaultCardData.price);
+			doms.card_attack.html(defaultCardData.attack);
+			doms.card_defence.html(defaultCardData.defence);
+			doms.card_max_hp.html(defaultCardData.max_hp);
+			if(defaultCardData.raceData != 0){
+	            var race_html = "";
+	            for( i=0; i<defaultCardData.raceData.length; i++){
+				    race_html += '<span class="iconType'+defaultCardData.raceData[i]+'"></span>';
+	            }
+				doms.card_race.html(race_html);
+				doms.card_race.parent(".param").show();
+			}else{
+				doms.card_race.parent(".param").hide();
+			}
+			doms.card_id.html(card.card_id);
+			doms.card_name.html(card.name);
+			if (card.name.length > 30) {
+				$('#detail_name').addClass('fontS');
+			} else {
+				$('#detail_name').removeClass('fontS');
+			}
+			doms.card_range.html(card.range);
+			doms.detail_num_attacks.html(card.per_text);
+			if (card.sub_type == 0) {
+				doms.card_range.parent(".param").show();
+				$("#detail_num_attacks").parent(".param").show();
+				$("#detail_attack_wrapper").show();
+			}else{
+				doms.card_range.parent(".param").hide();
+				if(card.attack_time == 0){
+					$("#detail_num_attacks").parent(".param").hide();
+				}else{
+					if(card.attack_time > 0){
+						$("#detail_num_attacks").html("Number of Attacks Decreases");
+					}else{
+						$("#detail_num_attacks").html("Number of Attacks Increases");
+					}
+					$("#detail_num_attacks").parent(".param").show();
+				}
+				if(card.attack_area_type != 0 || card.is_stun || card.is_stun_vehicle || card.is_giant_killing){
+					$("#detail_attack_wrapper").show();
+				}else{
+					$("#detail_attack_wrapper").hide();
+				}
+			}
+			doms.card_cost.html(card.cost);
+			doms.card_max_level.html(card.max_level);
+			doms.accuracy.html(card.accuracy);
+			doms.avoid.html(card.avoid);
+			doms.card_comment.html(card.comment);
+
+			if( card.is_healer){
+				doms.caps_card_attack.html("HEA: ");
+			} else if(card.is_repairer){
+				doms.caps_card_attack.html("REP: ");
+			} else {
+				doms.caps_card_attack.html("ATK: ");
+				doms.detail_attack_area_pattern.html("ATK PATTERN: ");
+				doms.detail_attack_area.attr('class','attack_area' + card.attack_area_type + card.attack_area + ' slot_x0' + card.slot_x);
+			}
+
+			doms.wish_link.unbind().click(function() {
+				ajax_load(card.wish_link, {}, function(){});
+			});
+			
+			
+			var attackParam = returnAttackParam(card);
+			$("#detail_attack_area_txt").html(attackParam.target);
+			$("#detail_attack_area_detail").html(attackParam.detail);
+			$("#detail_attack_area_pattern").html(attackParam.patternName+": ");
+			$("#detail_attack_area").addClass(attackParam.className);
+
+			
+			$("#bp_trigger").click(function(){
+				$(this).hide();
+				$("#bp_vehicle").show();
+				$('#zoom_img_thumb').hide();
+				$('#zoom_bp_thumb').show();
+				var imgHtml = $('<img/>').attr('src', card.blue_print_thumb)
+										.attr('id', 'zoom_bp')
+										.attr('class', "thumb bluebpirnt")
+										.attr('style', 'display:none;')
+										.attr('width', 285);
+				$('#zoom_bp_wrapper').html(imgHtml);
+				$('.now_loading').show();
+				$('#zoom_bp').load(function() {
+									$(this).show();
+									$('.shadow','#zoom_bp_thumb').show();
+									$('.now_loading').hide();
+								});
+			});
+			$("#bp_vehicle").click(function() {
+				$(this).hide();
+				$("#bp_trigger").show();
+				$('#zoom_img_thumb').show();
+				$('#zoom_bp_thumb').hide();
+			});
+			
+			
+
+			this.list.hide();
+			this.elem.show();
+			sendMessageToApp('button.seturl', {'url':'javascript:close()'});
+
+			
+			
+			
+			sendMessageToApp('button.seturl', {'button':'back', 'url':'javascript:cardDetail.hide()'});
+			return this;
+		}
+
+		this.hide = function() {
+			$('#evolution').val(0);
+			this.elem.hide();
+			this.list.show();
+			sendMessageToApp('button.seturl', {'button':'back', 'url':''});
+			return this;
+		}
+
+		this.zoom_hide = function() {
+			//this.zoom.hide();
+			this.elem.show();
+			$('#card-zoom').close_implant_dialog();
+			sendMessageToApp("scroll.top");
+			return this;
+		}
+		
+		this.setDoms = function() {
+			this.doms = {
+				'card_id': 		$('#card_id'),
+				'card_thumb': 		$('#card_thumb'),
+				'card_img': 		$('#card_img'),
+				'card_side_icon':	$('#card_side_icon'),
+				'card_name':		$('#card_name'),
+				'card_rarity':		$('#card_rarity'),
+				'card_range':		$('#card_range'),
+				'card_cost': 		$('#card_cost'),
+				'card_max_level':	$('#card_max_level'),
+				'card_price':		$('#card_price'),
+				'caps_card_attack': $('#caps_card_attack'),
+				'card_attack':		$('#card_attack'),
+				'card_lvup_attack':	$('#card_lvup_attack'),
+				'card_defence':		$('#card_defence'),
+				'card_lvup_defence':	$('#card_lvup_defence'),
+				'card_max_hp':		$('#card_max_hp'),
+				'card_race':		$('#card_race'),
+				'slot': 		$('#slot'),
+				'card_slot_x':		$('#card_slot_x'),
+				'card_slot_y':		$('#card_slot_y'),
+				'card_comment':		$('#card_comment'),
+				'skill_name': 		$('#skill_name'),
+				'card_skill_name':	$('#card_skill_name'),
+				'skill_info':		$('#skill_info'),
+				'card_skill_info':	$('#card_skill_info'),
+				'wish_link': 		$('#wish_link'),
+				'bp_trigger':		$('#bp_trigger'),
+				'bp_vehicle':		$('#bp_vehicle'),
+				'zoom_bp_thumb':	$('#zoom_bp_thumb'),
+				'rarity':			$('#rarity'),
+				'accuracy':			$('#accuracy'),
+				'avoid':			$('#avoid'),
+				'detail_num_attacks':$('#detail_num_attacks'),
+				'max_level':		$('#max_level'),
+				'detail_attack_wrapper':		$('#detail_attack_wrapper'),
+				'detail_attack_area':		$('#detail_attack_area'),
+				'detail_attack_area_pattern':$('#detail_attack_area_pattern'),
+				'detail_attack_area_info':		$('#detail_attack_area_info'),
+				'detail_attack_area_txt':		$('#detail_attack_area_txt'),
+				'detail_attack_area_detail':		$('#detail_attack_area_detail')
+			};
+			return this;
+		}
+	}
+	
+	var LibraryControl = function() {
+		this.menu_open		= $('#menu_open');
+		this.menu_close		= $('#menu_close');
+		this.sort_selector	= $('#sort_selector');
+		this.lib_list		= $('#card_elems');
+		this.seach_setting	= $('#seach_setting');
+		
+		this.showLib = function() {
+			this.sort_selector.attr('disabled', false).css('opacity', '1');
+			this.seach_setting.hide();
+			this.lib_list.show();
+			this.menu_close.hide();
+			this.menu_open.show();
+		}
+		
+		this.showSetting = function() {
+			this.sort_selector.attr('disabled', true).css('opacity', '0.4');
+			this.lib_list.hide();
+			this.seach_setting.show();
+			this.menu_open.hide();
+			this.menu_close.show();
+		}
+		
+		this.init = function() {
+			var self = this;
+			this.showLib();
+			this.menu_open.click(function() {
+				self.showSetting();
+			});
+			this.menu_close.click(function() {
+				self.showLib();
+			});
+
+			$('#card-zoom').implant_dialog({closer:'#setting_closer', "scroll":true, no_close:true});
+			$('#save_setting').click(function() {
+				var pub = $(this).siblings('select').val();
+				ajax({
+					'url': 'http://amw.konaminet.jp/amw/naboo/book/config/edit?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892',
+					'loading_icon': true,
+					'param': {'pub': pub},
+					'callback': function(data) {
+						$('#card-zoom').close_implant_dialog();
+						if (data.err) {
+							$("#error-dialog").call_implant_dialog();
+						} else {
+							var dialog = $("#complete-dialog");
+							dialog.find('div.box-area span').hide();
+							if (pub == "1") {
+								$('#dialog_message_allies').show();
+							} else if (pub == "2") {
+								$('#dialog_message_public').show();
+							} else {
+								$('#dialog_message_private').show();
+							}
+
+							dialog.call_implant_dialog();
+						}
+						ajax_load_lock = false;
+					},
+					'error': function() {
+						$('#card-zoom').close_implant_dialog();
+						$("#error-dialog").call_implant_dialog();
+					}
+				});
+			});
+			$('#setting_button').click(function() {
+				$("#card-detail").hide();
+				$("#bp_trigger").show();
+				$("#bp_vehicle").hide();
+				$("#zoom_bp_thumb").hide();
+				$("#zoom_img_thumb").show();
+				$("#zoom_thumb, .shadow").show();
+				//ipad ipad:LL :L
+									var imgSize = "http://amw.konaminet.jp/amw/naboo/img/" + $('#card_thumb').attr('src')+"_l.png";
+								var imgHtml = $('<img/>').attr('src', imgSize).attr('id', 'zoom_thumb')
+										 .attr('class', "thumb card")
+										 .attr('height', "320");
+				$('#zoom_thumb_wrapper').html(imgHtml);
+				$('#zoom_thumb, .shadow').hide();
+				$('.now_loading').show();
+				sendMessageToApp("scroll.top");
+				$('#card-zoom').call_implant_dialog();
+				$('#zoom_thumb').load(function() {
+									$(this).show();
+									$('.shadow').show();
+									$('.now_loading').hide();
+								});
+			});
+		}
+	}
+	
+	$(document).ready(function() {
+		var checkboxs = $('input:checkbox').change(function() {
+			$(this).parent().siblings('.check-box').toggleClass('on').toggleClass('off');
+		});
+		
+		var ctrl = new LibraryControl();
+		cardDetail = new CardDetail();
+
+		var postManager = function() {
+			this.post = function() {
+				var form = $(this).parents("form");
+				ctrl.sort_selector.attr('disabled', false).css('opacity', '1');
+				var rel = form.serializeArray();
+				ctrl.sort_selector.attr('disabled', true).css('opacity', '0.4');
+				var checks = {};
+				$.each(rel, function(i, v) {
+					if (checks[v.name]) {
+						checks[v.name] += ','+v.value;
+					} else {
+						checks[v.name] = v.value;
+					}
+				});
+				ajax_load_lock = false;
+				ajax_load(form.attr("action"), checks, function(){});
+			}
+		}
+		
+		var post = new postManager();
+		ctrl.init();
+		
+		$("form :button" + ".submit").bind("click", post.post);
+		ctrl.sort_selector.bind("change", post.post);
+		
+		$("#card-list a").unbind().ajax_link({
+			"callback": function(data) {
+				if (data.err == 0) {
+					cardDetail.setData(data.card,data.series_list).show();
+				} else {
+					$("#error-dialog").call_implant_dialog();
+				}
+			}
+		});
+		
+		$("#complete-dialog").implant_dialog({closer:'#complete_closer'});
+		$("#error-dialog").implant_dialog({close:'#error_closer'});
+		
+	});
+
+</script>
+
+<div id="sw-content" class="library"><h1>CHARACTERS</h1><div id="header_info">Cards Discovered: 707/1783</div><div id="library-wrapper"><div id="sort-menu"><div style="margin-left: 10px;"><style>
+
+
+select {
+	-webkit-appearance:button;
+    -moz-appearance:button;
+    appearance:button;
+	display: block;
+	border-radius: 0 0 4px 4px;
+	background: -webkit-linear-gradient(top, #828282 0%, #262626 23%, #000 50%, #3a3d38 88%, #a2a1a0 100%);
+	background: linear-gradient(to bottom, #828282 0%, #262626 23%, #000 50%, #3a3d38 88%, #a2a1a0 100%);
+	font-size: 12px;
+	padding-left: 5px;
+	color: #FFF;
+	border: 1px solid #999;
+	width: 139px;
+	margin:14px 5px 5px 5px;	
+	float: left;
+	height: 35px;
+}
+
+
+.sort_icon {
+	position: absolute;
+	top: -1px;
+	z-index: 1;
+	left: 154px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;	
+	width: 117px;
+	text-align: center;
+}
+
+.sort_icon_long {
+	position: absolute;
+			top: -12px;
+		z-index: 1;
+	left: 49px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;	
+	width: 178px;
+	text-align: center;
+}
+
+.filter_icon {
+	position: absolute;
+	top: -1px;
+	z-index: 1;
+	left: 5px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;
+	width: 117px;
+	text-align: center;	
+}
+
+.rare_icon {
+	position: absolute;
+	text-align: center;
+	top: -1px;
+	z-index: 1;
+	left: 154px;
+	background-color: #4B4B4B;
+	padding: 1px 10px;
+	border-radius: 4px 4px 0 0;
+	border: 1px solid #999;
+	width: 117px;		
+}
+
+.allow_mark {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 25px;
+	left: 128px;
+}
+
+.allow_mark2 {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 25px;
+	left: 277px;
+}
+
+.allow_mark_long {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 14px;
+	left: 232px;
+}
+
+.allow_mark_long_wishlist {
+	position: absolute;
+	background: url(http://amw.konaminet.jp/amw/naboo/img/common/btn/arrow/arrow_down_s.png) no-repeat center;
+	background-size: 12px 12px;
+	width: 12px;
+	height: 12px;
+	top: 32px;
+	left: 232px;
+	z-index: 1;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function delayFilter(){
+	var that = document.getElementById("attribute_filter_selector");
+	setTimeout(function(){ajax_load(that.options[that.selectedIndex].value, null, function(){});}, 100);
+}
+
+$(document).ready(function(){
+	$('#sort_param select').change(function(){
+		var checks={};
+		var rel     = $("#sort_param").serializeArray();
+		$.each(rel,function(i, v) { 
+			checks[v.name] = v.value;
+		});
+		
+		
+						ajax_load("",checks,function(){
+			});
+			
+			});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#sort_rarity select').change(function(){
+				var checks={};
+				var rel     = $("#sort_rarity").serializeArray();
+				$.each(rel,function(i, v) { 
+					checks[v.name] = v.value;
+				});
+											ajax_load("http://amw.konaminet.jp/amw/naboo/book/book/list?attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892",checks,function(){});
+								});
+		})
+		</script>
+
+				<div class="clearfix" style="position:relative;">
+				<div class="filter_icon fontS">Filter</div><div class="allow_mark"></div>
+
+					<select id="attribute_filter_selector" onchange="
+													ajax_load(this.options[this.selectedIndex].value, null, function(){})
+											">
+						<option value="http://amw.konaminet.jp/amw/naboo/book/book/list?attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892"     selected>ALL</option>
+						<option value="http://amw.konaminet.jp/amw/naboo/book/book/list?attribute=1&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892"   >LIGHT</option>
+						<option value="http://amw.konaminet.jp/amw/naboo/book/book/list?attribute=2&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892"    >DARK</option>
+						<option value="http://amw.konaminet.jp/amw/naboo/book/book/list?attribute=3&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" >NEUTRAL</option>
+					</select>
+					
+				<div class="rare_icon fontS">Rarity</div><div class="allow_mark2"></div>
+				<form id="sort_rarity" method="post" action="#" class="gift-sort-area">
+					<select name="rarity" class="gift-select">
+						<option value="99" >ALL</option>
+						<option value="0" >1-Star</option>
+						<option value="1" >2-Star</option>
+						<option value="2" >3-Star</option>
+						<option value="3" >4-Star</option>
+						<option value="4" selected="selected">5-Star</option>
+						<option value="100" >Special</option>
+					</select>
+				</form>
+			</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></div><div id="card_list"><div id="card_elems" class="card_elems"><ul id="card-list" class="clearfix"><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1080810250&user_id=3273637&series=1080810250&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/108081025/1080810250_ms.png" width="40" height="58" /></a></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1024410550&user_id=3273637&series=1024410550&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/102441055/1024410550_ms.png" width="40" height="58" /></a></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1016210350&user_id=3273637&series=1016210350&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101621035/1016210350_ms.png" width="40" height="58" /></a></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1067010750&user_id=3273637&series=1067010750&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/106701075/1067010750_ms.png" width="40" height="58" /></a></li><li class="empty"></li><li class="empty"></li><li class="empty"></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1067010550&user_id=3273637&series=1067010550&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/106701055/1067010550_ms.png" width="40" height="58" /></a></li><li class="empty"></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1071010750&user_id=3273637&series=1071010750&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/107101075/1071010750_ms.png" width="40" height="58" /></a></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1071010950&user_id=3273637&series=1071010950&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/107101095/1071010950_ms.png" width="40" height="58" /></a></li><li class="empty"></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1013310850&user_id=3273637&series=1013310850&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101331085/1013310850_ms.png" width="40" height="58" /></a></li><li><a href="http://amw.konaminet.jp/amw/naboo/book/book/detail?card_id=1013310950&user_id=3273637&series=1013310950&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="detail" onclick="se_sys_window_opn();"><img src="http://amw.konaminet.jp/amw/naboo/img/card/chara/101331095/1013310950_ms.png" width="40" height="58" /></a></li><li class="empty"></li></ul></div><div class="pager-wrapper"><div class="pager-area now">1 / 5</div><div class="pager-area bottom"><style>
+.empty{
+	padding:0 !important;	
+}
+</style>
+	<hr class="sub"/>
+	<div class="pagenate">
+		
+		
+				
+									<span class="this">1</span>
+												<a href="http://amw.konaminet.jp/amw/naboo/book/book/list?page=2&attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="se_sys_tap"><span>2</span></a>
+												<a href="http://amw.konaminet.jp/amw/naboo/book/book/list?page=3&attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="se_sys_tap"><span>3</span></a>
+												<a href="http://amw.konaminet.jp/amw/naboo/book/book/list?page=4&attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="se_sys_tap"><span>4</span></a>
+												<a href="http://amw.konaminet.jp/amw/naboo/book/book/list?page=5&attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="se_sys_tap"><span>5</span></a>
+							
+					<a href="http://amw.konaminet.jp/amw/naboo/book/book/list?page=5&attribute=0&type=1&rarity=4&user_id=3273637&PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="se_sys_tap"><span class="next">NEXT</span></a>
+			</div><!-- /pager -->
+		
+</div></div><div class="txtAL">
+	<a href="http://amw.konaminet.jp/amw/naboo/home/menu_library.php?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892" class="btnBack se_sys_ok">Card Archives</a>
+	<script type="text/javascript">
+		setPushBack('http://amw.konaminet.jp/amw/naboo/home/menu_library.php?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&u=1428073892');
+	</script>
+</div></div><div id="card-detal" class="detail-area-content" style="display:none;"><section class="detail-info"><div class="panel-dialog"><div class="panel-dialog-inner"><a id="setting_closer" onclick="cardDetail.hide();se_sys_window_cls();" class="dialogClose"></a><h2 id="detail_name" class="title_panel01"><span id="card_side_icon" class="side-icon fontSS"></span><span id="card_name"></span></h2><div id="card-detail-info" class="clearfix"><div class="card-detail-img marT10" id="card-list"><p id="setting_button"><img id="card_img" src="" width="110" /><br /><a class="btnSS s" onclick="se_sys_window_opn();">ZOOM</a><span id="card_thumb"></span></p></div><div class="card-detail-param"><ul class="fontS clearfix"><li id="rarity" class="param"><span class="colorParamTitle">Rarity: </span><span class="rarity-icon" id="card_rarity"></span></li><li id="max_level" class="param"><span class="colorParamTitle">Lvl: </span>MAX <span id="card_max_level"></span></li><li class="param"><span class="colorParamTitle">COST: </span><span id="card_cost"></span></li><li class="param"><span class="colorParamTitle">RANGE: </span><span id="card_range"></span></li><li class="param"><span id="caps_card_attack" class="colorParamTitle">ATK: </span><span id="card_attack"></span></li><li class="param"><span class="colorParamTitle">DEF: </span><span id="card_defence"></span></li><li class="param"><span class="colorParamTitle">ACC: </span><span id="accuracy"></span></li><li class="param"><span class="colorParamTitle">EVA: </span><span id="avoid"></span></li><li class="param"><span class="colorParamTitle">HP: </span><span id="card_max_hp"></span></li><li class="param"><span class="colorParamTitle"># of Actions: </span><span id="detail_num_attacks"></span></li><li class="param"><span class="colorParamTitle">TYPE: </span><span id="card_race"></span></li><li class="param"><span class="colorParamTitle">Price: </span><span id="card_price"></span> Credits</li><div id="slot"><li class="param"><span class="colorParamTitle">X-size: </span><span id="card_slot_x"></span></li><li class="param"><span class="colorParamTitle">Y-size: </span><span id="card_slot_y"></span></li></div><li id="skill_name" class="param"><span class="colorParamTitle">Skill: </span><span id="card_skill_name"></span></li><form id="evo_lve" method="post" action="#" class="padT"><select name="evolution" class="evo-select" id="evolution"><option value="0" id="evo_1">Non-Evolved</option><option value="1" id="evo_2">Evo 1</option><option value="2" id="evo_3">Evo 2</option><option value="3" id="evo_4">Evo max</option></select></form></ul></div></div><div id="skill_info" class="skill-area fontS"><ul><li><span class="txtParam">Skill Info: </span><span id="card_skill_info"></span></li></ul></div><div id="detail_attack_wrapper"><div id="detail_attack_area"></div><div id="detail_attack_area_info" class="pad padR10 padL10"><p class="marB"><span id="detail_attack_area_pattern" class="txtParam">ATK PATTERN:</span><span id="detail_attack_area_txt"></span></p><p><span id="detail_attack_area_detail"></span></p></div></div><div id="card-message"><span id="card_comment" class="fontS"></span></div></div></section></div></div></div><div id="card-zoom" class="zoom-wrapper" style="display:none;"><div class="zoom-outer"><img src="http://amw.konaminet.jp/amw/naboo/img/book/parts/bg_detail_zoom.jpg" width="320" height="568" class="zoom-img-bg" /><div class="zoom-img"><div id="zoom_img_thumb" class="zoom-img-thumb"><span class="now_loading">now loading...</span><p id="zoom_thumb_wrapper"></p><img src="http://amw.konaminet.jp/amw/naboo/img/book/parts/shadow_card.png" width="320" height="25" class="shadow card" /></div></div><div class="zoom-back"><a id="setting_closer" class="btnBack se_sys_window_cls" onclick="cardDetail.zoom_hide();">BACK</a></div></div></div>
+	<script type="text/javascript">var app_version="0.0.0";$(document).ready(function(){sendMessageToApp('back.enable');});function jump_prev_page() {ajax_load("http://amw.konaminet.jp/amw/naboo/home/menu_library.php?PHPSESSID=28HF7D8Q8M4M6FB5FMB4KNHD&opensocial_viewer_id=521175497&sub_ln=en_US&a=home%2Fhome&t=4616",{"_history":"back"},function(){});}</script>
+								</div>
+							<div id="debug_view"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </body>
+	</html>
+	

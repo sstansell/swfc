@@ -1,4 +1,4 @@
-<h1>5* Card Draw Totals ({{{total}}})</h1>
+<h2>5* Card Draw Totals ({{{total}}})</h2>
 <div id="cards">
 <!--<div class="controls">
 <form method="get" action="">
@@ -11,7 +11,7 @@ From: <input type="text" value="10/1/2014" id="fromDate" name="fromDate" class="
 				<!--<th>Thumb</th>-->
 				<th>Card Name</th>
 				<th>Pulls</th>
-				<!--<th>Links</th>-->
+				<th>% of Pulls</th>
 				<th>Rarity</th>
 			</tr>
 		</thead>
@@ -19,10 +19,12 @@ From: <input type="text" value="10/1/2014" id="fromDate" name="fromDate" class="
 		  {{#each cards}}
 		    <tr id="{{cardId}}">
 		    	<!--<td class="thumb"><img src="http://amw.konaminet.jp/amw/naboo/img/{{thumb}}_s.png"></td> -->
-		    	<td class="name"><a href="/history/card/{{cardId}}">{{name}}</a></td>
+		    	<td class="name"><a href="/reports/cardHistory/{{cardId}}">{{name}}</a></td>
 		    	<td class="count">{{{count}}}</td>
+		    	<td class="percent">{{calculatePercentage count @root.total}}</td>
 		    	<!--<td class="links"><a href="/history/card/{{{card_id}}}">History</a> | <a href="/packs/card/{{card_id}}">Packs</a></td>-->
-		    	<td class="rarity rarity{{{rarity}}}"">&nbsp;</td>
+		    	<td class="rarity rarity{{{rarity}}}">&nbsp;</td>
+		    	<td class="info"><a href="#result" class="infoLink" data-id="{{cardId}}">Get Card Info</a></td>
 		    </tr>
 		  {{/each}}
 		  <tr>
@@ -32,8 +34,17 @@ From: <input type="text" value="10/1/2014" id="fromDate" name="fromDate" class="
 		</tbody>
 	</table>
 </div>
+<div class='result' id="result"></div>
 <script>
-$( ".date" ).datepicker();
+$(function() {
+	$(".infoLink").click(function(){
+		var cardId = $(this).data("id");
+		console.log(cardId);
+		$.get( "/stream/cardDetails/" + cardId, function( data ) {
+		  $( ".result" ).text( JSON.stringify(data) );
+		});		
+	})
+});
 </script>
 <div>{{{error}}}</div>
 

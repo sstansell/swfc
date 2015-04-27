@@ -2,21 +2,61 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>SWFC - {{{title}}} </title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,900,700,100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/konami.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/foundation.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>-->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/javascripts/foundation.min.js"></script>
+<script src="/javascripts/cookies.js"></script>
 
 </head>
 <body>
-<h1>{{{Title}}}</h1>
-<a href="/total/cards">Cards</a>
-<a href="/total/packs">Packs</a>
-<a href="/total/hours">Hours</a>
-{{{body}}}
+
+	<div class="row">
+		<div class="menu">
+			<a href="/">Home</a>&nbsp;|&nbsp;
+			<a href="/loader">Login Info</a>
+		</div>
+		<h1>SWFC Tools</h1>	
+		<a href="#" id="userInfoToggle">User Info</a>
+		<div class="userInfo hide">
+			<strong>User Name:</strong> <span id="uiUserName">{{userName}}</span><br>
+			<strong>UserID:</strong> <span id="uiUserId">{{userId}}</span><br>
+			<strong>SessionID:</strong> <span id="uiSessionId">{{sessionId}}</span><br>
+			<strong>UserAgent:</strong> <span id="uiUserAgent">{{userAgent}}</span>
+		</div>
+	{{{body}}}
+	</div>
+
+<script>
+app = {
+	populateUserInfo : function(){
+		$.getJSON( "/api/config", function( data ) {
+			var user = data.user;
+			$("#uiUserName").text(user.name);
+			$("#uiUserId").text(user.userId);
+			$("#uiSessionId").text(user.sessionId);
+			$("#uiUserAgent").text(user.userAgent);			
+		});		
+	}
+};
+
+
+$(function() {
+	//populate user info
+	
+
+	//bind the show/hide user info block
+	$("#userInfoToggle").click(function(){
+		app.populateUserInfo();
+		$(".userInfo").toggle(300);
+	});
+});
 
 
 
+
+</script>
 </body>
 </html>

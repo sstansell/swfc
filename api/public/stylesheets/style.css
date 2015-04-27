@@ -1,16 +1,39 @@
+/*
+palette: http://www.colourlovers.com/palette/769554/Ocean_Etiquette;
+
+
+*/
+
 body {
   padding: 50px;
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Roboto", Helvetica, Arial, sans-serif;
+  line-height: 1.6em;
+  color: #1A2C38;
+  background: #F2F2F2;
 }
+
 @media (max-width: 600px) {
   body {
     padding: 5px;
   }
 }
 a {
-  color: #00B7FF;
+  color: #484A66;
 }
-
+.switch{
+	outline:1px solid #F2F2F2;
+}
+.menu{
+	float:right;
+}
+.userInfo, .options{
+	padding: 15px;
+	background:#484A66;
+	color: #F2F2F2;
+	margin-top: 5px;
+	margin-bottom:5px;
+	font-weight: 100;
+}
 
 .controls{
 	padding-bottom:20px;
@@ -69,4 +92,13 @@ td {
 .rarity7{
 	background-color:#B73030;
 	color:#fff;
+}
+
+.frameContainer{
+	width: 400px;
+	height: 550px;
+}
+
+.timer{
+	font-size: 3rem;
 }

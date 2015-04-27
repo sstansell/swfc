@@ -1,0 +1,25 @@
+<h2>Cards</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Rarity</th>
+				<th>Skill</th>
+				<th>Comment</th>
+
+			</tr>
+		</thead>
+		<tbody class="list">
+		  {{#each cards}}
+
+		    <tr>
+		    	<td class="image"><img src="/images/card/{{card_id}}_l.png" alt="{{name}}"></td>
+		    	<td class="name">{{name}}</td>
+		    	<td class="rarity">{{{adjustRarity rarity}}}</td>
+		    	<td class=""><strong>{{skill_name}}</strong><br>{{{skill_comment}}}</td>
+		    	<td class="">{{{comment}}}</td>
+		    </tr>
+		  {{/each}}
+		</tbody>
+	</table>

@@ -1,0 +1,56 @@
+<h2>Card Archive</h2>
+	<div class="large-6 columns">
+		<div class="frameContainer">
+			<iframe id="gameScreen" src="/stream/cardArchive?page=1&rarity=4" width="100%" height="100%"></iframe>
+		</div>
+	</div>
+	<div class=" large-6 columns">
+		<label for="rarity">Rarity
+			<select id="rarity" name="rarity">
+				<option value="4">5 Star</option>	
+				<option value="3">4 Star</option>
+				<option value="2">3 Star</option>
+				<option value="1">2 Star</option>
+				<option value="0">1 Star</option>
+			</select>
+		</label>
+		<label for="page">Page
+			<select id="page" name="page">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>	
+			</select>
+		</label>		
+	</div>
+
+	<script>
+		var pageSettings = {
+			baseFrameSrc: "/stream/cardArchive",
+			rarity: 4,
+			page: 1
+		}
+
+		$(document).on('change', '#page', function(e) {
+		    var page = this.options[e.target.selectedIndex].text;
+		    pageSettings.page = page;
+		    var frameUrl = pageSettings.baseFrameSrc + '?page=' + page + '&rarity=' + pageSettings.rarity;
+		    $("#gameScreen").attr('src', frameUrl);
+		});
+		$(document).on('change', '#rarity', function(e) {
+		    var rarity = this.options[e.target.selectedIndex].value;
+		    pageSettings.rarity = rarity;
+		    pageSettings.page = 1;
+		    $("#page").val(pageSettings.page);
+		    var frameUrl = pageSettings.baseFrameSrc + '?page=' + pageSettings.page + '&rarity=' + rarity;
+		    console.log(frameUrl);
+		    $("#gameScreen").attr('src', frameUrl);
+		});		
+	</script>
+
