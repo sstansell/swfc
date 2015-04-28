@@ -1,0 +1,2 @@
+--figure out how to get sessionID without manually logging into wireshark/genymotion
+--standardize card and skill data from binder/archive/card pull/battle

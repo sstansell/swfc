@@ -274,6 +274,7 @@
 	],
 	"file_history":
 	[
+		"/Users/seanstansell/Documents/Projects/swfc/.gitignore",
 		"/Users/seanstansell/Documents/Projects/swfc/api/views/packTotals.handlebars",
 		"/Users/seanstansell/Documents/Projects/swfc/api/config.js",
 		"/Users/seanstansell/Documents/Projects/swfc/api/public/stylesheets/foundation.css",
@@ -400,8 +401,7 @@
 		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/sass/app.scss",
 		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/sass/custom.scss",
 		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/car-show.php",
-		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/volunteers.php",
-		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/shirts.php"
+		"/Users/seanstansell/Dropbox/Public/ArbutusArtsFestival/volunteers.php"
 	],
 	"find":
 	{
