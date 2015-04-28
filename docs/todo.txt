@@ -1,2 +1,3 @@
 --figure out how to get sessionID without manually logging into wireshark/genymotion
+--   maybe launch each from command line?  "login" route that opens wireshark, genymotion, starts trace?
 --standardize card and skill data from binder/archive/card pull/battle
