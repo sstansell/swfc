@@ -42,6 +42,7 @@
 		    pageSettings.page = page;
 		    var frameUrl = pageSettings.baseFrameSrc + '?page=' + page + '&rarity=' + pageSettings.rarity;
 		    $("#gameScreen").attr('src', frameUrl);
+		    console.log(frameUrl);
 		});
 		$(document).on('change', '#rarity', function(e) {
 		    var rarity = this.options[e.target.selectedIndex].value;
