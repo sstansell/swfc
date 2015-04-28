@@ -103,7 +103,7 @@
 			"file": "api/public/stylesheets/style.css",
 			"settings":
 			{
-				"buffer_size": 1298,
+				"buffer_size": 1300,
 				"line_ending": "Unix"
 			}
 		},
@@ -570,7 +570,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -621,7 +621,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -643,8 +644,8 @@
 						"selection":
 						[
 							[
-								456,
-								456
+								26,
+								26
 							]
 						],
 						"settings":
@@ -656,7 +657,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -665,15 +666,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1298,
+						"buffer_size": 1300,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1295,
-								1295
+								1294,
+								1294
 							]
 						],
 						"settings":
@@ -681,10 +682,10 @@
 							"syntax": "Packages/CSS/CSS.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1575.0,
+						"translation.y": 1536.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
