@@ -46,6 +46,12 @@ router.get('/cardArchive', function(req, res) {
 
 });
 
+/* GET cardBinder page. */
+router.get('/cardBinder', function(req, res) {
+	res.render('cardBinder');
+
+});
+
 /* GET cardPulls stream page. */
 router.get('/stream/cardPulls', function(req, res) {
 	var request = require('request');
@@ -97,39 +103,61 @@ router.get('/stream/cardPulls', function(req, res) {
 /* GET card binder page. */
 router.get('/stream/cardBinder', function(req, res) {
 	var request = require('request');
-
-	// Set the headers
+	var attribute = req.query.attribute;
+	var page = req.query.page;
+	var type = req.query.type;
+	var sort = req.query.sort;
+	var collection = "";	
+	switch (type) {
+	  case "1":
+	    collection = "cardBinder";
+	    break;
+	  case "2":
+	    collection = "vehicles";
+	    break;
+	  case "3":
+	    collection = "stacks"
+	    break;
+	  default:
+	    collection = "cardBinder";
+	}
+console.log("Type: " + type);
+console.log("Collection: " + collection);
+		getConfigFromDB(function(config){
+			phpSessId = config.user.sessionId;
+			// Set the headers
 
 	    
-		var pathPrefix ="/amw/naboo/card/card/list?PHPSESSID="
+			var pathPrefix ="/amw/naboo/card/card/list?PHPSESSID="
 		
 		
-		var path = pathPrefix + phpSessId + pathPostFix;
-	// Configure the request
-	var options = {
-		    host: host,
-		    method: 'GET',
-		    headers: headers,
-		    path: path
-	   	}
+			var path = pathPrefix + phpSessId + "&type=" + type + "&attribute=" + attribute + "&sort=" + sort + "&page=" + page +pathPostFix;
+			// Configure the request
+			var options = {
+				    host: host,
+				    method: 'GET',
+				    headers: headers,
+				    path: path
+			   	}
 
-		getGzipped(options, function(err, data) {
-			console.log(options.path);
-			//console.log(response.headers);
-		   //console.log(data);
-		   if(err !== null){
-		   		console.log(err);
-		   }
+				getGzipped(options, function(err, data) {
+					console.log(options.path);
+					//console.log(response.headers);
+				   //console.log(data);
+				   if(err !== null){
+				   		console.log(err);
+				   }
 		   
 		   
-		   res.send(data);
-		   parseCardList(data, function(cards){
-				var cardLength = cards.length;
-				for (var i = 0; i < cardLength; i++) {
-				    writeCardToDB(cards[i],"cards");
-				}		   		
-		   });
-		})
+			   res.send(data);
+			   parseCardList(data, function(cards){
+					var cardLength = cards.length;
+					for (var i = 0; i < cardLength; i++) {
+					    writeCardToDB(cards[i],collection,true);
+					}		   		
+			   });
+			})
+		});
 });
 
 
